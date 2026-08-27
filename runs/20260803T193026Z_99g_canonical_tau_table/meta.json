@@ -1,0 +1,26 @@
+{
+  "run_id": "20260803T193026Z_99g_canonical_tau_table",
+  "name": "99g_canonical_tau_table",
+  "started_utc": "2026-08-03T19:30:26.920463+00:00",
+  "seed": 20260803,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "tau_median_主观 · 声景（产品域）": 0.13339864323725265,
+    "above_null_主观 · 声景（产品域）": 8,
+    "tau_median_主观 · 音乐": 0.07380908402037344,
+    "above_null_主观 · 音乐": 10,
+    "tau_median_生理 · 音乐": 0.0,
+    "above_null_生理 · 音乐": 4,
+    "null_median_n18": 0.11414143795571449,
+    "null_median_n42": 0.012993812540829708,
+    "null_median_n44": 0.0
+  },
+  "artifacts": [],
+  "finished_utc": "2026-08-03T19:33:08.345394+00:00"
+}

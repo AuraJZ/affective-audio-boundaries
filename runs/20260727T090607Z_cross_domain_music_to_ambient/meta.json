@@ -1,0 +1,107 @@
+{
+  "run_id": "20260727T090607Z_cross_domain_music_to_ambient",
+  "name": "cross_domain_music_to_ambient",
+  "started_utc": "2026-07-27T09:06:07.324152+00:00",
+  "seed": 42,
+  "params": {
+    "train": "deam",
+    "test": "esc50",
+    "n_shared_features": 122,
+    "caveat": "ESC-50 为语义类别代理标签，非实测助眠效应，故本测试只回答方向性问题，不给定量结论"
+  },
+  "git_commit": "4a995a7bf7e4a42308b59c22713deffd21cfe972",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "7ebca11109f30d971df5f4f5fa3774c41ce61b92189fba76b02a4d181135c7d2",
+  "inputs": {},
+  "metrics": {
+    "n_train": {
+      "total": 477,
+      "pos": 215
+    },
+    "n_test": {
+      "total": 720,
+      "pos": 320
+    },
+    "cross_domain": {
+      "RF": {
+        "auc": 0.5245390625,
+        "accuracy": 0.4930555555555556,
+        "precision": 0.448512585812357,
+        "recall": 0.6125,
+        "auc_flipped": 0.4754609374999999
+      },
+      "XGBoost": {
+        "auc": 0.4507265625000001,
+        "accuracy": 0.4638888888888889,
+        "precision": 0.4166666666666667,
+        "recall": 0.515625,
+        "auc_flipped": 0.5492734375
+      }
+    },
+    "direction_agreement_all": 0.27049180327868855,
+    "direction_agreement_rule_features": 0.18181818181818182,
+    "rule_feature_directions": {
+      "mfcc1_mean": {
+        "d_music": -1.674,
+        "d_ambient": 0.562,
+        "same_direction": false
+      },
+      "spec_rolloff_mean": {
+        "d_music": -1.572,
+        "d_ambient": 0.199,
+        "same_direction": false
+      },
+      "spec_rolloff_p10": {
+        "d_music": -1.441,
+        "d_ambient": 0.201,
+        "same_direction": false
+      },
+      "spec_contrast1_p10": {
+        "d_music": 1.34,
+        "d_ambient": -0.369,
+        "same_direction": false
+      },
+      "onset_env_mean": {
+        "d_music": -1.335,
+        "d_ambient": 0.445,
+        "same_direction": false
+      },
+      "spec_contrast2_p10": {
+        "d_music": 1.224,
+        "d_ambient": -0.583,
+        "same_direction": false
+      },
+      "zcr_p50": {
+        "d_music": -1.144,
+        "d_ambient": 0.046,
+        "same_direction": false
+      },
+      "spec_flatness_p50": {
+        "d_music": -1.096,
+        "d_ambient": -0.187,
+        "same_direction": true
+      },
+      "zcr_p90": {
+        "d_music": -1.062,
+        "d_ambient": -0.197,
+        "same_direction": true
+      },
+      "onset_rate": {
+        "d_music": -0.986,
+        "d_ambient": 0.365,
+        "same_direction": false
+      },
+      "spec_contrast3_dmean": {
+        "d_music": -0.497,
+        "d_ambient": 0.162,
+        "same_direction": false
+      }
+    }
+  },
+  "artifacts": [
+    "direction_agreement.csv"
+  ],
+  "finished_utc": "2026-07-27T09:06:09.745066+00:00"
+}

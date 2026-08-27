@@ -1,0 +1,28 @@
+{
+  "run_id": "20260728T140755Z_extract_layer_d_reg_emo_mix_ln",
+  "name": "extract_layer_d_reg_emo_mix_ln",
+  "started_utc": "2026-07-28T14:07:55.697092+00:00",
+  "seed": 0,
+  "params": {
+    "dataset": "reg_emo_mix",
+    "normalize_loudness": true,
+    "extractor_version": "layer_d/1.0.0",
+    "sr": 22050,
+    "hop": 512,
+    "max_duration_s": 30.0,
+    "gap_addressed": "Layer A 无调性信息；Soundtracks 的 happy 轴 R²=0.138"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_clips": 1213,
+    "n_features": 39,
+    "n_failed": 0
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-28T14:24:17.623194+00:00"
+}

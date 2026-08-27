@@ -1,0 +1,2907 @@
+{
+  "run_id": "20260727T102927Z_build_reg_labels_pmemo",
+  "name": "build_reg_labels_pmemo",
+  "started_utc": "2026-07-27T10:29:27.140075+00:00",
+  "seed": 0,
+  "params": {
+    "dataset": "pmemo",
+    "task": "regression",
+    "target": "arousal (−1..1)"
+  },
+  "git_commit": "5a92a1cf9ef7de431c6e29890470f6a96837b1a5",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "7ebca11109f30d971df5f4f5fa3774c41ce61b92189fba76b02a4d181135c7d2",
+  "inputs": {
+    "audio": {
+      "n_files": 717,
+      "rollup_sha256": "7747c1c5fab0a4aed45faa1c96a80992ec37e589d4c14d5d72e8b95644ff2843",
+      "files": [
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/1.mp3",
+          "sha256": "16cc935e99d070a90886dc265c5d2b147b27415421b60aec57f3102519fc935b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/10.mp3",
+          "sha256": "d407e2c9e664cfce1786f673cb107c775221f695f6ad289a0d5df7ac76940384"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/100.mp3",
+          "sha256": "d735a8f3c0db4bcfa2614e7351891274a99613b7e3a0d6615db7f01b8f12445a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/1000.mp3",
+          "sha256": "de994a1f5e0fdda1f4894a9a8c95a0685b1c3316733b56840384149b842d9909"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/102.mp3",
+          "sha256": "dd3cffdcbca564c28dc48e525b5ffa08ea1189ec88ac5a8db6821b350d6bd05e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/103.mp3",
+          "sha256": "76f069896bf89ce942b78c78ba305fadac9fcd08a1031d5262069cb9adf478a3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/104.mp3",
+          "sha256": "0fe221a60f56be48c0d669702116a991e6a94b930d759b9e5f02c7ead830d321"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/105.mp3",
+          "sha256": "c2ac7e1e1f656ec79f825dadddfc9d6652c9f994ff6887434616c07663b7deba"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/106.mp3",
+          "sha256": "a0913a5c979e0d3b04a4e085a76544b7e4a739cc3aa80e2786301eba4813e1ec"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/107.mp3",
+          "sha256": "bfd0b8539bf4a6fba77fe7457075b5dc44b20c12dec7eb35ca01403963f3434d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/108.mp3",
+          "sha256": "8f61c3da5ede6aa94180f0b81b8028c5e0c1f6e495e71413cd562bdcfbba7139"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/109.mp3",
+          "sha256": "6ffc0fc742e811a44b19e22d8b878a6e85a7a171c447eebd124d8092f1072fd9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/113.mp3",
+          "sha256": "786872f17b2c3ca8a6dca669780bceb51ac0762bc99cb28cb9af905389e500d4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/114.mp3",
+          "sha256": "f784c20c148611f4f920d8ecf842b17167d3fc25d3265b90071da64362613211"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/115.mp3",
+          "sha256": "b365ad75f33125284c4f0b370587915a47a5bb673ae429035b7153e69450b45d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/116.mp3",
+          "sha256": "e61437e8d97bbd7bb2c7ac9a34588a2d781d1fa145858995e16fe698cffe5fbf"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/117.mp3",
+          "sha256": "11bb00a68d260809e8da863ed6c125f3c4db7682f47c9dd12323a2133fe5e447"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/119.mp3",
+          "sha256": "ab73f61ce34ca8d908abc57bd90b70a8720ce5c8d10f8835055e731550379655"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/12.mp3",
+          "sha256": "76daa47bdf446681a25a1394311faad28f91b6f7a058bc17e20464ea359abe80"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/120.mp3",
+          "sha256": "c2ef935ccff94d21930f0fc1a4bc4c8aacccb533e30228681ab5670f0ad280b4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/123.mp3",
+          "sha256": "614d79e89a6351db3632d7053cb86597d565fdceae6eee21e5061b3c61e5165b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/124.mp3",
+          "sha256": "03dc17c2801261b3ae1f2814dc2dab8fe0970fa44209b5a80d1007137edd878b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/126.mp3",
+          "sha256": "780e99aa29383a79e37d4557cde9d0579f8e82b8f87d172afa9561ee9e06f8df"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/127.mp3",
+          "sha256": "60fd558b73b09d49efe4a49d7d285778b45255f996b6b6c6384d5c5d04393d79"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/128.mp3",
+          "sha256": "24ac101e1e9b49bbe8a480d19faf596bbc4773d67c83507f617798bcb927010b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/13.mp3",
+          "sha256": "cbc898fd886f38e7ae431987403a465f261369944bdab6b10ca7c823ceebefb5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/132.mp3",
+          "sha256": "a583e24edd18c2078da354e21abcc4c1913fb95536c7909d5bbbfd12057042d5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/133.mp3",
+          "sha256": "3ea505d38c8600b876c15479587be767ff83b71a4d5568f315428f1056b36d68"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/134.mp3",
+          "sha256": "f7988a2303472afa16d0ac95991f26d7567a29da7d217a05a352f6981d9d36df"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/136.mp3",
+          "sha256": "5234b2a97e49ba4945e128e11596d505a2041c081532475780012f98b510b4a2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/137.mp3",
+          "sha256": "257386f89c53dbd0db858255766293f42f25cbf1b81dfaa7056cf2303f6c3f1c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/139.mp3",
+          "sha256": "34e0c30c22935b47d22f45d0ff06c52fc3cf2a07b119b2bcdd85e7f957d9498b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/140.mp3",
+          "sha256": "c592be7fa51f24f2d9abe11172d0fbb235a0d5ab36bd505e13faba15a5aca2f5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/141.mp3",
+          "sha256": "dc4f17222b930ec672ceab59e339af7c4b63891e3adc2a4c899e125b41361bd4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/142.mp3",
+          "sha256": "8cff0aecc91707306b71c0521e6eb3c548ea0b3be66c33063fbb44137dd321bc"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/143.mp3",
+          "sha256": "9d88a78154a30cec17a4db28008725dcc8a20ae04159523b23353fb201fa2818"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/144.mp3",
+          "sha256": "82860fe868f16db99eb8b0b6fefd58adccd13d48bcba97cf73aed6cd5ad1e5f6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/145.mp3",
+          "sha256": "689838a2938eb8d914a6a8d4bef81db4ba1ec1a1b77f157a62ea9a2b3a2770e8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/146.mp3",
+          "sha256": "e82df4277f24aa14f91f77a061e1922f9846ee0f265771fcc7942778d9ce4ab7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/147.mp3",
+          "sha256": "e19763ac149d1903fa7cd8f6a99bbde6a3334915646de6354aedf028acdec74e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/148.mp3",
+          "sha256": "416bbaf6c0ecdbe00931bbd8748d3178a311be988bf924295ac4036f7ad674ba"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/149.mp3",
+          "sha256": "b3dad98eaee93a20d76ae5d310032721fb623998249989fca9558ae382f95a28"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/15.mp3",
+          "sha256": "f016743ad067bded51f6ac673011c98c129d66d83d8a36623e89f50f07888fb0"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/150.mp3",
+          "sha256": "03959fa0c300c59b98db32dbcb686a6c112b9e2b5b2cb92a296e0dd70e5048d0"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/151.mp3",
+          "sha256": "0425ae7058d25c5c7cb5c8df45740814a0108983597d84ec9ebb4809c663781d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/152.mp3",
+          "sha256": "cd9ca0f536b629a2ebb0525d1dd488d50ecc87125a816fce2503eec39070a58b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/153.mp3",
+          "sha256": "9e9d943134d1a13396fde8324c2e913e141586adc325981f5f0b58fab8824b9d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/156.mp3",
+          "sha256": "a82774cb6fc146f49e3be84761f88ab0d566f7ad3c3c808ec543291168264bf4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/157.mp3",
+          "sha256": "7b0d68583fed010319807865cbd97178fa2eb87beeb6b641364e0f8a722dab7d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/158.mp3",
+          "sha256": "2d1b65422c67d753f365f00caec3eb0bacdab5ab43e33e562cab8b6a59938b2d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/159.mp3",
+          "sha256": "0d67d862e09096a3712d63bf938a241159c81bc713d20d13547726591e622b6b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/16.mp3",
+          "sha256": "b9e3f4be51f05851ce5205480e9e446b2753077a397cf4228449af83c31e0df7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/160.mp3",
+          "sha256": "1cc027478c8a8b4393dd1f50483ae45e8b80a7ec1bf33bd263b3c089a5a931c9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/161.mp3",
+          "sha256": "29aad1e11706a8c37f11f7c73839f83d032c3937d480e3511ae6467b522d35d2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/162.mp3",
+          "sha256": "1cc027478c8a8b4393dd1f50483ae45e8b80a7ec1bf33bd263b3c089a5a931c9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/165.mp3",
+          "sha256": "771a7f47fcaede4678878c04399c0dcddc321bfa1356e1dcbd7e5d4d22876185"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/166.mp3",
+          "sha256": "f17f3de8cfb0d4e74ec475358d1b9774adea7077849c066ff4322a57eddc5ce9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/167.mp3",
+          "sha256": "26110f2a82755ddd01cf87fa271ecf6e27aad4b27efa7c4c7a758bfcec3a002e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/168.mp3",
+          "sha256": "34727e20eec2cafe99e3ed4be2d62a77f668c330edd17eb2d4f04f0a12576210"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/169.mp3",
+          "sha256": "b9a24862bcde5e4056ae4ec6d32b6c44ed96a2fef15a8fee35a487c2c029db0c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/17.mp3",
+          "sha256": "30c642a4dd1f8b66003bf21529165a084c45dd44beb6a5ebb38c87ecec764a55"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/170.mp3",
+          "sha256": "4072ffda1e8e988da4d95c46c00b3a43aa77be7cb9e33c6c598a1d7267520c4a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/171.mp3",
+          "sha256": "8cec6d0f7f27e57d283a7f9afbd417a5011536cef69215dcca29fc336becba09"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/172.mp3",
+          "sha256": "9568b1e7825a4be8d02474f3fe883850078684dadd35414a6b49ad555bf2d775"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/174.mp3",
+          "sha256": "a3faec72cc485815e9da9d4a802ad267c7f8ffa4579896309a3ce4edd46e0415"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/175.mp3",
+          "sha256": "f1a9dd7ef0a264e421d0481b788373b57c085fc4ce2d8fff10cab74db8eb4a75"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/176.mp3",
+          "sha256": "97be0a4efb5cd3fb65661c5001b9ebbddee7257f1543893c2042bc39e2edd0f4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/177.mp3",
+          "sha256": "7181fc4c335797e4f2dbb2ce0beaa0a29789d791fc21aaa6fc78f1e66002248a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/179.mp3",
+          "sha256": "062c70c5f9f99a4f7abf8488e7e9e8fe789cc8990088365849437633aca6d345"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/18.mp3",
+          "sha256": "c4720943eb6b007ec85c12bba50032b4a0252ee3cefddeacf849f030806685b6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/180.mp3",
+          "sha256": "c4c7cfc55e50a69a1c65063598ee308822e6d617acf4da6d92d462fbeb270e0d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/181.mp3",
+          "sha256": "74a2235d5f2015fca5f007501aad4070136a0cc2bc0e1dda421a9dabff1e8a61"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/184.mp3",
+          "sha256": "2981e1ed8af87f2a6145e836fc451bfe86dd86a4788d919a8da8f45d6dbb4894"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/186.mp3",
+          "sha256": "bd22c8b98e16885bea32970ce1cb585c4f0df29609bc34067b853906f359a021"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/187.mp3",
+          "sha256": "51a27955d4744051afb7f068d5ba684ecbeb7229c62fec3c4e571572d2c4570d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/188.mp3",
+          "sha256": "bcb83d9624ff24d6946306eb23c977e64cdd8b5be01601f6b8c1b2347c403f2c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/189.mp3",
+          "sha256": "a9c5ae905bfd3f0ee35e87234f083c3e136e9374d50df94d228172bff514911c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/19.mp3",
+          "sha256": "c8126a125b980aac13c96443c543c821e9b94f534f791b8773676300b58f6e9b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/191.mp3",
+          "sha256": "38af8625f2eb7d12eafa03db44c92e74f8de1dac85c1603a4500357a523e45c6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/196.mp3",
+          "sha256": "5335acf3e76479e560f92f04e985525d62292978a19e4bdb778090d9a81adf38"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/197.mp3",
+          "sha256": "4eb8c2a5d41f217844323a6ca01e4b8cccae3b924fd1d40a3dc156f19f168ea5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/198.mp3",
+          "sha256": "b1806764e8140c38e3c4052c5be0b50b068fb60d10f8a6c0868d6df40a10372d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/199.mp3",
+          "sha256": "b701c516dbd5f94c257c1e7ca2787559c9de78e087518f4a8b0cfd7dc8f94107"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/20.mp3",
+          "sha256": "b571b3d992c8b0f76ac98c852a332cd05cc12871eb9db151ee7d47c2ec6736a7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/200.mp3",
+          "sha256": "d27016162a60723aa913637cf9b260c5fd2bc5584ec3c6dc92d879324d4c4bd8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/201.mp3",
+          "sha256": "681709a0048211de0f9e9a8f9ac3efa73ad8ea6bdff86a7e45075560bb22283b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/202.mp3",
+          "sha256": "9a000f66c6b4d7f37f4a2ed730dd0fb640c3f1243c10e07c0cb05a6aaf1703d2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/203.mp3",
+          "sha256": "e4199ffc60170c132cc016e290957f2d103971460aeb9826cd23369703301e5c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/204.mp3",
+          "sha256": "8062c3b07e7468d6386e9caf91dd15459c55620d0a238056e49dd52bbcaa0f52"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/207.mp3",
+          "sha256": "870b9a29bba418220e06d626555cabc8dd2ccd1c0991bd140ec7735c92012975"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/209.mp3",
+          "sha256": "cd47166d45027b4efc6a387a27522e1c8b3054611609d2c90192e61098ebabdf"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/21.mp3",
+          "sha256": "f65cf5d87460925334cc64b11d29697ed3545f66c85cfb897d9614b05a79554b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/210.mp3",
+          "sha256": "fd1d211a7741f0d66ef0d557295218585eeb65c9f302e24a354b39ffe07ce05d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/211.mp3",
+          "sha256": "c85f2ff5e80fbd2cd673b6a6704190c29264cd7e48483d01665d53712b9c0ab1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/212.mp3",
+          "sha256": "2b0a8152565bb3cd1a6fa70cac89aa0f56945a2b089f04eea4740f5fe26266a7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/213.mp3",
+          "sha256": "010daebe87c1c0250d45095769cb828212dbb73c8aa0bd94746dd657bcda84e8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/215.mp3",
+          "sha256": "e243673c10539d6a4e9797a0780160828e305753f1de4ae0d0ca8457202f4f0d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/216.mp3",
+          "sha256": "aab712e80642fe01e8a5d75fc7a8ff76506054dffef0f7ca0293ef4a19a4a0b7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/217.mp3",
+          "sha256": "3e3ff099e74a961054ddff629c1b3835c033bd70b36d522fdda5277f2a765c46"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/219.mp3",
+          "sha256": "6b68e9860cd6fb9d878b02a940f27f15596aea6730ebba32b5dbd4b367a86d0a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/220.mp3",
+          "sha256": "b32ecdbd97f445d54c2959e12272c1991b88a70776508becc0059fc3dd163bb4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/221.mp3",
+          "sha256": "30e26276a574cfa7465953a5525f5d42a741b87d2b5005f7c2640d966b3b05b6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/222.mp3",
+          "sha256": "2060180129dd59eea906ace2871cf33d9d8bc6b700f18198ace60225830353a5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/224.mp3",
+          "sha256": "62bbece796c33d8c5bd83100621f8dedf9088d67809436d0d8ab8a7f2a46df7b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/225.mp3",
+          "sha256": "a18edcf80de043adbd61a3622e9cfea29c78c2f0418664f09e07f0e1af1c6a9f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/227.mp3",
+          "sha256": "dfec3baebb63fca4037cff9dad8fec15f82ddd18620da8ae98f0ada429dc71da"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/228.mp3",
+          "sha256": "cd74d425654fce3879e2865067359f0f009e21fd105c17df9ea82cbd9b101b6e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/229.mp3",
+          "sha256": "5b3486e743ea5a94dafeab06615d844a0077884cae94e3652e3bd450baf2d2ef"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/23.mp3",
+          "sha256": "ee2691a3dadae5bcfeea6636b7eb757bed2a6670237a02af7f7a61414c970fed"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/230.mp3",
+          "sha256": "59c7e160f55564ead4fb8d22b1cf061125e09ca2a57ac7b0222b2ecee5284a6a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/231.mp3",
+          "sha256": "368199e279cb771411e7267bb6ff446b08c95b3425a30883121002fc5410ff9f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/232.mp3",
+          "sha256": "f951f8fa5e09c1a885486f314f1b3fb587ea3040934b5e16d11b849cd0d35053"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/233.mp3",
+          "sha256": "7fe99986956a9ade0fd828f407f385bfe93bdd9e4488afbf4bb11014cb2d7d77"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/234.mp3",
+          "sha256": "315a02aee06b08df9e991b387c8fdc67905fd48fa3a4cc59b9e8943554026d65"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/235.mp3",
+          "sha256": "806b0baa117fb62802813c6978ad7db63926735807b0217990acad99c1d84b23"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/236.mp3",
+          "sha256": "c2ef9d0b4db948d3cbc0efebeaff72daf856abe88faec18d51d7f3ae708d767a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/237.mp3",
+          "sha256": "ebefdc1a174eaa7964cd4a2dab612e6c330592dee1e7dd572b7501b59b765366"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/238.mp3",
+          "sha256": "5fbeb31d19478e28b6f05b2f13fd556ac5ff79bef0217de3939ee90c39fe3c4a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/239.mp3",
+          "sha256": "a698309328deec50ed3251650f8422d5c6922113e6af175c62b2cde14d754659"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/241.mp3",
+          "sha256": "8e384e0fdab8a4c4cf390210beaa3f8116dca0496eb62bf70e37b44bcf920b72"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/242.mp3",
+          "sha256": "843440bdeeed7c0f87ccaf8c2cacea7545d7d2dafe7e2865d13dd08898945ce4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/244.mp3",
+          "sha256": "6d5770bf885361b8c5523e99b784d527f5f1682ddd378e97ea7675dfd0066e11"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/249.mp3",
+          "sha256": "c1a9d4e6892828c3ee89d405daf86d2664395f176ea8ec8f1018eae16d261f9e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/25.mp3",
+          "sha256": "dfc1bdc975f84da965cc33b25f1fbf82d54a8e089a38deff6581263f62e16657"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/251.mp3",
+          "sha256": "64e665a9433e57bfff79832b62678f0b5320fb6829ae258496bd8b12ca5cecee"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/252.mp3",
+          "sha256": "8ee9ab1db02a8636ead13692f85b6e1c1ce4930733c67cc15f982474ca4321e9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/253.mp3",
+          "sha256": "7e833508210a4c5a3e4f9ebc4cb1f50aecc72d3438e80ea81eff40ba05bc2291"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/257.mp3",
+          "sha256": "8c36d98af02d66e97e7036542b0dcdac75b4155ff317b5aeb1e9326f533931eb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/258.mp3",
+          "sha256": "5e432842bee0c2a9917bf7a866d4a4a8e06ffe8a1056749edae83463a49438be"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/26.mp3",
+          "sha256": "30a64791fb3b64edb9c6fd496ac2a61d0fb5364ed46130a245a166e1fb890b24"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/263.mp3",
+          "sha256": "989e5cf0c356032ab46a33a54535eb4842a7447b71dc0eaf44ee075f197f468c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/265.mp3",
+          "sha256": "229e389186d511423e42c3ba2e1de4894ee1c8c33ee36e7586279a8ac6f0b5aa"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/267.mp3",
+          "sha256": "c5133dfe255296235ffa0c525ff05fb372780a818b3506e47fdbf9f789656e16"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/269.mp3",
+          "sha256": "8f263fab5bcc61c7936da7fb4e4d62e337bbb797c1c6523094a03cfdd2035a54"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/273.mp3",
+          "sha256": "d8b60c8f8f53ac00147f804a47bd7975dd4cf714fdd59e689af61fd697c0115b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/275.mp3",
+          "sha256": "61f2a5e23486ae02f2476f409b7ec6a69ecfde98dccb6c4ce444ea0623841046"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/276.mp3",
+          "sha256": "391438616fc60e9d1c2049b7d65e4e7d34e8d9e222ef8783d75b1e6463f8c31e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/277.mp3",
+          "sha256": "04a42e147b82d4898c4f1e2b01ccdff14f05b6a61ace1b4fd259294e3479ba41"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/279.mp3",
+          "sha256": "f5b45451dcec33eab61a1d0b2514108d5659528f3e3545cf1058b4448b9ce38e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/28.mp3",
+          "sha256": "4a7ec9059fd3ddb9269ce3da5423e0f1d04732721b89c43c5f445fb307190906"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/280.mp3",
+          "sha256": "9717bc97148263e16cd6d1a57d076dbdd292e66b8394629253c2e4a89e73d8af"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/282.mp3",
+          "sha256": "90240cfba1df60b6563f9299137ab0e2b082a6806ff2afbe44d3c400de100dd0"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/283.mp3",
+          "sha256": "76da5e8549934090670215ce38fd555f06d3fb45e8077524b2f0e7b476fc163b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/284.mp3",
+          "sha256": "4799d7a6b92f00ccb23cd0440c6b7926036049391c9416075b41adc6cd9a23d2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/285.mp3",
+          "sha256": "a385bc9e90a3cded3d09916a6771571be3461d7bd398ade7f8cd58dcd063f43a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/287.mp3",
+          "sha256": "23de5082a6ec5594a21a9afefdd9e0ba3fe39d4b22ff88dd2e70712858a66ed4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/29.mp3",
+          "sha256": "fb8b8b037a0e54a9d8bacab87685b3b51265e0396fbe8f0de5f5ffa7ed2aa9e8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/292.mp3",
+          "sha256": "5988e033442449b0d747d91ec90b71cdc7776a3b1a453f3dcd1eeb64a79cf5e7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/293.mp3",
+          "sha256": "5baccb914ae5abefe67a7a5d3e2846497e3ff3d5020c82340fff07caadf1b74a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/294.mp3",
+          "sha256": "bf044b1c4dbdee38683fdd76907870422cd6784903c6990bfc69c0d84c11813a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/295.mp3",
+          "sha256": "85c466fb06a47160bd928bd8edfec7ebad74ed7a7ff50aff7d61975865689788"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/296.mp3",
+          "sha256": "e814ee56ca68bededa17e798d4ff0783988d9eb04a41c0b05f4288136019523d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/297.mp3",
+          "sha256": "9235cf8fac2532443e27116b642886e2b8f797fe32451ee0a6f5ef0e3bb5c2b9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/298.mp3",
+          "sha256": "fb43985a15a3147d9582a131a7876a42235b4dc2ad5e45bda0361d05c81a3c85"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/299.mp3",
+          "sha256": "f184e9345f5815c8d3ac583f61f0d024f9aec85078a4575538b52e2b58c1780e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/30.mp3",
+          "sha256": "fb227dd844a70dc78b95b1129de48a34ddeb49347192431f5bfd9e94f8a2c46d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/300.mp3",
+          "sha256": "5421ef240222737f16d95d02be033f4eed128d7f2e5d3cfd090e59d4ae1aaf7c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/301.mp3",
+          "sha256": "910513c48f46cb7173a45284d61b0c647974b0aea2c830004812822d740f8ba9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/302.mp3",
+          "sha256": "e74543644b7a33c268e45dec4b0ac4ed9b92d97fff2ef692d0bb800751beb89b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/303.mp3",
+          "sha256": "10167ddde3bd9d6c5988cf1e42455a65e1a442ee1e5b0c5ac70e67ba9c8f784d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/304.mp3",
+          "sha256": "fd526c64c3a580e80ee25feb5b632cf8e877b36134eb7b4dbeb866eb4c1809f6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/305.mp3",
+          "sha256": "5d2d0188c28666155d4c4deb4fef30f8259d9f6d937ca7a9506f2476fec9d380"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/306.mp3",
+          "sha256": "e28fabc97a26211e2536621eb5ccdd6e0e9f9866dda8df99e5c83ce9c9549216"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/307.mp3",
+          "sha256": "d8669996ac9b59b6952d6f9d8e5cb911f968eff006e5567b3c67f56b9a64f8e3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/308.mp3",
+          "sha256": "d807bb627d7a6236f4988782c5c997a990e5620c8da63af3f3caa9c966fc36fe"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/309.mp3",
+          "sha256": "0a0f11f7ec74838809ba52de8e30850f6a3715534850c53ed16020c041b7547c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/31.mp3",
+          "sha256": "6469fe3f9d71e9dfacc7c55c451e893f42a0609c5fdf023fa56d9d2401e241b9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/310.mp3",
+          "sha256": "220ea8a046e61eb7481668044cc3035dc7da058976850cbd38e2159ec9844a24"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/312.mp3",
+          "sha256": "f5ac3497d7311684325aa7ad29ee0a545561578ac242d2c78cd29c92f9bdf510"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/313.mp3",
+          "sha256": "f179808d05809854d349fc27e31508667d0c3a7469308d3cacd97c68f2450a29"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/314.mp3",
+          "sha256": "da31b3c17efbcd48fd9f891be0e05e5ba879eef409eae5f1e144b0dc71495c98"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/315.mp3",
+          "sha256": "105f346b5216a76fc4947c057c28c6fefa1d983e1485fc356999b7573d8fb43d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/316.mp3",
+          "sha256": "fd418239917a38ca77affa3e41326e7279e2f02e7c1f894e9c750b3e1e48e5fa"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/317.mp3",
+          "sha256": "fd418239917a38ca77affa3e41326e7279e2f02e7c1f894e9c750b3e1e48e5fa"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/318.mp3",
+          "sha256": "f4ffa1881a5c8d6e0d78296e1c1813cea3d9365095d7c47a61ef3d43bfb48de2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/319.mp3",
+          "sha256": "608d2b48f885ca5fc6c0f5f1679198a2545f0a304c225595c8ba03b1da050c34"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/32.mp3",
+          "sha256": "b5c84b63bca40f94044bd80e126258d5d943872646a2427c66a5e8ec651700df"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/321.mp3",
+          "sha256": "4aed58ceb3130adfd359baa0ecbb8da9ba459e681991c12ac5390332837ab4a2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/323.mp3",
+          "sha256": "75a81e6ba690108d98a89a0ea6c5c50a2a993112d5b82de9f1f0489d74b056a2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/324.mp3",
+          "sha256": "976bfa544fe37eb8a555e44b2e394e4c13169d2fb8241c4718240e7082b78dfb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/325.mp3",
+          "sha256": "52683dab593e7efc7a1694634f1e363b46ef50ef56a9e879346b7a82618fca0d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/326.mp3",
+          "sha256": "53b7d4bfaff4a772c01d55bf9bc154f2302f317dda438851799741f033ae0440"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/327.mp3",
+          "sha256": "ec0ea429156b0c64002b296212d46717340df323fdfe501db1ce2844295da402"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/329.mp3",
+          "sha256": "b1d946f693f067cc4add8f634e1b44d5321a3fd42426a479e9a3d53054afa156"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/33.mp3",
+          "sha256": "01a89ba102fef8efc4a2d86a60e58774c60b51179e1e4f44b2fe269aacc53600"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/331.mp3",
+          "sha256": "16a4d9e5edda28c4cb3953fc30e280d1eda63b1372507eaf9507926722bb7c58"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/332.mp3",
+          "sha256": "dd64692c489c01c848494e8d83e8819b40317e1abe1bc9347de05ef8dfb2f0c3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/333.mp3",
+          "sha256": "a9f36d68b0dc7c868aa335b4dc371f22a2205f7524dc7f9cfeef19ee3bbd8b22"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/334.mp3",
+          "sha256": "411f368fcaecbdf29af4d631e3e067b0e94982768baf21aa9c240b178f46733f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/336.mp3",
+          "sha256": "27219966c694b703283672eda98f4eed3ea72124e45c0338f4993655ff18bd9b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/337.mp3",
+          "sha256": "d58fccf217767d3429550c2e61c92121db8e5833992c3274a716ee7881706097"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/338.mp3",
+          "sha256": "f98b858993201a0234b5d86e9aa593289060223e58825a3d8072fdf4cf0e4a1f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/339.mp3",
+          "sha256": "f92bdcb0d1e446c8eb36a7b120a19fb62e1ce6b22c01ed6b96d44ff2a284f11e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/34.mp3",
+          "sha256": "6ce6d415dcbf30504f88a0b1ee89b3dddda56d73f35daf82d963f6e1b438f4c1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/341.mp3",
+          "sha256": "64cca32beda405f03f636fcb5632608f52460f664e88feb88aca3f445af6e336"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/342.mp3",
+          "sha256": "b2477a744b6a15a679d37f1992db8b184dd07d7f6644232ed3491aa7ccb5ec03"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/343.mp3",
+          "sha256": "5779da68c2d56c49471ed4a612c18bcf342a2d2d4cc8fc7d335881adfd72cfd9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/347.mp3",
+          "sha256": "44c08ff7d40a11d46d801f665f4236297c8b4fa43e49faa529812d41213d193f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/348.mp3",
+          "sha256": "b7c9583a8487c090412edd91874456cab0a7860cb78ba1c9fe28ca0c58c46011"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/349.mp3",
+          "sha256": "402fed97f98cf6395a475c1979bdbff2b94e16698e82015fc0a04e473a092f0f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/35.mp3",
+          "sha256": "ebfe74370a7ae1090b89e134e2a983412e8970d940fa09c227297e738370e5c6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/350.mp3",
+          "sha256": "7a6dfb81c4fd60df62cbfa9f8e098b57ad3fef1add058b996987ba274b1bce15"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/351.mp3",
+          "sha256": "6b88f6cedd4de2c2058907d6bcb0753952b6d929daa4d62153b14664a7894202"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/353.mp3",
+          "sha256": "389be5f8e172d48773212f666d36916447d5d96ea66408dbcbbace57580ba100"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/354.mp3",
+          "sha256": "a2187f74d1585f743dc83242fbec647106dd9b66af4778e6b4a8422cbce0869b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/356.mp3",
+          "sha256": "7c0443e78ffb654546b9ca44a8c5b004e2fa5edba72daebdb97730d91a9f0e5c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/358.mp3",
+          "sha256": "5beb4cf49b7352f5df01160e17d5ee0a7ea448fbd07a14bdf40e8223e16dc5c5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/360.mp3",
+          "sha256": "2766a91b002eac3e568b6a1b2bc0cd775055ccdecaddd477d5ae8a0d4093f4d6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/361.mp3",
+          "sha256": "1275c90e9ab70d6867204381e4f35d407ded973ae016c3ed0cf1babb2aaab196"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/362.mp3",
+          "sha256": "2b561ace55862170e677b945e7a58f3f968756f337b32a3248264849693da700"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/364.mp3",
+          "sha256": "2a505b29f85441c21dc7733db7ede3176fb09f6def41a1947681d6dd7f4c50e0"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/366.mp3",
+          "sha256": "49310f7252e641c9addee255a4492bedbd7751616c92aff7c7804410a24e3afd"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/367.mp3",
+          "sha256": "777d39cbcc58793e63d62a23ebf897fcb48d8b6cac7a55c0667b14df49eb8723"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/368.mp3",
+          "sha256": "5d69a3220ec43efd59a7cbe886117603c2a3a5b43dcf144e00fa3188fecf1aa2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/37.mp3",
+          "sha256": "82fe1b6f2d0af977d441fed4ad693bf0c66dbb7befe86054f513fd2f71ee49a2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/372.mp3",
+          "sha256": "1ade72e97f91e91420330843154740db3dae08b16f3ff2742a01d2a7f0b758dc"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/373.mp3",
+          "sha256": "5aec09982c070cc393d27e288ec8e781ccd0f5d447b700b62af08108c5eec216"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/375.mp3",
+          "sha256": "745cf0ef6d99cfb1e43077625db17f7434098816cda21bc3d6b0cd9749465c96"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/376.mp3",
+          "sha256": "dc67a5b40516081f18782ff42eaa4537aae8a8c1698864200eb5538eeff66994"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/379.mp3",
+          "sha256": "5bd7dbabb3ff6f89b8d8f8232e3292bf52f9205ebdccc2e3b7592b4048e55b47"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/38.mp3",
+          "sha256": "0e4ca820ad8e45bbde6dc0f5a7941add5470ef0ba294b699b66427a01cbc105a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/381.mp3",
+          "sha256": "827ce0269d3b0d7e75d97d72feaafd566cb7c8f36a6149f761d0bd3d1c460833"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/382.mp3",
+          "sha256": "6db4737599c06cf41ff3b29cdbe2c8bd8ce3a358b9d23688f70d7cecc037b6ac"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/383.mp3",
+          "sha256": "4b08805b3e9c8c1121c8734a2db272ecf1f92a39bfaab38abb1abcd79aa31c13"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/385.mp3",
+          "sha256": "34075ab567961be5576d0b68bbc87b7722a4d45f336aa81ad77f47876aaaf9d1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/386.mp3",
+          "sha256": "1a65bbf6b5f700b0cec2ee7cb7026f762b9e1d536749ee0308f48a3de2e4226b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/388.mp3",
+          "sha256": "720a330099eb4462034223ca84cb2e4ba06c97d7d0bb3f504134c81a06583ba8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/389.mp3",
+          "sha256": "5c1d77a64ffa1a4114d382c34976aa382d915305267c883fc71efd79a37ca960"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/39.mp3",
+          "sha256": "828233778953b1cdc8408ed78667d4f87805b52d8f7b813ce313f1051eef90eb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/391.mp3",
+          "sha256": "4f5afc387e97d7a9af62ff1ea9ad462469f967776818e46771870a86ed7206e9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/393.mp3",
+          "sha256": "2d29c69e34969d94157e4dfe1be83a18cecd5bb561b098903f6628ec83b9f492"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/394.mp3",
+          "sha256": "51a701c65a3d46408cf8076fb511bf2f5fedc87b9dd7b54ece5849c1c10da1e5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/395.mp3",
+          "sha256": "c26d93489c7c90c2853ab596b88a148a1740aecdd83792e237db0283fdb1a6b6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/396.mp3",
+          "sha256": "baf1d3f7c28cb0444ff7eff6ab98e2a84b2e524c6cd91522a0ad30f2736b5eed"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/397.mp3",
+          "sha256": "c72d630516964bebe63462fe59cf05f96849bcfd4bd1f47812d49c3b2df14762"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/399.mp3",
+          "sha256": "3502fe158546b8b7d7a3ac40482c5f198574e8de522fe714e40eb8e1d01faff7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/4.mp3",
+          "sha256": "64a6d634d7c3866048e262d77216349a97f3a6baa989e4c842b859890c412950"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/40.mp3",
+          "sha256": "0c0695684951d2241c3b19933a54c635fc9077460092b99cd3234dcf2fece317"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/401.mp3",
+          "sha256": "786887746a5672646845e90a6e0c8c67329671d8846ca85d4f20a4d54e9a3f1f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/402.mp3",
+          "sha256": "9143b6c1800a2694562c7607423494947762ee1af471a5fa4b59afb8ac2fddaa"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/403.mp3",
+          "sha256": "4f01333cc0c14979d9c24f9db64054222d4c607efea099086df08e80bbefd5e9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/405.mp3",
+          "sha256": "04f0c1aa051101f8a4c8217aafb26cfbdefca6cb9ee276a28d513c22c7e88b71"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/407.mp3",
+          "sha256": "d96b8e6703044082958303d3e82a0b1839383c270d30ab640ed352841ea58c04"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/408.mp3",
+          "sha256": "2d1b7ddabe5d430c2a310364366f20079fbd8e1918ad8703339dd599e3dbb3da"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/409.mp3",
+          "sha256": "2d1b7ddabe5d430c2a310364366f20079fbd8e1918ad8703339dd599e3dbb3da"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/410.mp3",
+          "sha256": "7f49d0e69d3570eed65f142d11fb7b21472a06009edc8bca5623eb0cdf0ac92e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/412.mp3",
+          "sha256": "6fa01c2b558e944c91d8655ca8142d6b2ac074b0f8497265fd350175b3a677f2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/413.mp3",
+          "sha256": "0bbccd97dea1c55b76058a8210f92a3fef2233d62cb55d2e964c3590907eaf18"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/414.mp3",
+          "sha256": "6b53b4a6087a531ebc921d7fdf4e2c7bfe9bcb5033955fa42c271b44f4b727d7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/415.mp3",
+          "sha256": "a8b03f86a65a4aa24eccf5fed07b3c68e02e61d82cee49ad4af06c6193406310"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/417.mp3",
+          "sha256": "70a5f5c227a0a45281901f7f8141aa5e6904f5b6e5130094e5878fc6a51e3718"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/418.mp3",
+          "sha256": "cb171d396bcbbf74c0ec2d50c63b16568ec344b422ad6655f4c13c7a67663bd4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/419.mp3",
+          "sha256": "e6207e79dd25e7943cd6e5727e9a4dbdcd0e325de658bdeff6ef98b44e202924"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/42.mp3",
+          "sha256": "8ce7dca3dfee6885a3f8329da94fdd970a789935884a084bda2909e0aab3a3f9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/420.mp3",
+          "sha256": "b034ae3ab0acb7ea368e3e3c4e9401f3ca65400eb68a42e75fb11ff3a0b6d6f7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/421.mp3",
+          "sha256": "6cbab34a66d296bb0e5170760d480b540adc120ec9bb9379265d4cf1a039a903"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/423.mp3",
+          "sha256": "e570bd063eb245dfbcb87806ea161a1fdd1c5da6a0f9c9a73b35c41817f92eaf"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/425.mp3",
+          "sha256": "4ec4468d7341ecad4a430c73c3a01957becbc65b421e5371d449b530d11d2c8d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/426.mp3",
+          "sha256": "3626a9caaa180d9f747ff00a031e92ff65ce981b743d3611cd8656fd6388df31"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/427.mp3",
+          "sha256": "149ee41bda7564b75876bcb30bd5999a1645234d177c502b0e50db8c6a12d677"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/428.mp3",
+          "sha256": "fb1b91ad3b778b753c644f0fb60a6f1e9226398a60243de196f166bc4a2cb7eb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/429.mp3",
+          "sha256": "8e38781f5acf7289eaad43cb139a18b4eba76b30e8282a51ac067b7c122cc2be"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/43.mp3",
+          "sha256": "8f10a89f9533074043bc10811c8b2f9e00aaf905e32d195b476e000741f02bda"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/431.mp3",
+          "sha256": "817f1317e479473239e84580e4743a1f7236487c38022fe28ff6a3c3d011091a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/432.mp3",
+          "sha256": "5ec00b46f46680a9a6490dbe1f2397767e8c5cfa3403e40f539d24abe374fb0a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/433.mp3",
+          "sha256": "5fafd9e48cadba5d2104d1bc70dc49228259f30278a498af9fadbae8170a7f1d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/434.mp3",
+          "sha256": "392da30a84459a5509d97d6ad5421fcc76fe4e4f989053d58c241cc2702b57a5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/435.mp3",
+          "sha256": "4295d58ea0a44b0847b787dfdb5f69ae954e835ff16798cc9f841f33562d57b5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/436.mp3",
+          "sha256": "7961d27a98888bb117e140195106c3333107e87d05a1ac586c585ba854270fb3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/437.mp3",
+          "sha256": "b5f212b3f29f1a9efa326993b84146dce9920352716f9c834540c1605110556c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/438.mp3",
+          "sha256": "6fb7f35fb4fe8e3fc915b03bc9b9b2769384c04b932f57b49204f6efafa757fd"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/439.mp3",
+          "sha256": "797765c77ac99f5db2df0ed6b1ec6a9987a8265814dbb8f11c4c94280801fb66"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/440.mp3",
+          "sha256": "759820460e5ecfcd351e6e022d51bc3e813a07ca8ecefc119930e97c845dcdd6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/441.mp3",
+          "sha256": "e3ddf956bdc1047fd6bb762c500852c06993fd754fb0d6298620a9f874aae59e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/442.mp3",
+          "sha256": "cf92403743e0dec99fd98aee86de24c69107ae770ff9bfb982dedaf0fb6e5018"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/443.mp3",
+          "sha256": "74ec775c55431783d3d8d89f1037f21c3223d6cee9bbfdd7c3fdf1b2c3419521"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/444.mp3",
+          "sha256": "9b13cea3e2eb296b94b9ae3f1e0b7af4886d7d2ed9af1af17ac5d9be7a477bdb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/446.mp3",
+          "sha256": "fba8a794677904ba3aace629fbce7484c8aaacf689d57306a65d8fd73b24b9db"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/447.mp3",
+          "sha256": "160f652d730e1b7ccdcec1cefb20c6e051a45744c83714d9d12179871091f4ad"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/448.mp3",
+          "sha256": "84c2f03f9a5832691c188a2fe1eaf210fbff2667a515644b7be16cef51173b5b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/449.mp3",
+          "sha256": "1263021d53ee81548f2b82ce7f170ff36d3f86f1ceba2861ae21011ae8b582f6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/450.mp3",
+          "sha256": "f9f7a99734a4c1b3c9d21b2571906a7de289575d649f6766c6840a5cc611c845"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/451.mp3",
+          "sha256": "8f8e35f55a4c5d324343f389a1b3f88e93e1c22d09413198fd0aec6e139f2a96"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/452.mp3",
+          "sha256": "74f09263c49be30999cd25922a0ae8d23d0259d921631011e24ad452735aca57"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/454.mp3",
+          "sha256": "b5f92c08f6df0287c38125a6710537ca32bf46ffc4442564c788525eb564b4ac"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/455.mp3",
+          "sha256": "762b4c1b0696a5cc4fa5d7808c7e2a9a51c0557be0a25358669472e39a2c2d33"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/456.mp3",
+          "sha256": "d73b03a552944414a7e5bfbf45a3a9a88b39dfe536472fc98909fa3e215e1e21"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/457.mp3",
+          "sha256": "21a667ca0bbc78b656bfe123a11ba0c0802a8d6e3dfad6a6b8775b32985c8e48"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/458.mp3",
+          "sha256": "86948b5f6619a397f30aac0ca524cfcea754ea8b78353218eba668f237941fd3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/46.mp3",
+          "sha256": "e433611b4fa9a3d3e9febcb1772aaade2d7d8bdf03d25c64de4b388df6bf10f3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/460.mp3",
+          "sha256": "1df8a373db50627fa1f556f154137cb31b4a7971fefd49576c201c4e471c2436"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/461.mp3",
+          "sha256": "b516326b4eed33007da700531a5c0d712437a56aa47b53ae1ec4bc1f2ea66424"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/462.mp3",
+          "sha256": "dc9c49582d9a7da5e4a20f54c10b3ab7b9b1a2517ce9df596e12534565f9cfc9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/463.mp3",
+          "sha256": "c72d1889f38cb036e357300a5bd01676821901e91123d4b2fe6daa3cc662aa1c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/465.mp3",
+          "sha256": "4a515bc32a71f851e1acc4a1368e13482920c127552f3b5d23cc6d27563e930d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/466.mp3",
+          "sha256": "172ecc60f68e9c6fe1faab43ac63b2e10ade742aff4c8af17b77f0d8602d3635"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/468.mp3",
+          "sha256": "cfabc837d692cc882c0995da87e1a470308f5f5324a46e760fd2fe02155a4d4f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/469.mp3",
+          "sha256": "1932fa1c66b8a3cc659d6c2e640710c918896ba03a6e948405167b54111bdbd8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/47.mp3",
+          "sha256": "002a77edc028c7af6628fe0a860dc4ebcea100108832b23eaf79fef7c053593f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/470.mp3",
+          "sha256": "1f47ada5389877606c1da275caa29b8e2c4aa982d5975b27c36dbab931b89a2f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/471.mp3",
+          "sha256": "cf9577ef1bba3eebe1fd83c9dc70024319b55133deeab50e188b92e8771cecfa"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/472.mp3",
+          "sha256": "0a016ac8cd4721fb39fcc5aff5f44585e9c37f4e07d91b883f17244ad16e5c64"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/476.mp3",
+          "sha256": "2662b37dd594d38d0df574e12c038be69d04b1b0ebdf793028e03205f44f26d5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/477.mp3",
+          "sha256": "3c10c2d9a843b670b7704ca977cfe4d2ec873d4866513f62cc5c5c2ce4297f9f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/478.mp3",
+          "sha256": "c8c6a7e588c2295432fb3cb50768552e36208dcbf45d08cb5378f4f7e13b9f83"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/479.mp3",
+          "sha256": "2950fc67c9325191fd670e8d2d5c97d6a55d7fd2d07276211c511bbb404c5ac1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/48.mp3",
+          "sha256": "74d2683663665eea18624c8a20db5b94f6f08dff139bb598721cc3622a231146"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/480.mp3",
+          "sha256": "3a9749e268aa099678bc5a6ec012adee3c7b8c09f5b8a34c787e422566050607"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/481.mp3",
+          "sha256": "6ab25be9ea634733d9de101ad615cb6d00000a1d8bec56314bf0eb45fde6865a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/482.mp3",
+          "sha256": "acd5eb98bfa955e54fc12441cb3dffbe97a2a2ec6cfb5d941e307678261d3bd7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/483.mp3",
+          "sha256": "8b4e8ca5050604c913c1161be6a4404f7d1da616b1143ad1aacc42021ccb6aa7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/484.mp3",
+          "sha256": "8e8028492389f99dae700a26e14aa9c6a7f8a811715fc3fcbf8752b304fb2de9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/485.mp3",
+          "sha256": "27242c7e2c1a2a41dcecfb0843eee75bb7ca1a3f912573d978f1a4c919dee1b5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/486.mp3",
+          "sha256": "90beced205e285321013a32cb02e9470d199cf439536c68979713127821f6ed2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/487.mp3",
+          "sha256": "4a03d9baa512aa013d0c8fd6a3780ca3cc1293902d3b65391731473b750e1d6a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/488.mp3",
+          "sha256": "3caf0b7efcb8a6b1e1fab2583bf2f8ae027d1c142c9dc54547387180832fbff4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/489.mp3",
+          "sha256": "a3d4f6018635460ea4ed820a7eca91ac1cc5881a13ec875bf1e0c5ddfc7a46a6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/49.mp3",
+          "sha256": "798710b0241af85b1b1428d797339e0f50fd1f409ddd3e28c3ec6dd8d303ba58"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/490.mp3",
+          "sha256": "15f8f7c9fb8dfc714f850378684fb073bb0541c53cd563b8cbae409328b130b1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/491.mp3",
+          "sha256": "49ed4cdcedf0bfc1fbff2b0558b536e60233acedf9fe29146a39f0beb17950e6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/492.mp3",
+          "sha256": "ae11244b1c2db77f19dd30e8f6a206881d998e5e8cd28549378012f82dd1e76f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/493.mp3",
+          "sha256": "769b9be7b0123eef4e7e37b42c8b6252ad9c808c9c88ba6141631c9c901e6ec2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/494.mp3",
+          "sha256": "923b7400f28e8e116d967e8775f25292afbb0c1f03760227429deb0713e4ce96"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/495.mp3",
+          "sha256": "ec5fe14b1241d5b6e95cb059b4da0f4ca66a30d286cd8791282bd3e3f7d7a2f0"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/499.mp3",
+          "sha256": "1bdbb026c5b712b8f4d1cd5deab9faf149f4abf9ef4186ebaff83825c8df1ebc"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/5.mp3",
+          "sha256": "922d3662218d77d39c5b71ae688c100ab72f0f6cb5a6d9c6ea27f7885a454569"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/50.mp3",
+          "sha256": "c32ca7bcc8804ed5d44d587885edd6f638f3ca3d7fee6333a16ea0639788bf89"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/500.mp3",
+          "sha256": "0967a2c8accc4c2316be8e38031ad54f2f66eccc1b2aa66f9031b80ea9e8d814"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/501.mp3",
+          "sha256": "04e3770ac39de3c690807fcc85ba45993b30e2998d47a3254737a3db6cac64cc"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/503.mp3",
+          "sha256": "1dc2ed566675e18e5008fd10f1f411abeb9e03728b8298ac80678c4e20a0d772"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/504.mp3",
+          "sha256": "cdd4842585939b9d9f5768b5994db97f625a2408ff1383fb479d4bd2c09bfd61"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/505.mp3",
+          "sha256": "bba77ed054c1d51718ae1c23208ff8922095246444884214fc969ed555b5087e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/506.mp3",
+          "sha256": "dc55893969edbc9a7378e38f34b649b1672627a1c9c574ac43e9d1c359e9db0f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/507.mp3",
+          "sha256": "3ee705c0b968980bed52d4d56d327019ecc937401e462b3e8654d07c28ac2f8d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/508.mp3",
+          "sha256": "0be7c731b447a1fe09e6efded801c9cbc87c868a1d4480d5509e5c90c3eb9ae7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/51.mp3",
+          "sha256": "3db4bca9d3e0cc4a7607feee205dcf794456c1f6caf2b7dfdb8fdff912ec1b5c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/510.mp3",
+          "sha256": "48844cff50d3382b6288f799fa0186f6e4451a42c3146293cbe94f5967b6f942"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/511.mp3",
+          "sha256": "59efc7df8a5b3602a85140038c079ffa0ae98a02f759cc3e91dedd0ce7069924"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/514.mp3",
+          "sha256": "06b07d87d58d2ecdde9b5c6dedde1a792067725b0b96e83016c3f3862806508d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/515.mp3",
+          "sha256": "881fba35dbb7e0e8d098fa14eb04d6997f7cf434616dd15a8d42d212d01e6f30"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/516.mp3",
+          "sha256": "23ee035ab2c4b5a33bce2b182cf82565339295ba68486c0abcc4228589a0b16c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/517.mp3",
+          "sha256": "cef88b74b34ba2d96ad422681d35e4179d2d1cfcb204b39cb6bb1f56601ab54d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/518.mp3",
+          "sha256": "9aa36b24c2918c7110315ca58cbde775123499c26c3f775e39e428c5ed9fb994"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/519.mp3",
+          "sha256": "f08e2e8c3816dc8b7362300071dc0d52a9eeb42e9d3d88bde8c0d86368bf1164"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/52.mp3",
+          "sha256": "5d875fbd4a3456bcbd098c71c43f4507009ddfb9ace21aff07c6fe3e6683b16c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/521.mp3",
+          "sha256": "87f8c77f93cad2f0199675e2adbbffb7a50176bdb1c522ee75fd76d3aba72d56"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/522.mp3",
+          "sha256": "716ccd9c6259845f68d4158009f7f58a2491afaffd4457d4ffc9a9c72c967bc4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/523.mp3",
+          "sha256": "f07fd5e265a6f8572e2fbb1cd6fd151afd3186aaa7d17165019e3ac1db386bea"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/524.mp3",
+          "sha256": "c70fc489db824195f856ec4eb14ded6800b4eb993de3e8ac5044439833b22cad"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/525.mp3",
+          "sha256": "f85f08076434a0ff8bf86cedd254a983eb474ea4c09bd843e81cd0a8c40d7b97"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/526.mp3",
+          "sha256": "859d7c10737b5993094e10a8d9789e6c598c72c8715f7412acd76430eb5aeccb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/530.mp3",
+          "sha256": "c240282f1a0f177c7ce1eba0421372546810b7bf30aeca0a35b9a62e51f654d1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/531.mp3",
+          "sha256": "9a185f2e2afd5acc60272c3f8c5f4c0388647bdc48c22314e9a596fc97c69f4f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/532.mp3",
+          "sha256": "25ca131a39bccdc5885354cc49c6fab671931f0a5c01ad14483d8e0290060490"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/534.mp3",
+          "sha256": "693978ed568b600ff7300e30da570df37eccea67f936fe24642944b4d313f8d1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/535.mp3",
+          "sha256": "30e141bc8d6975288763a6b8403a413b3c5dd46692e56d1e8ee0536f1c223694"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/536.mp3",
+          "sha256": "ee83eb72bb587a53cba93c16e9c0b07ccc150b9f5ff27bb2d718fb336a8226dc"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/537.mp3",
+          "sha256": "0a17abc9c4c48d295399c00c516cad47095fdbc94a5d7d00d9443e753a376122"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/539.mp3",
+          "sha256": "a52785a99cb303b7e86697b6fe5c6a05c7bd644f6711f057990df95d6a39cbee"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/54.mp3",
+          "sha256": "af917d582331c0269e7dba612f0f0d50a834034174b63d86e5c73d24284dbe2e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/540.mp3",
+          "sha256": "523efe5c047cb82d663535e7bab0655d5e32976b1d27052d74ee4a9bdfac348b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/541.mp3",
+          "sha256": "7c85ce726138776f97fdfdd6c8030833f7dae9a8f44cf78f14e6f68c8ec4a80b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/542.mp3",
+          "sha256": "eac393baa2243f9f55b1e3d9c600e7dc4d6bd0ed6392cf91ecc0684a99165fd7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/548.mp3",
+          "sha256": "e8574a450791856c624a8dd0d1be30c7bc2cc721ce9b5b3c5c7db82066049078"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/549.mp3",
+          "sha256": "2e917e9e934e863d0c0b9cc8f262fcba2a58c2303c68692301de7bd54d009265"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/550.mp3",
+          "sha256": "6e16ca98608cc4478a7ea14913eb1e8da84081bbe5759b70db937b02c17585d9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/551.mp3",
+          "sha256": "d0fc39b6d115d6586c236622b6c82058f869413040cc4f04e6afcd1b072be2db"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/552.mp3",
+          "sha256": "7245f42bf4722a2f3d1a70212b8c757f106e385b7efbac617382886af69b7b2c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/554.mp3",
+          "sha256": "2fda30d960fec8f94422bba216c0644ae19bc95fbce6e977a37c3e53012e545c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/555.mp3",
+          "sha256": "c2a2918ef049b3d30ce258a0baa69823b018f28662ebb9bf7484ef984119cb5e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/558.mp3",
+          "sha256": "eb9784806aff1ffec780d567f43bebca92adfa2448a43dee82a80a8c02f46b1b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/56.mp3",
+          "sha256": "0b194f9e0af66aab526eb801293a3909c0ca8959dd50b67c9d4cb7990fd99af6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/561.mp3",
+          "sha256": "f112208e542758aed7583cb486587b242b9284073a703ee4784811f5694173a6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/562.mp3",
+          "sha256": "1f35dd966779a12653793cf017a146053245278e0a9fc14658831f59fd26e1a0"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/563.mp3",
+          "sha256": "0b2f53dba66b43c8d03919f95d17d9b32318a41c591ad716e5f1fc5f6de2cbc7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/565.mp3",
+          "sha256": "6136ec3b44941e9bfe30d03b14f67a01fbe44ed50193059b1b499bc075a75b7c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/566.mp3",
+          "sha256": "1026509ec375f86382358cf42544c77439f36801280555a5c3b9cb8bdd5c4c38"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/567.mp3",
+          "sha256": "4aa3cec1338a3ad446b855e1291872f88cf8a97519492c50dba64295fdccd6bd"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/568.mp3",
+          "sha256": "e0efbda3c5c79967e24ad546e217777f528c73e3302213e728044cc0553eb15f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/569.mp3",
+          "sha256": "f1ec67261c088f4e0625171b05218c3929b8078078dd84bc1aac179f6ac227e9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/570.mp3",
+          "sha256": "e937384da90f98adc9e66fe610f016524a4f63502021aaeab6f0269447fff9de"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/571.mp3",
+          "sha256": "b5bd28099f52f62cf0d6f2120d86b1ff1b20b8a7227d0cb94d47820330428df0"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/572.mp3",
+          "sha256": "7827d133e5aa0dcca8e299a4bf8bb2cfd02e81093187d39032218b41eaa6092a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/573.mp3",
+          "sha256": "43c53cd24a44a9500c20f344ce271d0ca14601488d321f887bf3f0b348a6cc93"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/574.mp3",
+          "sha256": "d223244d6dfbe2eaff171f9ac762cb97e82311d2cb5a974e0bb66055bd55f073"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/575.mp3",
+          "sha256": "a0b22ddbe546438db38d1ab097a4c5b7319925b254f0fd3399f67dff53bc7a15"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/576.mp3",
+          "sha256": "c9a9820f9314b5203be5b7c9234bfb32f8d1a85eac0b6b245897e9e63a20452d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/577.mp3",
+          "sha256": "d33d5757cb80e0a9f6796eb4824babe906109d1efc56f8ad33e72053f01854cb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/578.mp3",
+          "sha256": "5dbc781e09bf2b55efd0308180b5313dd1ac7b93f522e0c1d6da9d78e95c290e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/579.mp3",
+          "sha256": "00f158a201d70d080270cb510d6a938ccb7c2f1063f4a3e092074af2379df467"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/58.mp3",
+          "sha256": "8ef8c1f30485014b0498f13895490c0c59689f90f5fae5b0b63928f2e610d265"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/580.mp3",
+          "sha256": "ccb8425adc7cc43164c38eb68c8cc3efe35671695ca37588ce6df8d52e321a96"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/582.mp3",
+          "sha256": "82bc977630b1331e0c0f0915420070d096a03ac820de23efd74fa06c189d97b7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/583.mp3",
+          "sha256": "c33373f02b2bdb2b9dc61a1c312114bce6b7fbe361c9312576eb39161a5a4038"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/584.mp3",
+          "sha256": "91c44dd24da9762de4f51a00489d05d7875d7b6438f6eb7216b81064f24d3d3e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/585.mp3",
+          "sha256": "9c6f9d8e6452a0135e2114c0ec0324e5e276582001d5aaf434d0eed1c814fecc"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/587.mp3",
+          "sha256": "de1e149249ab58303d19a079fa0baf162e726001c5cd83cfea782755aada753f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/588.mp3",
+          "sha256": "2b889a5ebd19a074b6ee36c23ff579b007c8cef3441b211f1e682dfffb49bf24"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/589.mp3",
+          "sha256": "5a326005594fbb1acec0e862964d84ef8c0407b85d8f6e23edd14054a4e20645"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/59.mp3",
+          "sha256": "3084481a2267086a946663ef8051e1b97a4523922f7b15bdf1af6cb65121e31e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/590.mp3",
+          "sha256": "b44cd72ff2c38e9c85567723f6a84934e031552548b2991edd6c8c6e19995f9c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/592.mp3",
+          "sha256": "9e682a3f7f6eb249c9c6480fe4309c826ed5fd869ced4cf1e1ed4b039779b851"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/594.mp3",
+          "sha256": "4e83e95f9ef115450c5a58f369f393508d9058144ef6645e89f305d0a884c84b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/595.mp3",
+          "sha256": "2683947cdb0bfaab6e41f7aeb2a695ee668e7100dc3ff08a773c8ae55d926e04"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/597.mp3",
+          "sha256": "a4078890623d66dac368f6d1d2009a324943f25e605b54aed5bc9aa0f24173da"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/598.mp3",
+          "sha256": "9d31ba0f69b0f7afe7724f8c653d9c205fe48f193f4e68994121adff6ab77937"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/599.mp3",
+          "sha256": "283cc4946379aad34ba2fcfe73d9ed601cb8e03b5d831167b55e5227f4bb1ffd"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/6.mp3",
+          "sha256": "463a8c82f175f2030c59f289783ac95243f1d8dcd8188b3fe90eb82911a9c533"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/60.mp3",
+          "sha256": "22fda1ebeb4bcaf15c42cd1c606d253d2d913af7288a05123f76ee69e201fb81"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/600.mp3",
+          "sha256": "ce394c566137b1f6239afc82a8c857c28b7accfb7fa93db720733b28b1fdcc5b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/601.mp3",
+          "sha256": "5e8216d5518545eaca83405e91f20ba331e8b525c581f37ebffbd967c1626e57"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/602.mp3",
+          "sha256": "e52c650b98a47d6fb67ad04ee305ed152aa14a83f59296f8d95bb15bba8d2479"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/603.mp3",
+          "sha256": "3a5ad96d960a923b90312f5fabaca25ba1717ad3539e4fa8608bd518fed0621e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/605.mp3",
+          "sha256": "f820df717365db2a153168681dc9deea302fc1b997377190b9ea08c9a5b87c75"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/606.mp3",
+          "sha256": "bb1b244dac78ec3040540e41eb53f59e9667f0778e55150a898a5b08e5c4ef73"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/607.mp3",
+          "sha256": "ea3cfdd9928a034d226d7d8a6a2f0d2c33fbce52650556acc08632addf87be25"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/608.mp3",
+          "sha256": "d45c93e0ae84765cfcd8f04e888cdac6e7eae0c0dc7607a6941d08cf775fbab5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/61.mp3",
+          "sha256": "b29d2d2b86e9852ffcbd050e4ddbcf26f48c8054b7a9670f259768dea2c9db0a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/611.mp3",
+          "sha256": "cafcc791b81eae0e60e2deccd5e4ac79a044ce0fcd979b1d5e101b8874b6f4b4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/612.mp3",
+          "sha256": "ec4f901385b2ded7be4c17e698dc55020e5181824acf1defb12259082ecc6675"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/613.mp3",
+          "sha256": "a51fe6e589be25a86e0b4906638e3f7e7d8402ed872b9d82b6ee219fa3a9cd5d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/614.mp3",
+          "sha256": "22cc95f60fa8e45bd5bacb53b5b1a50545a60bae383209b2d4b28efc5667eeb6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/615.mp3",
+          "sha256": "0360c04ec38394e251de5843f6aaa6ca70bc4737d8251ac4d355d52e91026a39"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/616.mp3",
+          "sha256": "64b08a2f1cb25f92445626b7d895a1fcd164e20893e62990eaa24f103fc4d4f1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/617.mp3",
+          "sha256": "87b0e30a99048fd60c7bc5228e62693ab01eb6684258484c4597ada1d11d6961"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/621.mp3",
+          "sha256": "6c41f5e5bbf366856217e73ac7344b007c7b64b0d0992d7b33c73982424f732b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/622.mp3",
+          "sha256": "43dc1f8a3edf1d019b1f13c6a1364053c723eec3abbfc933ed32fa3a868263a7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/623.mp3",
+          "sha256": "9ead6d23bfd47f4129941d0e77d0a92eb7db85a925ac62dc857f227a4c173b5f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/624.mp3",
+          "sha256": "9627e97214cabf9acc4eee5e3d7a1a849a3c074b9a84661a376c41b45cfccee6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/625.mp3",
+          "sha256": "8e70d433d735f2cd2028eb91ee60063e561ad2cbde710450c60d17057d481ffa"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/626.mp3",
+          "sha256": "29b0853abc6b23d846b7a955900ead33bdc625f74c621ccc38da3bf0040d9176"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/627.mp3",
+          "sha256": "9c84e82f17054728cfaca90c129e323a42c5eb7bf5822b8530fedc933a20d110"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/628.mp3",
+          "sha256": "92239e1a41a299283ae5abfbaa730701472ddb19aa91c19cb2ff4223fb193968"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/629.mp3",
+          "sha256": "e823cd2da753820410c3fc345b1e9a764de8210894f3349d09d2292b39d6ee0d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/63.mp3",
+          "sha256": "916ec607bd7ed9407b703a1c86485bc71e639fedcea64365f384753c4d5f52a7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/630.mp3",
+          "sha256": "e9349a29918fe16f932f6c572d9537e6dea2cfb34eb0e931b5e1669292447284"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/632.mp3",
+          "sha256": "6827cb4c689b4ee0d02a4f661a27854c9e4afba4830b4a9de7583bdd9f315845"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/634.mp3",
+          "sha256": "b7372c8615ac20e680eca5a03ca2cb361e1a7d757ade8db40abb4575f1e05195"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/635.mp3",
+          "sha256": "20b59530d6cb393a43f080e65fb82232d61e5cdd8482ffd31ce0e94b4b13c419"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/636.mp3",
+          "sha256": "de4967a417574ab06bc729f83a4e220949e0c945eacc556d8bf0192580ca94dc"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/637.mp3",
+          "sha256": "767d33026b874432e0a4c3e4641889796a321060f98538c32792eab4df9f2ba1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/638.mp3",
+          "sha256": "a69073f48477ee879ed3ef215fe96c015f841a06bf8ea7584ec439c11c7f9362"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/643.mp3",
+          "sha256": "422e33756f34ad25729685c69a50b709f53b635a1e4795193e5f45b7bca1b9aa"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/644.mp3",
+          "sha256": "a6409be6ea723a1faeb777dc0374fcfa669ba50f6c409be0672d2ebf4c2f6289"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/645.mp3",
+          "sha256": "a6409be6ea723a1faeb777dc0374fcfa669ba50f6c409be0672d2ebf4c2f6289"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/646.mp3",
+          "sha256": "c2e070e90d7537ae35e2d65c3d5d74fb1ad6a5d83f61c7a4f004f03c71faa94b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/647.mp3",
+          "sha256": "1314c3b6e3431f498bb65c251667c3a4d526c20727da352202bb777b045e9f29"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/648.mp3",
+          "sha256": "cc311816b17d106e82786d9fd75f15dbeff0feeaa78e10e6151538d7d272ae75"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/65.mp3",
+          "sha256": "1b8e2803afe48883c4412a6124926d4a96e1dcc3989bbc0bf5b22ecb06a1fe49"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/650.mp3",
+          "sha256": "684c101aa127c6da505ca8fdf7be3594e18935fe4e862879fb9b5061c50f7291"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/651.mp3",
+          "sha256": "6d68646ec379a687822c8aabd4b5cd5493ac70e04b6ab8c3baaeaa5858d637b4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/652.mp3",
+          "sha256": "f574308fe604900b25b4ddf99f9aa25cf2f491a36a22469616f03b1286d80198"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/653.mp3",
+          "sha256": "85f5df9e913c36207920c4cc38d6886c2a6ad0b1a09e65fd2dc96b846526c0ba"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/654.mp3",
+          "sha256": "6715af32402e33d6a0728e895c731524bf2b474307c403c1f18fd7d1e8204786"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/656.mp3",
+          "sha256": "a357a60a278993cc80bd6bbd00d1f88f6a1b947757877fa74fcfbe198eb45ccf"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/657.mp3",
+          "sha256": "d2d90f1932eef152798ca4011ae518592094dca1868b07e3ba5c0ebe58d93a96"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/659.mp3",
+          "sha256": "b7e28777bf950bab9e0d34724281b22c2564b2f828fbb3887d7880507bb2830d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/66.mp3",
+          "sha256": "10009fe215a6712a37288acd89ccca93e4a984cc1d8390e728af6062cf3f52e7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/660.mp3",
+          "sha256": "c8fd9926c15a2b6642300d616c4d19585380c84c8bb6551c697f405596d9c408"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/661.mp3",
+          "sha256": "48bb0763bcca81ff6b036b10ff75ef968c3aedf70d323109c8d95dafef9b9461"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/662.mp3",
+          "sha256": "c3edc97f81475d2f077e8cb9b2d5d8233784a888f500546c3e3f6b723bbec8ff"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/665.mp3",
+          "sha256": "7f783d2ed6bfe1b03e320ffd82b7c4ca5f070dadc19c9517b618ee8c7ace77d6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/666.mp3",
+          "sha256": "c29d9cb687b858207993d38672c465093c5fe210f9212bb8e33e1a93ab294651"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/668.mp3",
+          "sha256": "7012908ae6ac341eb9a8915007cdeb10a05c36d4b305d095c7d3add459d86dd3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/67.mp3",
+          "sha256": "f908dd0ba2047ac65769677e8ead776922d16c0f3cb7277e4d124f17ebd7e091"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/670.mp3",
+          "sha256": "7016d89ace87aa6e226cba94fa6ce3330fa5dd421d9120e9a8ade5336fe1e7ee"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/671.mp3",
+          "sha256": "ea44acd7e7eac3df6f7abd83aa69394e2a1fe58b2b587431974f575dd1e29990"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/672.mp3",
+          "sha256": "bd3006f9566632cfc0f57eb5011d1c7d9fbae0a06ec1be1b72de450bcfd4c4df"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/673.mp3",
+          "sha256": "ca0aaa7cee877f93c7c3b07591a54b51e14939eca95cbbe7a66302ae8b6bd58e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/675.mp3",
+          "sha256": "6d757727d222c4afaf5b78e063be5d9c5a3dcd61d742ecabe5dd56ade4fcf47d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/676.mp3",
+          "sha256": "a0d1ea7602d848905b26857960c3bf42d51e0a5122c93dea3892762bc129397d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/678.mp3",
+          "sha256": "a10b6b57e791fb37c3b40cf3a8814f717b529f2eba2e1391e8fa5e85ba02e8b3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/679.mp3",
+          "sha256": "f201447c3a80a17191628c7facd05ff18404b3436e31efa9e8037558bdfa4842"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/68.mp3",
+          "sha256": "36eafd6dd28b291dd8d7d1ff45cfe59fa1f8e1fb83cd1b65c5c5b54cc3eecbb8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/681.mp3",
+          "sha256": "a3104d99aedbfba98e58b2d9e1a88086362b7e5044dd28a089a88e8a46366ff1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/682.mp3",
+          "sha256": "eeb0032b3404322aba04bd838343b3769c1ffea7e333a131e3321aedab69e1cb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/683.mp3",
+          "sha256": "6660c40f215c48fc459a0e3474c6b74f6a4ff8178c8baa35c52bfc03d7faa676"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/684.mp3",
+          "sha256": "c80d9dca3b102a0547222375f9d37947ee5b46d9578eb4471d872305837b37c9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/685.mp3",
+          "sha256": "46bfb121c882180ea101b2eb40d7668651c8ee058f2b8010aa3e6fb38019c5d9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/686.mp3",
+          "sha256": "4992a3fbb36e81baa4eb8cdbb4957d22b637333efd9067258fbdcf99245b1d5d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/688.mp3",
+          "sha256": "759f2a2da453470ad7b10b9417b288f4567551bb6a0cc8aadd77371cdd77c659"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/689.mp3",
+          "sha256": "a92009075fbb4589d2a5005a5d6bedeec0644c104ade203bfbc69edb87ba4bf1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/69.mp3",
+          "sha256": "798d683aa663280ed23516e230f68437da4555279f83613910a26a0a4dfa4f0b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/692.mp3",
+          "sha256": "36f5aaa72ae929a2e897be8a81093c1e7ae899d3da57b8449fb644ab1c8e9c3a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/693.mp3",
+          "sha256": "51dbe6c07109e12af89c00c860700ecec4c825b0ad3e21570e6591d3a69bba21"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/694.mp3",
+          "sha256": "96b45514135655aed84414f6fb46fede97969308710fde71e2ce168c7919b10e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/697.mp3",
+          "sha256": "74a5f27054a6dfa0ebfbb1cd2198e9a915f9e53ce11dae92ac76572657125976"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/698.mp3",
+          "sha256": "b10187921138d98d8c621cfad2fddfec76503edb75896e46ae0ffcde652c1a10"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/699.mp3",
+          "sha256": "0e9f9e8c9c955facf534a4e055726571ec965adc4703a482c49fb533659e2014"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/7.mp3",
+          "sha256": "e5e9c97c066ac38803e7e30caad5cabe7591767e9606db2036aefe54e3d40d55"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/70.mp3",
+          "sha256": "de242d2116573e8e7449322db6c4a6072ee9eb9f052a4828aff5cf5b7e5edcd1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/700.mp3",
+          "sha256": "17bbe5cd3c4076db26b95e8017d5543985e01c361d56985ab01a843546499d1d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/703.mp3",
+          "sha256": "749d7e73b30cee94670353a15527e37b3ea16af7a2c096693352f7711f9f0cbc"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/704.mp3",
+          "sha256": "87a4ad2f2848133af552bec02f2f9a5f6c7b7b3b48e13a094491206241e48121"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/705.mp3",
+          "sha256": "5651486e5f2c29d295625e2ea4f564d10fc2bd14da0f2c1adfeb14c5d1e7c2a9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/706.mp3",
+          "sha256": "9481d27117589d1cf751497c2d349909f07277e59b191092134569f087ac86cb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/707.mp3",
+          "sha256": "0ce82a332be3113ea553821bbcb443c562ef54b24e51591add7b5527404917fa"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/708.mp3",
+          "sha256": "afe3138d33570c567fd73fe893c8e2f5dbccfb9aa155c329ceb34e49931a3486"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/71.mp3",
+          "sha256": "b9cc0aeaffeb06e49638547de62910af256f282b1e705db8599f539293a7c8a6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/710.mp3",
+          "sha256": "27ae61891e4da15a90f914b5c0a5af075297b9cd5a1cf95e1749a0d0d711fd86"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/711.mp3",
+          "sha256": "4c7b42602d99b2d5735f53ef91c844b14046c498419a3a322dc1878425d373ba"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/713.mp3",
+          "sha256": "eefbc3006359d13426af23f46dea810ce282f4bed2ae7f61af8df33d8f4df054"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/715.mp3",
+          "sha256": "7cb6bca3997a920219efb2ed4ea8145935ae6a78440553c0a6bd3a72685f2cb9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/718.mp3",
+          "sha256": "583bb3d1f4e2db1172907085395ce6b81c8ee7dd360b2ad9eeb936470b63ce57"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/719.mp3",
+          "sha256": "4f210508de6996e0a634db5e0155e2e618ade8d41dfd2c3971dfce66cb7be4c1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/72.mp3",
+          "sha256": "33b38a02eee4f570f3ceeeb273e304c5bd60fee40661d0ad779a4b329aada81e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/720.mp3",
+          "sha256": "4970219fee9546e448093224b80c4db9d581acfe6901d012c0f67bc227a01f5a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/722.mp3",
+          "sha256": "3ea20a13186c21a80ece74ecff299fef7d8a201fa74545251fa52d9e2736e12c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/726.mp3",
+          "sha256": "68495b4dfd671ae73b93c78f34a4a5dd1aec9c8a36759746feb4ffa18a95f469"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/727.mp3",
+          "sha256": "d458b7ec72ef4c5a2883cae8e91a8a348c797d274a46f60b0fd54dd375380837"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/728.mp3",
+          "sha256": "c83625984e383c577df4c51471bedb4e2321a8bf1f2034d448bb4bb139de93eb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/729.mp3",
+          "sha256": "c72e070a5179fe55474fe16a8d28e753bf5aa1da71c1ddece282e61ff933ff9c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/73.mp3",
+          "sha256": "9cb84d3d5f5276c97466fbd2fd4abe965cd4ed702c7f0ec51e11656fe245eb60"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/730.mp3",
+          "sha256": "59a5209371c7605ff7d52ee36330646044d5cfc6392b1f885de2419935ccfe83"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/731.mp3",
+          "sha256": "0064c5fa6b14bcbeb79244ccdd490da8b78ccab98aea875e18b359d6efa6e595"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/732.mp3",
+          "sha256": "ef0126aebb3c15b896c077c9691ee1ee8137354cd52d8b17e46c5712591f2440"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/733.mp3",
+          "sha256": "9a81bbc304978028e73cda0a12f96885666e2b908e90f27bce99c313c5ca9f5c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/734.mp3",
+          "sha256": "5c34df5e0a5c5ca4c0292f49de9bfb3253c32ef3ac940b1a393e03b78fecbeb9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/736.mp3",
+          "sha256": "696b83dd746d31791665922230ad8a69a9d3f5bf688a42dec6a8775da7ab042c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/738.mp3",
+          "sha256": "cda132f10432283e5699da682fc5acdcedc12ae680ea7dbeedfa7e069d4468a3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/739.mp3",
+          "sha256": "e136f610de9c5e055f7b1870095a766ff7979a521ce0c7632a0cc62f47876e43"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/74.mp3",
+          "sha256": "647ad31f460d4d8019d7857441081a1cb0567041dfcb536c1b92e82f56aa25b1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/740.mp3",
+          "sha256": "1d8b8ac4cfa4618f204b5cc4f3fe970ed3f909a5b75ef7f772dd5f44330a224f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/741.mp3",
+          "sha256": "9b587e808f069e5b76e830d7fec1374201cd0b00c07eb541b9241922df529829"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/742.mp3",
+          "sha256": "9db39b685249de2ee34e8766e49d97541423363d80c844638170a02bf8ab76ff"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/743.mp3",
+          "sha256": "a49e73b1bc1d2fdf8faddbb50f3eb64e8b2afc86ce66054745679fd26ab46c70"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/744.mp3",
+          "sha256": "ba8dec47182474e787219223266a51afe197316f409f5017d344e16d57d28a18"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/745.mp3",
+          "sha256": "cc50ee260d10b08ca6744946244240b7d2fe071fb1c8c588535feb98ebf2cc97"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/746.mp3",
+          "sha256": "41d7359655a2f17f9b8632c7b9d0e27af538bb5a3465bb43abf549998d1fa33d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/747.mp3",
+          "sha256": "335de257dd9ac70c55a6a15bc7d8c555d7edc790dbe61fc8f87d657fd74aa5d5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/748.mp3",
+          "sha256": "8b3e3eb3b498dd6ac6480a34f4e9093b5b4966ccb73a8e4045d368dc20d72b17"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/75.mp3",
+          "sha256": "f7b02fe17c44f5fb177d46cb6df75daf6049cf5945d641836ed36634cba12a55"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/750.mp3",
+          "sha256": "5ff4d51293a7a375b1b17d096c698c05d9f01c63abea1521c394a036d7596389"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/751.mp3",
+          "sha256": "b9626fdd7df62e06fb558461d3dcfd53cfcc096e3155de4e38143d68f12c0e70"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/753.mp3",
+          "sha256": "5d97ce8c2d6023c86014b2754d05bda3f37f197b0e35f521d9a2000b3f68b2a8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/754.mp3",
+          "sha256": "bd1dff3059078e7f8cc361ef6c8ed4556f3c000dd82ad46e60bb87379e88b34c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/755.mp3",
+          "sha256": "0236d8bda9648040b8517c67047983e91d609662736ac729ab04eaa8a1f911c6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/757.mp3",
+          "sha256": "9bc1eaf537f70fbbe0fd5a8b051606c14414e9639baa26f27ff97815a1e7049e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/759.mp3",
+          "sha256": "22d5692d21b540f9a42b405abbaa26f5d87fddcb04bf61035ddbe8c63414befc"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/76.mp3",
+          "sha256": "e71d1029fafc92fd9993c56d0822013c0f46b7651856873e274d7807a865fb95"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/760.mp3",
+          "sha256": "cd0df23f25312546392fe819241de412a74793b0de86188b5d4157014ae3a375"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/761.mp3",
+          "sha256": "47415b4c63f18fbc0459e4cfd2dd7b07d06b48d0b8b2ae952c0379a0e3838aba"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/763.mp3",
+          "sha256": "8543e9c920bbe7683c7fc147c775d851207cb06c2644c90385b76634d7f7d6a1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/765.mp3",
+          "sha256": "c9929029b2ec9e021895985105fd5b63eab1603e57ca378eb2ccd9d27d099eeb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/767.mp3",
+          "sha256": "1b2b284efbe61dcab0e001be11c3e55098eca5b93ee4674bf78edc8da511cffb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/769.mp3",
+          "sha256": "2fe145cd70c643741d06d2b123fd8a4791bd679f4c75ee360dfaf90c33545a32"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/770.mp3",
+          "sha256": "981f24200c2f15ac6a575d8120beb385acd13454bd0cf885701481a4dc93597e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/771.mp3",
+          "sha256": "734bca2168997d5674515a5f289192b3b32deaebaf35658cf3d7c0423262b098"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/773.mp3",
+          "sha256": "6b3e17cea2f2e0385c95890aa589679e0dcd3eaae04cfc89a2b2f9134fc2293e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/774.mp3",
+          "sha256": "86f6a1d0235eeb7e5cc4185468f470471328133414d66a15048825d67bc7db74"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/775.mp3",
+          "sha256": "9c661f5f47c3079d27db8f62526150340af403ecf160dcd097c82de6d3e78e10"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/776.mp3",
+          "sha256": "1bbcf83e19b4cc76aca01466c20bf0a3674e42a1bf55e9ae6952c6b11f8bb5a8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/777.mp3",
+          "sha256": "c1445f61e73605bcc97e22a768b4861824a95c71d80d6ded13094f6c77bd5194"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/778.mp3",
+          "sha256": "2e1739f5b6a05d0f69b20e07edd3f15d3e24208c4ebadbbf938c47f9c655ab3f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/779.mp3",
+          "sha256": "42e7d6ff09cc5cf365beb4a88364260c8ec1adf62c4817adecbc23b7b26d5410"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/780.mp3",
+          "sha256": "8e5152dbeddaaa22ae72f5087fec760be807ae891ff7c80746b49af25af24059"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/783.mp3",
+          "sha256": "9fab9d3b771608687ca6d836120a801b82b1c9564c2b22199645cfc14734d240"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/784.mp3",
+          "sha256": "487879ca99bc1422ee1480d4c13f5e373f6cc47d189a58c2c8e929c8293221bf"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/786.mp3",
+          "sha256": "ab2f3e757f984efc55b3c0ba9bb01eaa04a9b09457343b4263f26d678bbab42c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/788.mp3",
+          "sha256": "b4e398fc24699fad5ed5624bb2f332159890439c3a26d57f91d545d92b392f8a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/790.mp3",
+          "sha256": "4a0c6dfab1a3c65828f4be25b4f33a98984acbabea9d470f0ca7b7e14e6e6664"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/791.mp3",
+          "sha256": "77b838547a2b8b5d1afe1b0fcdd8068224938eefa041a295c0869462bcb17807"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/792.mp3",
+          "sha256": "dac9d92e73ce29111e6c0b45c23cb0cb82c6cccb0c86f55540838990ecce8060"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/793.mp3",
+          "sha256": "e263d12d219d7bbdebc1ccd2983e4fba73bd114e89d3d63c08dd3a9da8ee0f0d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/794.mp3",
+          "sha256": "e133b148f4fd9b9dfcc8fffbbd102eba5365bba4af532031dc2c37c754937d5d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/796.mp3",
+          "sha256": "80453ba0278c5d50b77949c86becfd4b4e60c7932578734039de09a7acc10a84"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/797.mp3",
+          "sha256": "8b553d590487f0336c02ba553319c296ff1fb2ee903ed3adaabd7341545067f7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/798.mp3",
+          "sha256": "ecb7d0081952a16cb716476b86d9562bab84c6434fb2ab08554c3d84ff4f3b2b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/799.mp3",
+          "sha256": "0ea33e1fd3356111e6461b34de8a11f9dda25c38090163dc410be2f6dba84149"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/8.mp3",
+          "sha256": "bd4a2b4b6f09ade626cf83ec4618f25b8607f5c177810a7fd21f56cf13cee106"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/80.mp3",
+          "sha256": "abaa58130d7c4281c378c9781bebae08b32e06e5f055ca2302bf4335becc5709"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/801.mp3",
+          "sha256": "bead8f02e62988564c763300e1eabc61588ca38b82bb932c01d434267a00d4a8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/803.mp3",
+          "sha256": "6786fee6c197723bf785ee0331b56f5e30b4cbb7e12a447b1f8e235704a8b7ee"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/804.mp3",
+          "sha256": "9de3d03937b7e2c3dc269704596813163495a7384b94c28d5e7eb564a387176d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/806.mp3",
+          "sha256": "8e2daa33f13c8a2a13d560c66c33c35d582235badf5d01dfc156271d30ace7e4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/807.mp3",
+          "sha256": "66b187c1dcadbb2965796b1b567cf45f59a2530a1b411eea334bde0a87e0b08e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/808.mp3",
+          "sha256": "b70826bb1f5869b8e1bdaebbe56c95e1e34e471eea003694efec402fac2d9c57"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/809.mp3",
+          "sha256": "7505f6edc04335bd069148ed7cd3652e8a339ffd03f50009698f6b4b4442ddea"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/81.mp3",
+          "sha256": "f398eca187b899f5a0e020307162e23bd6270f1586da372c119cde97df582c54"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/810.mp3",
+          "sha256": "9a529bf289e6e57ca392ded4f7cad3b1ae9a2c463ba3f60b1e10ed732dac3307"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/812.mp3",
+          "sha256": "6e0a7cbfac820b867a3fc2ca547631b6faeaf6fad418527addb43d8d8c75d388"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/814.mp3",
+          "sha256": "612a1e54ae0e55ed0dd44f22292eaf0783ccaaf683113091af10dd85740c3234"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/815.mp3",
+          "sha256": "28a1da71561511d958c8f1e64150fc361e8414ee03744ab304799cc16b05a49b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/816.mp3",
+          "sha256": "765da0ceea18c92f87e7b6dfed41c8b3d044611b305174c75da2730a4ab7153b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/818.mp3",
+          "sha256": "46cd6406f4567457f832aeca7b271534b42e8fad8e2354e4a0cf24c9573b795c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/820.mp3",
+          "sha256": "7ac54725a25cfd9164b124af6c107fc8748baf54d5c26d263579a7257d48b051"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/821.mp3",
+          "sha256": "34ae55582d297fd2b4ebb5ae6e88316338565634e284716aeda45448fcad4e0d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/823.mp3",
+          "sha256": "23603c28b19afc32c7135de61161befdce158a7d52df21b78f5fe203d483abfd"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/824.mp3",
+          "sha256": "8aa0c80f6c7203ab67c75ae90ebd5dd8009fd5dabf15a7fad8385d625ad1faec"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/825.mp3",
+          "sha256": "d933d9828b7f23ce17d3336fd1194d3052b3d5bc81ed95728bfe4808cb9c150a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/827.mp3",
+          "sha256": "584f76db035e048b768431393abd9008c2a43b47b72b8955b0af75915ff90379"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/828.mp3",
+          "sha256": "efd4625c72a93d2396da0d2a46aa253d5e069244f914f232a1a28d59f749dd17"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/829.mp3",
+          "sha256": "196eaf314b7e4b01818808d15d35f247787198f0c5f22696446cc29ccb5eb7f9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/83.mp3",
+          "sha256": "0b41462153eb3a47082c61eebb48affeebf0bbe3139429106d340b2a8ed573db"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/830.mp3",
+          "sha256": "5211bb71f34401f5d5b2d374b82a15a12f505f23a513b444db4c5615f3140fce"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/831.mp3",
+          "sha256": "22905f26d381488031c96e2189aaef59d71c60c7e0e7341fcd09bc7dfe932d1f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/832.mp3",
+          "sha256": "2cff293dfb0f882e31a18f3c3e3896cf8a8e4b6ce3deb7e9d2d0855311e0d8fa"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/834.mp3",
+          "sha256": "f702f7d178f303fc0f6a0f431cb299c70ffcba87774df9843f6e1009b017957d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/835.mp3",
+          "sha256": "38b455b3f8c162caf8e2f0a9ecb693369793debe952a67038a95c8857eec8869"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/836.mp3",
+          "sha256": "d7d39ead87165cae6811e92c6c39e9b01343ca2ceb3c1445c001482fd0ca6cb9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/837.mp3",
+          "sha256": "f15a8671cd10652527535dfe60adf7e8f86ea1d4bb93ff93a935d986e3be620f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/839.mp3",
+          "sha256": "144316ee8bc6af6eea8fa55518d8ac221428e495e44228087dedf84e8ff3e785"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/84.mp3",
+          "sha256": "bd095721dbf56a33c61ef65aac60736e125af096eea72d30175857315feab632"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/842.mp3",
+          "sha256": "3db7453f6191404d3e0afd775ddfcfa47f1dbfd676aa09f54c4de764b87c2b54"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/844.mp3",
+          "sha256": "633293aa24ce120c6c41c0315f94b19f8bf36e075c5af7f3a888fad8d2eb97d2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/847.mp3",
+          "sha256": "ad611f74eb2c060127de651166cb20aa657181640c9ac6c48c80bd7bad1589e6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/848.mp3",
+          "sha256": "f575dcb2ea0d99d5e6361b6d82ea3c04a183ac14a903ddea350e9ee472dacb5a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/850.mp3",
+          "sha256": "07707e7ebe2c7fd966cfadfab7762810abcc8f50b4a7beb183669ad02ac8b5d7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/851.mp3",
+          "sha256": "f68bdd2f13b5cb6964056668b0044dbdfd9fe7d842256fc87439e3349afca8ca"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/853.mp3",
+          "sha256": "958d57922b679cb3361d82bf8788c12178ed58b4d7081192674c4a80a9b4ae58"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/854.mp3",
+          "sha256": "873aa405336d1ed26cee206b84f8477518bd679b9e093385a7fc2c7da522fe1f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/855.mp3",
+          "sha256": "43bf83a799fd775380b7802441cb9e5a22fc547aeb226211ed5de7072b1ec245"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/857.mp3",
+          "sha256": "d01b7fc3a07405690c5c6c953db02f96064577ead4b53cee81ceac0966207608"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/858.mp3",
+          "sha256": "81f098bb9b4b5d5471251ab6c53a994863973ac1622d48539c2d2531331e691f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/859.mp3",
+          "sha256": "ec0c884e7099f4576829597e619ab471f26c8ab658af161ed4e59ceb224c18c2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/86.mp3",
+          "sha256": "9161de2aaa15cdd8012929996b6a620b51e4b196d211877250c22a858d2d4d41"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/860.mp3",
+          "sha256": "00e5396d05d10396fdf7b651b3218486cac44ac97489f4b4fd0a607fab7824b6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/861.mp3",
+          "sha256": "d9613c7800c41dae77baa0c7776c46e7ede1d556871f7aca1d92de438fc55baa"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/862.mp3",
+          "sha256": "af1eca8b79fd87343a974cfd3d1aee90f9b3d7b527d7518a00fc1be57695f859"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/863.mp3",
+          "sha256": "eb455b482e47057188390925f8dc407ece4175bbce7b7ec3b3f3aa36edea910b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/864.mp3",
+          "sha256": "c9119deeb5832e4a8c956153d8e0a79136d9815d3640c0ff71c2d47bc6488d80"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/865.mp3",
+          "sha256": "6851f2bac0f7a7c92bb6421b6b1c6672320a998792a8d00c7c57664a2417e8a3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/868.mp3",
+          "sha256": "2a704b00502f94ab00ec2374e4debb924eb8b595e84679b25ed3b89312bd0caa"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/869.mp3",
+          "sha256": "38250b451687b9738f5d73d7d75d2e4329c14dbc9dff4f6562691fdffa22db13"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/87.mp3",
+          "sha256": "75b321c38881dd294e5f1b6cddcc8072a1b20e0cb8d26b34e06e993bc87a6a95"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/870.mp3",
+          "sha256": "ee7a4b12c2a264bf657cabde440608f307d4a70ee43ef7a0baaa38ebd96a105f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/871.mp3",
+          "sha256": "07ea06b63dc3d4847ce670b25b8e8e22791df21a139b64250757562216e14501"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/876.mp3",
+          "sha256": "bd1ecc215b2c4c5676915e9c4affb0c802b5e264a634fc4f26bf0a9b9902a52a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/879.mp3",
+          "sha256": "66d63f05d303df9f490d23f9430b7e1587f6f5cb4c55963c1a8a2a819ba156a7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/88.mp3",
+          "sha256": "a9a0d548f1550fb931e61e703eed79c26698527f8cfeedf0a6c37ca8323f2b8c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/880.mp3",
+          "sha256": "f25c2089f1406b2f7066a06d3587cd26522ca911603b2a9f4f383bf55b5ed65a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/881.mp3",
+          "sha256": "e4a4e42d42f617db5d0a56859ec79a4b70a4a23318038c736b86ff7f9940adcd"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/882.mp3",
+          "sha256": "c6975bdab07131799b9b5d958174b204966d5f5574692f2830bcec0a88370d3d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/883.mp3",
+          "sha256": "8d4df663bd0de443804c46351fc068a68f26e2aea8c78aad33b0f1b88dc8fd78"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/884.mp3",
+          "sha256": "329ec41c0804c50e9e86a88a229febf14af19d703690bfb98e949aaf9a2ab7e9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/885.mp3",
+          "sha256": "32332208618026f070c7c4c1f46bb13cf3fa506bf40ca9db32077393d2214e6b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/886.mp3",
+          "sha256": "16bb95dad6872eb158b0ca5ef2e8067142331d3a35564012c5628a3f583c5a10"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/888.mp3",
+          "sha256": "f12c93d969cf9cc8e7c28d0cafa14df87ec9da20b97b2a9aac54603685e96737"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/889.mp3",
+          "sha256": "90f287f723646674eb5c1103cc9704c99a8e95429c8ded551ccad2449f0b8399"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/89.mp3",
+          "sha256": "6684ed72559b234e1598c8faba027e8db8e4cc0168b033f63a7f55d47a290f7d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/890.mp3",
+          "sha256": "036019f170fdfc49453c61afb49993aff3a316e89acade07c8bbeb1d611847e6"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/892.mp3",
+          "sha256": "8e230d36118b64b346d692c73ad806cc0d2a083a38161f5b25cf0d3cdd675818"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/894.mp3",
+          "sha256": "201dcd62c7743c33c4bfab14264b2856b3a6fc86ff386254b4bdacb71f1ccbe0"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/895.mp3",
+          "sha256": "d099a0894e70e2055ccf2099c7c1e17e550b4638f870eea4862d35f9f0109782"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/896.mp3",
+          "sha256": "0287346d4ef57867282ae4c80e6c1f2f56644e89532a1422c7cb7e667a624c5f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/897.mp3",
+          "sha256": "f66ba014f9251120114c8e3b902bd812292a072bf96b1fce8e2fe39454fcc980"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/9.mp3",
+          "sha256": "888617e0d90d91825091074425a1e9d6fd460270cdd63ae3283b6e3042661eaf"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/90.mp3",
+          "sha256": "a732a58b0eae68d079edcc25e894a175830b9b1403f8ee0f4e216255298b34b8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/900.mp3",
+          "sha256": "10881fd951d69b39b2a97806ec5e039253938ffa9bec7166c720ab70cd718c0b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/903.mp3",
+          "sha256": "3103b6612e1d4e71affd530938f32adc594db6c0f04a722604e295b772faacf1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/904.mp3",
+          "sha256": "a38c1516ec5b625f4610dacb7a54cb6deb985a012d53d7fbd8a729cf2b737e56"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/905.mp3",
+          "sha256": "f6cfdace943a6868f7bb493a156219e0661cdfaff1e24b7a32755be43c62cfb9"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/906.mp3",
+          "sha256": "8ac3d1c947cceb87b5217f2b24f1ebeb3a31fb1e4cf2ad7047051841c33a038f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/907.mp3",
+          "sha256": "402b4fff71abed68401aad01a74591aad8f21d1048c7a6214102a492514496f1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/908.mp3",
+          "sha256": "0c5c1c603bb3a21a46fd522cda8b2aaf06f23efbdfa307a1bd26048e7551afc7"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/909.mp3",
+          "sha256": "f4471aeef36de4feb5db67cb01e9cb2a2896cf767c4e8e9b7d48f9cc3c46176e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/91.mp3",
+          "sha256": "2120c80a49ab7f7a5c221370875d6caa3df7ab85de0f06a7abb93e47b9ee38bf"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/911.mp3",
+          "sha256": "b500c2f9052724fe73f3edd1c140c62031917958a54372d9e7507949ea7ff3d5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/913.mp3",
+          "sha256": "b7472d2b6cf52a01dc1777d1282de73ac149ce707a1a0714b2a1cd4c9b3d4926"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/915.mp3",
+          "sha256": "3be84477ee35daf77088ac87b066b9932a1a5940302a625dedd8deafc4e014af"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/916.mp3",
+          "sha256": "e2397e0a23583629924bf49798d3fb82128942a90c02261368e57d6a57450132"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/917.mp3",
+          "sha256": "2154c2717c9eda260ab790c077dbf53eb319cfdd5c899d39f8fad995071031d1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/918.mp3",
+          "sha256": "291eac1ac715b61d9ffe251a2bafa890ccc480616a1b33cf9e29f49857428d96"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/919.mp3",
+          "sha256": "f91ac8e6830445c4b388ca7cb9a725e66d543af00bf6d839b4d45f00acb2013f"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/92.mp3",
+          "sha256": "a732a58b0eae68d079edcc25e894a175830b9b1403f8ee0f4e216255298b34b8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/921.mp3",
+          "sha256": "b80f0e9f4033bbca0be2c63a3553510afc973c1579013bf91242e05161ddb445"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/922.mp3",
+          "sha256": "85d6d71abd667e20df78b139b5beb908e62b5f008e20a8ab0845e74721a9ad4a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/924.mp3",
+          "sha256": "3046422d8db1c85396d5cd7fc64c0051e999909e78e27b2af5d448a9bb262733"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/925.mp3",
+          "sha256": "871783c5cb6078f009f524fc6f9bc4046718d66cd9fe40c59ae8db93b89c4285"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/926.mp3",
+          "sha256": "f71800b2a4de01d61a5b6490ced6155807726b67412b9cbbef3fc145e006d032"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/927.mp3",
+          "sha256": "59dedb7aad86c9ec2afb59f1d25139a9b6d507b4e1db4ed2fc9953f459ed6fdc"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/928.mp3",
+          "sha256": "c3d0745e278bbee20237a168dfd9dddd5994501940e8ef404ae1705802f058f4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/929.mp3",
+          "sha256": "b0d9582d1a2e673b7b617e1d2a31d2dafb4f52edc8c53ac89e9b41060ab5790c"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/93.mp3",
+          "sha256": "e7ae8085f9f7955524cf9972f4e1fa6f5f6d9bd7769b2b1ea99052bb9a76b941"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/931.mp3",
+          "sha256": "3851980fc94c9e8d17efc74467c6337f3b827857ae1ca587b199d3425c7b2dc5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/932.mp3",
+          "sha256": "8d4be9555813f387b1cd8c262a7451567f8002e8809e4db6e51bc0b6e4ff3bf0"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/933.mp3",
+          "sha256": "566ca6a3a4dd51be5d593093ff249c2e4804d3e394974fb39d8c490905ea5523"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/935.mp3",
+          "sha256": "b43de1bef55e54ea8fd7ca9c01a874a31692421dafdc5b2a85a921bf98965688"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/936.mp3",
+          "sha256": "b05ac9f3384cb5dfc665179d0d1176046432ef059cbf3da1530241f297aaa1a1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/937.mp3",
+          "sha256": "e7e6738e9667f4641d256040b7642f9870d3b3da73338c21d70652059d0e124e"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/938.mp3",
+          "sha256": "cc21fd8a87a7c0265eded794be1d5f522a6308b9d418f6ab024ef10535730b77"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/939.mp3",
+          "sha256": "8f0cd81695866a93d2c8b22e41e63b3274804a22228085918b5e659010cf1866"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/94.mp3",
+          "sha256": "8d9e84ac6f8cd726ce2ee9407d48b7ee294ffb1fb671b685a5647067595526ed"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/940.mp3",
+          "sha256": "9d57bd8e3950d39c8a6b2c7ff4969237673f62792d3755b9fa7dcffcee45e61b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/941.mp3",
+          "sha256": "07bd61f49693eb725e1f30f5615dc85da3f73baa49ec7fdef649ca67d7e7b5f8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/943.mp3",
+          "sha256": "f89f9824df9305113da8771e1c02c410a2d75f9d9dee789de4b90b07a045dc42"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/945.mp3",
+          "sha256": "ddcf0a55651beb53c4794835c832d2b68d41e5277f8936daf41da9a660ff2b3b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/948.mp3",
+          "sha256": "22b7f3f701a63b8447d77acd6d5e989ea00145ad9ac03a168f27bcd4b62d908d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/950.mp3",
+          "sha256": "aa12b2947c900e47850d9e8d129aef5ca5c1161e6bb9b44d8fb34876707d6346"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/951.mp3",
+          "sha256": "ddd93e32f080beb962085a2c0eef4fe45b0043a6563de5d6206f2453f04cbe40"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/952.mp3",
+          "sha256": "2415fe5404120ffd17c3030f6c4c9335df4ea81cbf5b57d70d4631066babbff3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/953.mp3",
+          "sha256": "5a2574880dff7d28d3eef27b4840d58dcb8434c2ff818fda6714bd8a342c6b08"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/957.mp3",
+          "sha256": "56fd558fa4b8209cd1a05a38d9c5f70b52afbca74c5c7af9dca1af473fbe7e54"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/958.mp3",
+          "sha256": "ab169f8e317eb4aee53325049f3aa1b56bd5376c0965fb442feee66adf0893d3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/959.mp3",
+          "sha256": "9c002e77dea406bfe47cbb998b6824a19ec4467f0884685c3b5c8984106e0932"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/96.mp3",
+          "sha256": "db3e25375c9feb047f2de2a82a7bb67b97c85b4a57ef2816fb66e57a61b97079"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/964.mp3",
+          "sha256": "c4f5e416a4cbbb35ce9688166c7af9b8c7e1ac2ee5d6c0181f4d64cbe9bbe2b1"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/966.mp3",
+          "sha256": "3385a125254355df13decd8ac82d86123591ee572da81094706cce04eb08c64d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/967.mp3",
+          "sha256": "3385a125254355df13decd8ac82d86123591ee572da81094706cce04eb08c64d"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/968.mp3",
+          "sha256": "a18a9f82eea4b1f5808b3a03a14e407525268787afa9da7a59a1b71ef00259f5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/970.mp3",
+          "sha256": "9bf7286963bbc8d286bdcd689e0a5641014eaa24079f75c72e184467d32725b2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/971.mp3",
+          "sha256": "ef3b754be67113db1682ef21f160b92b9dabc4399ce57b7880ecfd221f8b4de0"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/974.mp3",
+          "sha256": "d7acac1ccc83b3150232ab11e86988f3e47d29cc717145dc763ea9d4d73451cb"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/978.mp3",
+          "sha256": "378c09226b8c527fb5eb63d2f43f3026e629b5ae7f20f6d11d65789e169c1b78"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/979.mp3",
+          "sha256": "5956259477b1480a2d12fedeec47b5adecbdd65a97f391eb198648d2d10def35"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/98.mp3",
+          "sha256": "efd2377863ecd0adfd3527e181177b8211cac4eeb41e84160d56695218ae64c4"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/980.mp3",
+          "sha256": "99d7342c28a0e6a89c7df68bf0836b4e833eee6fa391d43eeb89cc689d364328"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/981.mp3",
+          "sha256": "9b1221ae92704c1fa5353486f255100666adbb194bb9886f632047c26e853cb2"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/983.mp3",
+          "sha256": "7461efe133803287225b00748c8ec7f65ae90da1027c3ce1aaae2ea8679b1118"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/984.mp3",
+          "sha256": "34b40c70056286f63877d24bd140f03e41e9caf4d1160d804dda25b40e2556a0"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/985.mp3",
+          "sha256": "500d7b85cf445510d63a2c00f077bd77c3858212f16cceae265fad0f926ba12b"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/99.mp3",
+          "sha256": "c5f3d84d9e20a7873126e1b8e260e3cd2de4027cbb952e1680b06511728a1ca5"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/992.mp3",
+          "sha256": "9138420168dc95a485f379e668eda777d79fa077b30eb9cfce059744e8b557df"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/993.mp3",
+          "sha256": "e87b49aa2908c88fa64f0dc357c985394b049d9b5e34d8d4b47e343224f551e3"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/996.mp3",
+          "sha256": "fb3df42bc23956a0d16073a5e36e8771e7805efca19b02cce9b73f5a756707a8"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/997.mp3",
+          "sha256": "75b2b6a64f46556414856fd77218240deb43ac40e9ae469a15388a36967dfa8a"
+        },
+        {
+          "path": "data/raw/PMEmo/PMEmo2019/chorus/999.mp3",
+          "sha256": "f78940f5553ec41e5883b8390547424e42a5a3caf28b8956d90b03494e65bd1b"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "n": 717,
+    "n_groups": 717,
+    "arousal_stats": {
+      "min": -0.825,
+      "max": 0.95,
+      "mean": 0.24894446557627056,
+      "std": 0.37008381924996253
+    }
+  },
+  "artifacts": [],
+  "notes": {
+    "output": "data/reg_pmemo.csv"
+  },
+  "finished_utc": "2026-07-27T10:29:35.211599+00:00"
+}

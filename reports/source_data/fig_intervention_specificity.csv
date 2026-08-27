@@ -1,0 +1,16 @@
+intervention,feature,shift_sd,feature_class
+envelope_smooth,rms_p10,2.291,Spectral level
+envelope_smooth,spec_contrast6_p10,2.179,Spectral level
+envelope_smooth,rms_std,2.059,Temporal variability
+envelope_smooth,rms_p90,1.65,Spectral level
+envelope_smooth,rms_p50,1.636,Spectral level
+spectral_smooth,spec_contrast1_dmean,3.525,Temporal variability
+spectral_smooth,spec_contrast2_dmean,3.113,Temporal variability
+spectral_smooth,spec_contrast0_dmean,2.275,Temporal variability
+spectral_smooth,spec_contrast3_dmean,2.221,Temporal variability
+spectral_smooth,spec_contrast4_dmean,2.003,Temporal variability
+transient_inject,spec_contrast6_dmean,9.04,Temporal variability
+transient_inject,spec_contrast6_p10,6.011,Spectral level
+transient_inject,spec_contrast6_std,4.477,Temporal variability
+transient_inject,mfcc4_std,3.422,Temporal variability
+transient_inject,spec_contrast6_p50,2.814,Spectral level

@@ -1,0 +1,15 @@
+test,lam,standardised,rho,rho_target,rho_sham
+lambda_sweep,0.001,False,0.2322683105045794,,
+lambda_sweep,0.001,True,0.0763892187520578,,
+lambda_sweep,0.01,False,0.23349558188103256,,
+lambda_sweep,0.01,True,0.07275019869461914,,
+lambda_sweep,0.1,False,0.23259650978806604,,
+lambda_sweep,0.1,True,0.06780667570883399,,
+lambda_sweep,1.0,False,0.23288339476650097,,
+lambda_sweep,1.0,True,0.051071277579933495,,
+lambda_sweep,10.0,False,0.2261062336560893,,
+lambda_sweep,10.0,True,0.020535560925653493,,
+lambda_sweep,100.0,False,0.2247571877449123,,
+lambda_sweep,100.0,True,-0.036856821221378976,,
+sham_alignment,0.01,,,0.23349558188103256,0.17295137929825075
+sham_alignment,1.0,,,0.23288339476650097,0.17208080989658603

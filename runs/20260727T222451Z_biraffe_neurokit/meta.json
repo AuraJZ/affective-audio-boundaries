@@ -1,0 +1,45 @@
+{
+  "run_id": "20260727T222451Z_biraffe_neurokit",
+  "name": "biraffe_neurokit",
+  "started_utc": "2026-07-27T22:24:51.580412+00:00",
+  "seed": 42,
+  "params": {
+    "n_subjects": 60,
+    "tool": "neurokit2 0.2.12",
+    "target_fs": 20.0,
+    "baseline_s": [
+      -2.0,
+      0.0
+    ],
+    "response_s": [
+      1.0,
+      7.0
+    ],
+    "reason": "手写流水线两次未通过阳性对照"
+  },
+  "git_commit": "fb064a1f40ca890d2e3cfe6fc8742f667d0ebe00",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "888237e2b92afa7b095f2fce7a046df63975e9c1e344cadd778e8db6c4e4ed30",
+  "inputs": {},
+  "metrics": {
+    "n_trials": 2102,
+    "n_subjects_failed": 0,
+    "habituation": {
+      "n": 55,
+      "mean_rho": 0.10102475927221942,
+      "frac_negative": 0.32727272727272727,
+      "p": 0.015108032641013984
+    },
+    "stimulus_locked": {
+      "n": 56,
+      "mean_stim": 1.43915775743381e-06,
+      "mean_random": 1.1934267388690904e-06,
+      "p": 0.35665871107374403
+    },
+    "stimulus_reliability": 0.04004201383426671
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T22:27:13.962993+00:00"
+}

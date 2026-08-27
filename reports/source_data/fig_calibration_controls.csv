@@ -1,0 +1,6 @@
+dataset,control,label,p,passed
+BIRAFFE2 (EDA),Habituation,"ρ = +0.113, expected < 0",0.002,False
+BIRAFFE2 (EDA),Stimulus locking,post ≈ random windows,0.267,False
+ds002721 (EEG),Posterior alpha,occipital > frontal in 31/31,1.86e-09,True
+ds002721 (EEG),Blink-locked ERP,"164 µV frontal, 3.98× occipital",9.31e-10,True
+ds002721 (EEG),Sound-onset response,|t| = 8.78 at 452 ms,0.0001,True

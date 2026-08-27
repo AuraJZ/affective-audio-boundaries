@@ -1,0 +1,101 @@
+{
+  "run_id": "20260727T220533Z_biraffe_category_level",
+  "name": "biraffe_category_level",
+  "started_utc": "2026-07-27T22:05:33.682537+00:00",
+  "seed": 42,
+  "params": {
+    "n_subjects": 60,
+    "baseline_s": [
+      -2.0,
+      0.0
+    ],
+    "eda_window_s": [
+      1.0,
+      7.0
+    ],
+    "ecg_window_s": [
+      0.0,
+      6.0
+    ],
+    "question": "类别层面是否有效应（与文献可比），逐刺激层面是否无信度"
+  },
+  "git_commit": "4d0c522baadcf77c350573195348a1deb383f2b4",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "n_trials": 2102,
+    "cond_counts": {
+      "S-": 702,
+      "S+": 702,
+      "S0": 698
+    },
+    "category_level": {
+      "z_eda_delta": {
+        "means": {
+          "S+": 0.0358,
+          "S-": 0.0025,
+          "S0": -0.0392
+        },
+        "contrasts": {
+          "S+ vs S-": {
+            "n_subjects": 56,
+            "mean_diff": 0.03325539426833039,
+            "p": 0.8003689683310373,
+            "d": 0.06616433507688922
+          },
+          "S+ vs S0": {
+            "n_subjects": 56,
+            "mean_diff": 0.07497555025245839,
+            "p": 0.4240618292276277,
+            "d": 0.14885477571799702
+          },
+          "S- vs S0": {
+            "n_subjects": 56,
+            "mean_diff": 0.041720155984128024,
+            "p": 0.2500825464985774,
+            "d": 0.11869576460884847
+          }
+        }
+      },
+      "z_hr_delta": {
+        "means": {
+          "S+": -0.0156,
+          "S-": 0.0359,
+          "S0": -0.0237
+        },
+        "contrasts": {
+          "S+ vs S-": {
+            "n_subjects": 56,
+            "mean_diff": -0.05151868213000237,
+            "p": 0.47286616457429154,
+            "d": -0.11283225707633793
+          },
+          "S+ vs S0": {
+            "n_subjects": 56,
+            "mean_diff": 0.008076912220276415,
+            "p": 1.0,
+            "d": 0.0191246154018659
+          },
+          "S- vs S0": {
+            "n_subjects": 56,
+            "mean_diff": 0.05959559435027877,
+            "p": 0.36093050587175546,
+            "d": 0.14551211389766158
+          }
+        }
+      }
+    },
+    "stimulus_level_reliability": {
+      "z_eda_delta": 0.00822542166381797,
+      "z_hr_delta": -0.06167737342581897,
+      "arousal": 0.7405922480297099
+    }
+  },
+  "artifacts": [
+    "category_trials.parquet"
+  ],
+  "finished_utc": "2026-07-27T22:08:47.980296+00:00"
+}

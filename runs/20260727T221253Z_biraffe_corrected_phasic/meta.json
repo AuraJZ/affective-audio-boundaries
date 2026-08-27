@@ -1,0 +1,67 @@
+{
+  "run_id": "20260727T221253Z_biraffe_corrected_phasic",
+  "name": "biraffe_corrected_phasic",
+  "started_utc": "2026-07-27T22:12:53.608732+00:00",
+  "seed": 42,
+  "params": {
+    "n_subjects": 60,
+    "highpass_hz": 0.05,
+    "baseline_s": [
+      -2.0,
+      0.0
+    ],
+    "response_s": [
+      1.0,
+      7.0
+    ],
+    "fix": "加入整段相位性分解；step13 缺此步"
+  },
+  "git_commit": "4d0c522baadcf77c350573195348a1deb383f2b4",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "n_trials": 2102,
+    "category_level": {
+      "S- vs S0": {
+        "n": 56,
+        "mean_diff": 0.04124805226959784,
+        "d": 0.08311952228838743,
+        "p": 0.33170115490144514
+      },
+      "S- vs S+": {
+        "n": 56,
+        "mean_diff": 0.040270897746239584,
+        "d": 0.11213778938015691,
+        "p": 0.3440354721426232
+      },
+      "S0 vs S+": {
+        "n": 56,
+        "mean_diff": -0.0009771545233582812,
+        "d": -0.00202142246431335,
+        "p": 0.6536916306466893
+      }
+    },
+    "category_means": {
+      "S-": 0.0258,
+      "S0": -0.0155,
+      "S+": -0.0145
+    },
+    "within_subject": {
+      "n": 55,
+      "mean": -0.031430952964350556,
+      "frac_positive": 0.43636363636363634,
+      "p": 0.20282672592320028
+    },
+    "stimulus_level_reliability": {
+      "z_scr_amp": 0.10964013386195588,
+      "arousal": 0.7502318608791799
+    }
+  },
+  "artifacts": [
+    "corrected_trials.parquet"
+  ],
+  "finished_utc": "2026-07-27T22:15:30.861963+00:00"
+}

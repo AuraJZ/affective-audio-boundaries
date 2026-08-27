@@ -1,0 +1,61 @@
+{
+  "run_id": "20260726T193402Z_diag_stacking_correlation",
+  "name": "diag_stacking_correlation",
+  "started_utc": "2026-07-26T19:34:02.200889+00:00",
+  "seed": 42,
+  "params": {
+    "dataset": "deam",
+    "question": "base model prediction correlation"
+  },
+  "git_commit": "5b05dfc2a5b6cd5fdea90e815b4ebe099f85654b",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "33351f882d8740d1f2983f0647a3f8211e77a7db1dd56de5c1b3378838a36bb7",
+  "inputs": {},
+  "metrics": {
+    "oof_correlation": {
+      "RF": {
+        "RF": 1.0,
+        "XGBoost": 0.9436,
+        "GBDT": 0.9444,
+        "SVM": 0.9088,
+        "KNN": 0.9134
+      },
+      "XGBoost": {
+        "RF": 0.9436,
+        "XGBoost": 1.0,
+        "GBDT": 0.9839,
+        "SVM": 0.9161,
+        "KNN": 0.8677
+      },
+      "GBDT": {
+        "RF": 0.9444,
+        "XGBoost": 0.9839,
+        "GBDT": 1.0,
+        "SVM": 0.9022,
+        "KNN": 0.8645
+      },
+      "SVM": {
+        "RF": 0.9088,
+        "XGBoost": 0.9161,
+        "GBDT": 0.9022,
+        "SVM": 1.0,
+        "KNN": 0.8708
+      },
+      "KNN": {
+        "RF": 0.9134,
+        "XGBoost": 0.8677,
+        "GBDT": 0.8645,
+        "SVM": 0.8708,
+        "KNN": 1.0
+      }
+    },
+    "mean_offdiag_corr": 0.9115466659087446,
+    "min_offdiag_corr": 0.8644865431427197,
+    "max_offdiag_corr": 0.9838643259086878,
+    "hypothesis_supported": true
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-26T19:34:16.794663+00:00"
+}

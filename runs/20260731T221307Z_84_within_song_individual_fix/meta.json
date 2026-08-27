@@ -1,0 +1,30 @@
+{
+  "run_id": "20260731T221307Z_84_within_song_individual_fix",
+  "name": "84_within_song_individual_fix",
+  "started_utc": "2026-07-31T22:13:07.831368+00:00",
+  "seed": 20260731,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "real_pass_pool": 82,
+    "real_binom_p_pool": 3.2009113722126146e-65,
+    "real_pass_phase": 51,
+    "real_binom_p_phase": 1.2135390577531546e-28,
+    "real_pass_self": 6,
+    "real_binom_p_self": 0.7090935128864877,
+    "power_lam0.05": 0.5066666666666667,
+    "power_lam0.1": 0.47333333333333333,
+    "power_lam0.2": 0.64,
+    "power_lam0.35": 0.8866666666666667,
+    "power_lam0.5": 0.9666666666666667,
+    "detectable_lambda_80pct": 0.35,
+    "detectable_rho_80pct": 0.24308427492777582
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-31T23:30:10.515935+00:00"
+}

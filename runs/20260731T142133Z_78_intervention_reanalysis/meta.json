@@ -1,0 +1,19 @@
+{
+  "run_id": "20260731T142133Z_78_intervention_reanalysis",
+  "name": "78_intervention_reanalysis",
+  "started_utc": "2026-07-31T14:21:33.097269+00:00",
+  "seed": 20260731,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_significant_cells": 4,
+    "n_cells": 6
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-31T14:21:34.125658+00:00"
+}

@@ -1,0 +1,45 @@
+{
+  "run_id": "20260727T222050Z_biraffe_positive_control",
+  "name": "biraffe_positive_control",
+  "started_utc": "2026-07-27T22:20:50.059759+00:00",
+  "seed": 42,
+  "params": {
+    "n_subjects": 60,
+    "target_fs": 20.0,
+    "hp_hz": 0.05,
+    "fix": "先降采样再高通，避免 1e-4 归一化截止的病态滤波",
+    "positive_controls": [
+      "habituation across trials",
+      "stimulus-locked vs random windows"
+    ]
+  },
+  "git_commit": "fb064a1f40ca890d2e3cfe6fc8742f667d0ebe00",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "n_trials": 2102,
+    "filter_comparison": {
+      "sd_downsampled_median": 8.295261651058973e-07,
+      "sd_direct_1000hz_median": 7.800929570127776e-07,
+      "raw_sd_median": 2.57501995542369e-05
+    },
+    "habituation": {
+      "n_subjects": 55,
+      "mean_rho": 0.11332865652158503,
+      "frac_negative": 0.2909090909090909,
+      "p": 0.002421079561468577
+    },
+    "stimulus_locked_vs_random": {
+      "n_subjects": 56,
+      "mean_stim": 1.5369157235984066e-06,
+      "mean_random": 1.282431376762898e-06,
+      "p": 0.2672734088736418
+    },
+    "stimulus_reliability_corrected": 0.06236242537475014
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T22:22:52.299985+00:00"
+}

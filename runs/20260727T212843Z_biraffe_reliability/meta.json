@@ -1,0 +1,49 @@
+{
+  "run_id": "20260727T212843Z_biraffe_reliability",
+  "name": "biraffe_reliability",
+  "started_utc": "2026-07-27T21:28:43.609693+00:00",
+  "seed": 42,
+  "params": {
+    "dataset": "BIRAFFE2",
+    "licence": "CC BY 4.0",
+    "n_splits": 200,
+    "min_raters_per_item": 4,
+    "trial_filter": "sound-only, non-training",
+    "note": "先测信度再建模 —— PMEmo 的教训"
+  },
+  "git_commit": "bfa1224c3794c294ce257c20010a2f1602c7155c",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "n_subjects": 102,
+    "n_trials_all": 8172,
+    "n_trials_sound_only": 3937,
+    "n_unique_iads": 108,
+    "raters_per_stimulus": {
+      "median": 35.5,
+      "p10": 23.700000000000003,
+      "max": 63,
+      "n_with_min": 108
+    },
+    "ceiling_subjective_arousal": {
+      "raw_mean": 0.6863208209663005,
+      "spearman_brown": 0.8133316139044152,
+      "p10": 0.7740049381652521,
+      "p90": 0.8476118700970172,
+      "n_splits": 200
+    },
+    "ceiling_subjective_valence": {
+      "raw_mean": 0.9347130255430293,
+      "spearman_brown": 0.966230446974154,
+      "p10": 0.9594736623839341,
+      "p90": 0.9719750641189039,
+      "n_splits": 200
+    },
+    "biosigs_available": false
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T21:28:45.963001+00:00"
+}

@@ -1,0 +1,27 @@
+{
+  "run_id": "20260802T180555Z_93_sigma_u_profile",
+  "name": "93_sigma_u_profile",
+  "started_utc": "2026-08-02T18:05:55.947458+00:00",
+  "seed": 20260802,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "tau_median_主观（DEAM 评分）": 0.07403276703494299,
+    "ci_hi_median_主观（DEAM 评分）": 0.10753055844478261,
+    "n_below_breakeven_主观（DEAM 评分）": 8,
+    "tau_median_生理（PMEmo 皮电）": 0.10580503029751899,
+    "ci_hi_median_生理（PMEmo 皮电）": 0.14504388187528242,
+    "n_below_breakeven_生理（PMEmo 皮电）": 15,
+    "n_breakeven_主观（DEAM 评分）": 183.61330116690127,
+    "n_breakeven_lo_主观（DEAM 评分）": 85.76515748042404,
+    "n_breakeven_生理（PMEmo 皮电）": 97.48618830105775,
+    "n_breakeven_lo_生理（PMEmo 皮电）": 52.599882740681814
+  },
+  "artifacts": [],
+  "finished_utc": "2026-08-02T18:06:05.314321+00:00"
+}

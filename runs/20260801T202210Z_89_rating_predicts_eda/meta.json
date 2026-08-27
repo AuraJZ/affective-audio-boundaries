@@ -1,0 +1,23 @@
+{
+  "run_id": "20260801T202210Z_89_rating_predicts_eda",
+  "name": "89_rating_predicts_eda",
+  "started_utc": "2026-08-01T20:22:10.681848+00:00",
+  "seed": 20260801,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "has_per_rater_ratings": false,
+    "acoustic_rho_Arousal(mean)": 0.8165903987842987,
+    "acoustic_rho_Valence(mean)": 0.7053779754871412,
+    "n_sig_rating_to_eda": 6,
+    "best_rating_to_eda_rho": 0.135419115940535,
+    "ratio_vs_acoustic": 4.2318473731417185
+  },
+  "artifacts": [],
+  "finished_utc": "2026-08-01T20:22:34.367393+00:00"
+}

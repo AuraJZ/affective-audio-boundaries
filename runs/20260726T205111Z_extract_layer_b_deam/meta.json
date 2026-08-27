@@ -1,0 +1,47 @@
+{
+  "run_id": "20260726T205111Z_extract_layer_b_deam",
+  "name": "extract_layer_b_deam",
+  "started_utc": "2026-07-26T20:51:11.150696+00:00",
+  "seed": 0,
+  "params": {
+    "dataset": "deam",
+    "extractor_version": "layer_b/1.0.0",
+    "fs": 48000,
+    "max_duration_s": 30.0,
+    "roughness_duration_s": 10.0,
+    "seg_s": 2.0,
+    "target_lufs": -23.0,
+    "reference_spl_db": 60.0,
+    "n_jobs": 10,
+    "limit": null
+  },
+  "git_commit": "313753a876244e748326bd2dc0f26905de242d7f",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "7ebca11109f30d971df5f4f5fa3774c41ce61b92189fba76b02a4d181135c7d2",
+  "inputs": {
+    "labels": {
+      "n_files": 1,
+      "rollup_sha256": "1aafedb55a5993793f98d9eada372908299a05585c1e8b1232252a72ccc72bd3",
+      "files": [
+        {
+          "path": "data/labels_deam.csv",
+          "sha256": "36fce0db70443d80374cbec6d421ce6e5ec47807d85a1f26c5449de2f2cd00aa"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "n_ok": 477,
+    "n_features": 22,
+    "n_failed": 0,
+    "failed": [],
+    "elapsed_s": 3072.1
+  },
+  "artifacts": [],
+  "notes": {
+    "output": "data/features/layer_b_deam.parquet"
+  },
+  "finished_utc": "2026-07-26T21:42:23.452309+00:00"
+}

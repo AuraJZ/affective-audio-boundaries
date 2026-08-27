@@ -1,0 +1,215 @@
+{
+  "run_id": "20260727T095943Z_counterfactual_intervention",
+  "name": "counterfactual_intervention",
+  "started_utc": "2026-07-27T09:59:43.598871+00:00",
+  "seed": 42,
+  "params": {
+    "n_sources": 6,
+    "doses": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "interventions": {
+      "envelope_smooth": [
+        "onset_rate",
+        "onset_env_dmean",
+        "onset_env_mean"
+      ],
+      "spectral_smooth": [
+        "spec_contrast3_dmean",
+        "spec_flatness_std",
+        "mfcc1_std"
+      ],
+      "transient_inject": [
+        "onset_rate",
+        "onset_env_dmean"
+      ]
+    },
+    "invariant_features": [
+      "onset_env_dmean",
+      "spec_contrast3_dmean",
+      "onset_rate",
+      "spec_flatness_std"
+    ],
+    "models": "RF fit on each domain's full data, Layer A only"
+  },
+  "git_commit": "7ff2fc1ac58a85e8d74539540659d8c4537352fe",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "7ebca11109f30d971df5f4f5fa3774c41ce61b92189fba76b02a4d181135c7d2",
+  "inputs": {},
+  "metrics": {
+    "summary": [
+      {
+        "intervention": "envelope_smooth",
+        "target": "onset_rate",
+        "manip_rho": 0.2129,
+        "target_shift_sd": 0.8037,
+        "max_other_shift_sd": 2.5709,
+        "specificity": 0.3126,
+        "shift_rank_among_122": 10,
+        "dose_response_rho_deam": 0.0889,
+        "dose_response_rho_emo": -0.1535
+      },
+      {
+        "intervention": "envelope_smooth",
+        "target": "onset_env_dmean",
+        "manip_rho": -0.0323,
+        "target_shift_sd": 0.1359,
+        "max_other_shift_sd": 2.5709,
+        "specificity": 0.0529,
+        "shift_rank_among_122": 34,
+        "dose_response_rho_deam": 0.0889,
+        "dose_response_rho_emo": -0.1535
+      },
+      {
+        "intervention": "envelope_smooth",
+        "target": "onset_env_mean",
+        "manip_rho": 0.1561,
+        "target_shift_sd": 0.0281,
+        "max_other_shift_sd": 2.5709,
+        "specificity": 0.0109,
+        "shift_rank_among_122": 67,
+        "dose_response_rho_deam": 0.0889,
+        "dose_response_rho_emo": -0.1535
+      },
+      {
+        "intervention": "spectral_smooth",
+        "target": "spec_contrast3_dmean",
+        "manip_rho": -0.5545,
+        "target_shift_sd": 2.5096,
+        "max_other_shift_sd": 3.9356,
+        "specificity": 0.6377,
+        "shift_rank_among_122": 3,
+        "dose_response_rho_deam": 0.2129,
+        "dose_response_rho_emo": -0.0754
+      },
+      {
+        "intervention": "spectral_smooth",
+        "target": "spec_flatness_std",
+        "manip_rho": -0.3176,
+        "target_shift_sd": 0.2831,
+        "max_other_shift_sd": 3.9356,
+        "specificity": 0.0719,
+        "shift_rank_among_122": 84,
+        "dose_response_rho_deam": 0.2129,
+        "dose_response_rho_emo": -0.0754
+      },
+      {
+        "intervention": "spectral_smooth",
+        "target": "mfcc1_std",
+        "manip_rho": -0.4307,
+        "target_shift_sd": 0.7773,
+        "max_other_shift_sd": 3.9356,
+        "specificity": 0.1975,
+        "shift_rank_among_122": 41,
+        "dose_response_rho_deam": 0.2129,
+        "dose_response_rho_emo": -0.0754
+      },
+      {
+        "intervention": "transient_inject",
+        "target": "onset_rate",
+        "manip_rho": 0.3419,
+        "target_shift_sd": 1.0103,
+        "max_other_shift_sd": 4.4796,
+        "specificity": 0.2255,
+        "shift_rank_among_122": 9,
+        "dose_response_rho_deam": -0.0942,
+        "dose_response_rho_emo": -0.1885
+      },
+      {
+        "intervention": "transient_inject",
+        "target": "onset_env_dmean",
+        "manip_rho": 0.393,
+        "target_shift_sd": 0.673,
+        "max_other_shift_sd": 4.4796,
+        "specificity": 0.1502,
+        "shift_rank_among_122": 13,
+        "dose_response_rho_deam": -0.0942,
+        "dose_response_rho_emo": -0.1885
+      }
+    ],
+    "dose_response_curves": [
+      {
+        "intervention": "envelope_smooth",
+        "dose": 0,
+        "p_deam": 0.5853,
+        "p_emo": 0.5383
+      },
+      {
+        "intervention": "envelope_smooth",
+        "dose": 1,
+        "p_deam": 0.5383,
+        "p_emo": 0.4753
+      },
+      {
+        "intervention": "envelope_smooth",
+        "dose": 2,
+        "p_deam": 0.546,
+        "p_emo": 0.4747
+      },
+      {
+        "intervention": "envelope_smooth",
+        "dose": 3,
+        "p_deam": 0.539,
+        "p_emo": 0.4687
+      },
+      {
+        "intervention": "spectral_smooth",
+        "dose": 0,
+        "p_deam": 0.5853,
+        "p_emo": 0.5383
+      },
+      {
+        "intervention": "spectral_smooth",
+        "dose": 1,
+        "p_deam": 0.6907,
+        "p_emo": 0.5213
+      },
+      {
+        "intervention": "spectral_smooth",
+        "dose": 2,
+        "p_deam": 0.684,
+        "p_emo": 0.5253
+      },
+      {
+        "intervention": "spectral_smooth",
+        "dose": 3,
+        "p_deam": 0.6517,
+        "p_emo": 0.5393
+      },
+      {
+        "intervention": "transient_inject",
+        "dose": 0,
+        "p_deam": 0.5853,
+        "p_emo": 0.5383
+      },
+      {
+        "intervention": "transient_inject",
+        "dose": 1,
+        "p_deam": 0.483,
+        "p_emo": 0.4797
+      },
+      {
+        "intervention": "transient_inject",
+        "dose": 2,
+        "p_deam": 0.4783,
+        "p_emo": 0.465
+      },
+      {
+        "intervention": "transient_inject",
+        "dose": 3,
+        "p_deam": 0.4763,
+        "p_emo": 0.4493
+      }
+    ]
+  },
+  "artifacts": [
+    "counterfactual_raw.parquet",
+    "intervention_summary.csv"
+  ],
+  "finished_utc": "2026-07-27T10:00:27.076427+00:00"
+}

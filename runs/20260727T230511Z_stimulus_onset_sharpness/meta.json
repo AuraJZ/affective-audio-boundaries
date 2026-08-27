@@ -1,0 +1,51 @@
+{
+  "run_id": "20260727T230511Z_stimulus_onset_sharpness",
+  "name": "stimulus_onset_sharpness",
+  "started_utc": "2026-07-27T23:05:11.181664+00:00",
+  "seed": 0,
+  "params": {
+    "corpus": "Soundtracks Set1",
+    "n_clips": 360,
+    "hop_s": 0.005,
+    "question": "这批刺激有没有锐利声起始（决定听觉 N1 该不该存在）"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_clips": 360,
+    "rise_20ms": {
+      "median": 0.0032981865806505084,
+      "p10": 1.2758500179188558e-05,
+      "p90": 0.012655342556536197
+    },
+    "rise_200ms": {
+      "median": 0.5828183889389038,
+      "p10": 0.006962932320311663,
+      "p90": 1.3839489698410035
+    },
+    "t_to_half_s": {
+      "median": 0.025,
+      "p10": 0.02,
+      "p90": 0.9190000000000009
+    },
+    "lead_silence_ms": {
+      "median": 20.0,
+      "p10": 10.0,
+      "p90": 180.0
+    },
+    "duration_s": {
+      "median": 16.522448979591836,
+      "p10": 14.027755102040816,
+      "p90": 21.867102040816327
+    },
+    "frac_sharp_onset_le_50ms": 0.6027777777777777,
+    "frac_gradual_onset_gt_500ms": 0.1638888888888889,
+    "verdict": "sharp"
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T23:05:45.968903+00:00"
+}

@@ -1,0 +1,2440 @@
+{
+  "run_id": "20260727T102936Z_build_reg_labels_emo",
+  "name": "build_reg_labels_emo",
+  "started_utc": "2026-07-27T10:29:36.175999+00:00",
+  "seed": 0,
+  "params": {
+    "dataset": "emo",
+    "task": "regression",
+    "target": "arousal (−1..1)",
+    "include_mixes": false
+  },
+  "git_commit": "5a92a1cf9ef7de431c6e29890470f6a96837b1a5",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "7ebca11109f30d971df5f4f5fa3774c41ce61b92189fba76b02a4d181135c7d2",
+  "inputs": {
+    "audio": {
+      "n_files": 600,
+      "rollup_sha256": "8a90fea24e2faab1f6ce726b59b21f96082846ed33bf7b865a1e8edf4a4d015d",
+      "files": [
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human101979_1313063-hq.wav",
+          "sha256": "566f379d3c245b263c5a6513e866287f15b84c2f5d38e8970f231f474f80e110"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human102617_425689-hq.wav",
+          "sha256": "912803d6b79a1e78180b42cb8bb73f8c5abc87e77027e04a0e848491824f8cbd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human106261_1707984-hq.wav",
+          "sha256": "466619f503c15a5bd61614d37079f012e2301e4efa39bf002c8839d63d741e32"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human106568_7037-hq.wav",
+          "sha256": "9c61d21833ffca0f75f3d2fd445cf3e1be2b35c1c2d3227ad551b6f1fb48fe61"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human113598_1015240-hq.wav",
+          "sha256": "003961156a1a4cb13d69285903b2f99355ea51ce4d5717aa6863a6ffcd8785b7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human115208_1143716-hq.wav",
+          "sha256": "7ab1ab3f46ef355b26011f98adc2fddf5e632b6cf49bef99c607d7fb834f8787"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human117503_2101324-hq.wav",
+          "sha256": "a3668fad89b6ce9acbaf443f93b7dca2e1841784aec060dbc6310878f34fd7a2"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human118096_29541-hq.wav",
+          "sha256": "a42d45bdb33f4b950afb8d53f71f1f2070047266357387493121d7341a30bbcd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human125859_43-hq.wav",
+          "sha256": "50ae9178006a2b00a6d2e20c2ebaad0b58d2385d5a1f7a53b6fd1bde8dce4c35"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human127590_1648170-hq.wav",
+          "sha256": "364f5bad1e18c4d1b8d73dd14fbaa5915efe0d2f44c2e70de8e62cd91299fa6a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human128097_2338419-hq.wav",
+          "sha256": "b6283756984992b872a32b465a4427085bbfef296820f373e365102b11d3f345"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human128768_806506-hq.wav",
+          "sha256": "ab4c7afaae23eb2557466bf3cda38ab42e0bbbe3bf982c3dcbbe36b0bc63ff0a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human129783_1188483-hq.wav",
+          "sha256": "4e23534a0b88cebd0e6d6ccb92dbdd098790ba1f62e927e92f08b31b3ede40ef"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human131402_2337290-hq.wav",
+          "sha256": "950f42d57ed96300c1ca8db6f27e6c8e73b751b87fa44059034f8c031457736a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human138091_1839281-hq.wav",
+          "sha256": "6d5d204def73d94c12cba54bfe390f7c6f987ac5e3245c26862ac1cb4a06c318"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human140140_43-hq.wav",
+          "sha256": "87dd037c0746234c452fd5c19c256c3fd931d0cb5f6caff0d95ccd5f76cef31e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human143651_1924005-hq.wav",
+          "sha256": "0aa835c4e48d8874e9821b11483d8974d2c1be6bcaf4f0f0a940505722bc1346"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human144024_2588050-hq.wav",
+          "sha256": "3b04cb37dc716651efccd40fe64e091d19a18713e5ee05d4cc85d5139105a006"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human147543_591423-hq.wav",
+          "sha256": "d0fb0b3bb7c7cb99a44e98550261513b98c134608986bc2941284db6214aa4c8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human147643_2587501-hq.wav",
+          "sha256": "69e936525aee38de378b362ec413c4a60f97097bc77a20f9eb5ba7a08af1233d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human148009_2577970-hq.wav",
+          "sha256": "f6955c93a0ddfbfa5a7d30bed91d691ea8a391e8f8ddf077589a50086b7610ae"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human150850_826206-hq.wav",
+          "sha256": "d0f33b0df7861ea894471be95e0ac55a6397a36e0a2c1b0f3f5dc2c6c669f858"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human151060_2400359-hq.wav",
+          "sha256": "4dd9a2fd81a5b249160913c9be40340bc9baf20ca6372fc7d8bd7bd8fbd89382"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human156040_2558789-hq.wav",
+          "sha256": "39f7b80119d42b3ee45abd712756f5ad474a51c584f086ee50fa1226ef8237ca"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human156847_2730748-hq.wav",
+          "sha256": "677bfd9e235789c39ecbfd8ef78af97743a9f79470c7614013be304840e80471"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human161417_2895542-hq.wav",
+          "sha256": "d38804cc3291082fc1f35bd4e225b1edfae5a3dd957cc5606d9bbd2daf00eb92"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human162024_43-hq.wav",
+          "sha256": "d5a21b4dbf5e4e643957480c1acb33f3aebadd423adbcb38e3d70be4803319dd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human162620_2111976-hq.wav",
+          "sha256": "907a8abc14df76e02cb0383d1cc163ffa54c409786b8acdbffc280cf82012446"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human163496_2896221-hq.wav",
+          "sha256": "4537bc00787d8206b04d0ec2338714115323ea617acb1aaa53dc5dfeb8f9e1d8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human166175_1773681-hq.wav",
+          "sha256": "d5b440934fde23fe88329fed7e6019deeb54176e9ec094153b9a908ef50c25b9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human171120_2140699-hq.wav",
+          "sha256": "d38848322ea339493b0000843b9ed83f18fc9237a1ba88d4e0572495c8273b2d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human172230_1038806-hq.wav",
+          "sha256": "c5b428f03075397fc4a522cfb5fe8e83e4477b2e60646c924dafedf3ef28f3aa"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human178989_2417094-hq.wav",
+          "sha256": "19a6cf64e8e3aa73b8dc485d60d5086639e1484d1caf0e9c314cbbf45f665ff6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human179928_3223507-hq.wav",
+          "sha256": "7b03cb86ac6f358ea3c690d2d5dd563b86f60bf73d851d83e9dc016ebb66c0e2"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human180043_1038806-hq.wav",
+          "sha256": "8fbb4a5073ef29ae9f904915cdcc32f0705a3094707393b59c31d13eb8ae9121"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human181599_3384926-hq.wav",
+          "sha256": "2d4b1beada8d2ebc3d00f68caa9161259d47b6cc66b5a88e1ca6cac2e58fd925"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human187351_3297044-hq.wav",
+          "sha256": "67938de157882f10b873d43525fd7319cd9d4e4cf025e84cdaeb4118d81e203a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human191378_3557723-hq.wav",
+          "sha256": "0fa616538f9e1ec955c59c7fc9741eed0cde689c595e4800461fdd1010e3ad90"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human193794_2580450-hq.wav",
+          "sha256": "b6a12db914f21ac47dca0da8a4befcd67a6e047b626e384d17bb743c159baad7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human195053_2213158-hq.wav",
+          "sha256": "aa2e285703051f10741653d02f8b71bc245e749195d4d261f415ccbffb8e9593"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human19520_2-hq.wav",
+          "sha256": "3c274261d07a680331fc17e1508e14c960a7fa85707838844972abb422725dd8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human197144_3272432-hq.wav",
+          "sha256": "d256bd270283ff3b65c5b321aa6d03b76a626f101b9632c2b32fffb147ee06bf"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human198411_1648170-hq.wav",
+          "sha256": "eb88794c3e8b59aadef1bfe8a666780592c05c5fcb6c25e1f720826a8678fc6a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human202335_1661766-hq.wav",
+          "sha256": "9cd918da36b92244bea0ca7e5d4d2ec6c60351832ce0bffdbe0d9c49567fd7d5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human20292_99904-hq.wav",
+          "sha256": "b0d67a222cd8bed583072212bf892657c9a209f46c7f908a1f6f46e91520ff44"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human206021_1648170-hq.wav",
+          "sha256": "210e1020dd4f151e82208fa98b538834d378de198c2378e99c2f396d504618e5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human214147_1661766-hq.wav",
+          "sha256": "ab42018c51e6edd8d213c27a62a2f5566021bc25a7f70f6e14460b99bcc832b7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human22388_117199-hq.wav",
+          "sha256": "948ef340680ee1a1e37e419fabd9cecb022a9fd61dd73f95db0ad254a75fa942"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human231267_3219995-hq.wav",
+          "sha256": "d2fcf6ded424c6078f7881e791e15b17b49fe91c30af4980a17197ec01789a59"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human23312_146960-hq.wav",
+          "sha256": "36ef89ee219dc0a484f6676787fde8ae3bc7aa6626cc1637344f98429a24351f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human234161_180659-hq.wav",
+          "sha256": "d8457a0bcfd3e262ba55b9311c6a6f00879602742ae9272822ed8a469ffca731"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human238549_1661766-hq.wav",
+          "sha256": "7db556d53c87cff34f74072fe934c3830016625554ba85f90e42fec690880107"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human24011_156279-hq.wav",
+          "sha256": "9271b13e8a56556c1920f910251bcb2923a1ee2e1bcd408f8437241b2ffc25e6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human240324_1149179-hq.wav",
+          "sha256": "759fd386c9429b012fac2e126c4a037f2dc8533e06df73ddde86cbed75ac0edb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human242932_3719168-hq.wav",
+          "sha256": "89da131c99115dfd26b25ff4ab8769564f2a342f6b7472018026833fe9845fb7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human257644_3865966-hq.wav",
+          "sha256": "faacd229270a7dd57e54e275142646f45c700dae98bf0d9f93b742ee003002f6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human259612_4841074-hq.wav",
+          "sha256": "de10e4f31aa27a50e53e0c4ce64ed9e54c9c0a91a87c75fe8020751a00419d90"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human261557_3748023-hq.wav",
+          "sha256": "ef545ca97f435dfd9d4a74df463c82fbf237ddc25dc2a2072712583273686897"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human261596_4486188-hq.wav",
+          "sha256": "a76eb1b3990d22ba4293b60f439d0a6099fa45a37fbe260f70f35596aef9a25f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human262168_93137-hq.wav",
+          "sha256": "9a39b1d4d1100232276415459771c5e0da45a77d62306d02c65297a5e5f64eb6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human267563_4463962-hq.wav",
+          "sha256": "362697bb821fae813ef15fb43847c44f13138a7a249f0bb6fe01c7a4d630d991"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human270457_5102331-hq.wav",
+          "sha256": "48bdecdb41e8c9730e6aa92bba995a66b565c274cf67d2b3b00245685f7bb8a7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human271910_4181170-hq.wav",
+          "sha256": "9c16ede958360f82ceb2b7a31b249b993b3d8f3854635ce818ac3810ee6253e6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human272275_4181170-hq.wav",
+          "sha256": "da5dd32d0790d3420aef479ee1834812b2e3d0885aee355d6f483063a353ae3c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human31532_118241-hq.wav",
+          "sha256": "f57a1fff093f563054c4eb140b8d5e7a685cb049bc0ca85686f795275f576898"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human31781_266482-hq.wav",
+          "sha256": "ae3cfc461a5233a1fc6f243ad1ae9196a177c8bd83ff99613732e9842741e42a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human318638_1038858-hq.wav",
+          "sha256": "3fe5eaab269b614f2f139fc4405494de44b2e42b0b5cebad31ccf007b7dc3b0e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human31962_129090-hq.wav",
+          "sha256": "b6ff3b5527a40b5b584f1627f94424c1be6f487bcbe75960711a815d0ec60b69"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human334691_5848334-hq.wav",
+          "sha256": "b0dae4201bd1649afa9b80b6648a722deaa9464ad999d305f28f705c5f3fe439"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human339271_2631614-hq.wav",
+          "sha256": "c8a048151ef0bd4e9dcb87ea9f920c3231b67d54d73f4b2c2a18e71b879b371b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human350728_97763-hq.wav",
+          "sha256": "7495295ddb023c124e682510d67d2c534b54cf660c7bf3a5c7b8fb238a610f9d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human39932_8043-hq.wav",
+          "sha256": "829e55a9e545e2eff884f9caff9134075bc80eb6e1b61718b0041aa37cbbe086"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human41980_215874-hq.wav",
+          "sha256": "bc55096edfcb05d649fa4fc947f57a28db9080105245d37bbe7675317be13f0a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human44311_126288-hq.wav",
+          "sha256": "94a3108381a0eada4a25060f8cad503023ac2fc907ebf0a4b0cfa1d721fb460f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human44713_6281-hq.wav",
+          "sha256": "9a7f23023314ea5f3a47290d71642ba07c01966b6524d41f8c075bdb8f76a236"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human50865_118241-hq.wav",
+          "sha256": "3959bc8459532b05810f350dbd460eba5d69b7d1fe63de4289491e7c74d656a4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human52285_626078-hq.wav",
+          "sha256": "1306b434bd2931f2c422c4753a467080c5dfc34cf3f0865306c9b9e74eeb6332"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human55495_36188-hq.wav",
+          "sha256": "570e5726ff7d50640ee4825bbb3c5d95f165f8250feed9c9a40b6e3742cbaf2f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human56873_707638-hq.wav",
+          "sha256": "0dc1a99569ee5340337445bc5f47d524c86b4a11de96bf977968b1030f87b195"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human58407_43834-hq.wav",
+          "sha256": "be170dffee32c9358754d045765cd37b0f78a7afb619393deb97ffdc1b9af6be"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human60482_719027-hq.wav",
+          "sha256": "e662c5da76ba683bb07adcb6010ddd132de2cc4b1bf120c53970dbfe0503587d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human66607_800302-hq.wav",
+          "sha256": "e6516dc18444e58a700575d1a21634a91d329ebbeefed17ee33a0fe7062200df"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human69146_988961-hq.wav",
+          "sha256": "9907dad496d5a0f0f495e782079cb0d34a3c012af426d45c057d0dc811d762c3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human73108_36188-hq.wav",
+          "sha256": "4d91d94f2971701a20e95656f5e741daf71a5f4d41baea4672c9b48c1933bf2e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human75265_143133-hq.wav",
+          "sha256": "e900a502c527a8f59ea9fd31eafadafeb77f234a113295a8786238f3584d01a8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human76849_7037-hq.wav",
+          "sha256": "61211003af6c40b6a0b9b78d6f103f15697f512331679722326108845f8ed3dc"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human77372_1173265-hq.wav",
+          "sha256": "389ad6ceb2c68fd0676f63d9304c82307f4cc5b3a0bd4b888820a7d35060a62d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human80280_1123190-hq.wav",
+          "sha256": "cf8868d6fef761978e7b2ab20fa4b6e882572df357833b3af216a9c2fe437f3f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human80688_344584-hq.wav",
+          "sha256": "a39e52b8692b2d7520001492e012dc5f47c38fdbb8d60db27d8de91027467b8d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human82703_634166-hq.wav",
+          "sha256": "8c77ed3d63bbd9c743d2b9098f8331e4cadde2d4fea06e2b050ba847786dd525"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_0human83360_791247-hq.wav",
+          "sha256": "1c8340bd9b9b4635dc8bb0406fcb5fff902e3fffb7392dd016d9d10e849ffbf6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_1human163146_2880190-hq.wav",
+          "sha256": "d6086fe81f983e270602d0be4d465c641d600c99880a519f82eefa01580abb4a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_1human164373_2558789-hq.wav",
+          "sha256": "c91ca242edc3a4366231b08b976d71174fd5874906c08e353a16a234ff47a8ba"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_1human178333_2042115-hq.wav",
+          "sha256": "d3f3ac9cb89109c965c444201d7bd03377f2785fb34fd915fe47d2d2a415512e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_1human195718_2580450-hq.wav",
+          "sha256": "f9ad2c30b735960f670b9e538f2ae965a4843759f433ece0946643dfbe403529"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_1human207728_1038806-hq.wav",
+          "sha256": "de394cebf58af9f0956c498c1db94bdcc52a6c439992b001f06112969b8970b7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_1human249742_4575051-hq.wav",
+          "sha256": "3c7fb80abac8d6fc3d45be76e28aa5c644a1916331ad58c7adb14c780838e5d9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_1human44199_215874-hq.wav",
+          "sha256": "b0cded6d9a80bf7b111e284812739bff187c1134042d330a4bf88979f0cdcec4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_1human51792_612689-hq.wav",
+          "sha256": "d4e9e0dcd78ceaa77efb890688c4d0f6cf73b38585cdcb26d302379b050a2073"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/human/r_1human54889_29541-hq.wav",
+          "sha256": "365af16b249185a40b761930730443e71a3d2de7292e3a3eb2e46a06f28580b4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator100046_1578278-hq.wav",
+          "sha256": "3326ec6911abd97a0f2ffc75c308cb9e49fcfcf74c10ef6c6eaafe066e897e9f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator101224_1015240-hq.wav",
+          "sha256": "4bd5ba24f611da3c21d9cf8d53f60d1c102161ae1e39964df45615aa2398c13e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator104463_1774234-hq.wav",
+          "sha256": "c2198c3dba63ca5065f5f381afa725e0b25ca26bd0b9b90b0d06f00b9263e51c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator107353_1795380-hq.wav",
+          "sha256": "c4fc382df5ae321589d39cebbaabe344ada5ec854ea0d52c7ea9d19b289056b9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator110857_1478120-hq.wav",
+          "sha256": "e6d49ad0e4e228a3a369e232acde599227339923e21d2c324c808fb95d0233a3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator113532_137116-hq.wav",
+          "sha256": "51531586c4c7028794473b534d1acb28d92964aaf8d52167358f51f56bee3873"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator114474_1962040-hq.wav",
+          "sha256": "5151de473c24460ad2def3e8364768da3dcd6135dc4bfb7497fced6510898ebd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator116533_401166-hq.wav",
+          "sha256": "3079cd8d6529b9027ca0510928ac9aaddcd2a1d6d8217afd2d0860a522bbc33e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator117262_1661766-hq.wav",
+          "sha256": "7d4c662d1afdf9de27b810e4e0f862518c4a9e1d822ef761071e6d6987d08ebd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator11739_31076-hq.wav",
+          "sha256": "975724530c89b8981692d64d7e43bcf95d9475c2a2ff7435416adee1afe5692f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator118517_187156-hq.wav",
+          "sha256": "9c6b5b09c0e5aef32a644546c738c796877a2bd23438da2894a975a3e36ca103"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator121532_2205380-hq.wav",
+          "sha256": "db717a823e91226a62c1ab5493e2b90665506d8c65920644858e343c66213bdb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator127352_8043-hq.wav",
+          "sha256": "22c2660663fd73000542deb65311d2fbda7e4e1d33d9b6345fec8bf099d473ab"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator127712_1037630-hq.wav",
+          "sha256": "39a5070cd455a477777f2afc37a6e6df974391dd0fc8dd502225326279782a3f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator128459_1337920-hq.wav",
+          "sha256": "af22066b7ed0ec11e402610479223b35495dee9a2bd875d1bd8f84151f11dd4c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator130332_531600-hq.wav",
+          "sha256": "031703a61cfaa70024277dd78e5372bbc8c1311552cdf38d095ac1ee0aa9f1e3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator131165_1766429-hq.wav",
+          "sha256": "e61770145604bc34f52b77f5544421b3388674c7fd4500a9d744d60244230a58"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator131576_1873507-hq.wav",
+          "sha256": "77a53ae11120a1842a98f11142c074c6ba410c670c29e13bbf9d243f5fc528de"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator13712_37876-hq.wav",
+          "sha256": "a6a641016a9aba128f4fb9c71cb65b7b9a00838f4991418449ee9485116e8611"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator140043_2545557-hq.wav",
+          "sha256": "04f45d3fe6c1247dfd5308928159c745472c354716c7fbf08fc395a48cdaf1fe"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator142022_129090-hq.wav",
+          "sha256": "b38a038d2cd4e31f7ac1bc300946e7bae8c8f340ab31e7926549dde9740941f6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator143901_71257-hq.wav",
+          "sha256": "fa51094299762ab8895cc2b5b30be46c1500cdd35f95cf4b3fd59285fe3a2b5c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator143963_18799-hq.wav",
+          "sha256": "5279ed1e208249b34305b4c9a7d15889b9777233040b139e8a5197b37b11c173"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator144897_2244250-hq.wav",
+          "sha256": "b3f54a6af4e5cdef3b9c46404c61a80de0168699f66236a8c97a91972000efb6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator15000_43744-hq.wav",
+          "sha256": "6be67e39f701a99ea708f664b719fbc5eed59057535c2dd1502df0e29773e611"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator152501_2337088-hq.wav",
+          "sha256": "171e516045cc5f2b260fd451e40b98517b25a27251816b176d67a9b1fb69a774"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator15361_96-hq.wav",
+          "sha256": "5716d28868280c73f6ce196fe09dc6e69f6f8f3971a70590e8b0f301385dbac2"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator158498_2865338-hq.wav",
+          "sha256": "ec78453464a26d0b75c6577290ea453d97e58d5182b6c72a59f11744685b14fd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator158727_2836235-hq.wav",
+          "sha256": "70012f8b833019a229273b9667d834952792eb5eb78597996446e810631b4c40"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator164053_5726-hq.wav",
+          "sha256": "80f4e1af6006a3efd1e9d0709c6b05d4892810fca3e5f4d1ececd767862ba18c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator167027_907124-hq.wav",
+          "sha256": "15ca9ddcafda90317b37abbd3abf3a9fa4bd00d9351193b9e7898cdc19e7b5ed"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator172884_2101576-hq.wav",
+          "sha256": "588431f855cda0e6a0d8a942aa94a2487249b8eeb9f6c83a0e9ed6988310a22e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator173978_773910-hq.wav",
+          "sha256": "8911361567867988120179404acb4912c29a588e13e80af14f08f43c1dd0fd4b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator17852_6997-hq.wav",
+          "sha256": "8fdb87e84354ac605cc6bcf2d76a49ce451e53fcc1495131445026ba4e8525d4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator179606_2409224-hq.wav",
+          "sha256": "968a2aca1a061c1db99993871aa99cdb6504f6b7105fa08582c32755787e2ddc"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator181718_3153523-hq.wav",
+          "sha256": "18af456fae72b4733a70754a83a820135c85d0da21dbc8e4d90785e778cd1e71"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator181813_3153523-hq.wav",
+          "sha256": "33a18b3f05ceb3ac9379729246816f9c69d69af6d79d496f5f6acd27ccb13c18"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator185867_2337088-hq.wav",
+          "sha256": "fac18bc9c236c42383afb612a7a2405b37e361625c421f2901e8a12e0efa9ce1"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator18761_37876-hq.wav",
+          "sha256": "fb8fe31fa830c35358ab2d6f887a6a35a6b4051b8d6709ca5adea115248fef3d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator19167_59536-hq.wav",
+          "sha256": "e7cf923ede4b3694b4fb02250828d3e8a30e37a188b5e40b861addac9d3324e7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator19369_8043-hq.wav",
+          "sha256": "5ae91fa9b4b7e5cc7d30955ca04e9ff7856ea097b57cc8766cd8b68086115fd9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator200290_3406193-hq.wav",
+          "sha256": "07ca57264dea50eaf647655aaf81809ff8163f09044c15be06e735484342c1f4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator208801_2337088-hq.wav",
+          "sha256": "0456fd6424dec9d483459973de9d30dc3b2eb7fe1704b2a5d32150737ee3d2ba"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator213920_1648170-hq.wav",
+          "sha256": "0a4eecb9701f3c05f61af932f2b9996a1d6ec10b8aea35bf45e4b28b300be254"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator218284_2337088-hq.wav",
+          "sha256": "4c79bbd1475f0bf89ef1315462ffdc15534151cc1f3c589c4279e40a83a095a4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator22876_7037-hq.wav",
+          "sha256": "d6708dab74bc4b25c3af3da34fe859e41bf7cb733cf411922439b66bcdb4bd2f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator237867_2337088-hq.wav",
+          "sha256": "3cae9f7ea8b0d34036a2caadb7a883fbeab13043f0179cff3d01da8c8f81dd0f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator241912_256226-hq.wav",
+          "sha256": "702d7b153a46dbff15e13b1d7c1b1ad3c22c016d67993f9ec07331a4fdc2b3f0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator27485_88185-hq.wav",
+          "sha256": "8272174a540ebe0f02152be0b0bd7138dabe68f5d0ad8fb1a92c78b8554aee21"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator30166_95609-hq.wav",
+          "sha256": "1b22f8bc6bdafacd6341a1bedfe6e7edee8a7f4466e194a00cc5efe5a793487b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator33459_298011-hq.wav",
+          "sha256": "dce9859310198eb39f51a7d59188b06bd288740ff937290cf3ac86560b1a040d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator335975_4067257-hq.wav",
+          "sha256": "eaf1d9c5bda9ad66382449e494154a02cd6e15da5b4f42826fec5c8da69810bb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator34280_199517-hq.wav",
+          "sha256": "86f26114261d793ed125cfb5e418d3ee4e5ebdd24e3b8cb928f6812a72d05e75"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator36047_8043-hq.wav",
+          "sha256": "a23238eec1fe82fb5c5a43602219cd7445e0867e2c234f70a4068cdd120d4c7a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator36181_341440-hq.wav",
+          "sha256": "18af8d5ceb8dd0463cba665a851937155ed597a6f5cc2e3af76613eb1881b1ad"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator38760_34216-hq.wav",
+          "sha256": "2ed41437f108dc0db6019ed66082c87c680287fa7ea682694a345ab7abf457d9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator40722_187765-hq.wav",
+          "sha256": "9cdb5df1645d771780c45a59022afac04cd18c10f85b2f3f3534624f55b1229d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator46092_384275-hq.wav",
+          "sha256": "b79dcdf4bf7eb1e4265cbc1c372c061c74b282e780e683c3e8f03ad76ecd83e0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator47098_323828-hq.wav",
+          "sha256": "18e125170db28e6324a690bc3ebbe64d91bac11f2f97d1db193b80d83bc92f26"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator48030_528100-hq.wav",
+          "sha256": "ea80d2c108ce033b91f1fdd8ab5cc053c177c4e429c8ca0faffbb56f6bbb8014"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator51403_556708-hq.wav",
+          "sha256": "2cd39e7309786ab3acdfa561e29de49a611a6c6c67a716b47c4286295290cafd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator55031_680310-hq.wav",
+          "sha256": "b69139a71049cd84fdf0d9b7131d7b3dece928812b3ef460787828a9ad52e97f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator55583_18799-hq.wav",
+          "sha256": "765f01bdb2c956a5bf4d652fd00e9d06e2421e8c43e78b51a9a2aeb266b22bb9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator56874_36188-hq.wav",
+          "sha256": "c1bd1684bcbdcf42726c5382d43c1018027bd4f710d03a5b1dbe5a08745079f0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator57787_717853-hq.wav",
+          "sha256": "2c782cff8473bed7e0d2f856342626a93c5ecdc6746e4fd64fa4fc67a6fae08f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator60741_199526-hq.wav",
+          "sha256": "56b7959d2df058405fbd3eefffa1f2ea6be318a7d9e0b0e05fc042668a2828f5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator60755_27178-hq.wav",
+          "sha256": "3ca4bef50f3e6ac224be12dbaec297fcc1009064255ed326903e39f0bd53904e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator61573_5726-hq.wav",
+          "sha256": "608cf5e94359e6346b7fd691ec1279114939676ceff274ecd7d5e8c7c5f19dae"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator62579_230160-hq.wav",
+          "sha256": "187c340da64203eb9aeb747386a19287d6beadd80be52288a4ba359d4f822682"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator65471_8043-hq.wav",
+          "sha256": "ae238ad4e6149ddb8acf31e611531085f642e03cf08b4a5e43ed081f039fa1da"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator65735_230208-hq.wav",
+          "sha256": "b8649d7311b77a0a781bdc4ed901968f07356f834113774e77eee216049ff3da"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator65745_8043-hq.wav",
+          "sha256": "b5ddff71ba26a732884519f82d1ba46c20983552b6edc944d7f5fc3a6e6f8891"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator66332_359239-hq.wav",
+          "sha256": "ff18f212f8148e9c863dbda81f4f255e5e6619ed6d78b2488ef669848b8a0eef"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator68634_40561-hq.wav",
+          "sha256": "67c8b3120540e0e7f4978bba8fdae608ec655ed7719a997f592b230a17961694"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator69954_811830-hq.wav",
+          "sha256": "2e549a6ce0ef1ff577b40fabc29aa2e3d0629de202bad4eeae8ffc60973f7141"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator719_19-hq.wav",
+          "sha256": "9f591328e0648fc1f1193f8975d61509cc7315a0c536d98a7f3613624b188932"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator72534_1007221-hq.wav",
+          "sha256": "1b0d8a698f7cc8114c3f3949f82f686db8832e73e3ea96eece66ad541af7c15d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator75321_94080-hq.wav",
+          "sha256": "3ccad16b7a1569141f2aa792adc38a35f2d7f7df1c3b57629107340335fe6a33"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator78564_1218676-hq.wav",
+          "sha256": "daa151e70f0034fdbe3c04b2e7a33df4189e3f4ada269fc3e64a906537552e8c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator79438_646701-hq.wav",
+          "sha256": "3b21df0b3539f8286c1552024553d77bb08c45745c9e238c094db497374fbc36"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator87132_35187-hq.wav",
+          "sha256": "76974976efee14ebd8b15cb28b9d72d5e6bbcc50a4fdb01a99e2a9772cf7cfc4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator87306_1267745-hq.wav",
+          "sha256": "d6ee28f733fc0e5f797a38b81d8fced606e7bf8bdc193cff08d6752e5cf425e3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator91328_1148115-hq.wav",
+          "sha256": "d62ce5ff4bc68dcd78d387057150bb612523c9d95877c050e31ab94ecf191a0a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator94016_1086669-hq.wav",
+          "sha256": "60ab902415a0d04ea0b3b147ec1394dec6561e0f77757a3510e23d7d446da71b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_0indicator94772_1310146-hq.wav",
+          "sha256": "ce46db894ad54d0328b8a68c4f0adf99da3ca7ec4f54d285cca560b1d4b873a1"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_1indicator103136_7037-hq.wav",
+          "sha256": "610eddd1dc9746297baffe1c1a9d6382549faa462018c853b7c243207801f834"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_1indicator12056_32690-hq.wav",
+          "sha256": "8873e83b8ea29e6c07a27aab352b941d58c460694a87261de394c58b75ef7116"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_1indicator149925_1148115-hq.wav",
+          "sha256": "7371847a2f811056e7ca0617d5c50903d8af6110505aed9bea9da0dbbb66bf2f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_1indicator161828_43-hq.wav",
+          "sha256": "75f92aecaa891e9c5dd420e9a6a55ecc1f48cd97ebb8176f6125aab889d78d64"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_1indicator46064_129090-hq.wav",
+          "sha256": "940aa5abb8ecab4a3f5f7498326aeea022a758133db45918af333872ab59f6c6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_1indicator54747_170972-hq.wav",
+          "sha256": "3fa78371e3ae4cd7fa3182b2cdec5d47f560ba1d3e783730a2d06a3140c7ae30"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_1indicator58615_735271-hq.wav",
+          "sha256": "120b151b293d54386ff941076a137297eb6312b0a53ce4c4592534293823a1a8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_1indicator6243958_1779874-hq.wav",
+          "sha256": "e74e8a8ac49c31229d2fa6bdb16c6b0cf6ef2482ec6796826f94437a4fe49c11"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_1indicator62620_823873-hq.wav",
+          "sha256": "ebaeeb407e7ab2fbe3e1390c2f684ce649d4eb70407357433eb4cfa4ae83da68"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_2indicator4100127_4948-hq.wav",
+          "sha256": "b1df9caba332ce3d0afba8dec7149c1c4dde30a66dc4d5a3c41378c05a2e7fbb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_3indicator0122772_1646625-hq.wav",
+          "sha256": "4cf95469720d723be5a83b53f20504aee2a5090c017a90dc9b034bed188bbd22"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_5indicator14899_37876-hq.wav",
+          "sha256": "0fc2e5ac7a8ea251eb363fd73eae2c38d74e908bf2b324e6e5a97cf18a830ab5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_5indicator21041_100877-hq.wav",
+          "sha256": "48cd0fbdab326d24ff743366fd123ef4a5a0ce79be3fd5e7589329d3cebdfbf5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_5indicator59071_8556-hq.wav",
+          "sha256": "508da8713b6c70e83c43ffe3659b0162cf200dabaf3a8cbe9861eaeab6344717"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/indicator/r_8indicator262210_4415905-hq.wav",
+          "sha256": "7096b808381373eab9e1be35effafa7ac8f028d14b12e986dcf952d27a77e6df"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical109152_201367-hq.wav",
+          "sha256": "db2f2ef2eb6f06efc6f7d705fab67b7e5fc8172f2dcf255ed750190a5a70990f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical111665_406409-hq.wav",
+          "sha256": "7693f1073a828b9d56e8cbfd5541dca9147ec4eb91d98c8e3356758d39fc7c57"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical112812_1535323-hq.wav",
+          "sha256": "0a12452157bd25a873463ebbf3abcdf7f8274cf7803a5de9ccbcaa6ef523c50b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical114288_1163762-hq.wav",
+          "sha256": "affe38a1a6db891cc358b0c663eeb403b8dd644abf072dcecb61e952be83cec4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical11598_31600-hq.wav",
+          "sha256": "94443431316ffdd2bc7e5ec63859dc8362d143a62e4554dda7210075b5b77ff1"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical120385_288-hq.wav",
+          "sha256": "3796b2f0c99d4cd553a5a83cf970ce8f010e2e25c1baec12586b84562e64e90a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical132592_1634107-hq.wav",
+          "sha256": "2a8e94c448adc979d741724fad84c8b02b33f54ff7447c48a500fe38cf666db9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical134783_2244250-hq.wav",
+          "sha256": "7efcc5c8880fc5cfd99af18c1b8bdd7490b285211d6cc940baaa69b8b809e313"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical134922_2461495-hq.wav",
+          "sha256": "3df90a561c4155824301152b1313ed76f8ec45ecdf5fba7e4d635e644354c268"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical145013_2580450-hq.wav",
+          "sha256": "8eb9d08322983400aac19f9a3fd2f8f297bc9ade28691152f70a1e5133098e62"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical160545_2193194-hq.wav",
+          "sha256": "fb38e75f8d7ca0b771c79e6f25769e80f8258441ed1a28a2c91ba8b4cd140442"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical160746_2898104-hq.wav",
+          "sha256": "7d13087b064e8c4a77f0b0a4d3ed8ec33cbce5340b8c97bf58e3c576dd51bf6b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical165696_354987-hq.wav",
+          "sha256": "4bed3d68cedc831d7db3550ffc29f21d311e24a3537b659bce33e8cfa0199f32"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical166635_2015227-hq.wav",
+          "sha256": "8baa810e9a99fcdecf95167e352033fcac07ea5212d80ae460c64c2380b9d748"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical167898_454894-hq.wav",
+          "sha256": "5ac09f84746ad11cdb247770d7a1ea85e1db71757bf84bf6fa39e540208824a6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical169167_2826383-hq.wav",
+          "sha256": "6e42eea2aa568233c016b1aec1d79aa63a33c20eecda8dfacbae2cd7fdb850a6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical170125_3011039-hq.wav",
+          "sha256": "e36f9a7d358244e84f482e5b1fb8def515a52004c001f7f4394441c3a474a8c0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical170240_3147897-hq.wav",
+          "sha256": "4c4592beb7232496c0f00a7700c22cf31f3c932cdcd05edbeb6372d3279adc4f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical170404_1531809-hq.wav",
+          "sha256": "674a3e0d96274810b5b595ba40ae2cc52ba0354b12056f5a5443a54d1819944a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical170868_1038806-hq.wav",
+          "sha256": "95ece6bbed37bae4fd314243eb17e00d58904a0f25bc1b60f12902502e9aa8bd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical171951_114198-hq.wav",
+          "sha256": "3c05d428570a92b3d7d54d93aa17e04b58cda5d0ef6ace09636d9cdf5b41bac0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical17498_62289-hq.wav",
+          "sha256": "cb851a7e28fcf7039c9238247ce15eca8638abd3eaacd4389f5d8b75e84ff3a3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical17612_17129-hq.wav",
+          "sha256": "2752a0cfe809c90f1bf19403a2e6661d9aeb4f1b6398b13cc91ebd57c01787cb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical17742_61521-hq.wav",
+          "sha256": "ad1de665ee4f803d4f57ac0af4a38ad911ad8e0075405fa8c8dfb4d8d61aa27b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical1784_1198-hq.wav",
+          "sha256": "ac11daf41b847360adfd1530a553c2c77695ec05385ef4b8fb3304aa782b9799"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical180502_985466-hq.wav",
+          "sha256": "57d64c308ae8aa0a864378bbf3cdfb8a4cad89b3e470d683ba9648523486963e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical18457_8043-hq.wav",
+          "sha256": "96bdb9ad8c2aa05ef872ffebc4c521f57d447a3b1cac2cf836834e894ba0615d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical188150_1039739-hq.wav",
+          "sha256": "d22adecf05c9e858a32b6569f55c2c42a4451c39eeddeeea1dae48dfadcca8ed"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical18867_62289-hq.wav",
+          "sha256": "dbcdcdd8a9284cb7c7a89129359bbfcf43efd2cb25d7f59e69aacc465ef50eed"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical18957_5745-hq.wav",
+          "sha256": "a69ede4deb026021473dca9e92409d977fdf3a0d04e7b5fe38ea7a1b9dae5434"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical198357_7037-hq.wav",
+          "sha256": "a81950da05cbc79d8e35e363f2ffce519494ca86e1dc72c3ada1436c44694bbf"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical201176_401348-hq.wav",
+          "sha256": "53d09bb6fc627abffe0d16b660bdf79d49ba9dd00357256e68435bb76f3cde74"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical204001_3816115-hq.wav",
+          "sha256": "6665acdd2afcb504306c9c6e3837d860ddac0591c9e4d5b1eda7aef300deb72e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical204488_1573847-hq.wav",
+          "sha256": "f507b7cb80dfeef211b100b29ea104b6076d750351a0ae7414e6dd9fd6ad025e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical209297_828493-hq.wav",
+          "sha256": "04abcffaa6d8df85c8576e26055fbdb728e217ca9a5aa6491c5b968dbb57889f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical21066_45914-hq.wav",
+          "sha256": "7e443a4aa6545e7fb4c0b0d5c21775474d686acb2c96ea9f98c9691c98126ce0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical221922_2737063-hq.wav",
+          "sha256": "d2841bab0f86519fe87e96d1028cbafda85be08c3c9b94dfed1623019547f4f5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical223070_2112203-hq.wav",
+          "sha256": "7fe8c993772b6a044f01ba661c6c7e19a016f5005a7294fb9f5403c8be062820"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical231528_2549002-hq.wav",
+          "sha256": "630f6b78becbf8a8050887ff55632fa12a76ae5478419afafdb7f245d71471ca"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical233222_4214779-hq.wav",
+          "sha256": "3d93614e7e5f0e04aa2d5673cf8226bf7555abddaf36de53cc34f65449a19622"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical234008_1274078-hq.wav",
+          "sha256": "118b4418285516c0014dbc64561b068e2b2eb8b8a0267fa969b7b9898a5fa965"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical2356_3525-hq.wav",
+          "sha256": "8b9a794e0985c07bbfd7001581fcc3552fce1eeae8db7ff48773de631b166432"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical237743_691206-hq.wav",
+          "sha256": "79711be3e11a993af20057b62d25fbe5d48e5965028125baa02dd7fb67d075eb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical238156_130385-hq.wav",
+          "sha256": "dc11b88aa1b6c09f33dbc9f5a3346d21a172848bd847f04631c64556eaf02bb4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical239200_417293-hq.wav",
+          "sha256": "1fba20cc5aa56b4cf4592e494f7441f35bdba4544ab120c2792b8f00c13cd4cd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical239939_3597870-hq.wav",
+          "sha256": "b91b6c2ee2d0b7f9c14f45c4c7b5fb38a36bb9389cb341fbcb1c51e7203beedc"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical244364_557477-hq.wav",
+          "sha256": "938b69731de1c28d6fa027099b3946b0ab2ed40547b13cb584812cc6762e66ae"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical244820_4056007-hq.wav",
+          "sha256": "188a493cf5aadf62e85fdd8d787fd4aacd9d43a57396db1d03036d504276da63"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical24671_6997-hq.wav",
+          "sha256": "ad778af5d0ee80415b870af685a0f43beec5d9c33ab3bdc6541cbb7e0f935ba5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical256874_1648170-hq.wav",
+          "sha256": "4d65e6819e0b27763225bc0dbd681aa4122a00eb59e4f17f27acb6041117b9c9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical261164_3452716-hq.wav",
+          "sha256": "d14552e09d2bbdf51282120c85932a08f04f6482a4227e3b85d176e8538b3f20"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical262574_525245-hq.wav",
+          "sha256": "360d08be4cfb6b010e1a16a7107ae8c650346b0827c5ebf14e8812a6544d07db"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical262587_4206277-hq.wav",
+          "sha256": "d2400df269e35a6447124a38fa51cbe48c748ecf11b83c885403c6eebc08aeca"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical264313_3820822-hq.wav",
+          "sha256": "a1b85ad5f71525061456c73c59f2194987f741cdc357d51d6b7b5547cf00fda1"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical274257_4486188-hq.wav",
+          "sha256": "c9989c3a00740d451a82bc76b5c6d9070a9b3ddd11d6e5c511f25db41f056342"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical28218_52325-hq.wav",
+          "sha256": "96dce4d209e3bd0bca75dc5d2294b209a7deef9ce4f5cd45a0e3afff8614018b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical29856_57789-hq.wav",
+          "sha256": "49c318cbc7e0bf09f7c7c5096d64059a42bf2c40bf3a2c7226296c1b1693427f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical30296_35389-hq.wav",
+          "sha256": "8b4df1333781e8e12bb51651f84104f1d9fcf3b5351050988b36137cc8cb05fe"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical30386_95609-hq.wav",
+          "sha256": "61c269ad006f04c2f523ac1719e33f976a9e63ab30d674a84e6281fc33586c35"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical318619_739478-hq.wav",
+          "sha256": "a36d87f4b5ea4c17bf625c853c77e96781b4ff738613974c1b72ea0fcce611f3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical325722_5622605-hq.wav",
+          "sha256": "36195c3fe181f9cd2c0829d5151a11108b28899eb7265ca522eddf7b46d8da9e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical326631_5305165-hq.wav",
+          "sha256": "70df6a495876ce9dd72fe4f78e001586bd2946c33eb24e3c1b6680a0c14c059a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical328750_2472895-hq.wav",
+          "sha256": "11159bdfc792f102449861a9b83b2f192cbcb1a1c4d3062ec4ee8d469e96cc92"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical329977_2713464-hq.wav",
+          "sha256": "5c11cfef1859af8ad17d06786160b610f729f4753cd98c8a5d5b207f9d36ed94"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical335535_4663069-hq.wav",
+          "sha256": "b6b7367b18aafe7890c8e91e50bfe271595f4c78c495bcf3f08426a9c4737a55"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical337096_3474310-hq.wav",
+          "sha256": "649b6a255cde0be920beedb39b8743987cb47e32f05b197dca72c048b187f14d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical348658_1648170-hq.wav",
+          "sha256": "2bb91dae53df4e01add696927241ffa4239794d3851fa4f57eea87907e53b411"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical47044_230160-hq.wav",
+          "sha256": "4cfb997d44f8257645ca3cbab90df9c07629502f5a1412eda92236c139a3019e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical50412_26695-hq.wav",
+          "sha256": "0edfcd59a0aa61bbb15ac47cf15ebd0212b7158d2bd9b5b24d09f5fb52079072"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical50608_556708-hq.wav",
+          "sha256": "c7baaa878230a074139574d667e900f5ccba49b0887f29e0069aa4db66bbc824"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical53482_215874-hq.wav",
+          "sha256": "2fa36cbbbbb919f5c926fb41ebed969b21c6aec996adf30f5e66d76c210069b0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical62704_96-hq.wav",
+          "sha256": "60a1b83d53c79a3f3065f57d8a737ca79a521d0eff8dafb61dd141e61f34be08"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical6572_2518-hq.wav",
+          "sha256": "6a1d16adbc5c2f300824719a72c8da6e4677480541e04a3061a23a533bbdb294"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical73524_482913-hq.wav",
+          "sha256": "d3fc329cd87f8cfc24cd1cae292c11dfbb7b2e73e9260495bc6fbea48c7430e2"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical76977_1172438-hq.wav",
+          "sha256": "838d919b22f0f58a7e1be2358cf6c62bd72cb2bdabd3d5117b03325d27b92c45"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical80158_193132-hq.wav",
+          "sha256": "1ca738b5e4b54771fd626a57a641be75a16700e5acb2f86a8d407444bde016e1"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical81831_385976-hq.wav",
+          "sha256": "b1fd1c5847273a1e69c8ce0da6f2cafb43d2faa7ae7d553c1d6a121246e224f3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical85463_552310-hq.wav",
+          "sha256": "c51355a7326af9e440da7656a33232606906fbdc0e59d15d6f60d9d8a265db59"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical86253_1068580-hq.wav",
+          "sha256": "ee7cda140207b0828403505737ada360dfcd92cbfdc5fe6b373567544446266d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical87169_401166-hq.wav",
+          "sha256": "30e18196cafa370aecf682b9f7d41575a4ae615d39d9a2fc1e6f9f4376cb471d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical94285_1499659-hq.wav",
+          "sha256": "2108f9e12f5873e9732e1aa3364a4d5b7da6fd10d479ea77b657d01787a21c35"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_0mechanical98942_1163166-hq.wav",
+          "sha256": "f88366f187e73c02b56e3096a9ed08a186259e423b134a22568cc7331c4e7236"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical0171033_213393-hq.wav",
+          "sha256": "6c48fa1ea94f01b08bc875a1f5bb77166f65e7db5b0db6560e10ff1a0a56d130"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical091237_634166-hq.wav",
+          "sha256": "cab02bfcc782f925a8acbff375dbd19941df43d76ffa120c202e354c7dd4806e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical135063_658546-hq.wav",
+          "sha256": "f92e780fcc15a5e93efc4ec5e7416f3394989ad997cfd238a81e4446fc9a7637"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical149273_1015240-hq.wav",
+          "sha256": "f354ffc9de7f7055e620e49ba6a8f1e71e3bdfd06036d6c0c064757073f419a7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical155610_2629425-hq.wav",
+          "sha256": "14017033fd773876b99623b025882382ff35e3a0a8d78c539afd1c37827fe398"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical155859_179538-hq.wav",
+          "sha256": "3b3b838c093911970f5b61558a70226eb25e17e2ddc58c36aea1b60dc83fde5a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical163683_2843367-hq.wav",
+          "sha256": "a41f1254da88c6f6b9eb1aec7bfbabc85b3607c5abac36158f90a96070e2442d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical168873_2769056-hq.wav",
+          "sha256": "ea937bb12974d3e0ee7799d220dbc3d8d5b2b31693d1e771ce94dce7d17ec1f0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical177779_2035780-hq.wav",
+          "sha256": "881dac91d3392a952f4009d2a3d49827ae2f2c903b57db3e5fe72c8e7ee9ebbb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical233732_3247643-hq.wav",
+          "sha256": "209e350276425f2a53bc1207f1ac312d37548934bd77777868ee15678ac24c21"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical76132_1035369-hq.wav",
+          "sha256": "31e2b4fab9c86bbea65e5a7aeffb792a01ccf9acc28fb1aca81ec952d1dc6672"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_1mechanical87563_634166-hq.wav",
+          "sha256": "aba77a806cca8ba3ed412eea7430e308aad40eed88aed5b2e4fc1632293251b0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_4mechanical264850_4975383-hq.wav",
+          "sha256": "afa747cc8144084545db5764de4125cb6cb892996ebcd013c1cdc1a8e968ce2a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_4mechanical345495_93137-hq.wav",
+          "sha256": "631f8ad27dc7cd4dcf370bb52ce993a8c9181b57a4fb91192a37228217b3b8f9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_4mechanical52164_164285-hq.wav",
+          "sha256": "14ce8daa7252fc08815adc465710d763017c1f4e9682dbf633538e1d01df9b19"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_6mechanical60455_27178-hq.wav",
+          "sha256": "c3aa0fbe4badeaefe54300c02e27f6ac20d36e5e894a1993057954839ba460d0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_6mechanical66618_800302-hq.wav",
+          "sha256": "09585b3c45495624962b3ecc00cd315d435d7e85ebf1afb9456b7376a668280b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/mechanical/r_7mechanical54899_170972-hq.wav",
+          "sha256": "ff504777b4250b5b0be3c168f802140df1f8276742b5921f36ab007762d7a62a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature100208_1682853-hq.wav",
+          "sha256": "4f6f51c6c21eea687f7efda739aa07edfbde7dae5f4f143168ffaacd77a75eec"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature100473_1558892-hq.wav",
+          "sha256": "c30c186f077577511bfe14c393e874254ac00447bc37657fdf11b7bf85cddf7f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature101235_101011-hq.wav",
+          "sha256": "906fc652a9abb79131f9398cb4267560a7bfd93e7edbe771fd660f212b14a605"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature101325_99904-hq.wav",
+          "sha256": "c194684c7adba50a728d43f07193a4c46b7c0ea91add892e74efcfa2899a6c58"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature103538_556488-hq.wav",
+          "sha256": "2e3a84c90c93bcadcc3f288972862583f25810e313ae56715626328e97cbcb0d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature104482_1578278-hq.wav",
+          "sha256": "e0ba72bcb46f52a08d82519791bedadd7f9ff20230b2966267c313bc273f0cd4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature107823_1754537-hq.wav",
+          "sha256": "017c6855ae1e79d0505557e50fb0131d997b6018a78e713a35115713e710a15a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature110575_28867-hq.wav",
+          "sha256": "46462cb608b2b71016ec9c8fcf632f6a37353265a1f7cebea02a1ef8c32e678b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature118148_439521-hq.wav",
+          "sha256": "7a2483503743ec38b388455ec7b0237ece5c4b628b003ebe70705290bcde90fa"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature118777_1708550-hq.wav",
+          "sha256": "397aae3a3fc32f11069f75cf7f4063abcbbc491fb9aad1e379f4f7251f04fd60"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature119124_1970026-hq.wav",
+          "sha256": "a8b8cbf255f2ab21481574ae58e035877ce3ea997d4ec41ecd733f26b5c9e59d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature120105_957391-hq.wav",
+          "sha256": "80b142776d0037f474ed040d47b9bbf44fc54e639e7549a589f3e7f533142919"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature120695_2085904-hq.wav",
+          "sha256": "b6b246463002d0362af3ce5e70c80dd7f8f633da0f81dbc3e9c32de3fd44d426"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature121246_1658678-hq.wav",
+          "sha256": "29aee8dc75f9f76b734c341f4db8fd54506331297834e8b7b2d747bda68863eb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature122617_2462-hq.wav",
+          "sha256": "4b05a68d40d189816466b92a1ea94b2a4b2d2a9a3679336d766a254a0abcdb8c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature122742_1478120-hq.wav",
+          "sha256": "5d75b02743a3492001526607eb5008d1e53aac27ff61fd666bfb77dd087796ee"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature125725_296888-hq.wav",
+          "sha256": "161a1926e6a343f49e082e6a1e983086643d17f947d716e16f03e4f18bfd8edd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature127109_1664878-hq.wav",
+          "sha256": "7e498da3db9fce0371002087a39d93db4a00290be75ab215e97372096350b325"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature129336_2355772-hq.wav",
+          "sha256": "f93e626d55fdc8ada68f9846fa5ee03ac9c0591a2e3234dab3ef8c63c67c4454"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature130459_1565498-hq.wav",
+          "sha256": "a372cbb2efed94cb7fba7f00569c364f744667c1fcb68c614f81304d9415a6bf"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature130692_1483235-hq.wav",
+          "sha256": "c8ebf4e1f97f50f22dfa321b56ffa1ae660f8cc4e353e543e860e5fece2618e1"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature131185_2391123-hq.wav",
+          "sha256": "a063fbb1625c4bc8761e2a83aabf35104bce08025b5fa0312949fc9df37f254f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature131455_2337088-hq.wav",
+          "sha256": "72ec1051e2e1dc0fb2cd733eb5acbb88bba1a18f958379ff827a05259387767e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature136850_243822-hq.wav",
+          "sha256": "e42afbf4b0b98fd2cf8a24bd08712860a24af937b8c3710c6176b74da5402074"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature137878_2523682-hq.wav",
+          "sha256": "f5cd3f8fa8f6956e8553f1d32b335bed1d93fd58df054b356e024d223029bd1f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature139945_2352202-hq.wav",
+          "sha256": "0b411ed58ffa34572aae9f5c4600cbef36a099c061dc0ed1a98e85d2e9058fdc"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature140815_2362707-hq.wav",
+          "sha256": "af8aed056e8ceb596a4f90b0f41373859165c0d12e2918f8cfab450305489b03"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature144127_488082-hq.wav",
+          "sha256": "52ea6f8e2950fa22eb19e7ce773492c4efaba8b41103a719b95f6265fad20fcf"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature147685_1779874-hq.wav",
+          "sha256": "87102dd1c84c0b06463c0a044d758bd31b97bd1368558ceb96a19dd2899ae5d5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature148143_2659248-hq.wav",
+          "sha256": "6ad6597afb8ba212d5ef6ccf52bb22199d1fa07f60977f29c4ff9d3d19ec118d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature148347_2606735-hq.wav",
+          "sha256": "02b89015269973ebca89ad123fb872d7b20619639f2fb03b71596236b1ca6dab"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature149223_221578-hq.wav",
+          "sha256": "a8631924583b2d156698bed365b363263f5ef97ac8dcee9ce9c2a275f8c5776c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature149743_1050391-hq.wav",
+          "sha256": "d0da1f2afb47cdbb2bc3ab036e9a98dd3535e0daca45f9ed7df065d93f76fcc8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature152598_2029121-hq.wav",
+          "sha256": "90ae1d06e0a5b91557998fadb8f97e7ab3dde0edde596f07748f81578e138f11"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature154999_130385-hq.wav",
+          "sha256": "a1e297e21f147d2bcd5655d0dc5be53ca69b81b1e45888e883c32bb0d7edd2ef"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature15542_2-hq.wav",
+          "sha256": "521d083b253da0e4ed9d673187d1d028b11f7f80feb4e26bb66473a1dfa60838"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature156523_116691-hq.wav",
+          "sha256": "cc9139db7c8edc742b58581ce5134eec0d6834f295e151134560edb3867bd615"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature16934_54714-hq.wav",
+          "sha256": "b775f4209e391f380085966977c61c5fb1c49bf44a3fb279c518d8f3b7864bf9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature17348_8043-hq.wav",
+          "sha256": "e7b7ff1744ded00d9202591c0c33fb93d82597a7b08fd4288e0868f0b70388a3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature17535_17129-hq.wav",
+          "sha256": "d695ebb302d1c32eb18b07b18d085f3c1eb9521b70837c8e9900211ccfc2c8fe"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature19095_62018-hq.wav",
+          "sha256": "9118f118f0a1e0b8db563877c9716bbd89ffb9e72f57bc2ce43593abc4c3fa1d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature19274_37876-hq.wav",
+          "sha256": "c42a811a512ba47600fa06a89581ff169527a33f42252a5a5497c85658404f66"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature19626_600-hq.wav",
+          "sha256": "a55e855cd7ffbb5fcb4dfc179e55c0c5f798f33d0bf51e88a74854a9b18055fb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature19771_37876-hq.wav",
+          "sha256": "d747cf5dc08020bb39a3d2e80e17e02217db2f31114b890afcf9d865c19fc8cf"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature21047_210-hq.wav",
+          "sha256": "0e305098672d3933e1b77b5c9591bf08855ba0f6802c8eb76bdc79bc84f026d1"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature2157_1198-hq.wav",
+          "sha256": "cc240ace584c2037ca239932ff30ecdaeea08691d9b29984f32b030485f027a8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature21842_18799-hq.wav",
+          "sha256": "373664407e6984232956c91e471c7a7183cfffd98af1237177605b6a565b235c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature24949_130336-hq.wav",
+          "sha256": "3c1591aa964521502c2910b3130b8ae5df10d8d4681360537c56c793c68c5ab9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature27493_205108-hq.wav",
+          "sha256": "eba0f0ce26de0a3cc8caca1a121e3a1f50d6b8a8a059513eb089dbf130d5c86d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature31597_57789-hq.wav",
+          "sha256": "efa3c42d7167907df5e0d66b3a49bb982a79232812fc879369185e041efcf436"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature31960_129090-hq.wav",
+          "sha256": "1f8462934ecb41fc03f0202c7d4a21c51475e7feb503daf8cce2eb9a9a017e20"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature35139_328279-hq.wav",
+          "sha256": "ffef6352444beaac3c14580345f2c4e571bf52f774d767ce367e63804281ba9a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature353362_1648170-hq.wav",
+          "sha256": "3e90643de9c4b0db19ee4eaa3927a81239a84acdecd5bc0801759f467413264c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature38895_94155-hq.wav",
+          "sha256": "f07325468d6869b18ba2aad4411c35f87d7c49167d7965125e349d578203ad4c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature39832_28216-hq.wav",
+          "sha256": "b17b4ee16edf02173729e180a25867b6cf11018e81aae5d8b0d47ef3836f0d70"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature40824_28867-hq.wav",
+          "sha256": "2ee742b3e2680f28f5e84cdd343354f97d0f8c60c3c9a2003ec449fc0587d931"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature41306_266274-hq.wav",
+          "sha256": "62c20fdaf123e00a8cd821f7aaa3e5ffc126d7338b356a2f6026694fbb8b4463"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature41322_59021-hq.wav",
+          "sha256": "4a855e33bf12b2761615a705c96e38798e7e2cd0c0c445bea81f63816814ffdd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature45138_283424-hq.wav",
+          "sha256": "55c25c551b0175ac8f479f156df8c14dbeea768250de968d10814130396c1601"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature45518_111413-hq.wav",
+          "sha256": "6d20836a708cb6b4ed9866d73bcbfdaf2f4fc732498a13c3e69865c9b1976d0b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature46041_229898-hq.wav",
+          "sha256": "ba9fa93d4687664fbdf1c33018d3aacefe16459ac33eff0c5f332aa2f8e4a93c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature46142_453534-hq.wav",
+          "sha256": "83815779c480c1c9f5095f91f7c4b403aeb5af970180c619129712ea9cafbfb7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature46904_529006-hq.wav",
+          "sha256": "85f5e3429c0d9d6bbbbc0c54c67a5048b4db59bd619997adb21ab4c1b805fe85"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature51172_179538-hq.wav",
+          "sha256": "cbc9303836e116df3ce186052ad8fbe57152ce1d7bcf797984448b6536bd4cbb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature51777_612689-hq.wav",
+          "sha256": "3f022a4e2b4c049e4ce6849a3639aaa53871222d364824beb68a93a7c1ee231b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature52042_321967-hq.wav",
+          "sha256": "b16ba77ab2a47b98b99eec444bc1fcabdc95f7207c3e52fd0e772911c8e69b91"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature52298_215874-hq.wav",
+          "sha256": "a6ee01c011b2d32c47837c299b390870becc0d3100647140f22715c1b771889b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature52877_283424-hq.wav",
+          "sha256": "41312a2d19dc018342be844dfb18fb2fcc97ab1484f968c9f666dc1933e55235"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature53752_71257-hq.wav",
+          "sha256": "2278eea50b90f925bcc77eae6671ca9caa699b0c4e448253a53eabe0a56acfb3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature54595_18799-hq.wav",
+          "sha256": "c0313f0c6275c39b9e8f0b5cac77a36f8c2bb0ceb13158509cbe7ce3a3042cba"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature54806_97826-hq.wav",
+          "sha256": "e6ae3f27347b3753508f8470d2971461b26e17fe0ea4c5858c5ac055838d8109"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature54948_36188-hq.wav",
+          "sha256": "b872106230309fdb72c4345f23b36adc485e8c3c32d8ed6f5565f43890951027"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature55115_4948-hq.wav",
+          "sha256": "8c9ece363e3b7ced7cc9cf41e03431bc1d7d264987a7d1aad3dd8b11dabb179b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature55349_407362-hq.wav",
+          "sha256": "1c4bff0755067ff0b2c0a9176293997d1f1f6722f0ff0e18816b3cab051bcd39"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature56522_36188-hq.wav",
+          "sha256": "ce3209cf8de418f21ca8fb0d150765656f13b44423c1b19884cc92a7f113d3a7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature57889_695835-hq.wav",
+          "sha256": "472766e118f07f2d802c2bf6687fdb762b0c3db60c65778ae7387b68a7c7f4de"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature58926_533680-hq.wav",
+          "sha256": "7700dbdf20176da6cad3f71404f7f67dff6a11b9dc292a1a9a673fcc39728614"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature58947_738832-hq.wav",
+          "sha256": "9df39b25722c62608dcc84bc405d21d1e391e1ab1fccd63fb05e0c02945fc466"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature59229_446095-hq.wav",
+          "sha256": "76604472b18583eb51b789ef0e530a93ed2c26cf64180fde9befcd90acdbce53"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature59247_745228-hq.wav",
+          "sha256": "720298492f257de9cfa291547191c716f78df832764ece5a08da4f47d76209e8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature61388_806506-hq.wav",
+          "sha256": "da70e9414912e7a0b47edd05e698455d6b977d6712753d090acf0fda303add62"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature61620_222582-hq.wav",
+          "sha256": "be438dabb90dda007662a53c5ebc4eba032404e9e166f79008f1194c474fe6e4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature61671_321967-hq.wav",
+          "sha256": "8a353753488aa43cdd801f000dd828b4d61aff97e8883c71d6d09f9e33fc66cf"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature62281_29541-hq.wav",
+          "sha256": "0e665dd37b0c80d358ed9232a0bfb75fad3c0a00bf2b755e11917ee36ff73636"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature65487_882296-hq.wav",
+          "sha256": "e5657a76deca6cecc11217d814a6682289bb3eafe19ab5d300da27036a774d7b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature65880_649468-hq.wav",
+          "sha256": "3614d30189e41ec5cbaf36f17cfd1ee25eb1cf142a6ebca9c2804abc9ebafc48"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature66615_800302-hq.wav",
+          "sha256": "e622948d85a0a4434a2d3e94f97b072a1f1db0ffe80d59b3a3f04e803c47de0a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature66726_931386-hq.wav",
+          "sha256": "467e3d24c22e817f0ff2d90b40a3bbb56fe3f7891517ab9d95c6cf6f286b6b80"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature67237_949430-hq.wav",
+          "sha256": "ed21398d2c2c5d68ef5f84e033989348bddf15a262f8ef96efc9c1fab5b8afae"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature68205_289380-hq.wav",
+          "sha256": "8de4feed792b13942c082c86566b9841b314f2278e77067e9be62031a768540f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature69648_634166-hq.wav",
+          "sha256": "ba5e6406c2955057bfea42a4568241d8990cd464bb94613f1e3b4da40179840b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature73708_29263-hq.wav",
+          "sha256": "d3967cd0de5f336ab0de0f35262efbb14bfb62acba38ee8dc00017c87dd4164c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature7897_4942-hq.wav",
+          "sha256": "6d30e1996377035a49d868b1970f53a9f12a4494528f528cd20d81c2bdc05452"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature80846_56518-hq.wav",
+          "sha256": "61ca8669b74c6e64f50d2bd1c233546a8375fecc6c79e98eb4c48ed753b0ace6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature81720_280284-hq.wav",
+          "sha256": "10ab228d61f38c8d3a22c2bbc2a99aa5dd3dade4848790c5217f5522463476ed"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature83961_646701-hq.wav",
+          "sha256": "54bbf1bb74f8f92ca44cdc8b568de66f6287408dd8a172e12b01f0edd5124dcf"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature95258_1574595-hq.wav",
+          "sha256": "17614781d986fa11994ee23a031668950cbbefdd5b098a293dfed7ea658ae509"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature96898_684000-hq.wav",
+          "sha256": "eacac3f7c87ec2cb302256e679b0087964d116be906bff5be2b82d7cff8fb566"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature97920_213393-hq.wav",
+          "sha256": "cb5062432165bc68629f8771cda737e09a50989814019adc1f652481b2cfd1dc"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/nature/r_0nature99018_1654820-hq.wav",
+          "sha256": "3e3cf3ea56ee4d3a3a3614735600130f3a9f7becec55cfc2d1c7d76d1e74a4ec"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet106869_1635617-hq.wav",
+          "sha256": "982a38bdce940eae7a23cfc2592ff5cbfc534a89ba46349839a4904f7406f25a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet120156_1757287-hq.wav",
+          "sha256": "40326a802b41e08bd4156f0552bbcc0b0d54422fd1187fde5fd81d41118a9048"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet120899_893816-hq.wav",
+          "sha256": "833c4616fa47d283fa088e01846ed9bb0d00de36660adaa3dccd48644e63beb2"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet127242_116752-hq.wav",
+          "sha256": "a09bd860abba821f23d4c664a182e82469e0c4d5eb0b3b8ebb6c9bbefbedb4a4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet129340_2355772-hq.wav",
+          "sha256": "5866d165559619e19b45d0c32c4596d8d533a2d3f6c0500b068040dc83ef67ba"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet129679_2322692-hq.wav",
+          "sha256": "a5c355a4126b382ee495f46081e9ff7a0ee16faa53700c30768faaf34e8498e1"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet130215_2355772-hq.wav",
+          "sha256": "be4ca527a8a5d596618cf958fe0d3f758582bad84bb17573a06338097bea42a5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet130798_735175-hq.wav",
+          "sha256": "1e7a1c7ca25d47960594f335730fea88dea7f8ae629c30c93e54265b37065fd8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet130997_735175-hq.wav",
+          "sha256": "784d70264a33b4442729d0071d1ed50d518204bef5a894c2c04cbe7fdec111eb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet133727_1173265-hq.wav",
+          "sha256": "be68e59d7fd1a7437975d20e9edf6d69ff3070a9eca04c2f5fe7ecdaa1bd4126"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet13492_4942-hq.wav",
+          "sha256": "38141678d1a884767d9933000b5ad164a283db339e19f1ce1e168a62068b960b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet135620_2394357-hq.wav",
+          "sha256": "b08e80167593758a24f7431ced6b97e99b0386106dbe1839b30e17df645243b4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet139092_1969152-hq.wav",
+          "sha256": "10ddd2993ea3047054a874bda1c19f8f3e01fbcfe82ca8708d621ed88043b1eb"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet144981_2103589-hq.wav",
+          "sha256": "aabbdda7c01f351cd4baa7484643980ed9765a8d4e2f4b286c28bd1c87a9c9f2"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet145395_2607024-hq.wav",
+          "sha256": "c3743f270e8fb80e4e2bfdde15631b2039472e35b3180a8fe16df79ad93396d7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet150190_772944-hq.wav",
+          "sha256": "f0988e17640bdc9cfb5f45341d958fa8a330ba7870df60b7a53ad2678d97c87c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet154917_116691-hq.wav",
+          "sha256": "5478fd871ce42d0e6d1006414ab53ae5bb7c805ad7170405ef27b76d59e8b003"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet157007_1815320-hq.wav",
+          "sha256": "ba47c461c3b6076029d3cb19f0bd15aabcc668b29053f319d4a51d3fb91ef6af"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet164202_2977885-hq.wav",
+          "sha256": "5ded2451f562cf1abe9c291220342a82842ed2aa7d317f0c492dd04458ee958d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet169974_1648170-hq.wav",
+          "sha256": "1572aede57926c8e96c64a1ef16c221a17d1600d3e1fc9e8d31e4500d8f64907"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet169978_1648170-hq.wav",
+          "sha256": "adbb761a2826dea2cbfa78277248e2ea619fc40e1be8a12a276c34ccab393150"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet171425_1648170-hq.wav",
+          "sha256": "990318180ba70967b5dfcf9ccca48f4de9a85723facf069c952e716e6a985929"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet172036_1648170-hq.wav",
+          "sha256": "f0433f44e3c0fcae9b8b2b31a4ea4f4ac6150394371f54969e7750d7eccfe84d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet172351_334103-hq.wav",
+          "sha256": "4ab3f47ab71ec5ef4f079907b07864ec9bef443dc4b575f67c228012401ccc86"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet178190_1648170-hq.wav",
+          "sha256": "dc1539b855d12756aabb60578609f49a1a0f6ccc42e34fd975e9fbf974bd070a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet178698_3244946-hq.wav",
+          "sha256": "950df76700c9178e96ff650208619fe877d680d16ce2cb0832f819ece2575020"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet190573_1648170-hq.wav",
+          "sha256": "898950f462b955b352a16a5bd54d132241afcf05c571def4cc3faabb70c46299"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet193483_1728127-hq.wav",
+          "sha256": "eb6f8ccee3efeecda520d9573d2c323587ef058395e3b7902fa56ee48dbb16e8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet193721_1648170-hq.wav",
+          "sha256": "c7d8f0977ba05eed0a80b93541d17224baa6e49a819e144d1776c57be092092e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet196005_3321305-hq.wav",
+          "sha256": "ba8590e67bf96b5d55c547125bac449d18ca0955f339282d33330d7ce8b5e72a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet197545_3674608-hq.wav",
+          "sha256": "3a2488397e6a551279458cc03f4c1c88b918adb94d4db4f7a7547c445986344f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet198919_2440401-hq.wav",
+          "sha256": "07647f4e2e0a43bc9d7214c22458a483866a1397749ae5848ee25ddb108f38a9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet198933_2440401-hq.wav",
+          "sha256": "cf47c0cad8fa9655077a0dc5b9e30f4006dd131680a8d7223f842cba0e8bdb44"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet202952_1391822-hq.wav",
+          "sha256": "2e98f230757f18da04a6056afca0db61fffa221cbe66835b8d15a733fdb87634"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet204510_878508-hq.wav",
+          "sha256": "b8bdab2ffd8155685944dbd35072e1266cdb72744e2ee5906718bc8998b84308"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet205710_1934467-hq.wav",
+          "sha256": "6b3dc10d4c40c40eaa4ce4310b027ef0c5ec9e0731173a110d65b175a35bb160"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet205831_1622740-hq.wav",
+          "sha256": "532dee5fbcd769e2ca45a9c7b5883feac398da1ec9a7f7f6a7a9500000a5b916"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet209338_3464493-hq.wav",
+          "sha256": "6dd701ee161f18442f392bc0c83b338fb3358677bc3e3ebbd8171dfcab67787f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet210107_2973509-hq.wav",
+          "sha256": "f0569434cd1b194c2fcdbb210ac8bcfd70e60f5f4c18cbcc15961e490d3b93e3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet212144_623488-hq.wav",
+          "sha256": "c5c0a469ccd0bccb6ce5d205da14e9801d60fb195a59e4636711dea99f4e0094"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet213548_520316-hq.wav",
+          "sha256": "712d8b83ad44cb3a3919280bddbf5b71b79d5b57645652aef1c438bc7eed214f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet213708_1648170-hq.wav",
+          "sha256": "0a0a2548a6e2012817b49546e5f2c56679e90ce39b83ef48f98663b1ceb5528b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet214038_1306869-hq.wav",
+          "sha256": "103408a10f9b75341382765d0421b7e99b86992b9db0125da6ea0f7c84d37028"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet214663_2605156-hq.wav",
+          "sha256": "59360499d1f1cf96f6847851550665490d3fec766b079f9a702bacee292b3497"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet215173_630202-hq.wav",
+          "sha256": "8fafddec8ce826e83b219c310ee9ad8f275819a50a2fb7aa6be464f719405603"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet219466_1986349-hq.wav",
+          "sha256": "3337f23abbd90e132eff4271ee7b66a60f8487d2d5dc813fef57179094e31bd9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet221677_1648170-hq.wav",
+          "sha256": "ab0e61561eea7e20cb7e15baa2e7b8d363427ee3ab4c97f50983ba61a41394f3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet238145_2254206-hq.wav",
+          "sha256": "6a12c1c4162970dc5506fa9b00b0338161887a5b918a2fb36cea7d44611dad41"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet240895_1134415-hq.wav",
+          "sha256": "f1bfe1f2b6d4b795d04ae758314aa572c830784c6c066b2e3ba242bbf9706727"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet241659_1006701-hq.wav",
+          "sha256": "e00e94fe90b4d57148beb3aae1ba4d5530ffa4fc7367238e62789bd1ea13f5cc"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet241731_4401185-hq.wav",
+          "sha256": "fd203690d6f1fba4fff2c22a0f60edd45b16a4bc44526a01f02801ab47037b8a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet241771_221578-hq.wav",
+          "sha256": "ee3a3f99df2d9ef95185afdc4a77690959cfa88811ca34e30088c25b4bc75ed3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet242174_2979316-hq.wav",
+          "sha256": "ff22578060b5b95db34cde4e0f43510815963b3e3da83adb976e37b92b60aa69"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet244882_4056007-hq.wav",
+          "sha256": "140fe78b07ece0cb5e787eaec23c2edb37b1eb28f539f10719e58b22a65ceb2f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet255232_4508519-hq.wav",
+          "sha256": "00c6fb6bed6681e4d0ed81bafa0679b0f34e2c5342964d2b5cec7950bf2a0b72"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet255735_1648170-hq.wav",
+          "sha256": "65fd560a078259f0afa4e9a7ca65a6a4ca5715e9d38f967d7dcb2d6047984168"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet256544_2276808-hq.wav",
+          "sha256": "5245fa29d3a7215fdf41e095037e12dc1e52f6a066620cd9a7450ec5849b6094"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet262692_2190378-hq.wav",
+          "sha256": "bee1a9857fe0cdfd32b30eee8ba420e92ade964fc3ccbcc08a629d9c59552e0b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet266633_1648170-hq.wav",
+          "sha256": "d46d5b1b908afe7b4fcb2daca831e529539788dd2fe10303d7431680edcfa8f4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet269576_1313063-hq.wav",
+          "sha256": "011eb1d6e41d84e600d4614bff003a78865e92f738285aabaef6033b6917e6e4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet270597_5137631-hq.wav",
+          "sha256": "c602f445ed0f37ee0abc2e787ee5973fea5f015d031a0c05a70585a87f02d47f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet271679_1648170-hq.wav",
+          "sha256": "a700df530177bf322c0387984fcfe38a1f405c40294a1280876bafca84917b24"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet274363_3863663-hq.wav",
+          "sha256": "7e692720665c8204c68c8be333df65f5621f116fbc5defb26898c0d534da88b3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet278868_1402315-hq.wav",
+          "sha256": "1d139ea0deecf90654f5d77840b88b28b57b86e4943f954728a15c1d6078d283"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet30365_29541-hq.wav",
+          "sha256": "615293db19c368a89a408cea51f4bf206f6079aa41df3461920c02a960a6486f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet317271_3660887-hq.wav",
+          "sha256": "a7db856c605133b86d5b89dbf16496e3497168c6f307b20820a170941b42b7f7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet318937_1648170-hq.wav",
+          "sha256": "3f4e5031222a53662a7e7575687fb0d5cd1137025383fce92068278b213911a2"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet319150_1648170-hq.wav",
+          "sha256": "52d45c7f25b26de4809ae1bf848f2cc1e4a390089248decd32416fd21f32e6f3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet320862_2462-hq.wav",
+          "sha256": "e3c0b10e2ba3cf6bc89ff0a69ee60ee91af365daa35f967c30369f1d46e71ea1"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet321723_5260872-hq.wav",
+          "sha256": "8957ea4ea2d61668808f5f4492c180fa7373419ceb3bc4e653715e615f145d02"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet324493_2104797-hq.wav",
+          "sha256": "ec9a68b2d16af737f62dceb4390f2f527867badebfd7789778934ecf7f38418b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet324938_1648170-hq.wav",
+          "sha256": "9e7b91c0c1474aa63dcc9b0015c76824ebbf47358d0f107802571dcd4a35e359"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet325806_5622605-hq.wav",
+          "sha256": "df58459d1a1d984fef763976790fc85cb5312b0b5da468066b202384488a1e88"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet329960_1648170-hq.wav",
+          "sha256": "277af471851b20db6e1b2d3fd13df6a53580dc6644e1bb42b48e42ff429ddf09"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet33180_215874-hq.wav",
+          "sha256": "a68fb9995115b3e360fc195b8c87eaba1b7e989605e3d3858cc3ebc07967985d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet33181_215874-hq.wav",
+          "sha256": "e3871ce6ffde3c7f0f878d35f0f0f308653b078174eec3c1f165e0856d0eec91"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet33185_215874-hq.wav",
+          "sha256": "f2cefc5b3525653983f895a15d85a97d9fe2b6e255ad6e41b0a1c7cf37370881"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet332764_2808561-hq.wav",
+          "sha256": "25622a82ff14979470ea974da3b8c072be88e96a8c44913229b145c166bc58b4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet332784_5804919-hq.wav",
+          "sha256": "83e282cc991de1a68afc8756c3a0f32b5fff8e28a7546955eeed3fe69aeb48ef"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet333221_2098408-hq.wav",
+          "sha256": "69b37702955fd72d156575e10b626287a2b8032d90ee59910cbbef87decdeb6e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet338261_1648170-hq.wav",
+          "sha256": "55140bf7967b3ececfe0e809ae9c3a8abbbe11ace385700d4a898f726141486b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet33838_215874-hq.wav",
+          "sha256": "3c48204dac5075aca99cf497084793ffe926d8001ca490743dacedadd15cdd86"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet340485_2822775-hq.wav",
+          "sha256": "e925afbb8d620b271f8c580bbdb438489ea852ffdf792024542710010d4da740"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet348862_4067257-hq.wav",
+          "sha256": "a5afefcadc912536713374c29588f7626d8cd837ff21e72af6e70c9e4e86fa98"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet351484_1648170-hq.wav",
+          "sha256": "a6497f7de8fa13ddc497f4f7c858cbf863d9e4cad236d91de0b4c7b0f5a1809c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet37216_43834-hq.wav",
+          "sha256": "23772bae358f1e080b65fd8d8590c738b5168357c01cba438749e781103394c0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet38962_107780-hq.wav",
+          "sha256": "b55b32e504d91f4b67554aaffac6b970eae802ef532dc172960c577a71d1545d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet38970_107780-hq.wav",
+          "sha256": "1d72404a34b450573e942c98c620f70da5bcce0a78c692672adfa8bd650ba450"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet41331_433985-hq.wav",
+          "sha256": "963081c406e597b40fe4f21d58529f7a41d97fc46a6c4b297cb1d997b51d0bd7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet48045_492349-hq.wav",
+          "sha256": "ac595abd42c35c9cf7cc770d79a62b7ae0dbc48568417a8931a444236992d822"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet48955_32572-hq.wav",
+          "sha256": "527a76ee800ec58bb307578a0e2b88db7c483af9833872b36af99d4fddf738d8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet53593_520316-hq.wav",
+          "sha256": "d50af06824373b6d1d4537f5be4c160d1834375a62c8e5ad6eb97a6ab87548a5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet54921_308-hq.wav",
+          "sha256": "5a83ec5b538b3db9f2bad4e6dcdec1c7debab18eaca6b369c60cb5b4da285d26"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet57028_4948-hq.wav",
+          "sha256": "8e91f7fe4a1e9c0b5bfb4f248ab4807888a84e13c78caf0354c2ca50a5757dc1"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet66440_706955-hq.wav",
+          "sha256": "ef53bca14cc4e70819665ee0a80c2fc051d647a7b4ee112442cbb2bdb4a2dd66"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet70168_1022651-hq.wav",
+          "sha256": "ca36fc3c2620ecc903aa797b533cbf85f51002e0c34b2c76551f3dee246b2384"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet71821_513485-hq.wav",
+          "sha256": "7b3e7591d3f9310001c13a4a7aa97b88d60e711b886a90524025b06ca8e68759"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet72022_1059930-hq.wav",
+          "sha256": "5c3c859db1c28513c45cad517b8c930a4066330acd5c24c7b69d172653bf03d2"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet75271_384438-hq.wav",
+          "sha256": "f095dbc323c042033d0edc0936ba0f5d6617a672aed19b7dd711e3f98aadd663"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/quiet/r_0quiet94931_1499659-hq.wav",
+          "sha256": "1436526b053d250beeff695a369f69c2d73627cc235afac95efa70838c576d74"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society100905_1015240-hq.wav",
+          "sha256": "fb0c6c5f7a58dea6e7d62a3cdf86e67e92691bb4380a4957b64b236d2027b7ff"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society103983_149596-hq.wav",
+          "sha256": "5bf1859d5b3933e64aa59fbb666bf486b7806c9e38fbf0b53f253a562961d1b0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society104041_179538-hq.wav",
+          "sha256": "d5a53ae06d67dcda5df8017746dd657715d9b5977b1df60b7cd0fba8af6b08b0"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society121787_2168040-hq.wav",
+          "sha256": "581adb6daa756b0fef595731d5449682dca6dacd211bde2f6c710ed58aede201"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society122738_2140699-hq.wav",
+          "sha256": "f68607900b9c961ab672413aec2b4009741a802c096acd9505874623f2198001"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society128165_2287103-hq.wav",
+          "sha256": "d10ab6173d5fd679958a21dfa36702b75befdd850d82f122440c41bae16d3e54"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society130096_2268897-hq.wav",
+          "sha256": "200a128e2106f7727f291b321cce92f1bb1dfebd7f5e3e994d85d7b24d4b7dd7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society131134_623488-hq.wav",
+          "sha256": "bb6949ac7902b49d28036611d57861e15d4651d13ff61f34f9cb74aaf0520f7b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society131428_2393328-hq.wav",
+          "sha256": "12f89a762887fb84cd486290f79ee92febdb0e61245c0db9a092b813642c81e5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society135094_658546-hq.wav",
+          "sha256": "9ef754fb6ed11c56e2820753b8c66f8ec415f0347809a4968795acfbca2b1666"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society135581_1174059-hq.wav",
+          "sha256": "43725bbc4fc0ed0e305ca30e1e5ae7e3a6832eadb1967178d657578f97f8d478"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society135811_18799-hq.wav",
+          "sha256": "3c9ec01eed0a4cdf1f8b2a3bb4ec9ddd6376945c0ad43dc0d1cfdc4ddc57396e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society136666_1285378-hq.wav",
+          "sha256": "948f0f83b9b46e01b2a6e6a04c843daa2ad6ea747b283740a85a76ff79940119"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society138247_2531318-hq.wav",
+          "sha256": "eb6740d66e2f7ac1ff3f9f5e73dc69814d0c9057eafb827106632bb8015e9946"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society142296_2576155-hq.wav",
+          "sha256": "eca2bcf6c8902229ff836fcc2c10cca09cbbee0d1628758456c29f9c4871683a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society14468_36042-hq.wav",
+          "sha256": "fd07cecf3b4a66dabd330f447d4d7f0b81cdc7ee0e0a0588af68531643733697"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society14526_37253-hq.wav",
+          "sha256": "ec59c95ff657d4f9bfe782b5a213197f12730631dc085c49c923df76ae5e37d3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society145399_2592237-hq.wav",
+          "sha256": "b5d7c7abef8c61665789ce2aa871065f6e0854b4639d7272671a54c33ed5f539"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society148889_280284-hq.wav",
+          "sha256": "bdc5f3868462e55a597c74d7037a651b8f92ab2e68c4413e64c5c9a921e3982e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society152038_2753909-hq.wav",
+          "sha256": "c3df2e68da5c6932d9647ae13d0b6a94fba9e4a83ffe2cc5736dbc81bab84c32"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society155049_2558789-hq.wav",
+          "sha256": "ab576ef926199b86f9c68170e036e8d403dcb47e16db48e0ab0dd93ad8339852"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society155638_1565010-hq.wav",
+          "sha256": "f4349ff421b584e22f71f7ee0f963509a1085d2aa37b3cb25aa9aa7caef0ad2c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society156965_464357-hq.wav",
+          "sha256": "36248eef2b40f0caf1c14d63b4463c856fe100e7b9fae34e492b85265f7a9f47"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society159482_2841009-hq.wav",
+          "sha256": "3747945baf8f0c1b3b95f774227a81c223062d738bd0d61128a1658fbf3ca27f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society161328_1050515-hq.wav",
+          "sha256": "a03aa5834d9903cf538dafd0704a46f677d387cd215c7a287e8781b1e5daad7b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society161975_2580450-hq.wav",
+          "sha256": "fc7e7420e121734a196808d155ebfb404bc2d701fa88242c3e8341aba223922e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society164344_18799-hq.wav",
+          "sha256": "d2374782b6f44be366a3138dce1175d9d2aac6b8f0e33d7f919d097b788bd21a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society166816_1292622-hq.wav",
+          "sha256": "bdb3ce4e3cbf8e6f5ffc2376e70e9d5f91e482613ff8ecf3f411e7ede4903a18"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society168069_3068545-hq.wav",
+          "sha256": "1fed3c4895d414da17ea2455309222c591a9fbf6f6fcf2255caf684ee5b4d303"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society168481_3078751-hq.wav",
+          "sha256": "38d55b2280ed71d6bb7bee90a3da6426563230c27483497c9eae4f23288fdf42"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society169186_1531809-hq.wav",
+          "sha256": "9b681cc340bea5e5630aed0abe5ae463f4f2dfca258e0bc9bf067d009240b399"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society169230_1648170-hq.wav",
+          "sha256": "1dcef7ef084156d5a1764936e47df346cf6b617cdc5b7508b6103b27bf736bbd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society176025_334810-hq.wav",
+          "sha256": "f55e8b6f7f7fdccbda28b3f106fd9a729d167ca6432a22509d63218ec5248152"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society177543_612689-hq.wav",
+          "sha256": "f132608759459c018f88da428a8d9f8fc208bd8490343fd98713b7afe9f51754"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society180911_1531809-hq.wav",
+          "sha256": "59ef98fa9e6a96ae9462486e752c6dcc9f2657521b8705fd3cd9fc9456c3da85"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society181098_3261925-hq.wav",
+          "sha256": "4c09289ba8caba7b62664cdf481c0e5e786b7af0af70b2dd44d35b0b5d7ba2af"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society184882_1143716-hq.wav",
+          "sha256": "bd30fa934ba7ad889e1b2ab92b2cfa7a95a2b7bc50f3849c358740b93856dae8"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society185373_3277771-hq.wav",
+          "sha256": "ac663db8cb63effd55aeec11603b49f5a9e4208f0d349d6f078ff23d4b276ce7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society189825_3429777-hq.wav",
+          "sha256": "b71aaf0e85cb48119c76a587deb57dcf2d82c34fa6a532baeccf228d64757a53"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society191746_116691-hq.wav",
+          "sha256": "55b4bf40b27ced5cf5f6f855c625adc6826fd34c69a348aa9f4fc6ee5f82831f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society192788_1648170-hq.wav",
+          "sha256": "29ccc4f0a3bb20d46b75ecb999ac1f10440a1fcbcb54fc5a68a55462ce4d2a9d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society198941_2547276-hq.wav",
+          "sha256": "543a4ac7d680e8c07dae80951641aff7b952aedbd9e12df7521ebf87ca55ee51"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society199687_1143716-hq.wav",
+          "sha256": "05233253977c1f035f62f3a7e987373ed8b55e908b3a9a180f4f5364bea5d59a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society200814_2019774-hq.wav",
+          "sha256": "19ff656b0f701536b30ba230c2d3befba136f13100034af73a43687772e9eaec"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society202327_658546-hq.wav",
+          "sha256": "235a99eee8925f7f859f25337f6f2e58edef3961f6cb258fb06ca4fdcb9eba4e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society204364_3279490-hq.wav",
+          "sha256": "d3a32bd884ebf657fd2a8c87a7b8e7763164e1f539a38958ec32ca64252b95ce"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society210150_3305361-hq.wav",
+          "sha256": "5f75dbbb596164ab13515bc8a54506426a75f3e64616cbec517c5d42a99af957"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society213755_53430-hq.wav",
+          "sha256": "7cb92907c37d83ace8135608ceab67e457f2e3c517146e1cabbaab67c3e3945e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society216044_2071210-hq.wav",
+          "sha256": "b928baf0931cdde97bd138c0b3cd4dffde05552ff67cd737b99c328962fe551f"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society217609_4059975-hq.wav",
+          "sha256": "6035df1eed7a4f2772b4bd285ecaeba1e31d6337a01e508f72d146ab2c96179d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society219317_1661766-hq.wav",
+          "sha256": "adaa53123b0b01e7a02d374bd3d9270cc7a2e5db19b7ef5400fd1e67ac71964a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society221274_3739892-hq.wav",
+          "sha256": "b439983206b9eeaf0622fdb60f9addf264b03b880df11c1ec4cd56122698b28b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society22326_113722-hq.wav",
+          "sha256": "b74221f08f4230cc48d3cd607571461c945cfbf84be925ff5860eba465ae6665"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society22587_36188-hq.wav",
+          "sha256": "2706bfcb1c7a99faf55f62439c60b5eeedd23064f27c1304718ad1734aae99d2"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society22726_117199-hq.wav",
+          "sha256": "4c49c140bbf583bd7cee8a2c5954ce8990e4ccfc0b246990180cd73a44901e58"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society25823_21830-hq.wav",
+          "sha256": "42fa2c28664353405ad0a4dcab70503faf8dc0487d902300d2827e24cce73549"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society27864_89943-hq.wav",
+          "sha256": "cf6cdc7f252e150a35a086f43fbc485b81bdd9d5742248032717aea0f4612e2c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society28385_5726-hq.wav",
+          "sha256": "8dbf5c2ec486df9dcfe3756aefc6ae7e885621ad7ffc9514ef5b345df206dc2b"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society29575_14447-hq.wav",
+          "sha256": "c6418fa20e0372e40f2a722c7cdae639cef53fa69b679696cc1abc13e5f2db67"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society33544_223338-hq.wav",
+          "sha256": "68de94df736d096567f8ca34a4ebb1bde4796555165199c2529beec6da03f148"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society35299_341440-hq.wav",
+          "sha256": "4c61e89e862cc1be3ccf68fefabf6a327803eb96f6d3f7256e66c67f9c312659"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society35545_7037-hq.wav",
+          "sha256": "ae7c37c62b78cb0054a1cb591a85b69b31a75f390e3900b6d20070285830192a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society36155_444-hq.wav",
+          "sha256": "5b0e618ed58764ee46020911a708fdb7b4f3dbc966ab46921fd57b0aef01bf91"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society36429_117392-hq.wav",
+          "sha256": "24bf2bb252138656bef61eef49e4cb8f19af4c5bd992acff14449950b1e005b7"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society36897_40107-hq.wav",
+          "sha256": "d3a85059588cd2b583aae43cf2da38366b3dd9ef329ec4ac9e812eaa0ae8f07a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society36934_99904-hq.wav",
+          "sha256": "c5a58ecdedf6ebe6ebef88fd3c670fa384aa98d098424e7cfa95e0502e7b6518"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society41639_96-hq.wav",
+          "sha256": "cf918b1e0b3a4d53611dd873299024209bdb6768cd602c0ce4b0c7687d120dfd"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society42368_215874-hq.wav",
+          "sha256": "27232ae164da7a60ba1f4e96e21b2b50fd7af401de4340b49e505ff41ec8c512"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society43766_440037-hq.wav",
+          "sha256": "18ccc193a8492188bc9e7d8d045870d57c2774e8c86221499152df6b1e816c29"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society46302_520316-hq.wav",
+          "sha256": "8c59196d3a650586c689815d99529d7fa52b63298ac6135a580214aef832bcf3"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society46348_28867-hq.wav",
+          "sha256": "1cf4be0d9833c246848410c19d9bbe0cc7f11dcf7c4238e3028e1d3b02ab0601"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society46732_26695-hq.wav",
+          "sha256": "8180b6dac74487f8adf92091f00bdd41a8dfe10b5f2ac3a69e08f255054d6721"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society48205_269533-hq.wav",
+          "sha256": "e7e453a318b323a9764642ddc88b389ea223915c4928735d4b925501449fbaf4"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society49599_571325-hq.wav",
+          "sha256": "f4997fbcc67f5965d56fcffcfa7b9857bfe9fa8132aebb50ef62a94464b7685d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society49763_478853-hq.wav",
+          "sha256": "04c24e0307a14bed1c37c5d9a79ad1d45fa3623bfca1760a2087201b476dae53"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society51181_565076-hq.wav",
+          "sha256": "f551263aaa62f4a725b04d783d2c7f632c5ea13313881f40b34aece2678dd12a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society51783_612689-hq.wav",
+          "sha256": "eaafad1a8f9d79459f237b456413aef721df75fd5ab99501d6d02494dd176354"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society52442_630202-hq.wav",
+          "sha256": "8e3f0018057f957611d951a8ec936cf9b23294cba3346ee1dc15e04668d9575c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society52788_256226-hq.wav",
+          "sha256": "a18150a553639918507c12394b2b4e871436dd2521d700ad8fb8f3e61df56c97"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society54826_667071-hq.wav",
+          "sha256": "a1b7e4fd56c31c76568fd7a6c5605fa2960ad23a655c47beac63abd4cfe38e69"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society56918_321967-hq.wav",
+          "sha256": "7b46ff5a8c72bbc6e745e89dcaa5c8630662862c1f8ce6ffb8055a7c3e0080e9"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society57777_568652-hq.wav",
+          "sha256": "597903338bd3ba9ba98630d75f9fccc3b4b54bd355f439c34306117016560cc1"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society60574_719027-hq.wav",
+          "sha256": "45f3de934099d0f46cad4aa34d7b7ae7019669437bc1455b7cc6e2e5c35125b6"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society62633_791247-hq.wav",
+          "sha256": "90714872cf2c72f8e28299ff940edeb1b11698967d6402272f9a05b3a8491661"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society66604_800302-hq.wav",
+          "sha256": "b0e32e71d488eb6d40aeaba43edd6485cc7a6569b514ff1e7b7030180cc733ea"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society73278_828209-hq.wav",
+          "sha256": "4532b88db7b2fe7b94838fec3d1143f30851cd43e8f200ebe69ad4d5c3531790"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society73610_649002-hq.wav",
+          "sha256": "ba77899abc23cdab9914be28e0b37b303a1611d6c8bd9d501694710a874d5e72"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society74324_1116756-hq.wav",
+          "sha256": "70aa3e326da21a05601f5a43aeebfa7f900fc75a3f3f7aac4568485b3ed6b53e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society74382_1035425-hq.wav",
+          "sha256": "61a8a04940c5dc432aee66d23f302fcb6a40bca882025a89e5a05c210d44d037"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society74967_1151436-hq.wav",
+          "sha256": "00cc875c820bc169f1648b87b1d039a9f7d2889addd9dfa360102d9814b0415d"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society7560_8043-hq.wav",
+          "sha256": "2cc9939d0b00d191a1d340d47c345054c6cb7b32ffa942a6663ec54bf4f19c1c"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society75783_4948-hq.wav",
+          "sha256": "a3f2cf99102dcc2328a7642cc2e499310e9303c61232b4641d78e51e99260c5e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society78434_453534-hq.wav",
+          "sha256": "b74e6fd92d15cfeb0a6b29919b221a6f9b6082055100ad257247a6f031ba805a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society78661_1148115-hq.wav",
+          "sha256": "5f054e248aeb6c2d8721b11eeb647a619aee133961f754e6ebe06d5982df84e5"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society80258_1123190-hq.wav",
+          "sha256": "eade82f774699f41f95fe27af7c8956c96ed3036ad5eaa69b22877ddd013ce12"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society83477_57789-hq.wav",
+          "sha256": "4f723572804db0b4f827ccf5a8932314afb1f7ed2a6d00737fd05047019f224e"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society83838_326032-hq.wav",
+          "sha256": "c95eefedd4dfd325c11f7bf212f1bbd39d5dce50a33f769c653cf25ba552d625"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society87065_339463-hq.wav",
+          "sha256": "b35f2e413563e112dac71227188e300f818727a2a58f621b8545ee76bd5b5557"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society92656_780633-hq.wav",
+          "sha256": "ed7d04d4d97c3a6de90b2305845569dd2ecd23658695b185ec2c129cb18d750a"
+        },
+        {
+          "path": "data/raw/EmoSoundscapes/Emo-Soundscapes/Emo-Soundscapes-Audio/600_Sounds/society/r_0society95843_1059930-hq.wav",
+          "sha256": "8fd8ddcfb6ab26da79ce901ec66ddce297bbb6186ce039664b1438ce99c14de6"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "n": 600,
+    "n_groups": 600,
+    "arousal_stats": {
+      "min": -0.998351195,
+      "max": 1.0,
+      "mean": 0.019752679308333326,
+      "std": 0.622388092963068
+    }
+  },
+  "artifacts": [],
+  "notes": {
+    "output": "data/reg_emo.csv"
+  },
+  "finished_utc": "2026-07-27T10:29:37.686964+00:00"
+}

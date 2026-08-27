@@ -1,0 +1,52 @@
+{
+  "run_id": "20260728T002034Z_within_subject_full",
+  "name": "within_subject_full",
+  "started_utc": "2026-07-28T00:20:34.415525+00:00",
+  "seed": 42,
+  "params": {
+    "n_features": 156,
+    "n_questions": 8,
+    "n_combinations": 1248,
+    "min_trials": 15,
+    "control": "偏掉试次序号",
+    "question": "文献的阳性来自哪里：不同的问题，还是不同的校正口径",
+    "known_gap": "未做 ICA 去眼电 —— 会压低所有效应量，方向不利于本结论"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_combinations": 1248,
+    "n_uncorrected_p05": 59,
+    "n_expected_by_chance": 62.400000000000006,
+    "n_fdr05": 0,
+    "max_abs_mean_rho": 0.1152620229944774,
+    "by_family": {
+      "asymmetry": {
+        "n": 240,
+        "n_unc": 12,
+        "max_abs_rho": 0.09916601465706239
+      },
+      "band power": {
+        "n": 208,
+        "n_unc": 10,
+        "max_abs_rho": 0.1152620229944774
+      },
+      "coherence": {
+        "n": 400,
+        "n_unc": 15,
+        "max_abs_rho": 0.09977391165204742
+      },
+      "imaginary coherence": {
+        "n": 400,
+        "n_unc": 22,
+        "max_abs_rho": 0.09862863799866503
+      }
+    }
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-28T00:21:02.205711+00:00"
+}

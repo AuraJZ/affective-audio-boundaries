@@ -1,0 +1,47 @@
+{
+  "run_id": "20260726T214228Z_extract_layer_b_pmemo",
+  "name": "extract_layer_b_pmemo",
+  "started_utc": "2026-07-26T21:42:28.402612+00:00",
+  "seed": 0,
+  "params": {
+    "dataset": "pmemo",
+    "extractor_version": "layer_b/1.0.0",
+    "fs": 48000,
+    "max_duration_s": 30.0,
+    "roughness_duration_s": 10.0,
+    "seg_s": 2.0,
+    "target_lufs": -23.0,
+    "reference_spl_db": 60.0,
+    "n_jobs": 10,
+    "limit": null
+  },
+  "git_commit": "7a5caf929e254d1ab0ae268d59530dd6b674458b",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "7ebca11109f30d971df5f4f5fa3774c41ce61b92189fba76b02a4d181135c7d2",
+  "inputs": {
+    "labels": {
+      "n_files": 1,
+      "rollup_sha256": "468af2e43b0bc839e51cce60d6538835087f99033f1b9f05d9b82390c4d2b6fa",
+      "files": [
+        {
+          "path": "data/labels_pmemo.csv",
+          "sha256": "6158f06a55796d74c29824639f180c82ad701afe8d0b6fe016b43ebee4f05d14"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "n_ok": 495,
+    "n_features": 22,
+    "n_failed": 0,
+    "failed": [],
+    "elapsed_s": 4059.4
+  },
+  "artifacts": [],
+  "notes": {
+    "output": "data/features/layer_b_pmemo.parquet"
+  },
+  "finished_utc": "2026-07-26T22:50:08.020761+00:00"
+}

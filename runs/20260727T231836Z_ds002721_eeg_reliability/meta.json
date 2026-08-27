@@ -1,0 +1,54 @@
+{
+  "run_id": "20260727T231836Z_ds002721_eeg_reliability",
+  "name": "ds002721_eeg_reliability",
+  "started_utc": "2026-07-27T23:18:36.365314+00:00",
+  "seed": 42,
+  "params": {
+    "dataset": "OpenNeuro ds002721",
+    "n_subjects": 31,
+    "response_win_s": [
+      1.0,
+      14.0
+    ],
+    "baseline_win_s": [
+      -2.0,
+      0.0
+    ],
+    "bands": {
+      "delta": [
+        1,
+        4
+      ],
+      "theta": [
+        4,
+        8
+      ],
+      "alpha": [
+        8,
+        13
+      ],
+      "beta": [
+        13,
+        30
+      ],
+      "gamma": [
+        30,
+        45
+      ]
+    },
+    "n_perm": 500,
+    "n_split": 400,
+    "min_subjects_for_split_half": 8,
+    "prerequisite": "37_eeg_positive_controls 四项全过"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {},
+  "artifacts": [],
+  "failed": "TypeError: only 0-dimensional arrays can be converted to Python scalars",
+  "finished_utc": "2026-07-27T23:23:41.849636+00:00"
+}

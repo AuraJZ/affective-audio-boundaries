@@ -1,0 +1,69 @@
+{
+  "run_id": "20260727T150436Z_label_reliability_ceiling",
+  "name": "label_reliability_ceiling",
+  "started_utc": "2026-07-27T15:04:36.699070+00:00",
+  "seed": 42,
+  "params": {
+    "corpus": "DEAM",
+    "n_splits": 200,
+    "method": "rater split-half + Spearman-Brown",
+    "note": "与 EDA 信度分析同法，保证两者可比"
+  },
+  "git_commit": "1a9462e5f96e2b504272cfd0e7cf1e8a5597b286",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "n_ratings": 17762,
+    "n_workers": 195,
+    "n_songs": 1802,
+    "ratings_per_song": {
+      "median": 10.0,
+      "p10": 10.0,
+      "p90": 10.0
+    },
+    "ratings_per_worker": {
+      "median": 15.0,
+      "max": 1005
+    },
+    "ceiling_arousal_all_songs": {
+      "raw_mean": 0.7200247492833134,
+      "spearman_brown": 0.8366101518613638,
+      "sb_p10": 0.7978628809303098,
+      "sb_p90": 0.863715465327998,
+      "n_splits": 200
+    },
+    "ceiling_arousal_analysis_subset": {
+      "raw_mean": 0.7670325591766942,
+      "spearman_brown": 0.8678317073426137,
+      "sb_p10": 0.8382712980418959,
+      "sb_p90": 0.8885205780731233,
+      "n_splits": 200
+    },
+    "ceiling_valence_all_songs": {
+      "raw_mean": 0.6560831656468532,
+      "spearman_brown": 0.7919717173341668,
+      "sb_p10": 0.7669489153652453,
+      "sb_p90": 0.8151602706290524,
+      "n_splits": 200
+    },
+    "model_vs_ceiling": {
+      "Hand-crafted + XGBoost": {
+        "observed": 0.736,
+        "pct_of_ceiling": 0.8480906998128757,
+        "attenuation_corrected": 0.7900599692822542
+      },
+      "CLAP + ridge probe": {
+        "observed": 0.773,
+        "pct_of_ceiling": 0.8907256942328164,
+        "attenuation_corrected": 0.829777657955411
+      }
+    },
+    "headroom_to_ceiling": 0.0948317073426137,
+    "at_ceiling": false
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T15:04:48.564267+00:00"
+}

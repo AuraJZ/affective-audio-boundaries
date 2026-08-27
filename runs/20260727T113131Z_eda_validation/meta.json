@@ -1,0 +1,121 @@
+{
+  "run_id": "20260727T113131Z_eda_validation",
+  "name": "eda_validation",
+  "started_utc": "2026-07-27T11:31:31.998560+00:00",
+  "seed": 42,
+  "params": {
+    "n_matched": 717,
+    "n_features": 122,
+    "eda_index": "被试内 z 标准化后的 tonic_rise 与 phasic 均值",
+    "question": "主观 arousal 学到的规律能否预测生理唤醒"
+  },
+  "git_commit": "5a92a1cf9ef7de431c6e29890470f6a96837b1a5",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "n_matched_clips": 717,
+    "n_subjects_median": 10.0,
+    "subjective_vs_eda_spearman": 0.13487529630515976,
+    "subjective_vs_tonic": 0.13228838757757555,
+    "subjective_vs_phasic": 0.07402619225723665,
+    "model_performance": {
+      "RF|subjective": {
+        "spearman": 0.8022791057761871,
+        "pearson": 0.7972135327524607,
+        "r2": 0.6350700515051866,
+        "mae": 0.17487620374395832
+      },
+      "XGBoost|subjective": {
+        "spearman": 0.8127441298494251,
+        "pearson": 0.8086982070448069,
+        "r2": 0.6538288871333193,
+        "mae": 0.16879635075996333
+      },
+      "ElasticNet|subjective": {
+        "spearman": 0.8203842757075669,
+        "pearson": 0.8169228131651155,
+        "r2": 0.667347172970137,
+        "mae": 0.16718404148467572
+      },
+      "RF|eda": {
+        "spearman": -0.03795390776591723,
+        "pearson": -0.021568426712998075,
+        "r2": -0.06992880216110131,
+        "mae": 0.22682469421924403
+      },
+      "XGBoost|eda": {
+        "spearman": -0.09274162331845047,
+        "pearson": -0.07617938799757518,
+        "r2": -0.17701947109032656,
+        "mae": 0.23861678028464653
+      },
+      "ElasticNet|eda": {
+        "spearman": -0.029138133653297656,
+        "pearson": 0.007417762612625973,
+        "r2": -0.03967580540506499,
+        "mae": 0.22357208393448444
+      }
+    },
+    "cross_target": {
+      "RF|subj_model_on_eda": {
+        "spearman": 0.11734181061686264,
+        "pearson": 0.1260106617194601,
+        "r2": -1.632959257404095,
+        "mae": 0.3754612071835751
+      },
+      "XGBoost|subj_model_on_eda": {
+        "spearman": 0.12063727558748226,
+        "pearson": 0.13317765452871705,
+        "r2": -1.7150518254055185,
+        "mae": 0.38199268635285555
+      }
+    },
+    "direction_agreement_all": 0.6557377049180327,
+    "direction_agreement_strong_subjective": 0.6633663366336634,
+    "n_strong": 101,
+    "invariant_feature_directions": {
+      "spec_flatness_std": {
+        "d_subjective": 0.307,
+        "d_eda": 0.077,
+        "same_direction": true
+      },
+      "spec_flatness_p50": {
+        "d_subjective": 1.392,
+        "d_eda": 0.084,
+        "same_direction": true
+      },
+      "spec_contrast3_dmean": {
+        "d_subjective": -0.387,
+        "d_eda": -0.035,
+        "same_direction": true
+      },
+      "onset_env_mean": {
+        "d_subjective": 0.062,
+        "d_eda": -0.01,
+        "same_direction": false
+      },
+      "onset_env_dmean": {
+        "d_subjective": -0.498,
+        "d_eda": -0.104,
+        "same_direction": true
+      },
+      "onset_rate": {
+        "d_subjective": 0.432,
+        "d_eda": -0.037,
+        "same_direction": false
+      },
+      "mfcc1_std": {
+        "d_subjective": -0.826,
+        "d_eda": 0.008,
+        "same_direction": false
+      }
+    }
+  },
+  "artifacts": [
+    "feature_direction_subj_vs_eda.csv"
+  ],
+  "finished_utc": "2026-07-27T11:35:20.451642+00:00"
+}

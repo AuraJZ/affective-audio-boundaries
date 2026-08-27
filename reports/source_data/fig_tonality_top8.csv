@@ -1,0 +1,17 @@
+axis,position,feature,importance,is_layer_d
+happy,1,key_major_strength,0.2896475622221978,True
+happy,2,mode_score,0.12556461578223266,True
+happy,3,spec_contrast3_dmean,0.036323245711123504,False
+happy,4,spec_contrast4_dmean,0.02753642861769405,False
+happy,5,onset_env_p90,0.022485608378068137,False
+happy,6,rms_std,0.018149457950922026,False
+happy,7,spec_contrast6_dmean,0.014257759995437493,False
+happy,8,pulse_clarity,0.012842117210281773,False
+tension,1,spec_contrast2_p10,0.5560534145988653,False
+tension,2,key_clarity,0.05086268016149539,True
+tension,3,key_major_strength,0.02729447661030988,True
+tension,4,chroma_consonance,0.01483494384497908,True
+tension,5,spec_contrast2_mean,0.014290457901681725,False
+tension,6,rel_chroma_8,0.013026185180924072,True
+tension,7,roughness_pl_mean,0.009764708373285207,True
+tension,8,spec_contrast3_p10,0.008390469483964508,False

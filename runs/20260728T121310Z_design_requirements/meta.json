@@ -1,0 +1,184 @@
+{
+  "run_id": "20260728T121310Z_design_requirements",
+  "name": "design_requirements",
+  "started_utc": "2026-07-28T12:13:10.466598+00:00",
+  "seed": 42,
+  "params": {
+    "n_features": 156,
+    "n_grid": [
+      30,
+      60,
+      120,
+      250,
+      500,
+      1000
+    ],
+    "r_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "n_sim": 60,
+    "n_perm": 100,
+    "pipeline": "与 53 逐字相同：折内 PCA(8) + RidgeCV，5 折 CV，逐个体置换 p<0.05",
+    "covariance": "Ledoit-Wolf 收缩，取自 ds002721 的真实特征",
+    "assumptions": [
+      "多元正态生成（略微高估功效）",
+      "线性关系（非线性则需更多样本）",
+      "未建模个体内非平稳性（长时记录中更严重）"
+    ],
+    "therefore": "给出的样本量是**下界**"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "shrinkage": 0.043669747511267315,
+    "power_grid": [
+      {
+        "r_true": 0.1,
+        "n_trials": 30,
+        "power": 0.016666666666666666
+      },
+      {
+        "r_true": 0.1,
+        "n_trials": 60,
+        "power": 0.1
+      },
+      {
+        "r_true": 0.1,
+        "n_trials": 120,
+        "power": 0.06666666666666667
+      },
+      {
+        "r_true": 0.1,
+        "n_trials": 250,
+        "power": 0.11666666666666667
+      },
+      {
+        "r_true": 0.1,
+        "n_trials": 500,
+        "power": 0.03333333333333333
+      },
+      {
+        "r_true": 0.1,
+        "n_trials": 1000,
+        "power": 0.18333333333333332
+      },
+      {
+        "r_true": 0.2,
+        "n_trials": 30,
+        "power": 0.05
+      },
+      {
+        "r_true": 0.2,
+        "n_trials": 60,
+        "power": 0.13333333333333333
+      },
+      {
+        "r_true": 0.2,
+        "n_trials": 120,
+        "power": 0.11666666666666667
+      },
+      {
+        "r_true": 0.2,
+        "n_trials": 250,
+        "power": 0.21666666666666667
+      },
+      {
+        "r_true": 0.2,
+        "n_trials": 500,
+        "power": 0.2833333333333333
+      },
+      {
+        "r_true": 0.2,
+        "n_trials": 1000,
+        "power": 0.75
+      },
+      {
+        "r_true": 0.3,
+        "n_trials": 30,
+        "power": 0.1
+      },
+      {
+        "r_true": 0.3,
+        "n_trials": 60,
+        "power": 0.13333333333333333
+      },
+      {
+        "r_true": 0.3,
+        "n_trials": 120,
+        "power": 0.2
+      },
+      {
+        "r_true": 0.3,
+        "n_trials": 250,
+        "power": 0.5166666666666667
+      },
+      {
+        "r_true": 0.3,
+        "n_trials": 500,
+        "power": 0.75
+      },
+      {
+        "r_true": 0.3,
+        "n_trials": 1000,
+        "power": 0.9166666666666666
+      },
+      {
+        "r_true": 0.4,
+        "n_trials": 30,
+        "power": 0.13333333333333333
+      },
+      {
+        "r_true": 0.4,
+        "n_trials": 60,
+        "power": 0.23333333333333334
+      },
+      {
+        "r_true": 0.4,
+        "n_trials": 120,
+        "power": 0.3333333333333333
+      },
+      {
+        "r_true": 0.4,
+        "n_trials": 250,
+        "power": 0.7833333333333333
+      },
+      {
+        "r_true": 0.4,
+        "n_trials": 500,
+        "power": 0.9833333333333333
+      },
+      {
+        "r_true": 0.4,
+        "n_trials": 1000,
+        "power": 1.0
+      }
+    ],
+    "n_required_for_80pct_power": [
+      {
+        "r_true": 0.1,
+        "n_required_80pct": Infinity
+      },
+      {
+        "r_true": 0.2,
+        "n_required_80pct": Infinity
+      },
+      {
+        "r_true": 0.3,
+        "n_required_80pct": 650.0000000000002
+      },
+      {
+        "r_true": 0.4,
+        "n_required_80pct": 270.8333333333334
+      }
+    ]
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-28T15:46:17.837630+00:00"
+}

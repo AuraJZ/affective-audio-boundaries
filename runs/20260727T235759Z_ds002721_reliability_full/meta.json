@@ -1,0 +1,37 @@
+{
+  "run_id": "20260727T235759Z_ds002721_reliability_full",
+  "name": "ds002721_reliability_full",
+  "started_utc": "2026-07-27T23:57:59.047209+00:00",
+  "seed": 42,
+  "params": {
+    "n_features": 156,
+    "families": {
+      "asymmetry": 30,
+      "imaginary coherence": 50,
+      "coherence": 50,
+      "band power": 26
+    },
+    "n_trials": 1240,
+    "n_perm": 500,
+    "why": "step17 只用带功率，不含 Daly et al. 报告效应的相干与beta/gamma 不对称；不补齐则结论是循环论证",
+    "multiple_comparison": "BH-FDR over all features"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_features_tested": 156,
+    "best_by_family": {
+      "asymmetry": 0.0702,
+      "band power": 0.0402,
+      "coherence": 0.0917,
+      "imaginary coherence": 0.0427
+    },
+    "n_fdr_significant": 0
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-28T00:08:21.144984+00:00"
+}

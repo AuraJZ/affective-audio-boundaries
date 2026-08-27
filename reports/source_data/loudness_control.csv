@@ -1,0 +1,28 @@
+path,measure,model,rho,p,n_feat
+"A_ln (归一化, 现状)",scr_rate,ridge,0.014165883692830672,0.22772277227722773,122
+"A_ln (归一化, 现状)",scr_rate,rf,0.00437158786605611,0.40594059405940597,122
+"A_ln (归一化, 现状)",phasic_mean,ridge,0.04516608060489725,0.07920792079207921,122
+"A_ln (归一化, 现状)",phasic_mean,rf,-0.08429902095945589,0.9504950495049505,122
+"A_ln (归一化, 现状)",scl_slope,ridge,0.022192398471498797,0.13861386138613863,122
+"A_ln (归一化, 现状)",scl_slope,rf,0.008632080017953729,0.33663366336633666,122
+A_raw (原始响度),scr_rate,ridge,0.027935306255398452,0.1485148514851485,122
+A_raw (原始响度),scr_rate,rf,0.007284948851940153,0.39603960396039606,122
+A_raw (原始响度),phasic_mean,ridge,0.04927647552891862,0.0891089108910891,122
+A_raw (原始响度),phasic_mean,rf,-0.05324671893661696,0.8415841584158416,122
+A_raw (原始响度),scl_slope,ridge,0.015337866157841261,0.1782178217821782,122
+A_raw (原始响度),scl_slope,rf,-0.03129345704192437,0.7128712871287128,122
+"ComParE (原始, 作者提取)",scr_rate,ridge,0.016834856197937835,0.2376237623762376,6373
+"ComParE (原始, 作者提取)",scr_rate,rf,0.06362866595710596,0.04950495049504951,6373
+"ComParE (原始, 作者提取)",phasic_mean,ridge,0.04980601132587213,0.07920792079207921,6373
+"ComParE (原始, 作者提取)",phasic_mean,rf,-0.004641936921070476,0.44554455445544555,6373
+"ComParE (原始, 作者提取)",scl_slope,ridge,0.0719356581164305,0.0297029702970297,6373
+"ComParE (原始, 作者提取)",scl_slope,rf,-0.03307041679283561,0.6831683168316832,6373
+loudness_only_归一化,scr_rate,univariate,-0.01878704218005572,,1
+loudness_only_归一化,phasic_mean,univariate,-0.037174546733148774,,1
+loudness_only_归一化,scl_slope,univariate,-0.03519829640867197,,1
+loudness_only_原始,scr_rate,univariate,0.059359359768340184,,1
+loudness_only_原始,phasic_mean,univariate,0.04077788942331855,,1
+loudness_only_原始,scl_slope,univariate,-5.633732845458478e-05,,1
+loudness_only_ComParE 原始,scr_rate,univariate,0.04779275304036093,,1
+loudness_only_ComParE 原始,phasic_mean,univariate,0.03530986445051618,,1
+loudness_only_ComParE 原始,scl_slope,univariate,-0.008460252683754874,,1

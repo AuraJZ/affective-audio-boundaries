@@ -1,0 +1,98 @@
+{
+  "run_id": "20260727T091605Z_feature_significance",
+  "name": "feature_significance",
+  "started_utc": "2026-07-27T09:16:05.123987+00:00",
+  "seed": 42,
+  "params": {
+    "dataset": "emo",
+    "representation": "A",
+    "n_features": 122,
+    "n_perm": 200,
+    "models": [
+      "RF",
+      "XGBoost"
+    ],
+    "fdr_q": 0.1,
+    "importance": "mean|SHAP| (TreeExplainer)",
+    "note": "仅用树模型；SVM KernelExplainer 在数百次重复下成本不可行，为有意取舍"
+  },
+  "git_commit": "4a995a7bf7e4a42308b59c22713deffd21cfe972",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "7ebca11109f30d971df5f4f5fa3774c41ce61b92189fba76b02a4d181135c7d2",
+  "inputs": {
+    "features": {
+      "n_files": 1,
+      "rollup_sha256": "f66afc4306a9620bfde828cbc90ccbaefb5a8ba9d6502edddf3a9a667ade9cb1",
+      "files": [
+        {
+          "path": "data/features/layer_a_emo_ln.parquet",
+          "sha256": "92645c88e6bb7d724f0978685dc0fa8bf968bf18f20623c4f88a8e04952f32e8"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "n_significant_RF": 22,
+    "n_significant_XGBoost": 13,
+    "calibrated_consensus": [
+      "mfcc1_std",
+      "onset_env_dmean",
+      "onset_env_p10",
+      "rms_mean",
+      "spec_contrast2_mean",
+      "spec_contrast5_p10",
+      "spec_contrast5_p50",
+      "spec_contrast6_p10",
+      "spec_contrast6_p50",
+      "spec_flatness_std"
+    ],
+    "n_calibrated_consensus": 10,
+    "per_model_significant": {
+      "RF": [
+        "f0_p10",
+        "low_energy_ratio",
+        "mfcc1_std",
+        "mfcc2_mean",
+        "onset_env_dmean",
+        "onset_env_p10",
+        "onset_env_p90",
+        "onset_env_std",
+        "rms_mean",
+        "rms_p50",
+        "rms_p90",
+        "spec_contrast2_mean",
+        "spec_contrast2_p10",
+        "spec_contrast2_p50",
+        "spec_contrast2_p90",
+        "spec_contrast5_p10",
+        "spec_contrast5_p50",
+        "spec_contrast6_p10",
+        "spec_contrast6_p50",
+        "spec_flatness_std",
+        "zcr_p10",
+        "zcr_p50"
+      ],
+      "XGBoost": [
+        "mfcc1_std",
+        "onset_env_dmean",
+        "onset_env_p10",
+        "rms_mean",
+        "spec_contrast0_dmean",
+        "spec_contrast2_mean",
+        "spec_contrast5_p10",
+        "spec_contrast5_p50",
+        "spec_contrast6_p10",
+        "spec_contrast6_p50",
+        "spec_flatness_std",
+        "spec_rolloff_dmean",
+        "spec_rolloff_p10"
+      ]
+    }
+  },
+  "artifacts": [
+    "feature_significance.csv"
+  ],
+  "finished_utc": "2026-07-27T09:43:21.419134+00:00"
+}

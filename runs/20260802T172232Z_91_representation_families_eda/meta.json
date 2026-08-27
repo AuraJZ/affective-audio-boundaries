@@ -1,0 +1,25 @@
+{
+  "run_id": "20260802T172232Z_91_representation_families_eda",
+  "name": "91_representation_families_eda",
+  "started_utc": "2026-08-02T17:22:32.570459+00:00",
+  "seed": 20260801,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "splithalf_reliability_scr_rate": 0.13201789615922557,
+    "pct_conservative_scr_rate": 0.19260577650897598,
+    "splithalf_reliability_phasic_mean": 0.22946229906233712,
+    "pct_conservative_phasic_mean": 0.1713743993222311,
+    "splithalf_reliability_scl_slope": 0.2304462698780755,
+    "pct_conservative_scl_slope": 0.23645423602511462,
+    "best_pct_of_ceiling": 0.21280582889267421,
+    "best_family": "手工 A+D (161)"
+  },
+  "artifacts": [],
+  "finished_utc": "2026-08-02T17:30:23.106971+00:00"
+}

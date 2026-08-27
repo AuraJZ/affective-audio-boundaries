@@ -1,0 +1,7 @@
+corpus,pair,correlation,stacking_gain
+Emo-Soundscapes (Freesound-derived),within_A,0.8642561991108774,0.008412905463059395
+Emo-Soundscapes (Freesound-derived),within_C,0.9239579675504183,0.008412905463059395
+Emo-Soundscapes (Freesound-derived),across_AC,0.8173512657911446,0.008412905463059395
+DEAM (independent),within_A,0.886874371826133,0.018506841246823336
+DEAM (independent),within_C,0.9362507723051414,0.018506841246823336
+DEAM (independent),across_AC,0.7964816600667379,0.018506841246823336

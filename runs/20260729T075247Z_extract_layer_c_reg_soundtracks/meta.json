@@ -1,0 +1,31 @@
+{
+  "run_id": "20260729T075247Z_extract_layer_c_reg_soundtracks",
+  "name": "extract_layer_c_reg_soundtracks",
+  "started_utc": "2026-07-29T07:52:47.890870+00:00",
+  "seed": 0,
+  "params": {
+    "dataset": "reg_soundtracks",
+    "model": "laion/clap-htsat-unfused",
+    "extractor_version": "layer_c/1.0.0",
+    "fs": 48000,
+    "target_lufs": -23.0,
+    "note": "笔记 §2.3 明确此层为对照组，非主力"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_clips": 360,
+    "dim": 512,
+    "n_failed": 0,
+    "elapsed_s": 149.6
+  },
+  "artifacts": [],
+  "notes": {
+    "output": "data/features/layer_c_reg_soundtracks.parquet"
+  },
+  "finished_utc": "2026-07-29T07:55:17.873637+00:00"
+}

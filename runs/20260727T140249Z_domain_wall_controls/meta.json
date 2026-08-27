@@ -1,0 +1,78 @@
+{
+  "run_id": "20260727T140249Z_domain_wall_controls",
+  "name": "domain_wall_controls",
+  "started_utc": "2026-07-27T14:02:49.700361+00:00",
+  "seed": 42,
+  "params": {
+    "controls": [
+      "C1 duration",
+      "C2 within-domain LOCO",
+      "C3 second ambient corpus"
+    ]
+  },
+  "git_commit": "7af714c65874f3b533872dee5977c31d01b93a82",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "C1_duration": {
+      "reg_deam|30s": 0.13177882122463944,
+      "reg_deam|6s": 0.18837358219748743,
+      "reg_deam->reg_pmemo|6s": 0.6928326479528127,
+      "reg_deam->reg_pmemo|30s": 0.6989806817902287,
+      "reg_pmemo|30s": -0.06197466952049421,
+      "reg_pmemo|6s": -0.08498834212401533,
+      "reg_pmemo->reg_deam|6s": 0.5716847037909053,
+      "reg_pmemo->reg_deam|30s": 0.6319196111835096
+    },
+    "C2_leave_one_category_out": {
+      "human": {
+        "n_test": 100,
+        "spearman": 0.6989858985898589
+      },
+      "indicator": {
+        "n_test": 100,
+        "spearman": 0.6279627962796278
+      },
+      "mechanical": {
+        "n_test": 100,
+        "spearman": 0.3341854185418542
+      },
+      "nature": {
+        "n_test": 100,
+        "spearman": 0.6748634863486348
+      },
+      "quiet": {
+        "n_test": 100,
+        "spearman": 0.1973717371737173
+      },
+      "society": {
+        "n_test": 100,
+        "spearman": 0.611065106510651
+      }
+    },
+    "C3_second_ambient_corpus": {
+      "reg_deam->esc50": {
+        "auc": 0.5315078125,
+        "auc_if_flipped": 0.4684921875
+      },
+      "reg_pmemo->esc50": {
+        "auc": 0.50428125,
+        "auc_if_flipped": 0.49571875
+      }
+    },
+    "summary": {
+      "C1_cross_domain_30s": 0.03490207585207261,
+      "C1_cross_domain_6s": 0.051692620036736046,
+      "C1_same_domain_6s": 0.632258675871859,
+      "C2_mean_within_domain": 0.524072407240724,
+      "duration_confound_excluded": true
+    }
+  },
+  "artifacts": [
+    "domain_wall_controls.csv"
+  ],
+  "finished_utc": "2026-07-27T14:03:53.764899+00:00"
+}

@@ -1,0 +1,139 @@
+% =====================================================================
+% Preamble — bioRxiv preprint
+%
+% bioRxiv accepts PDF and does not impose a template, so this is a plain
+% article layout chosen for legibility at screen size: single column,
+% generous leading, line numbers for reviewer reference.
+%
+% Figures are the manuscript PDFs exported from reports/figures_r/ at
+% 183 mm (double-column) or 89 mm (single-column) width. They are vector
+% PDFs, so no rasterisation occurs at any zoom level.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{lineno}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{caption}
+% Legends run long (up to ~570 words). At \small with 1.5 line spacing a
+% caption can exceed the text block, which silently truncates it and overprints
+% the page number. Captions are therefore set single-spaced and one size down,
+% and each figure is given a page of its own.
+\captionsetup{font={footnotesize,singlespacing},labelfont=bf,
+              justification=justified,singlelinecheck=false,
+              skip=6pt}
+
+% 🔴 Figures are NOT floats. This is the fix for a defect that was losing text.
+%
+% They used to be \begin{figure}[p]. A float is one unbreakable box, so when the
+% image and its legend together exceed the page, LaTeX does not reflow and does
+% not shrink -- it prints past the bottom margin, over the page number, and
+% clips the remainder. Five of the eight main figures were doing this, the worst
+% by 341 pt (120 mm), and the end of those legends never reached the PDF.
+% It is a silent failure: the structure checker cannot see it, and the only
+% warning is "Float too large for page by ..." buried in the log.
+%
+% Shrinking the images cannot fix it. Fig. 1 would have to come down to roughly
+% 80 mm for its legend to fit beside it, which puts the panel type below the
+% 6 pt floor the figure contract sets.
+%
+% As ordinary (non-floating) content with \captionof, a legend that outruns its
+% page simply continues on the next one. Nothing is clipped. The cost is that a
+% few figures now span two pages, which is the correct trade.
+\usepackage{capt-of}
+
+% Retained for the tables, which are still floats and still fit.
+\renewcommand{\floatpagefraction}{0.60}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
+
+% One figure per page, image first, legend flowing beneath it.
+%
+% {\centering ... \par} rather than the center environment: center adds its own
+% vertical skips and closes with an empty paragraph, which lineno then numbers,
+% leaving a stray line number floating under the image.
+\newcommand{\msfigure}[3]{%
+  \clearpage
+  \nolinenumbers
+  {\centering\includegraphics[width=\textwidth]{#1}\par}%
+  \linenumbers
+  \captionof{figure}{#3}\label{#2}%
+}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
+
+\usepackage{authblk}
+\renewcommand\Affilfont{\small}
+
+% The article class wraps the abstract in \quotation and sets it one size down,
+% so it is both narrower and smaller than the body. Here it matches the body in
+% width and in size; the bold heading alone marks it off.
+\renewenvironment{abstract}{%
+  \begin{center}\bfseries \abstractname\end{center}%
+  \vspace{-0.5em}\par}
+  {\par\vspace{1em}}
+
+% Two-line table headers. Table 1 has six columns whose headers ("Across
+% domains", "Within corpus") are far wider than the numbers under them; set on
+% one line the table runs about 15 mm past the text block and the last column
+% is cut off. Stacking the headers makes each column as wide as its data.
+% A nested tabular rather than \makecell so no extra package is needed.
+\newcommand{\thd}[2]{\begin{tabular}[b]{@{}c@{}}#1\\#2\end{tabular}}
+
+% upgreek must be loaded before the macro that uses \upmu
+\usepackage{upgreek}
+\newcommand{\uV}{\ensuremath{\upmu\mathrm{V}}}
+
+% This preamble carried a "fill marker" apparatus while the author fields were
+% outstanding: each unfilled item was highlighted in place and collected into a
+% checklist on page 1. All six -- authors, affiliations, corresponding email,
+% ORCID, repository URL, CRediT -- were supplied in August 2026, so the
+% apparatus was removed. Leaving it would have been dead code, and its checklist
+% still contained literals such as "Public repository URL" that kept tripping
+% the pre-release placeholder scan.
+%
+% Two items remain undetermined -- the arXiv identifier and the Zenodo DOI --
+% but neither lives in this document; scripts/A2_tex_structure_check.py watches
+% for them in README.md instead.
+\usepackage{xcolor}
+
+% Extended Data figures live in the supplementary document and are referred to
+% by name in the running text, so no separate float environment is needed here.
+
+\title{\bfseries Not all generalisation failures can be bought back:
+       four boundaries in affective audio modelling}
+
+% Filled 2026-08. ORCIDs deliberately omitted at the authors' instruction.
+\author[1,2]{Jingyi Zhang}
+\author[1]{Xiaotong Yao}
+\affil[1]{Shanghai Huangan Technology Co., Ltd., Shanghai, China}
+\affil[2]{Systems Neuroscience, Institute for Neuroscience,
+          Department of Health Sciences and Technology (D-HEST),
+          ETH Zurich, Zurich, Switzerland}
+\affil[ ]{Correspondence: Jingyi Zhang, \texttt{jingyi.zhang@hest.ethz.ch}}
+
+% Figure legends, generated from reports/FIGURE_LEGENDS.md.
+% Loaded here as macros: \caption is a moving argument and
+% \input inside it is fragile.
+\input{legends/all}
+
+\date{}

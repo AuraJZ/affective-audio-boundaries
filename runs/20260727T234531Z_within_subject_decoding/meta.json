@@ -1,0 +1,51 @@
+{
+  "run_id": "20260727T234531Z_within_subject_decoding",
+  "name": "within_subject_decoding",
+  "started_utc": "2026-07-27T23:45:31.854270+00:00",
+  "seed": 42,
+  "params": {
+    "dataset": "ds002721",
+    "n_eeg_features": 26,
+    "min_trials": 25,
+    "n_perm": 200,
+    "rating_code": "901-909（step17 已判定）",
+    "question": "文献做的被试内解码，与 step17 的跨受试信度是两个问题",
+    "controls": [
+      "被试内打乱试次的零分布",
+      "偏掉试次序号"
+    ]
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_within_subject_correlations": 1040,
+    "n_decoding_cells": 40,
+    "within_subject_decoding": [
+      {
+        "question": "pleasant",
+        "n": 16,
+        "obs": -0.5016146144594947,
+        "null": -0.5490420159424984,
+        "p": 0.93988037109375
+      },
+      {
+        "question": "tense",
+        "n": 11,
+        "obs": -0.5873291337554348,
+        "null": -0.618972257288977,
+        "p": 0.921875
+      }
+    ],
+    "consistent_relations": {
+      "n_tested": 52,
+      "n_fdr_sig": 0,
+      "top": []
+    }
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T23:45:42.379626+00:00"
+}

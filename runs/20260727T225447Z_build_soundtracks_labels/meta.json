@@ -1,0 +1,68 @@
+{
+  "run_id": "20260727T225447Z_build_soundtracks_labels",
+  "name": "build_soundtracks_labels",
+  "started_utc": "2026-07-27T22:54:47.346934+00:00",
+  "seed": 0,
+  "params": {
+    "source": "Eerola & Vuoskoski (2011) Soundtracks Set1",
+    "osf": "https://osf.io/p6vkg/",
+    "licence": "academic research use (see OSF readme)",
+    "scale": "1-9 Likert → (x-5)/4 → [-1, 1]",
+    "n_expected": 360
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {
+    "ratings": {
+      "n_files": 1,
+      "rollup_sha256": "83f0491e8914f0b9d86c8672cc4992ade3a9afb2754597d13ea899af0c8ccbfc",
+      "files": [
+        {
+          "path": "data/raw/soundtracks/mean_ratings_set1.csv",
+          "sha256": "86ec210c724524a452df300a89e13542308eb6805678e1976aa48417a8eb6c27"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "n_clips": 360,
+    "n_missing_audio": 0,
+    "target_emotion_counts": {
+      "HAPPY": 30,
+      "SAD": 30,
+      "TENDER": 30,
+      "FEAR": 30,
+      "ANGER": 30,
+      "SURPRISE": 30,
+      "HIGH VALENCE": 30,
+      "LOW VALENCE": 30,
+      "HIGH ENERGY": 30,
+      "LOW ENERGY": 30,
+      "HIGH TENSION": 30,
+      "LOW TENSION": 30
+    },
+    "valence_range": [
+      -1.0,
+      0.4575,
+      0.4060283806738676
+    ],
+    "energy_range": [
+      -0.9575,
+      0.5,
+      0.3653619131206648
+    ],
+    "tension_range": [
+      -1.0,
+      0.5,
+      0.42881055101816246
+    ]
+  },
+  "artifacts": [],
+  "notes": {
+    "output": "data/reg_soundtracks.csv"
+  },
+  "finished_utc": "2026-07-27T22:54:47.700150+00:00"
+}

@@ -1,0 +1,59 @@
+{
+  "run_id": "20260728T142532Z_tonality_domain_wall",
+  "name": "tonality_domain_wall",
+  "started_utc": "2026-07-28T14:25:32.955167+00:00",
+  "seed": 42,
+  "params": {
+    "n_a": 122,
+    "n_d": 39,
+    "corpora": {
+      "deam": 1233,
+      "pmemo": 717,
+      "soundtracks": 360,
+      "emo_mix": 1213
+    },
+    "hypothesis": "调性结构为音乐域专有；跨域时不仅无用而且有害",
+    "predictions": [
+      "音乐域内 A+D > A",
+      "音乐→环境声 A+D ≤ A（关键）",
+      "环境声域内 A+D ≈ A"
+    ]
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "summary": {
+      "A": {
+        "cross-domain": 0.0539,
+        "same-domain": 0.5918
+      },
+      "A+D": {
+        "cross-domain": 0.0624,
+        "same-domain": 0.5892
+      }
+    },
+    "predictions": {
+      "music_within_improves": {
+        "A": 0.7928520851501828,
+        "A+D": 0.7991477692122811,
+        "pass": true
+      },
+      "music_to_ambient_not_better": {
+        "A": 0.11052298090420323,
+        "A+D": 0.08952897729123448,
+        "pass": true
+      },
+      "ambient_within_unchanged": {
+        "A": 0.7726082639208355,
+        "A+D": 0.7675192400152864,
+        "pass": true
+      }
+    }
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-28T14:45:57.845733+00:00"
+}

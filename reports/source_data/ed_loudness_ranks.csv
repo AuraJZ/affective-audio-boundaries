@@ -1,0 +1,6 @@
+feature,rank_raw,rank_norm
+rms_p90,39.0,93.0
+rms_mean,42.0,56.3
+rms_p10,61.3,75.0
+rms_p50,24.0,31.3
+mfcc1_mean,3.7,10.7

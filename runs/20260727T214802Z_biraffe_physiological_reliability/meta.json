@@ -1,0 +1,85 @@
+{
+  "run_id": "20260727T214802Z_biraffe_physiological_reliability",
+  "name": "biraffe_physiological_reliability",
+  "started_utc": "2026-07-27T21:48:02.257770+00:00",
+  "seed": 42,
+  "params": {
+    "dataset": "BIRAFFE2",
+    "licence": "CC BY 4.0",
+    "n_subjects_available": 102,
+    "features": [
+      "eda_rise",
+      "eda_scr",
+      "hr_change"
+    ],
+    "n_splits": 200,
+    "windows": {
+      "baseline": "-2..0 s",
+      "ecg": "0..6 s",
+      "eda": "1..8 s"
+    },
+    "note": "先测信度再建模；PMEmo EDA 天花板为 0.155，本次为对照"
+  },
+  "git_commit": "bfa1224c3794c294ce257c20010a2f1602c7155c",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "n_trials": 3937,
+    "n_trials_dropped_by_gaps": 331,
+    "feature_completeness": {
+      "eda_rise": 0.9159258318516637,
+      "eda_scr": 0.9159258318516637,
+      "hr_change": 0.9136398272796545
+    },
+    "reliability": {
+      "subjective_arousal": {
+        "raw_mean": 0.6863208209663005,
+        "spearman_brown": 0.8133316139044152,
+        "p10": 0.7740049381652521,
+        "p90": 0.8476118700970172
+      },
+      "eda_rise": {
+        "raw_mean": -0.03535225356540627,
+        "spearman_brown": -0.08476135039868611,
+        "p10": -0.3031657841593809,
+        "p90": 0.11180683398728294
+      },
+      "eda_scr": {
+        "raw_mean": -0.06347352024922118,
+        "spearman_brown": -0.14668824267998765,
+        "p10": -0.35056616283658987,
+        "p90": 0.06027407548963379
+      },
+      "hr_change": {
+        "raw_mean": -0.039193222631874775,
+        "spearman_brown": -0.09288143745584974,
+        "p10": -0.2992331377267059,
+        "p90": 0.08745173560032359
+      }
+    },
+    "subjective_vs_physiological": {
+      "eda_rise": {
+        "rho": -0.06464888965103317,
+        "max_possible": null,
+        "pct_of_max": null
+      },
+      "eda_scr": {
+        "rho": 0.10173673630760142,
+        "max_possible": null,
+        "pct_of_max": null
+      },
+      "hr_change": {
+        "rho": 0.09691617365457716,
+        "max_possible": null,
+        "pct_of_max": null
+      }
+    }
+  },
+  "artifacts": [
+    "trial_features.parquet"
+  ],
+  "finished_utc": "2026-07-27T21:53:26.286382+00:00"
+}

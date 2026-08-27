@@ -1,0 +1,24 @@
+{
+  "run_id": "20260727T115554Z_extract_layer_c_reg_emo_mix",
+  "name": "extract_layer_c_reg_emo_mix",
+  "started_utc": "2026-07-27T11:55:54.096328+00:00",
+  "seed": 0,
+  "params": {
+    "dataset": "reg_emo_mix",
+    "model": "laion/clap-htsat-unfused",
+    "extractor_version": "layer_c/1.0.0",
+    "fs": 48000,
+    "target_lufs": -23.0,
+    "note": "笔记 §2.3 明确此层为对照组，非主力"
+  },
+  "git_commit": "49d1a849445b0dc2344b5ac0c76dfa6bc2f5345b",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {},
+  "artifacts": [],
+  "failed": "RuntimeError: Boolean value of Tensor with more than one value is ambiguous",
+  "finished_utc": "2026-07-27T11:56:29.667888+00:00"
+}

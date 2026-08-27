@@ -1,0 +1,410 @@
+{
+  "run_id": "20260727T232616Z_ds002721_eeg_reliability",
+  "name": "ds002721_eeg_reliability",
+  "started_utc": "2026-07-27T23:26:16.391901+00:00",
+  "seed": 42,
+  "params": {
+    "dataset": "OpenNeuro ds002721",
+    "n_subjects": 31,
+    "response_win_s": [
+      1.0,
+      14.0
+    ],
+    "baseline_win_s": [
+      -2.0,
+      0.0
+    ],
+    "bands": {
+      "delta": [
+        1,
+        4
+      ],
+      "theta": [
+        4,
+        8
+      ],
+      "alpha": [
+        8,
+        13
+      ],
+      "beta": [
+        13,
+        30
+      ],
+      "gamma": [
+        30,
+        45
+      ]
+    },
+    "n_perm": 500,
+    "n_split": 400,
+    "min_subjects_for_split_half": 8,
+    "prerequisite": "37_eeg_positive_controls 四项全过"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "rating_family_validation": {
+      "response_833_841": {
+        "pleasant": -0.04049421485910462,
+        "energetic": -0.02799097620797957,
+        "tense": -0.0277766592584081,
+        "angry": -0.07270396336976329,
+        "afraid": 0.003184612731277166,
+        "happy": -0.052873584862552774,
+        "sad": 0.016473271633224262,
+        "tender": 0.011100257268596035,
+        "_mean": -0.02388515711558886,
+        "_n_axes": 8.0
+      },
+      "answer_901_909": {
+        "pleasant": 0.06323199596228755,
+        "energetic": -0.012579879867169894,
+        "tense": -0.05504146645472286,
+        "angry": 0.06636222071652988,
+        "afraid": 0.049641332644298444,
+        "happy": 0.002149566590818414,
+        "sad": -0.06803146246144515,
+        "tender": 0.007021710024038858,
+        "_mean": 0.006594252144329405,
+        "_n_axes": 8.0
+      }
+    },
+    "rating_family_chosen": "answer",
+    "n_trials": 1240,
+    "n_stimuli": 307,
+    "n_eeg_features": 26,
+    "rating_completeness": {
+      "pleasant": 0.5935483870967742,
+      "energetic": 0.5306451612903226,
+      "tense": 0.5556451612903226,
+      "angry": 0.5548387096774193,
+      "afraid": 0.5225806451612903,
+      "happy": 0.5491935483870968,
+      "sad": 0.5129032258064516,
+      "tender": 0.5064516129032258
+    },
+    "reliability_table": [
+      {
+        "measure": "beta_central",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": 0.04023646810122093,
+        "split_half_sb": 0.18474894159358396,
+        "perm_p": 0.029940119760479042,
+        "null_icc": -2.169042065839491e-05
+      },
+      {
+        "measure": "beta_frontal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": 0.024676711198353775,
+        "split_half_sb": 0.11454096119359612,
+        "perm_p": 0.1317365269461078,
+        "null_icc": -0.0008494369418564372
+      },
+      {
+        "measure": "gamma_occipital",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": 0.01814545115976332,
+        "split_half_sb": 0.24471575249320462,
+        "perm_p": 0.25948103792415167,
+        "null_icc": 0.0019841108464108137
+      },
+      {
+        "measure": "beta_occipital",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": 0.008584830272581962,
+        "split_half_sb": 0.08789592131087996,
+        "perm_p": 0.3313373253493014,
+        "null_icc": -0.00036896283265911513
+      },
+      {
+        "measure": "theta_occipital",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": 0.008386720570035073,
+        "split_half_sb": -0.5719732854495156,
+        "perm_p": 0.3373253493013972,
+        "null_icc": 0.0003131667630018352
+      },
+      {
+        "measure": "beta_temporal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": 0.0029857704732893617,
+        "split_half_sb": -0.09178918412733593,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "delta_frontal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": 0.0024852058616674534,
+        "split_half_sb": 0.09290425016400877,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "beta_parietal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": 0.002033477474629374,
+        "split_half_sb": 0.11290099173011114,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "delta_central",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": 0.001976073158893182,
+        "split_half_sb": 0.2122826779195034,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "delta_parietal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": 0.0006236545554013957,
+        "split_half_sb": 0.09896910916642312,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "alpha_occipital",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.0056660614799733475,
+        "split_half_sb": -0.10796766921652118,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "alpha_frontal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.008669250571168153,
+        "split_half_sb": -0.10768313015890164,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "faa",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.009954490408435572,
+        "split_half_sb": 0.20199577791308826,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "alpha_parietal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.010213635120885654,
+        "split_half_sb": -0.21912831905921526,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "alpha_temporal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.011435212261933255,
+        "split_half_sb": 0.2834852152686356,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "gamma_parietal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.011686234152505307,
+        "split_half_sb": 0.17811506711394337,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "theta_frontal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.01213772204489243,
+        "split_half_sb": -0.3074061927413507,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "alpha_central",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.014418085089672928,
+        "split_half_sb": 0.22934902753688477,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "theta_central",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.01587570558517902,
+        "split_half_sb": -0.1597072079074343,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "gamma_central",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.0162017800527222,
+        "split_half_sb": 0.2790870809300856,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "delta_occipital",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.01628138774674733,
+        "split_half_sb": -0.0016639585666692758,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "theta_temporal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.01797264338304721,
+        "split_half_sb": -0.5343575034651287,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "delta_temporal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.020265706874314938,
+        "split_half_sb": -0.13170378050830198,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "gamma_frontal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.026648982980006893,
+        "split_half_sb": 0.30842674111246504,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "theta_parietal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.0313559375071683,
+        "split_half_sb": -0.566704995707623,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "gamma_temporal",
+        "kind": "eeg",
+        "n": 1240,
+        "icc": -0.03330355864197878,
+        "split_half_sb": 0.19077838876829914,
+        "perm_p": NaN,
+        "null_icc": NaN
+      },
+      {
+        "measure": "tender",
+        "kind": "rating",
+        "n": 628,
+        "icc": 0.334569373854483,
+        "split_half_sb": 0.8691668416751444,
+        "perm_p": 0.001996007984031936,
+        "null_icc": 0.0019457834417397136
+      },
+      {
+        "measure": "angry",
+        "kind": "rating",
+        "n": 688,
+        "icc": 0.2559433558881659,
+        "split_half_sb": 0.8665669714173195,
+        "perm_p": 0.001996007984031936,
+        "null_icc": 0.0006906906318359262
+      },
+      {
+        "measure": "happy",
+        "kind": "rating",
+        "n": 681,
+        "icc": 0.24753949104791192,
+        "split_half_sb": 0.8144717197612874,
+        "perm_p": 0.001996007984031936,
+        "null_icc": 0.0001897317894631805
+      },
+      {
+        "measure": "sad",
+        "kind": "rating",
+        "n": 636,
+        "icc": 0.2210960926797348,
+        "split_half_sb": 0.7885583330213315,
+        "perm_p": 0.001996007984031936,
+        "null_icc": 0.003382918279498413
+      },
+      {
+        "measure": "pleasant",
+        "kind": "rating",
+        "n": 736,
+        "icc": 0.2190747942479775,
+        "split_half_sb": 0.7998813838163027,
+        "perm_p": 0.001996007984031936,
+        "null_icc": 0.002383285966163866
+      },
+      {
+        "measure": "tense",
+        "kind": "rating",
+        "n": 689,
+        "icc": 0.206893028055394,
+        "split_half_sb": 0.7927714817336312,
+        "perm_p": 0.001996007984031936,
+        "null_icc": -0.0021277455773510983
+      },
+      {
+        "measure": "afraid",
+        "kind": "rating",
+        "n": 648,
+        "icc": 0.17027316541541757,
+        "split_half_sb": 0.8177043042114789,
+        "perm_p": 0.001996007984031936,
+        "null_icc": 0.0028624458519239645
+      },
+      {
+        "measure": "energetic",
+        "kind": "rating",
+        "n": 658,
+        "icc": 0.15808121910500306,
+        "split_half_sb": 0.6973417954122081,
+        "perm_p": 0.001996007984031936,
+        "null_icc": 0.0004849314390871203
+      }
+    ],
+    "best_eeg": {
+      "measure": "beta_central",
+      "icc": 0.04023646810122093
+    },
+    "best_rating": {
+      "measure": "tender",
+      "icc": 0.334569373854483
+    }
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T23:32:37.683902+00:00"
+}

@@ -1,0 +1,51 @@
+{
+  "run_id": "20260728T002249Z_pooled_vs_subject_aware",
+  "name": "pooled_vs_subject_aware",
+  "started_utc": "2026-07-28T00:22:49.136437+00:00",
+  "seed": 42,
+  "params": {
+    "n_features": 156,
+    "n_questions": 8,
+    "n_combinations": 1248,
+    "comparison": [
+      "A 合并试次（视作独立）",
+      "B 被试内中位分割后合并",
+      "C 被试感知（先个体后组）"
+    ],
+    "point": "数据/特征/对比不变，只改统计单元"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "summary": {
+      "合并试次（视作独立）": {
+        "n_tested": 1248,
+        "p<0.05": 105,
+        "p<0.001": 1,
+        "FDR q<0.05": 0,
+        "min_p": 7.340443732704078e-05
+      },
+      "被试内中位分割后合并": {
+        "n_tested": 1248,
+        "p<0.05": 49,
+        "p<0.001": 0,
+        "FDR q<0.05": 0,
+        "min_p": 0.0012730897536701812
+      },
+      "被试感知": {
+        "n_tested": 1248,
+        "p<0.05": 59,
+        "p<0.001": 4,
+        "FDR q<0.05": 0,
+        "min_p": 0.000177089124917984
+      }
+    },
+    "chance_expectation_p05": 62.400000000000006
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-28T00:22:59.953451+00:00"
+}

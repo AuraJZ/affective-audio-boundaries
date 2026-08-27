@@ -1,0 +1,43 @@
+{
+  "run_id": "20260728T002914Z_per_subject_decoding",
+  "name": "per_subject_decoding",
+  "started_utc": "2026-07-28T00:29:14.609876+00:00",
+  "seed": 42,
+  "params": {
+    "n_features": 156,
+    "n_pc": 8,
+    "n_folds": 5,
+    "n_perm_per_subject": 200,
+    "min_trials": 20,
+    "question": "有多少个体的脑电能超过其自身零分布地预测自评状态",
+    "positive_control": "逐个体：脑电预测试次序号（时间漂移必然存在）",
+    "why": "产品前提是按人校准；组水平检验回答的是另一个问题"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "per_subject_positive_control": {
+      "n_subjects": 31,
+      "n_passed": 26,
+      "mean_rho": 0.4011014948859166,
+      "mean_null": -0.22234930097439934
+    },
+    "results": {
+      "n_tests": 248,
+      "n_subjects": 31,
+      "n_p05": 13,
+      "expected_by_chance": 12.4,
+      "binomial_p": 0.47083837434829695,
+      "n_subjects_with_any_p05": 10,
+      "expected_subjects_any": 10.43396663003907,
+      "n_fdr05": 0,
+      "max_rho": 0.4699507295278275
+    }
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-28T00:53:22.638896+00:00"
+}

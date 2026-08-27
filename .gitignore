@@ -1,0 +1,39 @@
+.venv/
+__pycache__/
+*.pyc
+
+# 数据不进版本库：体积大，且部分为 NC 许可证，不得随代码分发
+data/raw/
+data/features/
+data/*.csv
+
+# run record 的 meta.json 要进版本库（这是证据链），大体积产物不进
+runs/**/*.png
+runs/**/*.parquet
+runs/**/*.pkl
+
+# 打包产物：由 scripts/62_build_submission.py 生成，可重建，不进版本库。
+# 它现在只产出 dist/ 下的单个 zip —— 早先会在仓库里摊开一棵 submission/ 树，
+# 那是第二套源码，已废除。archive_full/ 同理（内含 17 GB 重复的原始数据）。
+dist/
+submission/
+archive_full/
+
+# 跑测日志与临时目录：含本机绝对路径，且可重建。公开发布红线之一。
+logs/
+tmp/
+
+# LaTeX 中间产物
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.out
+manuscript/*.toc
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.fls
+manuscript/*.fdb_latexmk
+manuscript/*.synctex.gz
+
+# 图的产物进版本库（投稿需要），但 R 的会话残留不进
+.Rhistory
+.RData

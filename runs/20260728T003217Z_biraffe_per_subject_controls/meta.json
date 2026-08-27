@@ -1,0 +1,34 @@
+{
+  "run_id": "20260728T003217Z_biraffe_per_subject_controls",
+  "name": "biraffe_per_subject_controls",
+  "started_utc": "2026-07-28T00:32:17.205747+00:00",
+  "seed": 42,
+  "params": {
+    "n_subjects": 102,
+    "tool": "neurokit2",
+    "target_fs": 20.0,
+    "n_perm": 500,
+    "change_vs_step14": "判决从组水平下沉到逐个体",
+    "hypothesis": "设备问题可能只影响一部分个体，组平均被坏数据拖偏，好数据仍可用"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_subjects_processed": 102,
+    "n_usable_signal": 94,
+    "controls": {
+      "habituation_pass": 8,
+      "expected_by_chance": 4.7,
+      "stimulus_locking_pass": 4,
+      "both_pass": 0,
+      "both_expected_by_chance": 0.23500000000000001,
+      "frac_hab_rho_negative": 0.35106382978723405
+    }
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-28T00:39:22.650312+00:00"
+}

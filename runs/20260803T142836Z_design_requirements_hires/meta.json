@@ -1,0 +1,52 @@
+{
+  "run_id": "20260803T142836Z_design_requirements_hires",
+  "name": "design_requirements_hires",
+  "started_utc": "2026-08-03T14:28:36.423811+00:00",
+  "seed": 42,
+  "params": {
+    "n_features": 156,
+    "n_grid": [
+      30,
+      60,
+      120,
+      250,
+      500,
+      1000,
+      2000,
+      5000
+    ],
+    "r_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "n_sim": 500,
+    "n_perm_threshold": 1000,
+    "speedup": "置换临界值按 n 只算一次 —— 零分布不依赖 r_true",
+    "supersedes": "56_design_requirements（每格 60 次，n≤1000）"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "shrinkage": 0.043669747511267315,
+    "threshold_n30": 0.18596218020022226,
+    "threshold_n60": 0.10710752986940811,
+    "threshold_n120": 0.09395444128064447,
+    "threshold_n250": 0.06916795468727492,
+    "threshold_n500": 0.05497454789819156,
+    "threshold_n1000": 0.041120797520797454,
+    "threshold_n2000": 0.036827465981866495,
+    "threshold_n5000": 0.023145985473039404,
+    "n_required_r0.1": 4888.420157916795,
+    "n_required_r0.2": 1364.4087026400741,
+    "n_required_r0.3": 564.2547661133176,
+    "n_required_r0.4": 314.1815417842325
+  },
+  "artifacts": [],
+  "finished_utc": "2026-08-03T15:27:37.447205+00:00"
+}

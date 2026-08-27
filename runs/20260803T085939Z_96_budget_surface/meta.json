@@ -1,0 +1,22 @@
+{
+  "run_id": "20260803T085939Z_96_budget_surface",
+  "name": "96_budget_surface",
+  "started_utc": "2026-08-03T08:59:39.592909+00:00",
+  "seed": 20260802,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "marginal_k_songs": 0.6844401655247054,
+    "marginal_m_frames": 0.7811746186972219,
+    "min_feasible_budget": 20,
+    "min_feasible_k": 4,
+    "min_feasible_m": 5
+  },
+  "artifacts": [],
+  "finished_utc": "2026-08-03T09:02:03.074768+00:00"
+}

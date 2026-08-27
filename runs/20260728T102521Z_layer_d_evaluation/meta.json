@@ -1,0 +1,232 @@
+{
+  "run_id": "20260728T102521Z_layer_d_evaluation",
+  "name": "layer_d_evaluation",
+  "started_utc": "2026-07-28T10:25:21.337498+00:00",
+  "seed": 42,
+  "params": {
+    "dataset": "reg_soundtracks",
+    "n_clips": 360,
+    "n_a": 122,
+    "n_d": 39,
+    "axes": [
+      "happy",
+      "tension",
+      "tender",
+      "valence",
+      "fear",
+      "anger",
+      "sad",
+      "energy"
+    ],
+    "cv": "GroupKFold(5)",
+    "prediction": "happy 的增益应显著大于其他轴；否则 Layer D 只是泛泛增加信息量，不构成「补上了调性缺口」"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "results": [
+      {
+        "axis": "happy",
+        "rho_A": 0.4743789216154495,
+        "r2_A": 0.13846906023337047,
+        "algo_A": "ElasticNet",
+        "rho_D": 0.5803144442180674,
+        "r2_D": 0.39376986761389887,
+        "algo_D": "XGBoost",
+        "rho_A+D": 0.6063950940841072,
+        "r2_A+D": 0.37567883318609496,
+        "algo_A+D": "ElasticNet",
+        "gain_rho": 0.1320161724686577,
+        "gain_r2": 0.2372097729527245
+      },
+      {
+        "axis": "tension",
+        "rho_A": 0.8044945614331673,
+        "r2_A": 0.6471751084527034,
+        "algo_A": "SVR",
+        "rho_D": 0.7937069308514573,
+        "r2_D": 0.6206219374191022,
+        "algo_D": "ElasticNet",
+        "rho_A+D": 0.8385207499040492,
+        "r2_A+D": 0.6957331497956118,
+        "algo_A+D": "SVR",
+        "gain_rho": 0.0340261884708819,
+        "gain_r2": 0.04855804134290842
+      },
+      {
+        "axis": "tender",
+        "rho_A": 0.7543396031623741,
+        "r2_A": 0.5216418655334012,
+        "algo_A": "RF",
+        "rho_D": 0.7635673218969561,
+        "r2_D": 0.5304445117984409,
+        "algo_D": "RF",
+        "rho_A+D": 0.7873918986532477,
+        "r2_A+D": 0.5723874532216089,
+        "algo_A+D": "RF",
+        "gain_rho": 0.03305229549087352,
+        "gain_r2": 0.050745587688207694
+      },
+      {
+        "axis": "valence",
+        "rho_A": 0.7352316163775792,
+        "r2_A": 0.5351150962344955,
+        "algo_A": "ElasticNet",
+        "rho_D": 0.7619348856040166,
+        "r2_D": 0.5685285332884356,
+        "algo_D": "ElasticNet",
+        "rho_A+D": 0.8180222220426847,
+        "r2_A+D": 0.6728055942764908,
+        "algo_A+D": "ElasticNet",
+        "gain_rho": 0.08279060566510554,
+        "gain_r2": 0.1376904980419953
+      },
+      {
+        "axis": "fear",
+        "rho_A": 0.7171675088462078,
+        "r2_A": 0.5817242445992252,
+        "algo_A": "GBDT",
+        "rho_D": 0.7381475672315518,
+        "r2_D": 0.5262894411927653,
+        "algo_D": "GBDT",
+        "rho_A+D": 0.7704891267505559,
+        "r2_A+D": 0.624772761239648,
+        "algo_A+D": "GBDT",
+        "gain_rho": 0.053321617904348084,
+        "gain_r2": 0.04304851664042275
+      },
+      {
+        "axis": "anger",
+        "rho_A": 0.7154950653348746,
+        "r2_A": 0.5350675698082882,
+        "algo_A": "ElasticNet",
+        "rho_D": 0.6921285103038457,
+        "r2_D": 0.4527254180984944,
+        "algo_D": "RF",
+        "rho_A+D": 0.7406329453566186,
+        "r2_A+D": 0.5827657884970099,
+        "algo_A+D": "SVR",
+        "gain_rho": 0.025137880021743997,
+        "gain_r2": 0.047698218688721705
+      },
+      {
+        "axis": "sad",
+        "rho_A": 0.6271819274930013,
+        "r2_A": 0.3523744613366643,
+        "algo_A": "XGBoost",
+        "rho_D": 0.6702673408692859,
+        "r2_D": 0.47395660480171464,
+        "algo_D": "XGBoost",
+        "rho_A+D": 0.7043003009677147,
+        "r2_A+D": 0.5076276048151802,
+        "algo_A+D": "XGBoost",
+        "gain_rho": 0.0771183734747134,
+        "gain_r2": 0.15525314347851593
+      },
+      {
+        "axis": "energy",
+        "rho_A": 0.8225773800494105,
+        "r2_A": 0.6710984492190382,
+        "algo_A": "XGBoost",
+        "rho_D": 0.7588482589116158,
+        "r2_D": 0.573724401343872,
+        "algo_D": "RF",
+        "rho_A+D": 0.8344146315168873,
+        "r2_A+D": 0.6708645015458021,
+        "algo_A+D": "SVR",
+        "gain_rho": 0.011837251467476828,
+        "gain_r2": -0.0002339476732360346
+      }
+    ],
+    "happy_gain_rho": 0.1320161724686577,
+    "other_axes_mean_gain_rho": 0.04532631607073475,
+    "targeted_gain": true,
+    "feature_importance": {
+      "happy": [
+        [
+          "key_major_strength",
+          0.2896475622221978
+        ],
+        [
+          "mode_score",
+          0.12556461578223266
+        ],
+        [
+          "spec_contrast3_dmean",
+          0.036323245711123504
+        ],
+        [
+          "spec_contrast4_dmean",
+          0.02753642861769405
+        ],
+        [
+          "onset_env_p90",
+          0.022485608378068137
+        ],
+        [
+          "rms_std",
+          0.018149457950922026
+        ],
+        [
+          "spec_contrast6_dmean",
+          0.014257759995437493
+        ],
+        [
+          "pulse_clarity",
+          0.012842117210281773
+        ]
+      ],
+      "happy_key_feature_ranks": {
+        "key_major_strength": 1,
+        "mode_score": 2,
+        "chroma_consonance": 117
+      },
+      "tension": [
+        [
+          "spec_contrast2_p10",
+          0.5560534145988653
+        ],
+        [
+          "key_clarity",
+          0.05086268016149539
+        ],
+        [
+          "key_major_strength",
+          0.02729447661030988
+        ],
+        [
+          "chroma_consonance",
+          0.01483494384497908
+        ],
+        [
+          "spec_contrast2_mean",
+          0.014290457901681725
+        ],
+        [
+          "rel_chroma_8",
+          0.013026185180924072
+        ],
+        [
+          "roughness_pl_mean",
+          0.009764708373285207
+        ],
+        [
+          "spec_contrast3_p10",
+          0.008390469483964508
+        ]
+      ],
+      "tension_key_feature_ranks": {
+        "key_major_strength": 3,
+        "mode_score": 20,
+        "chroma_consonance": 4
+      }
+    }
+  },
+  "artifacts": [],
+  "failed": "AttributeError: 'Pandas' object has no attribute 'rho_A+D'",
+  "finished_utc": "2026-07-28T10:37:59.200427+00:00"
+}

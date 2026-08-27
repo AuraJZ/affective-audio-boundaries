@@ -1,0 +1,39 @@
+{
+  "run_id": "20260728T002455Z_ds002721_ica_features",
+  "name": "ds002721_ica_features",
+  "started_utc": "2026-07-28T00:24:55.274111+00:00",
+  "seed": 42,
+  "params": {
+    "n_subjects": 31,
+    "n_ica_components": 15,
+    "eog_proxy": [
+      "FP1",
+      "FP2"
+    ],
+    "identical_to": "39_eeg_reliability + 46_connectivity_features",
+    "only_difference": "ICA 去眼电",
+    "why": "未做伪迹去除会压低效应量，方向上不利于本项目的阴性结论"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_runs_processed": 124,
+    "n_ica_failed": 0,
+    "components_excluded": {
+      "mean": 1.2016129032258065,
+      "median": 1.0,
+      "max": 2,
+      "runs_with_none_excluded": 5
+    },
+    "n_trials": {
+      "band": 1240,
+      "conn": 1240
+    }
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-28T00:41:41.428377+00:00"
+}

@@ -1,0 +1,25 @@
+intervention,dose,model_domain,p_sleep
+envelope_smooth,0,Music model,0.4925
+envelope_smooth,1,Music model,0.488
+envelope_smooth,2,Music model,0.4821
+envelope_smooth,3,Music model,0.4848
+spectral_smooth,0,Music model,0.4925
+spectral_smooth,1,Music model,0.6051
+spectral_smooth,2,Music model,0.6048
+spectral_smooth,3,Music model,0.6061
+transient_inject,0,Music model,0.4925
+transient_inject,1,Music model,0.3992
+transient_inject,2,Music model,0.3956
+transient_inject,3,Music model,0.3942
+envelope_smooth,0,Ambient model,0.3882
+envelope_smooth,1,Ambient model,0.3941
+envelope_smooth,2,Ambient model,0.3903
+envelope_smooth,3,Ambient model,0.3888
+spectral_smooth,0,Ambient model,0.3882
+spectral_smooth,1,Ambient model,0.5187
+spectral_smooth,2,Ambient model,0.5412
+spectral_smooth,3,Ambient model,0.5614
+transient_inject,0,Ambient model,0.3882
+transient_inject,1,Ambient model,0.313
+transient_inject,2,Ambient model,0.3012
+transient_inject,3,Ambient model,0.2968

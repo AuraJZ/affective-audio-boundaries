@@ -1,0 +1,26 @@
+{
+  "run_id": "20260801T203136Z_90_mediated_route_control",
+  "name": "90_mediated_route_control",
+  "started_utc": "2026-08-01T20:31:36.080133+00:00",
+  "seed": 20260801,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "random_dir_pct_scr_rate": 0.976,
+    "random_dir_pct_phasic_mean": 0.966,
+    "random_dir_pct_scl_slope": 0.99,
+    "shuffle_p_Arousal(mean)_scr_rate": 0.03980099502487562,
+    "shuffle_p_Arousal(mean)_phasic_mean": 0.05472636815920398,
+    "shuffle_p_Arousal(mean)_scl_slope": 0.03980099502487562,
+    "shuffle_p_Valence(mean)_scr_rate": 0.01990049751243781,
+    "shuffle_p_Valence(mean)_phasic_mean": 0.03980099502487562,
+    "shuffle_p_Valence(mean)_scl_slope": 0.029850746268656716
+  },
+  "artifacts": [],
+  "finished_utc": "2026-08-01T20:42:27.915787+00:00"
+}

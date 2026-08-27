@@ -1,0 +1,41 @@
+{
+  "run_id": "20260727T220229Z_biraffe_sanity_check",
+  "name": "biraffe_sanity_check",
+  "started_utc": "2026-07-27T22:02:29.904302+00:00",
+  "seed": 42,
+  "params": {
+    "n_subjects": 30,
+    "window": [
+      -10.0,
+      16.0
+    ],
+    "question": "TIMESTAMP 是刺激起始还是作答时刻？个体内是否有效应？"
+  },
+  "git_commit": "4d0c522baadcf77c350573195348a1deb383f2b4",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "n_trials_averaged": 1111,
+    "grand_average_peak_time_s": 15.69999999999991,
+    "grand_average_peak_value": 3.834811981561788e-07,
+    "grand_average_trough_time_s": -0.5000000000000338,
+    "signal_dynamics": {
+      "eda_sd_median": 2.6427662943465013e-05,
+      "eda_range_median": 0.00013495993535732423,
+      "min_step_median": 9.996344030316351e-17
+    },
+    "within_subject_rho": {
+      "mean": -0.019667478981170224,
+      "median": -0.07874493927125506,
+      "frac_positive": 0.3448275862068966,
+      "n_subjects": 29
+    }
+  },
+  "artifacts": [
+    "grand_average.csv"
+  ],
+  "finished_utc": "2026-07-27T22:03:39.892024+00:00"
+}

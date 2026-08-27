@@ -1,0 +1,10 @@
+channel,mod,group,n_subjects,d_median,n_required_80pct
+Scalp EEG (N1),eeg,Young,36,0.34222854716719203,69
+Scalp EEG (N1),eeg,Older,39,0.41457372699600387,48
+Scalp EEG (N1),eeg,All,75,0.3794495961624747,57
+Pupil diameter,pupil,Young,35,0.23921398829247215,140
+Pupil diameter,pupil,Older,38,0.3171495266470204,80
+Pupil diameter,pupil,All,73,0.2715724265432961,109
+Heart rate,hr,Young,36,0.15018376302390127,350
+Heart rate,hr,Older,39,0.19084193352940684,218
+Heart rate,hr,All,75,0.18449764244026245,233

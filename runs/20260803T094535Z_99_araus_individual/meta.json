@@ -1,0 +1,33 @@
+{
+  "run_id": "20260803T094535Z_99_araus_individual",
+  "name": "99_araus_individual",
+  "started_utc": "2026-08-03T09:45:35.037020+00:00",
+  "seed": 20260803,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "smr_direction_rho": -0.24371427188435238,
+    "control_pleasant_p": 7.341219460009728e-08,
+    "control_eventful_p": 0.0018405362491918152,
+    "order_max_rel_change": 0.0693633231421927,
+    "tau_pleasant_Navg_r": 0.13275276052862234,
+    "tau_pleasant_Savg_r": 0.09715415711998002,
+    "tau_pleasant_Ravg_r": 0.15031687579710565,
+    "tau_pleasant_Favg_r": 0.12521627879254368,
+    "tau_pleasant_smr": 0.0841357913278124,
+    "tau_eventful_Navg_r": 0.15939578306679802,
+    "tau_eventful_Savg_r": 0.09021050026805147,
+    "tau_eventful_Ravg_r": 0.19482059178698197,
+    "tau_eventful_Favg_r": 0.1796790470016931,
+    "tau_eventful_smr": 0.12026464803238336,
+    "n_star_median": 54.47432400518565,
+    "var_x_araus": 0.9281313020663852
+  },
+  "artifacts": [],
+  "finished_utc": "2026-08-03T09:46:36.796846+00:00"
+}

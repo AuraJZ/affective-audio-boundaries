@@ -1,0 +1,21 @@
+feature,frequency,feature_class
+spec_flatness_std,1.0,Temporal variability
+zcr_std,1.0,Temporal variability
+onset_env_std,1.0,Temporal variability
+onset_env_dmean,1.0,Temporal variability
+rms_mean,1.0,Spectral level
+f0_p10,1.0,Spectral level
+onset_env_p10,0.9,Spectral level
+rms_std,0.7,Temporal variability
+harsh_energy_ratio,0.7,Spectral level
+mfcc8_mean,0.7,Spectral level
+mfcc2_mean,0.6,Spectral level
+f0_std,0.6,Temporal variability
+spec_bandwidth_dmean,0.5,Temporal variability
+spec_centroid_std,0.4,Temporal variability
+rms_p50,0.4,Spectral level
+spec_bandwidth_std,0.4,Temporal variability
+mfcc7_mean,0.4,Spectral level
+mfcc1_std,0.4,Temporal variability
+spec_contrast0_dmean,0.4,Temporal variability
+mfcc6_std,0.3,Temporal variability

@@ -1,0 +1,37 @@
+evidence_chain,feature,feature_class,n_chains
+SHAP + permutation FDR,lr_corr,Spectral level,1
+SHAP + permutation FDR,mfcc1_mean,Spectral level,1
+SHAP + permutation FDR,onset_env_mean,Spectral level,2
+SHAP + permutation FDR,onset_rate,Temporal variability,2
+SHAP + permutation FDR,spec_contrast1_p10,Spectral level,1
+SHAP + permutation FDR,spec_contrast2_p10,Spectral level,1
+SHAP + permutation FDR,spec_contrast3_dmean,Temporal variability,2
+SHAP + permutation FDR,spec_flatness_p50,Spectral level,2
+SHAP + permutation FDR,spec_rolloff_mean,Spectral level,1
+SHAP + permutation FDR,spec_rolloff_p10,Spectral level,1
+SHAP + permutation FDR,zcr_p50,Spectral level,1
+SHAP + permutation FDR,zcr_p90,Spectral level,1
+Cross-domain direction,mfcc1_std,Temporal variability,1
+Cross-domain direction,onset_env_dmean,Temporal variability,3
+Cross-domain direction,onset_env_mean,Spectral level,2
+Cross-domain direction,onset_rate,Temporal variability,2
+Cross-domain direction,spec_contrast3_dmean,Temporal variability,2
+Cross-domain direction,spec_contrast6_p10,Spectral level,1
+Cross-domain direction,spec_flatness_p50,Spectral level,2
+Cross-domain direction,spec_flatness_std,Temporal variability,3
+EBM native importance,spec_flatness_std,Temporal variability,3
+EBM native importance,onset_env_dmean,Temporal variability,3
+EBM native importance,zcr_std,Temporal variability,2
+EBM native importance,onset_env_std,Temporal variability,2
+EBM native importance,f0_p10,Spectral level,2
+EBM native importance,mfcc4_std,Temporal variability,1
+EBM native importance,mfcc8_mean,Spectral level,1
+EBM native importance,onset_env_p10,Spectral level,1
+EBM native importance,rms_mean,Spectral level,2
+EBM native importance,rms_std,Temporal variability,1
+Rashomon consensus,spec_flatness_std,Temporal variability,3
+Rashomon consensus,zcr_std,Temporal variability,2
+Rashomon consensus,onset_env_std,Temporal variability,2
+Rashomon consensus,onset_env_dmean,Temporal variability,3
+Rashomon consensus,rms_mean,Spectral level,2
+Rashomon consensus,f0_p10,Spectral level,2

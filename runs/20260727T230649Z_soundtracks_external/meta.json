@@ -1,0 +1,759 @@
+{
+  "run_id": "20260727T230649Z_soundtracks_external",
+  "name": "soundtracks_external",
+  "started_utc": "2026-07-27T23:06:49.197514+00:00",
+  "seed": 42,
+  "params": {
+    "task": "regression",
+    "target": "arousal",
+    "new_corpus": "Eerola & Vuoskoski (2011) Soundtracks Set1",
+    "datasets": {
+      "deam": 1233,
+      "pmemo": 717,
+      "soundtracks": 360,
+      "emo_mix": 1213
+    },
+    "algorithms": [
+      "RF",
+      "XGBoost",
+      "GBDT",
+      "SVR",
+      "KNN",
+      "ElasticNet"
+    ],
+    "n_features": 122,
+    "cv": "GroupKFold(5)",
+    "prediction": [
+      "music->ST holds",
+      "ST->ambient collapses",
+      "ambient->ST collapses"
+    ]
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "within_source": {
+      "RF|deam": {
+        "spearman": 0.726924112535268,
+        "pearson": 0.7278346595794901,
+        "r2": 0.5277067323687796,
+        "mae": 0.17590158556366584
+      },
+      "XGBoost|deam": {
+        "spearman": 0.7355945996935712,
+        "pearson": 0.7355103328012745,
+        "r2": 0.5406777428098003,
+        "mae": 0.17262319608798554
+      },
+      "GBDT|deam": {
+        "spearman": 0.722306691027284,
+        "pearson": 0.7208361662090182,
+        "r2": 0.5193437465881419,
+        "mae": 0.1766695440830392
+      },
+      "SVR|deam": {
+        "spearman": 0.7105876865226555,
+        "pearson": 0.7069265726160261,
+        "r2": 0.4943849492041591,
+        "mae": 0.18117139621835474
+      },
+      "KNN|deam": {
+        "spearman": 0.6657846217315452,
+        "pearson": 0.6640110444567849,
+        "r2": 0.42942639944713634,
+        "mae": 0.1917785888077859
+      },
+      "ElasticNet|deam": {
+        "spearman": 0.7347883907611463,
+        "pearson": 0.7227609809820821,
+        "r2": 0.5222117175093668,
+        "mae": 0.1784024011755428
+      },
+      "RF|pmemo": {
+        "spearman": 0.8022791057761871,
+        "pearson": 0.7972135327524608,
+        "r2": 0.6350700515051868,
+        "mae": 0.1748762037439583
+      },
+      "XGBoost|pmemo": {
+        "spearman": 0.8127441298494251,
+        "pearson": 0.8086982070448069,
+        "r2": 0.6538288871333193,
+        "mae": 0.16879635075996333
+      },
+      "GBDT|pmemo": {
+        "spearman": 0.7975265216667302,
+        "pearson": 0.7968637539779674,
+        "r2": 0.6343907061976517,
+        "mae": 0.17447732758904652
+      },
+      "SVR|pmemo": {
+        "spearman": 0.800354118881855,
+        "pearson": 0.7862798833455914,
+        "r2": 0.6173689365784605,
+        "mae": 0.17700699159224362
+      },
+      "KNN|pmemo": {
+        "spearman": 0.7662901859561331,
+        "pearson": 0.7628649134396949,
+        "r2": 0.5647415380184632,
+        "mae": 0.18769620895143882
+      },
+      "ElasticNet|pmemo": {
+        "spearman": 0.8203842757075669,
+        "pearson": 0.8169228131651155,
+        "r2": 0.667347172970137,
+        "mae": 0.16718404148467572
+      },
+      "RF|soundtracks": {
+        "spearman": 0.7961516105318157,
+        "pearson": 0.796248494244956,
+        "r2": 0.6299539035230648,
+        "mae": 0.1756843472222222
+      },
+      "XGBoost|soundtracks": {
+        "spearman": 0.8225773800494105,
+        "pearson": 0.8200399721022658,
+        "r2": 0.6710984492190382,
+        "mae": 0.16457251801199488
+      },
+      "GBDT|soundtracks": {
+        "spearman": 0.8102708425439915,
+        "pearson": 0.8103338744926607,
+        "r2": 0.6553073983844465,
+        "mae": 0.17207194287608224
+      },
+      "SVR|soundtracks": {
+        "spearman": 0.8191329903383605,
+        "pearson": 0.809971240629911,
+        "r2": 0.653815199896688,
+        "mae": 0.17437908706304353
+      },
+      "KNN|soundtracks": {
+        "spearman": 0.7933201799309837,
+        "pearson": 0.7928384324139655,
+        "r2": 0.6251602002326149,
+        "mae": 0.17573333333333332
+      },
+      "ElasticNet|soundtracks": {
+        "spearman": 0.8107008927700993,
+        "pearson": 0.7924694764933462,
+        "r2": 0.6259364173773856,
+        "mae": 0.17695645363635876
+      },
+      "RF|emo_mix": {
+        "spearman": 0.7486316164775602,
+        "pearson": 0.7502550187062086,
+        "r2": 0.5586017691023425,
+        "mae": 0.29474168337267437
+      },
+      "XGBoost|emo_mix": {
+        "spearman": 0.7726082639208355,
+        "pearson": 0.773485266880913,
+        "r2": 0.5978089981308976,
+        "mae": 0.2761287355879005
+      },
+      "GBDT|emo_mix": {
+        "spearman": 0.7512225575404303,
+        "pearson": 0.7513337497048269,
+        "r2": 0.5642140989133402,
+        "mae": 0.2903884835406473
+      },
+      "SVR|emo_mix": {
+        "spearman": 0.739109690414387,
+        "pearson": 0.7346913854115883,
+        "r2": 0.53014983986631,
+        "mae": 0.2945401806749034
+      },
+      "KNN|emo_mix": {
+        "spearman": 0.6970602506195369,
+        "pearson": 0.6976066832398599,
+        "r2": 0.47590799641792103,
+        "mae": 0.30612878429958773
+      },
+      "ElasticNet|emo_mix": {
+        "spearman": 0.7233533521215088,
+        "pearson": 0.70438594014542,
+        "r2": 0.49613769562886567,
+        "mae": 0.32219175167127695
+      }
+    },
+    "cross_corpus": {
+      "RF|deam->pmemo": {
+        "spearman": 0.7559974150675184,
+        "pearson": 0.7314755881252835,
+        "r2": 0.36070775134178124,
+        "mae": 0.24967604792697073,
+        "same_domain": true
+      },
+      "XGBoost|deam->pmemo": {
+        "spearman": 0.6989806817902287,
+        "pearson": 0.6972944841079151,
+        "r2": 0.34488270436410384,
+        "mae": 0.2517148734623632,
+        "same_domain": true
+      },
+      "GBDT|deam->pmemo": {
+        "spearman": 0.6591161016312547,
+        "pearson": 0.6632045470750508,
+        "r2": 0.2916252501191643,
+        "mae": 0.2610654118784688,
+        "same_domain": true
+      },
+      "SVR|deam->pmemo": {
+        "spearman": 0.673336602725527,
+        "pearson": 0.6854933125862789,
+        "r2": 0.37672805000927834,
+        "mae": 0.2405617223134081,
+        "same_domain": true
+      },
+      "KNN|deam->pmemo": {
+        "spearman": 0.5687754268611872,
+        "pearson": 0.5950189418930645,
+        "r2": 0.2717508301380256,
+        "mae": 0.26590046912641285,
+        "same_domain": true
+      },
+      "ElasticNet|deam->pmemo": {
+        "spearman": 0.7307143768924772,
+        "pearson": 0.7395021685680714,
+        "r2": 0.33543143505078954,
+        "mae": 0.25426179732814036,
+        "same_domain": true
+      },
+      "RF|deam->soundtracks": {
+        "spearman": 0.6828660306098049,
+        "pearson": 0.6853475726102688,
+        "r2": 0.3963687439601872,
+        "mae": 0.2364855972222222,
+        "same_domain": true
+      },
+      "XGBoost|deam->soundtracks": {
+        "spearman": 0.6671585404824616,
+        "pearson": 0.6806981636534415,
+        "r2": 0.41056403988900736,
+        "mae": 0.23544496715306823,
+        "same_domain": true
+      },
+      "GBDT|deam->soundtracks": {
+        "spearman": 0.6940346856631149,
+        "pearson": 0.6957957876425286,
+        "r2": 0.4289969406734656,
+        "mae": 0.2306396308495741,
+        "same_domain": true
+      },
+      "SVR|deam->soundtracks": {
+        "spearman": 0.5025399964973604,
+        "pearson": 0.5241800365991818,
+        "r2": 0.23992406229279395,
+        "mae": 0.27023639414561224,
+        "same_domain": true
+      },
+      "KNN|deam->soundtracks": {
+        "spearman": 0.6132855240953313,
+        "pearson": 0.6223004706294015,
+        "r2": 0.38125713529510863,
+        "mae": 0.23437916666666664,
+        "same_domain": true
+      },
+      "ElasticNet|deam->soundtracks": {
+        "spearman": 0.6976728102352234,
+        "pearson": 0.6928852371115006,
+        "r2": 0.44682638974474453,
+        "mae": 0.22860768346541055,
+        "same_domain": true
+      },
+      "RF|deam->emo_mix": {
+        "spearman": 0.14562878596606302,
+        "pearson": 0.1540253623228896,
+        "r2": -9.559124496116844e-05,
+        "mae": 0.4966197839736191,
+        "same_domain": false
+      },
+      "XGBoost|deam->emo_mix": {
+        "spearman": 0.13177882122463944,
+        "pearson": 0.1309352387418707,
+        "r2": -0.029423364373428962,
+        "mae": 0.5040191271690775,
+        "same_domain": false
+      },
+      "GBDT|deam->emo_mix": {
+        "spearman": 0.22157666952166305,
+        "pearson": 0.2255838864156599,
+        "r2": -0.012933905850244898,
+        "mae": 0.49364003027839276,
+        "same_domain": false
+      },
+      "SVR|deam->emo_mix": {
+        "spearman": 0.08079449515026407,
+        "pearson": 0.07283826596841844,
+        "r2": -0.060606585310097216,
+        "mae": 0.5083991266689034,
+        "same_domain": false
+      },
+      "KNN|deam->emo_mix": {
+        "spearman": 0.007406298036708505,
+        "pearson": 0.023634651011371917,
+        "r2": -0.16631674679184738,
+        "mae": 0.5271164385787304,
+        "same_domain": false
+      },
+      "ElasticNet|deam->emo_mix": {
+        "spearman": 0.16459575708138047,
+        "pearson": 0.20798040110898314,
+        "r2": -0.11543965502494502,
+        "mae": 0.5135192679104877,
+        "same_domain": false
+      },
+      "RF|pmemo->deam": {
+        "spearman": 0.6502543634341936,
+        "pearson": 0.628553026536296,
+        "r2": 0.27787867061747484,
+        "mae": 0.21218588792425488,
+        "same_domain": true
+      },
+      "XGBoost|pmemo->deam": {
+        "spearman": 0.6319196111835096,
+        "pearson": 0.6178976557434517,
+        "r2": 0.2983564390306218,
+        "mae": 0.212431221666594,
+        "same_domain": true
+      },
+      "GBDT|pmemo->deam": {
+        "spearman": 0.671516456764675,
+        "pearson": 0.6575078100414066,
+        "r2": 0.2558750873583826,
+        "mae": 0.21523137533856368,
+        "same_domain": true
+      },
+      "SVR|pmemo->deam": {
+        "spearman": 0.5680778464980547,
+        "pearson": 0.5593298825218719,
+        "r2": 0.27160182896893803,
+        "mae": 0.22014453522316305,
+        "same_domain": true
+      },
+      "KNN|pmemo->deam": {
+        "spearman": 0.6095607135435818,
+        "pearson": 0.6040748369548449,
+        "r2": 0.11955631543512035,
+        "mae": 0.23934011649340312,
+        "same_domain": true
+      },
+      "ElasticNet|pmemo->deam": {
+        "spearman": 0.6778785469312492,
+        "pearson": 0.6631678920626749,
+        "r2": 0.02256497608955632,
+        "mae": 0.242701438772634,
+        "same_domain": true
+      },
+      "RF|pmemo->soundtracks": {
+        "spearman": 0.5766044736824076,
+        "pearson": 0.5546372342743864,
+        "r2": 0.26529490144020407,
+        "mae": 0.24505188446969758,
+        "same_domain": true
+      },
+      "XGBoost|pmemo->soundtracks": {
+        "spearman": 0.47546741497352246,
+        "pearson": 0.4965774220226246,
+        "r2": 0.2222770234053102,
+        "mae": 0.26198455090223194,
+        "same_domain": true
+      },
+      "GBDT|pmemo->soundtracks": {
+        "spearman": 0.61344612914302,
+        "pearson": 0.6105551787301283,
+        "r2": 0.2739833865211,
+        "mae": 0.23983621405069233,
+        "same_domain": true
+      },
+      "SVR|pmemo->soundtracks": {
+        "spearman": 0.0020300994969217573,
+        "pearson": 0.16070560120322047,
+        "r2": -0.21198201449356535,
+        "mae": 0.3319011583064273,
+        "same_domain": true
+      },
+      "KNN|pmemo->soundtracks": {
+        "spearman": 0.48316102666838817,
+        "pearson": 0.5376271389840283,
+        "r2": 0.23673178445439713,
+        "mae": 0.25381755050505006,
+        "same_domain": true
+      },
+      "ElasticNet|pmemo->soundtracks": {
+        "spearman": 0.6709031806355507,
+        "pearson": 0.6669752980254948,
+        "r2": 0.05398726254543096,
+        "mae": 0.2737078849848933,
+        "same_domain": true
+      },
+      "RF|pmemo->emo_mix": {
+        "spearman": -0.02743197455542172,
+        "pearson": -0.02400610884656016,
+        "r2": -0.29061956492021523,
+        "mae": 0.5580762942355296,
+        "same_domain": false
+      },
+      "XGBoost|pmemo->emo_mix": {
+        "spearman": -0.06197466952049421,
+        "pearson": -0.0702750890138915,
+        "r2": -0.29639529597722514,
+        "mae": 0.5600119931279537,
+        "same_domain": false
+      },
+      "GBDT|pmemo->emo_mix": {
+        "spearman": 0.05447933217387258,
+        "pearson": 0.05095153190417197,
+        "r2": -0.22192735581662815,
+        "mae": 0.5431199053290064,
+        "same_domain": false
+      },
+      "SVR|pmemo->emo_mix": {
+        "spearman": -0.11008038423035038,
+        "pearson": -0.09038896637650486,
+        "r2": -0.13228263300556486,
+        "mae": 0.5324380735065176,
+        "same_domain": false
+      },
+      "KNN|pmemo->emo_mix": {
+        "spearman": -0.0891524107417704,
+        "pearson": -0.08053893165072584,
+        "r2": -0.5421822006690085,
+        "mae": 0.602519910984336,
+        "same_domain": false
+      },
+      "ElasticNet|pmemo->emo_mix": {
+        "spearman": 0.011065678462348691,
+        "pearson": 0.07621961013509108,
+        "r2": -0.7880141034932062,
+        "mae": 0.6336714664702927,
+        "same_domain": false
+      },
+      "RF|soundtracks->deam": {
+        "spearman": 0.6462192713126012,
+        "pearson": 0.629767756795736,
+        "r2": 0.31754204343767123,
+        "mae": 0.21405927818329273,
+        "same_domain": true
+      },
+      "XGBoost|soundtracks->deam": {
+        "spearman": 0.6359064665930818,
+        "pearson": 0.6246964091611281,
+        "r2": 0.30046938534740775,
+        "mae": 0.21629567338191297,
+        "same_domain": true
+      },
+      "GBDT|soundtracks->deam": {
+        "spearman": 0.6142311451609312,
+        "pearson": 0.6061883013941932,
+        "r2": 0.26762787086940343,
+        "mae": 0.2207307917261492,
+        "same_domain": true
+      },
+      "SVR|soundtracks->deam": {
+        "spearman": 0.4395998038431456,
+        "pearson": 0.45352969129333953,
+        "r2": 0.20348333445365818,
+        "mae": 0.2374349902127122,
+        "same_domain": true
+      },
+      "KNN|soundtracks->deam": {
+        "spearman": 0.5897557604433468,
+        "pearson": 0.5609848021278926,
+        "r2": 0.09158791091543927,
+        "mae": 0.2462858880778589,
+        "same_domain": true
+      },
+      "ElasticNet|soundtracks->deam": {
+        "spearman": 0.6364338817467938,
+        "pearson": 0.6259279262090744,
+        "r2": 0.07498222610127625,
+        "mae": 0.2485946463381904,
+        "same_domain": true
+      },
+      "RF|soundtracks->pmemo": {
+        "spearman": 0.6040117828473553,
+        "pearson": 0.6448494201866874,
+        "r2": 0.217170072721243,
+        "mae": 0.27495955369595254,
+        "same_domain": true
+      },
+      "XGBoost|soundtracks->pmemo": {
+        "spearman": 0.6053866069859084,
+        "pearson": 0.6364247659072937,
+        "r2": 0.24145871588547085,
+        "mae": 0.2701948018577325,
+        "same_domain": true
+      },
+      "GBDT|soundtracks->pmemo": {
+        "spearman": 0.5022315466756143,
+        "pearson": 0.5590830999151214,
+        "r2": 0.19702623296424493,
+        "mae": 0.27726574711373714,
+        "same_domain": true
+      },
+      "SVR|soundtracks->pmemo": {
+        "spearman": 0.449667627954857,
+        "pearson": 0.45871523719715757,
+        "r2": -0.227074950191976,
+        "mae": 0.34444473771457434,
+        "same_domain": true
+      },
+      "KNN|soundtracks->pmemo": {
+        "spearman": 0.48162874752570883,
+        "pearson": 0.49564565419508516,
+        "r2": 0.15626664041563543,
+        "mae": 0.2826979206288842,
+        "same_domain": true
+      },
+      "ElasticNet|soundtracks->pmemo": {
+        "spearman": 0.5256093024555262,
+        "pearson": 0.5425266919994072,
+        "r2": 0.27608516593230037,
+        "mae": 0.261284391432415,
+        "same_domain": true
+      },
+      "RF|soundtracks->emo_mix": {
+        "spearman": 0.2501831850126572,
+        "pearson": 0.2318205902931786,
+        "r2": 0.030859807857458232,
+        "mae": 0.4851386233239901,
+        "same_domain": false
+      },
+      "XGBoost|soundtracks->emo_mix": {
+        "spearman": 0.37758086875103547,
+        "pearson": 0.34919802060242383,
+        "r2": 0.11803985120551486,
+        "mae": 0.46234869221411556,
+        "same_domain": false
+      },
+      "GBDT|soundtracks->emo_mix": {
+        "spearman": 0.39101875168435685,
+        "pearson": 0.3595026864238926,
+        "r2": 0.1177109687567397,
+        "mae": 0.4615046796122574,
+        "same_domain": false
+      },
+      "SVR|soundtracks->emo_mix": {
+        "spearman": -0.018433855690261385,
+        "pearson": 0.0013430659852845357,
+        "r2": -0.10631742268386746,
+        "mae": 0.5157092460401456,
+        "same_domain": false
+      },
+      "KNN|soundtracks->emo_mix": {
+        "spearman": 0.03882919413650312,
+        "pearson": 0.029445355363559265,
+        "r2": -0.15908451911751653,
+        "mae": 0.5246442516438582,
+        "same_domain": false
+      },
+      "ElasticNet|soundtracks->emo_mix": {
+        "spearman": 0.4215492554967489,
+        "pearson": 0.37451271897303723,
+        "r2": -0.13905533465447628,
+        "mae": 0.4949660516936458,
+        "same_domain": false
+      },
+      "RF|emo_mix->deam": {
+        "spearman": -0.01067482290420276,
+        "pearson": 0.0047984783427021775,
+        "r2": -1.0132718417394702,
+        "mae": 0.36867872287124415,
+        "same_domain": false
+      },
+      "XGBoost|emo_mix->deam": {
+        "spearman": 0.10052826693804494,
+        "pearson": 0.11047807022663943,
+        "r2": -1.322986314160382,
+        "mae": 0.40461303339006643,
+        "same_domain": false
+      },
+      "GBDT|emo_mix->deam": {
+        "spearman": 0.08169148209948557,
+        "pearson": 0.09914388832719544,
+        "r2": -1.4018307661597662,
+        "mae": 0.41153648118952263,
+        "same_domain": false
+      },
+      "SVR|emo_mix->deam": {
+        "spearman": 0.08029608846911566,
+        "pearson": 0.09952465036402841,
+        "r2": -2.9666550252382615,
+        "mae": 0.5478678067150405,
+        "same_domain": false
+      },
+      "KNN|emo_mix->deam": {
+        "spearman": -0.08331963953684556,
+        "pearson": -0.07295986446350193,
+        "r2": -1.8087289606179322,
+        "mae": 0.445956998678021,
+        "same_domain": false
+      },
+      "ElasticNet|emo_mix->deam": {
+        "spearman": -0.027298658351130312,
+        "pearson": -0.012040789413569552,
+        "r2": -3.4081721707849146,
+        "mae": 0.5618663849285681,
+        "same_domain": false
+      },
+      "RF|emo_mix->pmemo": {
+        "spearman": -0.19257854300594565,
+        "pearson": -0.1710270016031355,
+        "r2": -0.3927144830931544,
+        "mae": 0.36703626493998043,
+        "same_domain": false
+      },
+      "XGBoost|emo_mix->pmemo": {
+        "spearman": -0.1538749759157788,
+        "pearson": -0.14105077465056054,
+        "r2": -0.4949062203681054,
+        "mae": 0.3757026309740833,
+        "same_domain": false
+      },
+      "GBDT|emo_mix->pmemo": {
+        "spearman": -0.06490132902001781,
+        "pearson": -0.06839144990948108,
+        "r2": -0.5254965027462115,
+        "mae": 0.38178455270563083,
+        "same_domain": false
+      },
+      "SVR|emo_mix->pmemo": {
+        "spearman": 0.12399461319282891,
+        "pearson": 0.11408907667967604,
+        "r2": -0.7222360919200648,
+        "mae": 0.38510908927873255,
+        "same_domain": false
+      },
+      "KNN|emo_mix->pmemo": {
+        "spearman": -0.2866245529619225,
+        "pearson": -0.2760963409897436,
+        "r2": -0.6298121188474788,
+        "mae": 0.3827518589592496,
+        "same_domain": false
+      },
+      "ElasticNet|emo_mix->pmemo": {
+        "spearman": -0.18090649400881464,
+        "pearson": -0.1737782719228201,
+        "r2": -0.38890074175986666,
+        "mae": 0.3522830426838914,
+        "same_domain": false
+      },
+      "RF|emo_mix->soundtracks": {
+        "spearman": -0.0034304963744003865,
+        "pearson": 0.0021597071146793115,
+        "r2": -2.0763299392913623,
+        "mae": 0.5303510619147331,
+        "same_domain": false
+      },
+      "XGBoost|emo_mix->soundtracks": {
+        "spearman": 0.0737383696997993,
+        "pearson": 0.08236522431379971,
+        "r2": -2.2264688217618462,
+        "mae": 0.5479608262041196,
+        "same_domain": false
+      },
+      "GBDT|emo_mix->soundtracks": {
+        "spearman": 0.16070293860601856,
+        "pearson": 0.15258553184458018,
+        "r2": -1.9255740696642651,
+        "mae": 0.5294253063238157,
+        "same_domain": false
+      },
+      "SVR|emo_mix->soundtracks": {
+        "spearman": 0.2551852177017449,
+        "pearson": 0.2656806630575042,
+        "r2": -3.5369867339987984,
+        "mae": 0.6844366306292602,
+        "same_domain": false
+      },
+      "KNN|emo_mix->soundtracks": {
+        "spearman": 0.06940699359688948,
+        "pearson": 0.047626417375150644,
+        "r2": -2.2001762210302376,
+        "mae": 0.5535521491283333,
+        "same_domain": false
+      },
+      "ElasticNet|emo_mix->soundtracks": {
+        "spearman": 0.009681983298702377,
+        "pearson": 0.029897998127353446,
+        "r2": -4.728557728820626,
+        "mae": 0.7730583357587585,
+        "same_domain": false
+      }
+    },
+    "domain_wall_predictions": {
+      "music_to_ST_holds": {
+        "mean_rho": 0.5565974926819256,
+        "pass": true
+      },
+      "ST_to_ambient_collapses": {
+        "mean_rho": 0.2434545665651733,
+        "pass": false
+      },
+      "ambient_to_ST_collapses": {
+        "mean_rho": 0.09421416775479237,
+        "pass": true
+      }
+    },
+    "discrete_axes": {
+      "anger": {
+        "spearman": 0.7154950653348746,
+        "pearson": 0.7352751189028635,
+        "r2": 0.5350675698082882,
+        "mae": 0.248715300442129,
+        "algo": "ElasticNet"
+      },
+      "fear": {
+        "spearman": 0.7171675088462078,
+        "pearson": 0.7631146909925945,
+        "r2": 0.5817242445992252,
+        "mae": 0.25468057125207066,
+        "algo": "GBDT"
+      },
+      "happy": {
+        "spearman": 0.4743789216154495,
+        "pearson": 0.434129929492257,
+        "r2": 0.13846906023337047,
+        "mae": 0.3555059885099471,
+        "algo": "ElasticNet"
+      },
+      "sad": {
+        "spearman": 0.6271819274930013,
+        "pearson": 0.596025585398823,
+        "r2": 0.3523744613366643,
+        "mae": 0.2812315842153815,
+        "algo": "XGBoost"
+      },
+      "tender": {
+        "spearman": 0.7543147978097429,
+        "pearson": 0.7223475727695002,
+        "r2": 0.5216418655334014,
+        "mae": 0.2443241527777777,
+        "algo": "RF"
+      },
+      "valence": {
+        "spearman": 0.7352316163775792,
+        "pearson": 0.7348839042782843,
+        "r2": 0.5351150962344955,
+        "mae": 0.2204744537622784,
+        "algo": "ElasticNet"
+      },
+      "tension": {
+        "spearman": 0.8044945614331673,
+        "pearson": 0.805108659139699,
+        "r2": 0.6471751084527034,
+        "mae": 0.21359434157569954,
+        "algo": "SVR"
+      }
+    }
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T23:19:53.270030+00:00"
+}

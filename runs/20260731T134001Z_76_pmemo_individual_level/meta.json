@@ -1,0 +1,26 @@
+{
+  "run_id": "20260731T134001Z_76_pmemo_individual_level",
+  "name": "76_pmemo_individual_level",
+  "started_utc": "2026-07-31T13:40:01.273306+00:00",
+  "seed": 20260730,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_sig_individual_slopes": 0,
+    "n_tests": 15,
+    "n_sig_personalisation_gain": 0,
+    "per_person_pass_scr_rate": 29,
+    "per_person_n_scr_rate": 401,
+    "per_person_pass_phasic_mean": 28,
+    "per_person_n_phasic_mean": 401,
+    "per_person_pass_scl_slope": 17,
+    "per_person_n_scl_slope": 401
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-31T14:15:10.524594+00:00"
+}

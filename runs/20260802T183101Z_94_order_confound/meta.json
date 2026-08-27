@@ -1,0 +1,28 @@
+{
+  "run_id": "20260802T183101Z_94_order_confound",
+  "name": "94_order_confound",
+  "started_utc": "2026-08-02T18:31:01.997707+00:00",
+  "seed": 20260802,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "position_icc": 0.04111839416726871,
+    "position_icc_p": 0.004975124378109453,
+    "reliability_early_scr_rate": 0.03087775031540833,
+    "reliability_late_scr_rate": 0.07869143800721155,
+    "reliability_early_phasic_mean": 0.06313033879614516,
+    "reliability_late_phasic_mean": 0.12463429816361635,
+    "reliability_early_scl_slope": 0.06401604989264227,
+    "reliability_late_scl_slope": 0.22187541026155158,
+    "reliability_after_regress_scr_rate": 0.042688131203671466,
+    "reliability_after_regress_phasic_mean": 0.07585080976630446,
+    "reliability_after_regress_scl_slope": 0.20272816159102036
+  },
+  "artifacts": [],
+  "finished_utc": "2026-08-02T18:31:45.336894+00:00"
+}

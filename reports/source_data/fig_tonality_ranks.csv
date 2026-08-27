@@ -1,0 +1,11 @@
+axis,feature,rank,importance
+happy,key_major_strength,1,0.2896475622221978
+happy,mode_score,2,0.12556461578223266
+happy,key_clarity,21,0.0065846567946084835
+happy,chroma_consonance,117,0.0015476972320881777
+happy,roughness_pl_mean,76,0.002458575488508148
+tension,key_major_strength,3,0.02729447661030988
+tension,mode_score,20,0.004377008938452147
+tension,key_clarity,2,0.05086268016149539
+tension,chroma_consonance,4,0.01483494384497908
+tension,roughness_pl_mean,7,0.009764708373285207

@@ -1,0 +1,40 @@
+corpus,domain,contaminated,algorithm,representation,spearman
+Emo-Soundscapes,ambient,True,RF,A,0.7486316164775602
+Emo-Soundscapes,ambient,True,XGBoost,A,0.7726082639208355
+Emo-Soundscapes,ambient,True,GBDT,A,0.7512225575404303
+Emo-Soundscapes,ambient,True,SVR,A,0.739109690414387
+Emo-Soundscapes,ambient,True,KNN,A,0.6970602506195369
+Emo-Soundscapes,ambient,True,ElasticNet,A,0.7233533521215088
+Emo-Soundscapes,ambient,True,RF,C,0.7794503613882052
+Emo-Soundscapes,ambient,True,XGBoost,C,0.8123870572561573
+Emo-Soundscapes,ambient,True,GBDT,C,0.7897772176351888
+Emo-Soundscapes,ambient,True,SVR,C,0.8415191842500983
+Emo-Soundscapes,ambient,True,KNN,C,0.7635699348139794
+Emo-Soundscapes,ambient,True,ElasticNet,C,0.8271898841168593
+Emo-Soundscapes,ambient,True,Ridge (linear),C,0.8426044572441262
+DEAM,music,False,RF,A,0.726924112535268
+DEAM,music,False,XGBoost,A,0.7355945996935712
+DEAM,music,False,GBDT,A,0.722306691027284
+DEAM,music,False,SVR,A,0.7105876865226555
+DEAM,music,False,KNN,A,0.6657846217315452
+DEAM,music,False,ElasticNet,A,0.7347883907611463
+DEAM,music,False,RF,C,0.7514438805801896
+DEAM,music,False,XGBoost,C,0.7590500385166885
+DEAM,music,False,GBDT,C,0.7511155511820412
+DEAM,music,False,SVR,C,0.7698623341151468
+DEAM,music,False,KNN,C,0.6924928076494985
+DEAM,music,False,ElasticNet,C,0.7597114109466512
+DEAM,music,False,Ridge (linear),C,0.7756598186949082
+Soundtracks,music,False,RF,A,0.7961516105318157
+Soundtracks,music,False,XGBoost,A,0.8225773800494105
+Soundtracks,music,False,GBDT,A,0.8102708425439915
+Soundtracks,music,False,SVR,A,0.8191329903383605
+Soundtracks,music,False,KNN,A,0.7933201799309837
+Soundtracks,music,False,ElasticNet,A,0.8107008927700993
+Soundtracks,music,False,RF,C,0.8173147642253455
+Soundtracks,music,False,XGBoost,C,0.8221721577304635
+Soundtracks,music,False,GBDT,C,0.8178905658442683
+Soundtracks,music,False,SVR,C,0.8442751699199383
+Soundtracks,music,False,KNN,C,0.7457872561940406
+Soundtracks,music,False,ElasticNet,C,0.8497039912157749
+Soundtracks,music,False,Ridge (linear),C,0.8562181651163593

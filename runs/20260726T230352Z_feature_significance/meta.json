@@ -1,0 +1,114 @@
+{
+  "run_id": "20260726T230352Z_feature_significance",
+  "name": "feature_significance",
+  "started_utc": "2026-07-26T23:03:52.201246+00:00",
+  "seed": 42,
+  "params": {
+    "dataset": "deam",
+    "representation": "A+B",
+    "n_features": 144,
+    "n_perm": 200,
+    "models": [
+      "RF",
+      "XGBoost"
+    ],
+    "fdr_q": 0.1,
+    "importance": "mean|SHAP| (TreeExplainer)",
+    "note": "仅用树模型；SVM KernelExplainer 在数百次重复下成本不可行，为有意取舍"
+  },
+  "git_commit": "fcfba0519dac64e7481f0ac907b4bbbc5ffbe0fa",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "7ebca11109f30d971df5f4f5fa3774c41ce61b92189fba76b02a4d181135c7d2",
+  "inputs": {
+    "features": {
+      "n_files": 2,
+      "rollup_sha256": "c0f4560105b9429e3f16c2f3b80f6d32dfbe2e4e6135ba788f52d7600181e3c6",
+      "files": [
+        {
+          "path": "data/features/layer_a_deam_ln.parquet",
+          "sha256": "3b918c9ec155d34bded876937f13de4a384d1c0e3c273ebbdd49b435136a2369"
+        },
+        {
+          "path": "data/features/layer_b_deam.parquet",
+          "sha256": "08a3c41cf603874eb278bb05c36cf7e0f4bfc5df5dc6545b21c68acf583f5975"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "n_significant_RF": 33,
+    "n_significant_XGBoost": 12,
+    "calibrated_consensus": [
+      "lr_corr",
+      "mfcc1_mean",
+      "onset_env_mean",
+      "onset_rate",
+      "spec_contrast1_p10",
+      "spec_contrast2_p10",
+      "spec_contrast3_dmean",
+      "spec_flatness_p50",
+      "spec_rolloff_mean",
+      "spec_rolloff_p10",
+      "zcr_p50",
+      "zcr_p90"
+    ],
+    "n_calibrated_consensus": 12,
+    "per_model_significant": {
+      "RF": [
+        "lr_corr",
+        "mfcc1_mean",
+        "mfcc3_mean",
+        "mfcc5_mean",
+        "onset_env_mean",
+        "onset_env_p90",
+        "onset_rate",
+        "sharpness_acum_mean",
+        "sharpness_acum_p10",
+        "sharpness_acum_p50",
+        "side_mid_ratio",
+        "spec_centroid_mean",
+        "spec_centroid_p10",
+        "spec_centroid_p50",
+        "spec_contrast1_mean",
+        "spec_contrast1_p10",
+        "spec_contrast1_p50",
+        "spec_contrast2_p10",
+        "spec_contrast2_p50",
+        "spec_contrast3_dmean",
+        "spec_contrast6_dmean",
+        "spec_flatness_dmean",
+        "spec_flatness_mean",
+        "spec_flatness_p10",
+        "spec_flatness_p50",
+        "spec_flatness_p90",
+        "spec_rolloff_mean",
+        "spec_rolloff_p10",
+        "spec_rolloff_p50",
+        "zcr_dmean",
+        "zcr_mean",
+        "zcr_p50",
+        "zcr_p90"
+      ],
+      "XGBoost": [
+        "lr_corr",
+        "mfcc1_mean",
+        "onset_env_mean",
+        "onset_rate",
+        "spec_contrast1_p10",
+        "spec_contrast2_p10",
+        "spec_contrast3_dmean",
+        "spec_flatness_p50",
+        "spec_rolloff_mean",
+        "spec_rolloff_p10",
+        "zcr_p50",
+        "zcr_p90"
+      ]
+    }
+  },
+  "artifacts": [
+    "feature_significance.csv"
+  ],
+  "finished_utc": "2026-07-26T23:40:32.395952+00:00"
+}

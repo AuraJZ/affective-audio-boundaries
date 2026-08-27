@@ -1,0 +1,24 @@
+{
+  "run_id": "20260802T174942Z_92_subjective_individual_dual",
+  "name": "92_subjective_individual_dual",
+  "started_utc": "2026-08-02T17:49:42.882163+00:00",
+  "seed": 20260802,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_sig_at18": 0,
+    "pos_gain_at18": 0,
+    "best_r_at18": 0.06904183635690483,
+    "n_sig_at_18": 0,
+    "n_sig_at_30": 0,
+    "n_sig_at_50": 0,
+    "n_sig_at_100": 1
+  },
+  "artifacts": [],
+  "finished_utc": "2026-08-02T17:50:39.006956+00:00"
+}

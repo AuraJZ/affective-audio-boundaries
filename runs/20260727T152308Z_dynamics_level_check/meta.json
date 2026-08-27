@@ -1,0 +1,175 @@
+{
+  "run_id": "20260727T152308Z_dynamics_level_check",
+  "name": "dynamics_level_check",
+  "started_utc": "2026-07-27T15:23:08.663257+00:00",
+  "seed": 42,
+  "params": {
+    "corpus": "DEAM",
+    "n_songs": 400,
+    "method": "within-song level Spearman + circular-shift null",
+    "n_shift_null": 24,
+    "question": "A11 的低耦合是实质发现还是差分产物"
+  },
+  "git_commit": "839a8fe2f953ffed333c25ccbde0e223040e6b93",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "autocorrelation": {
+      "arousal_ac1_mean": 0.9312289524453967,
+      "descriptor_ac1_mean": 0.7549617446732348
+    },
+    "descriptor_level_coupling": [
+      {
+        "descriptor": "mfcc1_mean",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.3453,
+        "mean_abs_rho_null": 0.3009,
+        "excess_over_null": 0.0444,
+        "frac_exceeding_null_p95": 0.2225
+      },
+      {
+        "descriptor": "spec_flatness_p50",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.3303,
+        "mean_abs_rho_null": 0.2864,
+        "excess_over_null": 0.0439,
+        "frac_exceeding_null_p95": 0.2375
+      },
+      {
+        "descriptor": "spec_rolloff_mean",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.3334,
+        "mean_abs_rho_null": 0.2934,
+        "excess_over_null": 0.0399,
+        "frac_exceeding_null_p95": 0.2425
+      },
+      {
+        "descriptor": "rms_mean",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.3223,
+        "mean_abs_rho_null": 0.2868,
+        "excess_over_null": 0.0355,
+        "frac_exceeding_null_p95": 0.1925
+      },
+      {
+        "descriptor": "spec_centroid_mean",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.3266,
+        "mean_abs_rho_null": 0.2912,
+        "excess_over_null": 0.0354,
+        "frac_exceeding_null_p95": 0.235
+      },
+      {
+        "descriptor": "onset_rate",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.2824,
+        "mean_abs_rho_null": 0.2499,
+        "excess_over_null": 0.0324,
+        "frac_exceeding_null_p95": 0.23
+      },
+      {
+        "descriptor": "zcr_std",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.2961,
+        "mean_abs_rho_null": 0.2643,
+        "excess_over_null": 0.0318,
+        "frac_exceeding_null_p95": 0.2225
+      },
+      {
+        "descriptor": "zcr_p50",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.3231,
+        "mean_abs_rho_null": 0.2933,
+        "excess_over_null": 0.0298,
+        "frac_exceeding_null_p95": 0.1975
+      },
+      {
+        "descriptor": "mfcc1_std",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.2861,
+        "mean_abs_rho_null": 0.2586,
+        "excess_over_null": 0.0275,
+        "frac_exceeding_null_p95": 0.2175
+      },
+      {
+        "descriptor": "spec_contrast3_mean",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.3046,
+        "mean_abs_rho_null": 0.2774,
+        "excess_over_null": 0.0273,
+        "frac_exceeding_null_p95": 0.22
+      },
+      {
+        "descriptor": "rms_dmean",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.2934,
+        "mean_abs_rho_null": 0.2671,
+        "excess_over_null": 0.0263,
+        "frac_exceeding_null_p95": 0.2025
+      },
+      {
+        "descriptor": "onset_env_dmean",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.3041,
+        "mean_abs_rho_null": 0.2787,
+        "excess_over_null": 0.0254,
+        "frac_exceeding_null_p95": 0.2025
+      },
+      {
+        "descriptor": "spec_flatness_std",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.285,
+        "mean_abs_rho_null": 0.2616,
+        "excess_over_null": 0.0234,
+        "frac_exceeding_null_p95": 0.1975
+      },
+      {
+        "descriptor": "onset_env_mean",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.2767,
+        "mean_abs_rho_null": 0.2599,
+        "excess_over_null": 0.0168,
+        "frac_exceeding_null_p95": 0.2025
+      },
+      {
+        "descriptor": "spec_contrast3_dmean",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_abs_rho_level": 0.2668,
+        "mean_abs_rho_null": 0.2608,
+        "excess_over_null": 0.006,
+        "frac_exceeding_null_p95": 0.1625
+      }
+    ],
+    "class_comparison_level": {
+      "variability_excess": 0.02370502194712654,
+      "level_excess": 0.03660771184449378,
+      "variability_frac_exceed": 0.20468750000000002,
+      "level_frac_exceed": 0.22107142857142856
+    },
+    "overall_frac_exceeding_null_p95": 0.21233333333333335,
+    "verdict_coupling_is_real": true
+  },
+  "artifacts": [
+    "level_coupling.parquet",
+    "level_vs_null.csv"
+  ],
+  "finished_utc": "2026-07-27T15:27:13.929718+00:00"
+}

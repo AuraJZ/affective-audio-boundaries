@@ -1,0 +1,33 @@
+{
+  "run_id": "20260727T233831Z_recover_stimulus_mapping",
+  "name": "recover_stimulus_mapping",
+  "started_utc": "2026-07-27T23:38:31.592172+00:00",
+  "seed": 42,
+  "params": {
+    "method": "8 维情绪剖面 + 匈牙利指派",
+    "min_subjects_per_code": 5,
+    "n_null": 200,
+    "null": "打乱受试评分后跑同一流程",
+    "acceptable_outcome": "失败 —— 则声学↔脑电线在本数据集不可行"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "n_codes_with_profile": 49,
+    "assignment": {
+      "mean_profile_corr": 0.6715711135224902,
+      "null_mean": 0.6535585945587167,
+      "null_95th": 0.6807876329330425,
+      "p": 0.19402985074626866,
+      "frac_matching_code_minus_300": 0.0
+    },
+    "null_valid": true,
+    "verdict": "failed"
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T23:38:35.076260+00:00"
+}

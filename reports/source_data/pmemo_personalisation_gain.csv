@@ -1,0 +1,16 @@
+measure,descriptor,gain,p,n_listeners,q
+scr_rate,rms_mean,-0.07273713700987643,1.0,401,1.0
+scr_rate,onset_env_mean,-0.07444610848935634,1.0,401,1.0
+scr_rate,chroma_flux_mean,-0.07584079014953671,1.0,401,1.0
+scr_rate,roughness_pl_mean,-0.07460474495792284,1.0,401,1.0
+scr_rate,mode_score,-0.07229553156888702,1.0,401,1.0
+phasic_mean,rms_mean,-0.07719444521792207,1.0,401,1.0
+phasic_mean,onset_env_mean,-0.09267449485517489,1.0,401,1.0
+phasic_mean,chroma_flux_mean,-0.08926937148788378,1.0,401,1.0
+phasic_mean,roughness_pl_mean,-0.07593219440836291,1.0,401,1.0
+phasic_mean,mode_score,-0.07355313784436544,1.0,401,1.0
+scl_slope,rms_mean,-0.10922099616737223,1.0,401,1.0
+scl_slope,onset_env_mean,-0.10323995500065172,1.0,401,1.0
+scl_slope,chroma_flux_mean,-0.09181539856964734,1.0,401,1.0
+scl_slope,roughness_pl_mean,-0.08458431568476238,1.0,401,1.0
+scl_slope,mode_score,-0.07299148448333838,1.0,401,1.0

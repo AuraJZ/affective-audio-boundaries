@@ -1,0 +1,255 @@
+{
+  "run_id": "20260727T151439Z_within_song_dynamics",
+  "name": "within_song_dynamics",
+  "started_utc": "2026-07-27T15:14:39.897567+00:00",
+  "seed": 42,
+  "params": {
+    "corpus": "DEAM",
+    "n_songs": 400,
+    "annotation_rate_hz": 2.0,
+    "lags_s": [
+      0.0,
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      2.5,
+      3.0,
+      3.5,
+      4.0,
+      4.5,
+      5.0,
+      6.0
+    ],
+    "method": "within-song first-difference Spearman, lag-scanned",
+    "descriptors": {
+      "variability": [
+        "onset_env_mean",
+        "onset_env_dmean",
+        "onset_rate",
+        "spec_contrast3_dmean",
+        "spec_flatness_std",
+        "mfcc1_std",
+        "zcr_std",
+        "rms_dmean"
+      ],
+      "level": [
+        "spec_rolloff_mean",
+        "spec_centroid_mean",
+        "spec_flatness_p50",
+        "zcr_p50",
+        "rms_mean",
+        "mfcc1_mean",
+        "spec_contrast3_mean"
+      ]
+    }
+  },
+  "git_commit": "1a9462e5f96e2b504272cfd0e7cf1e8a5597b286",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "n_songs_used": 400,
+    "lag_scan": [
+      {
+        "lag_s": 0.0,
+        "mean_abs_rho": 0.1568
+      },
+      {
+        "lag_s": 0.5,
+        "mean_abs_rho": 0.1554
+      },
+      {
+        "lag_s": 1.0,
+        "mean_abs_rho": 0.1558
+      },
+      {
+        "lag_s": 1.5,
+        "mean_abs_rho": 0.1597
+      },
+      {
+        "lag_s": 2.0,
+        "mean_abs_rho": 0.1569
+      },
+      {
+        "lag_s": 2.5,
+        "mean_abs_rho": 0.1527
+      },
+      {
+        "lag_s": 3.0,
+        "mean_abs_rho": 0.156
+      },
+      {
+        "lag_s": 3.5,
+        "mean_abs_rho": 0.1568
+      },
+      {
+        "lag_s": 4.0,
+        "mean_abs_rho": 0.1578
+      },
+      {
+        "lag_s": 4.5,
+        "mean_abs_rho": 0.1537
+      },
+      {
+        "lag_s": 5.0,
+        "mean_abs_rho": 0.1548
+      },
+      {
+        "lag_s": 6.0,
+        "mean_abs_rho": 0.1606
+      }
+    ],
+    "best_lag_s": 6.0,
+    "descriptor_coupling": [
+      {
+        "descriptor": "mfcc1_mean",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_rho": -0.0562,
+        "median_rho": -0.0566,
+        "frac_same_sign": 0.6,
+        "p_value": 0.0
+      },
+      {
+        "descriptor": "spec_centroid_mean",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_rho": -0.0405,
+        "median_rho": -0.0431,
+        "frac_same_sign": 0.6025,
+        "p_value": 0.0001
+      },
+      {
+        "descriptor": "spec_rolloff_mean",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_rho": -0.0388,
+        "median_rho": -0.0466,
+        "frac_same_sign": 0.61,
+        "p_value": 0.0001
+      },
+      {
+        "descriptor": "rms_mean",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_rho": -0.038,
+        "median_rho": -0.0388,
+        "frac_same_sign": 0.5675,
+        "p_value": 0.0003
+      },
+      {
+        "descriptor": "onset_env_mean",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_rho": -0.0319,
+        "median_rho": -0.0312,
+        "frac_same_sign": 0.56,
+        "p_value": 0.0009
+      },
+      {
+        "descriptor": "spec_flatness_p50",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_rho": -0.0287,
+        "median_rho": -0.0284,
+        "frac_same_sign": 0.555,
+        "p_value": 0.0088
+      },
+      {
+        "descriptor": "zcr_p50",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_rho": -0.0278,
+        "median_rho": -0.0151,
+        "frac_same_sign": 0.5325,
+        "p_value": 0.0121
+      },
+      {
+        "descriptor": "spec_contrast3_mean",
+        "feature_class": "Spectral level",
+        "n_songs": 400,
+        "mean_rho": -0.0136,
+        "median_rho": -0.0219,
+        "frac_same_sign": 0.5475,
+        "p_value": 0.1209
+      },
+      {
+        "descriptor": "mfcc1_std",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_rho": -0.0116,
+        "median_rho": -0.0039,
+        "frac_same_sign": 0.525,
+        "p_value": 0.2057
+      },
+      {
+        "descriptor": "spec_flatness_std",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_rho": -0.0095,
+        "median_rho": -0.0055,
+        "frac_same_sign": 0.5075,
+        "p_value": 0.2984
+      },
+      {
+        "descriptor": "rms_dmean",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_rho": -0.0044,
+        "median_rho": -0.0132,
+        "frac_same_sign": 0.5225,
+        "p_value": 0.6366
+      },
+      {
+        "descriptor": "spec_contrast3_dmean",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_rho": 0.003,
+        "median_rho": -0.0082,
+        "frac_same_sign": 0.4825,
+        "p_value": 0.8223
+      },
+      {
+        "descriptor": "onset_rate",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_rho": -0.0017,
+        "median_rho": -0.0003,
+        "frac_same_sign": 0.5,
+        "p_value": 0.7821
+      },
+      {
+        "descriptor": "onset_env_dmean",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_rho": 0.0016,
+        "median_rho": 0.0075,
+        "frac_same_sign": 0.5075,
+        "p_value": 0.9162
+      },
+      {
+        "descriptor": "zcr_std",
+        "feature_class": "Temporal variability",
+        "n_songs": 400,
+        "mean_rho": 0.0014,
+        "median_rho": 0.0028,
+        "frac_same_sign": 0.51,
+        "p_value": 0.8934
+      }
+    ],
+    "class_comparison": {
+      "variability_mean_abs_rho": 0.008149348606038604,
+      "level_mean_abs_rho": 0.034810312159681715,
+      "ratio": 0.23410731189815095,
+      "prediction_supported": false
+    }
+  },
+  "artifacts": [
+    "within_song_delta.parquet",
+    "descriptor_delta_coupling.csv"
+  ],
+  "finished_utc": "2026-07-27T15:17:58.119064+00:00"
+}

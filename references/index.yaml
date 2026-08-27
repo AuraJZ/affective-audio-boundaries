@@ -1,0 +1,196 @@
+- key: aljanaki2017
+  first_author: Aljanaki
+  year: 2017
+  doi: 10.1371/journal.pone.0173392
+  title: "Developing a benchmark for emotional analysis of music"
+  used_for: "DEAM 语料"
+- key: zhang2018pmemo
+  first_author: Zhang
+  year: 2018
+  doi: 10.1145/3206025.3206037
+  title: "The PMEmo Dataset for Music Emotion Recognition"
+  used_for: "PMEmo 语料"
+- key: fan2017emo
+  first_author: Fan
+  year: 2017
+  doi: 10.1109/acii.2017.8273600
+  title: "Emo-Soundscapes: A dataset for soundscape emotion recognition"
+  used_for: "环境声语料"
+- key: eerola2011
+  first_author: Eerola
+  year: 2011
+  doi: 10.1177/0305735610362821
+  title: "A comparison of the discrete and dimensional models of emotion in music"
+  used_for: "Soundtracks 语料"
+- key: daly2018data
+  first_author: Daly
+  year: 2020
+  doi: 10.1038/s41597-020-0507-6
+  title: "Neural and physiological data from participants listening to affective music"
+  used_for: "ds002721 数据集"
+- key: daly2014
+  first_author: Daly
+  year: 2014
+  doi: 10.1016/j.neulet.2014.05.003
+  title: "Neural correlates of emotional responses to music: An EEG study"
+  used_for: "同数据集的原分析"
+- key: kutt2022
+  first_author: Kutt
+  year: 2022
+  doi: 10.1038/s41597-022-01402-6
+  title: "BIRAFFE2, a multimodal dataset for emotion-based personalization in rich affective game environments"
+  used_for: "BIRAFFE2"
+- key: piczak2015
+  first_author: Piczak
+  year: 2015
+  doi: 10.1145/2733373.2806390
+  title: "ESC: Dataset for Environmental Sound Classification"
+  used_for: "ESC-50"
+- key: breiman2001
+  first_author: Breiman
+  year: 2001
+  doi: 10.1214/ss/1009213726
+  title: "Statistical Modeling: The Two Cultures (with comments and a rejoinder by the author)"
+  used_for: "Rashomon 集合"
+- key: benjamini1995
+  first_author: Benjamini
+  year: 1995
+  doi: 10.1111/j.2517-6161.1995.tb02031.x
+  title: "Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing"
+  used_for: "BH-FDR"
+- key: maris2007
+  first_author: Maris
+  year: 2007
+  doi: 10.1016/j.jneumeth.2007.03.024
+  title: "Nonparametric statistical testing of EEG- and MEG-data"
+  used_for: "符号翻转置换"
+- key: krumhansl1982
+  first_author: Krumhansl
+  year: 1982
+  doi: 10.1037/0033-295x.89.4.334
+  title: "Tracing the dynamic changes in perceived tonal organization in a spatial representation of musical keys."
+  used_for: "KK 调性剖面"
+- key: plomp1965
+  first_author: Plomp
+  year: 1965
+  doi: 10.1121/1.1909741
+  title: "Tonal Consonance and Critical Bandwidth"
+  used_for: "感觉粗糙度"
+- key: mcfee2015
+  first_author: McFee
+  year: 2015
+  doi: 10.25080/majora-7b98e3ed-003
+  title: "librosa: Audio and Music Signal Analysis in Python"
+  used_for: "特征提取"
+- key: gramfort2013
+  first_author: Gramfort
+  year: 2013
+  doi: 10.3389/fnins.2013.00267
+  title: "MEG and EEG data analysis with MNE-Python"
+  used_for: "脑电处理"
+- key: makowski2021
+  first_author: Makowski
+  year: 2021
+  doi: 10.3758/s13428-020-01516-y
+  title: "NeuroKit2: A Python toolbox for neurophysiological signal processing"
+  used_for: "EDA 处理"
+- key: ledoit2004
+  first_author: Ledoit
+  year: 2004
+  doi: 10.1016/s0047-259x(03)00096-4
+  title: "A well-conditioned estimator for large-dimensional covariance matrices"
+  used_for: "收缩协方差"
+- key: chen2016xgboost
+  first_author: Chen
+  year: 2016
+  doi: 10.1145/2939672.2939785
+  title: "XGBoost: A Scalable Tree Boosting System"
+  used_for: "梯度提升"
+- key: russell1980
+  first_author: Russell
+  year: 1980
+  doi: 10.1037/h0077714
+  title: "A circumplex model of affect."
+  used_for: "情绪环状模型"
+- key: eerola2013
+  first_author: Eerola
+  year: 2013
+  doi: 10.1525/mp.2012.30.3.307
+  title: "A Review of Music and Emotion Studies: Approaches, Emotion Models, and Stimuli"
+  used_for: "音乐情绪综述"
+- key: papalambros2017
+  first_author: Papalambros
+  year: 2017
+  doi: 10.3389/fnhum.2017.00109
+  title: "Acoustic Enhancement of Sleep Slow Oscillations and Concomitant Memory Improvement in Older Adults"
+  used_for: "声学干预睡眠"
+- key: jespersen2022
+  first_author: Jespersen
+  year: 2022
+  doi: 10.1002/14651858.cd010459.pub3
+  title: "Listening to music for insomnia in adults"
+  used_for: "音乐助眠 Cochrane"
+- key: elizalde2023
+  first_author: Elizalde
+  year: 2023
+  doi: 10.1109/icassp49357.2023.10095889
+  title: "CLAP: Learning Audio Concepts from Natural Language Supervision"
+  used_for: "CLAP 概念出处（实际抽取的 checkpoint 见 wu2023clap）"
+- key: gorgolewski2016
+  first_author: Gorgolewski
+  year: 2016
+  doi: 10.1038/sdata.2016.44
+  title: "The brain imaging data structure, a format for organizing and describing outputs of neuroimaging experiments"
+  used_for: "BIDS"
+- key: pernet2019
+  first_author: Pernet
+  year: 2019
+  doi: 10.1038/s41597-019-0104-8
+  title: "EEG-BIDS, an extension to the brain imaging data structure for electroencephalography"
+  used_for: "EEG-BIDS"
+- key: koelsch2014
+  first_author: Koelsch
+  year: 2014
+  doi: 10.1038/nrn3666
+  title: "Brain correlates of music-evoked emotions"
+  used_for: "音乐情绪神经基础"
+- key: boucsein2012
+  first_author: Boucsein
+  year: 2012
+  doi: 10.1111/j.1469-8986.2012.01384.x
+  title: "Publication recommendations for electrodermal measurements"
+  used_for: "EDA 规范"
+# ---------------------------------------------------------------------------
+# 以下 5 条为手工维护，不在 scripts/58_build_references.py 的 WANTED 列表里。
+# 重跑该脚本会覆盖 references.bib 并删掉它们 —— 脚本已加保护，见其顶部说明。
+# ---------------------------------------------------------------------------
+- key: ribeiro2019erp
+  first_author: Ribeiro
+  year: 2019
+  doi: 10.1016/j.neurobiolaging.2018.09.028
+  title: "Age-related differences in event-related potentials and pupillary responses in cued reaction time tasks"
+  used_for: "ds003690 分发方要求的署名（EEG 与瞳孔）"
+- key: ribeiro2019cardiac
+  first_author: Ribeiro
+  year: 2019
+  doi: 10.1016/j.neuroimage.2019.06.004
+  title: "Neural correlates of anticipatory cardiac deceleration and its association with the speed of perceptual decision-making, in young and older adults"
+  used_for: "ds003690 分发方要求的署名（心电）"
+- key: ds003690
+  first_author: Ribeiro
+  year: 2021
+  doi: 10.18112/openneuro.ds003690.v1.0.0
+  title: "EEG, ECG and pupil data from young and older adults: rest and auditory cued reaction time tasks"
+  used_for: "边界 4 实测功效曲线语料"
+- key: ooi2024araus
+  first_author: Ooi
+  year: 2024
+  doi: 10.1109/TAFFC.2023.3247914
+  title: "ARAUS: A Large-Scale Dataset and Baseline Models of Affective Responses to Augmented Urban Soundscapes"
+  used_for: "ARAUS 语料；CC BY-NC 4.0 的署名义务"
+- key: wu2023clap
+  first_author: Wu
+  year: 2023
+  doi: ""
+  title: "Large-Scale Contrastive Language-Audio Pretraining with Feature Fusion and Keyword-to-Caption Augmentation"
+  used_for: "laion/clap-htsat-unfused 权重与 LAION-Audio-630K 污染披露"

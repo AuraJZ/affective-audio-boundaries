@@ -1,0 +1,26 @@
+{
+  "run_id": "20260731T150523Z_80_domain_adaptation",
+  "name": "80_domain_adaptation",
+  "started_utc": "2026-07-31T15:05:23.977226+00:00",
+  "seed": 20260731,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "a_cross_none": 0.034580726581944665,
+    "a_cross_zscore": 0.01955132492606702,
+    "a_cross_coral": 0.23242182556931326,
+    "a_within": 0.7668587153186319,
+    "a_fewshot_10": 0.17951800864177933,
+    "a_fewshot_25": 0.3388661981646752,
+    "a_fewshot_50": 0.5001642752047835,
+    "a_fewshot_100": 0.6115640965627551,
+    "a_fewshot_200": 0.689336879059987
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-31T15:20:32.692301+00:00"
+}

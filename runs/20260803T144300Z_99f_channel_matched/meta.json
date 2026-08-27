@@ -1,0 +1,23 @@
+{
+  "run_id": "20260803T144300Z_99f_channel_matched",
+  "name": "99f_channel_matched",
+  "started_utc": "2026-08-03T14:43:00.028717+00:00",
+  "seed": 20260803,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "above_null_主观 · 声景（ARAUS，产品域）": 8,
+    "tau_corr_median_主观 · 声景（ARAUS，产品域）": 0.15055229179977325,
+    "above_null_主观 · 音乐（DEAM 评分）": 6,
+    "tau_corr_median_主观 · 音乐（DEAM 评分）": 0.07885909435729246,
+    "above_null_生理 · 音乐（PMEmo 皮电）": 6,
+    "tau_corr_median_生理 · 音乐（PMEmo 皮电）": 0.0
+  },
+  "artifacts": [],
+  "finished_utc": "2026-08-03T15:09:04.962038+00:00"
+}

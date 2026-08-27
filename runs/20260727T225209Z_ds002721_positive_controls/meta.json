@@ -1,0 +1,65 @@
+{
+  "run_id": "20260727T225209Z_ds002721_positive_controls",
+  "name": "ds002721_positive_controls",
+  "started_utc": "2026-07-27T22:52:09.064349+00:00",
+  "seed": 42,
+  "params": {
+    "dataset": "OpenNeuro ds002721",
+    "n_subjects": 31,
+    "controls": [
+      "C0 event bookkeeping",
+      "C1 posterior alpha",
+      "C2 blink-locked ERP (timing alignment)",
+      "C3 sound-onset evoked GFP vs random-onset null"
+    ],
+    "discipline": "判据先于数据；任一不过即终止，不做事后补救"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "C0_event_bookkeeping": {
+      "runs": 124,
+      "frac_exactly_10_onsets": 1.0,
+      "frac_bijective_pairing": 1.0,
+      "frac_stim_id_in_1_360": 1.0,
+      "max_lead_s": 24.368000000000052,
+      "frac_80_ratings": 1.0,
+      "response_code_agreement": 0.07308467741935483
+    },
+    "C1_posterior_alpha": {
+      "n": 30,
+      "mean_diff": 0.26448884164742653,
+      "frac_positive": 1.0,
+      "p": 1.862645149230957e-09
+    },
+    "C2_blink_locked_erp": {
+      "n": 31,
+      "median_frontal_occipital_ratio": 3.97931907347694,
+      "mean_frontal_ptp_uV": 163.77178282221507,
+      "mean_random_ptp_uV": 25.8015588784645,
+      "p_vs_random": 9.313225746154785e-10
+    },
+    "C3_sound_onset_evoked": {
+      "n": 31,
+      "total_trials": 1124,
+      "gfp_stim_uV": 2.445802335067479,
+      "gfp_random_uV": 4.80009302603157,
+      "ratio": 0.5097635582614203,
+      "frac_stim_greater": 0.06451612903225806,
+      "p": 5.122274160385132e-08
+    },
+    "verdict": {
+      "C0": false,
+      "C1": true,
+      "C2": true,
+      "C3": false
+    },
+    "all_passed": false
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T23:01:10.041881+00:00"
+}

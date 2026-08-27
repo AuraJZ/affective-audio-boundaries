@@ -1,0 +1,230 @@
+{
+  "run_id": "20260726T191106Z_train_deam_test_pmemo",
+  "name": "train_deam_test_pmemo",
+  "started_utc": "2026-07-26T19:11:06.975146+00:00",
+  "seed": 42,
+  "params": {
+    "train_set": "deam",
+    "test_set": "pmemo",
+    "cv": "StratifiedGroupKFold(n_splits=5)",
+    "n_features": 122,
+    "models": {
+      "RF": "RandomForestClassifier(n_estimators=500, n_jobs=-1, random_state=42)",
+      "XGBoost": "XGBClassifier(base_score=None, booster=None, callbacks=None,\n              colsample_bylevel=None, colsample_bynode=None,\n              colsample_bytree=0.8, device=None, early_stopping_rounds=None,\n              enable_categorical=True, eval_metric='logloss',\n              feature_types=None, feature_weights=None, gamma=None,\n              grow_policy=None, importance_type=None,\n              interaction_constraints=None, learning_rate=0.05, max_bin=None,\n              max_cat_threshold=None, max_cat_to_onehot=None,\n              max_delta_step=None, max_depth=5, max_leaves=None,\n              min_child_weight=None, missing=nan, monotone_constraints=None,\n              multi_strategy=None, n_estimators=400, n_jobs=-1,\n              num_parallel_tree=None, ...)",
+      "GBDT": "GradientBoostingClassifier(random_state=42)",
+      "SVM": "SVC(C=10, probability=True, random_state=42)",
+      "KNN": "KNeighborsClassifier()"
+    },
+    "ad": {
+      "Z": 0.5,
+      "k": 5
+    }
+  },
+  "git_commit": "5b05dfc2a5b6cd5fdea90e815b4ebe099f85654b",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "33351f882d8740d1f2983f0647a3f8211e77a7db1dd56de5c1b3378838a36bb7",
+  "inputs": {
+    "train_features": {
+      "n_files": 1,
+      "rollup_sha256": "602d04206cd27b553a683fe8f4f0ea73ced3a0c051bbabe77439008b64ac40ec",
+      "files": [
+        {
+          "path": "data/features/layer_a_deam.parquet",
+          "sha256": "ba60a9234f0d3f9348441d9491268d62bd33fed8be4c12cf563d12cd4abd2613"
+        }
+      ]
+    },
+    "test_features": {
+      "n_files": 1,
+      "rollup_sha256": "95a24e412b22d921c22ff7422f5791d1f4e6e66b4aac09f48a6b74d9b6b87427",
+      "files": [
+        {
+          "path": "data/features/layer_a_pmemo.parquet",
+          "sha256": "1491a29ccfd6d7a9197c8e919d09c3ec95528fedc660a49c881cbdd10c2edbd7"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "n_train": {
+      "total": 477,
+      "pos": 215,
+      "neg": 262
+    },
+    "cv_within_source": {
+      "RF": {
+        "auc_mean": 0.9377687582272924,
+        "auc_std": 0.01840762907058646,
+        "accuracy_mean": 0.8658333333333333,
+        "accuracy_std": 0.03010308782856678,
+        "precision_mean": 0.8687385129490393,
+        "precision_std": 0.03405345847999022,
+        "recall_mean": 0.8279069767441861,
+        "recall_std": 0.053538904340564374
+      },
+      "XGBoost": {
+        "auc_mean": 0.9496962230397947,
+        "auc_std": 0.011139352468973625,
+        "accuracy_mean": 0.8889473684210525,
+        "accuracy_std": 0.02708215691031168,
+        "precision_mean": 0.8950615174299384,
+        "precision_std": 0.04952182068529785,
+        "recall_mean": 0.8558139534883722,
+        "recall_std": 0.02547546779093796
+      },
+      "GBDT": {
+        "auc_mean": 0.9423380700037128,
+        "auc_std": 0.011188503285178581,
+        "accuracy_mean": 0.8847368421052633,
+        "accuracy_std": 0.03129386733301275,
+        "precision_mean": 0.8837934056385439,
+        "precision_std": 0.0559064363988624,
+        "recall_mean": 0.8604651162790699,
+        "recall_std": 0.03288868749704872
+      },
+      "SVM": {
+        "auc_mean": 0.9286596685455833,
+        "auc_std": 0.008394417755872456,
+        "accuracy_mean": 0.8469736842105263,
+        "accuracy_std": 0.027253553614075,
+        "precision_mean": 0.8447979797979798,
+        "precision_std": 0.058051046393223865,
+        "recall_mean": 0.813953488372093,
+        "recall_std": 0.036770670467074176
+      },
+      "KNN": {
+        "auc_mean": 0.9012530799608467,
+        "auc_std": 0.02627064400890253,
+        "accuracy_mean": 0.8302412280701754,
+        "accuracy_std": 0.019550841397588146,
+        "precision_mean": 0.8661029929450981,
+        "precision_std": 0.04157200441613766,
+        "recall_mean": 0.7395348837209302,
+        "recall_std": 0.03032187165210536
+      },
+      "Stacking": {
+        "auc_mean": 0.9471951260674384,
+        "auc_std": 0.014324986155207142,
+        "accuracy_mean": 0.8847149122807018,
+        "accuracy_std": 0.022133049578774922,
+        "precision_mean": 0.888027063504264,
+        "precision_std": 0.05482859570662437,
+        "recall_mean": 0.8558139534883722,
+        "recall_std": 0.03032187165210534
+      }
+    },
+    "stacking_base_models": [
+      "XGBoost",
+      "GBDT",
+      "RF",
+      "SVM"
+    ],
+    "n_test": {
+      "total": 495,
+      "pos": 58,
+      "neg": 437
+    },
+    "cross_source": {
+      "RF": {
+        "auc": 0.9179949498934744,
+        "accuracy": 0.9232323232323232,
+        "precision": 0.8571428571428571,
+        "recall": 0.41379310344827586
+      },
+      "XGBoost": {
+        "auc": 0.8721297246113785,
+        "accuracy": 0.9090909090909091,
+        "precision": 0.6585365853658537,
+        "recall": 0.46551724137931033
+      },
+      "GBDT": {
+        "auc": 0.8533101870117573,
+        "accuracy": 0.9131313131313131,
+        "precision": 0.6829268292682927,
+        "recall": 0.4827586206896552
+      },
+      "SVM": {
+        "auc": 0.8874181330387438,
+        "accuracy": 0.896969696969697,
+        "precision": 0.5660377358490566,
+        "recall": 0.5172413793103449
+      },
+      "KNN": {
+        "auc": 0.7992977195612719,
+        "accuracy": 0.9171717171717172,
+        "precision": 0.9047619047619048,
+        "recall": 0.3275862068965517
+      },
+      "Stacking": {
+        "auc": 0.9109524185275784,
+        "accuracy": 0.9131313131313131,
+        "precision": 0.6923076923076923,
+        "recall": 0.46551724137931033
+      }
+    },
+    "applicability_domain": {
+      "Y": 7.986616880481701,
+      "sigma": 2.183441657608967,
+      "Z": 0.5,
+      "k": 5,
+      "threshold": 9.078337709286185,
+      "test_fraction_inside": 0.7797979797979798
+    },
+    "shap_top20_overlap_3models": 5,
+    "shap_overlap_threshold": 6,
+    "shap_overlap_passed": false,
+    "shap_consensus_features": [
+      "mfcc1_mean",
+      "onset_rate",
+      "rms_dmean",
+      "spec_contrast1_p10",
+      "spec_contrast2_p10"
+    ],
+    "shap_top10_per_model": {
+      "RF": [
+        "mfcc1_mean",
+        "spec_flatness_p50",
+        "onset_env_mean",
+        "spec_contrast1_p10",
+        "rms_dmean",
+        "spec_rolloff_p10",
+        "spec_rolloff_mean",
+        "spec_centroid_p50",
+        "spec_flatness_mean",
+        "spec_rolloff_p50"
+      ],
+      "XGBoost": [
+        "mfcc1_mean",
+        "spec_contrast3_dmean",
+        "onset_rate",
+        "zcr_p50",
+        "rms_dmean",
+        "spec_contrast2_p10",
+        "spec_flatness_p50",
+        "spec_contrast6_dmean",
+        "f0_p50",
+        "mfcc5_mean"
+      ],
+      "SVM": [
+        "onset_rate",
+        "spec_contrast1_p10",
+        "zcr_dmean",
+        "rms_dmean",
+        "mfcc3_std",
+        "spec_contrast1_p50",
+        "spec_contrast1_mean",
+        "onset_env_p50",
+        "mfcc1_mean",
+        "spec_rolloff_p10"
+      ]
+    }
+  },
+  "artifacts": [
+    "shap_summary_RF.png",
+    "shap_summary_XGBoost.png",
+    "shap_ranks.csv"
+  ],
+  "finished_utc": "2026-07-26T19:12:01.926092+00:00"
+}

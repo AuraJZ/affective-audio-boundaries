@@ -1,0 +1,169 @@
+{
+  "run_id": "20260726T162837Z_train_baseline_layer_a",
+  "name": "train_baseline_layer_a",
+  "started_utc": "2026-07-26T16:28:37.017514+00:00",
+  "seed": 42,
+  "params": {
+    "cv": "StratifiedGroupKFold(n_splits=5, group=src_file)",
+    "n_features": 122,
+    "models": {
+      "RF": "RandomForestClassifier(n_estimators=500, n_jobs=-1, random_state=42)",
+      "XGBoost": "XGBClassifier(base_score=None, booster=None, callbacks=None,\n              colsample_bylevel=None, colsample_bynode=None,\n              colsample_bytree=0.8, device=None, early_stopping_rounds=None,\n              enable_categorical=True, eval_metric='logloss',\n              feature_types=None, feature_weights=None, gamma=None,\n              grow_policy=None, importance_type=None,\n              interaction_constraints=None, learning_rate=0.05, max_bin=None,\n              max_cat_threshold=None, max_cat_to_onehot=None,\n              max_delta_step=None, max_depth=5, max_leaves=None,\n              min_child_weight=None, missing=nan, monotone_constraints=None,\n              multi_strategy=None, n_estimators=400, n_jobs=-1,\n              num_parallel_tree=None, ...)",
+      "GBDT": "GradientBoostingClassifier(random_state=42)",
+      "SVM": "SVC(C=10, probability=True, random_state=42)",
+      "KNN": "KNeighborsClassifier()"
+    },
+    "ad": {
+      "Z": 0.5,
+      "k": 5
+    }
+  },
+  "git_commit": "d777a606d89ee0f990faa73fd35656a85fc760c9",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "33351f882d8740d1f2983f0647a3f8211e77a7db1dd56de5c1b3378838a36bb7",
+  "inputs": {
+    "features": {
+      "n_files": 1,
+      "rollup_sha256": "170df7ba7068786d3d63faed4668d462eafa6412df909059b4751d1d71894d0f",
+      "files": [
+        {
+          "path": "data/features/layer_a_esc50.parquet",
+          "sha256": "970779620487ad0ec95cab221687444e800aa0f42d8d510371253d99f5b90912"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "model_matrix": {
+      "RF": {
+        "auc_mean": 0.9590039062500001,
+        "auc_std": 0.027621824746593793,
+        "accuracy_mean": 0.8875,
+        "accuracy_std": 0.03197462342561481,
+        "precision_mean": 0.8894339250680486,
+        "precision_std": 0.028199158903086347,
+        "recall_mean": 0.853125,
+        "recall_std": 0.06774838558962125
+      },
+      "XGBoost": {
+        "auc_mean": 0.9693359375,
+        "auc_std": 0.021142972805929285,
+        "accuracy_mean": 0.9111111111111111,
+        "accuracy_std": 0.017975248757701102,
+        "precision_mean": 0.9148967154204414,
+        "precision_std": 0.042952563994781,
+        "recall_mean": 0.884375,
+        "recall_std": 0.028384222069663984
+      },
+      "GBDT": {
+        "auc_mean": 0.95375,
+        "auc_std": 0.02849200380818905,
+        "accuracy_mean": 0.8902777777777778,
+        "accuracy_std": 0.02474795789056315,
+        "precision_mean": 0.8802706890056579,
+        "precision_std": 0.0225038057139955,
+        "recall_mean": 0.871875,
+        "recall_std": 0.0511107101056129
+      },
+      "SVM": {
+        "auc_mean": 0.9671484375,
+        "auc_std": 0.013909349417593288,
+        "accuracy_mean": 0.9083333333333334,
+        "accuracy_std": 0.026168671779745512,
+        "precision_mean": 0.8970353333779795,
+        "precision_std": 0.051587314794606466,
+        "recall_mean": 0.9,
+        "recall_std": 0.013975424859373685
+      },
+      "KNN": {
+        "auc_mean": 0.9124804687499999,
+        "auc_std": 0.01574029726554786,
+        "accuracy_mean": 0.8513888888888888,
+        "accuracy_std": 0.017430417219459923,
+        "precision_mean": 0.8331980407032358,
+        "precision_std": 0.048751889355871075,
+        "recall_mean": 0.8375,
+        "recall_std": 0.042216425269082175
+      },
+      "Stacking": {
+        "auc_mean": 0.9753906250000002,
+        "auc_std": 0.018310481770717566,
+        "accuracy_mean": 0.9166666666666667,
+        "accuracy_std": 0.02303211659969029,
+        "precision_mean": 0.9106588857807573,
+        "precision_std": 0.0434598595086443,
+        "recall_mean": 0.903125,
+        "recall_std": 0.04044430970482745
+      }
+    },
+    "stacking_base_models": [
+      "XGBoost",
+      "SVM",
+      "RF",
+      "GBDT"
+    ],
+    "applicability_domain": {
+      "Y": 6.587113964006979,
+      "sigma": 2.5065764661585246,
+      "Z": 0.5,
+      "threshold": 7.840402197086241
+    },
+    "shap_top20_overlap_3models": 5,
+    "shap_consensus_features": [
+      "onset_env_p10",
+      "spec_centroid_dmean",
+      "spec_contrast3_std",
+      "spec_contrast4_std",
+      "zcr_std"
+    ],
+    "shap_top10_per_model": {
+      "RF": [
+        "rms_std",
+        "rms_p90",
+        "spec_contrast2_p10",
+        "spec_bandwidth_dmean",
+        "spec_centroid_dmean",
+        "rms_mean",
+        "spec_contrast3_std",
+        "spec_contrast5_p90",
+        "spec_contrast2_p50",
+        "mfcc6_mean"
+      ],
+      "XGBoost": [
+        "rms_std",
+        "mfcc4_std",
+        "spec_contrast4_std",
+        "harsh_energy_ratio",
+        "mfcc9_mean",
+        "spec_contrast2_p10",
+        "zcr_std",
+        "spec_contrast1_p10",
+        "spec_bandwidth_dmean",
+        "spec_centroid_dmean"
+      ],
+      "SVM": [
+        "mfcc1_mean",
+        "mfcc4_std",
+        "spec_centroid_dmean",
+        "spec_contrast4_std",
+        "spec_contrast0_dmean",
+        "slope_1f",
+        "mfcc9_mean",
+        "onset_env_std",
+        "onset_env_p10",
+        "onset_env_dmean"
+      ]
+    }
+  },
+  "artifacts": [
+    "shap_summary_RF.png",
+    "shap_summary_XGBoost.png",
+    "shap_ranks.csv"
+  ],
+  "notes": {
+    "label_type": "semantic_proxy (ESC-50) —— AUC 此阶段仅用于验证流水线"
+  },
+  "finished_utc": "2026-07-26T16:29:39.630611+00:00"
+}

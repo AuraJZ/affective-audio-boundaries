@@ -1,0 +1,60 @@
+{
+  "run_id": "20260727T094544Z_domain_comparison",
+  "name": "domain_comparison",
+  "started_utc": "2026-07-27T09:45:44.343009+00:00",
+  "seed": 0,
+  "params": {
+    "music": "deam",
+    "ambient": "emo",
+    "music_sig_run": "20260726T230352Z_feature_significance",
+    "ambient_sig_run": "20260727T091605Z_feature_significance"
+  },
+  "git_commit": "6018880e0fa08ad0bda66d6f7971c1e4f4bd6bc6",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "7ebca11109f30d971df5f4f5fa3774c41ce61b92189fba76b02a4d181135c7d2",
+  "inputs": {},
+  "metrics": {
+    "exact_overlap": [],
+    "n_exact_overlap": 0,
+    "music_families": [
+      "MFCC",
+      "空间",
+      "谱对比度",
+      "谱平坦度",
+      "起音/突发",
+      "过零率",
+      "频谱滚降"
+    ],
+    "ambient_families": [
+      "MFCC",
+      "能量",
+      "谱对比度",
+      "谱平坦度",
+      "起音/突发"
+    ],
+    "shared_families": [
+      "MFCC",
+      "谱对比度",
+      "谱平坦度",
+      "起音/突发"
+    ],
+    "n_comparable": 16,
+    "n_same_direction": 8,
+    "domain_invariant_features": [
+      "mfcc1_std",
+      "onset_env_dmean",
+      "onset_env_mean",
+      "onset_rate",
+      "spec_contrast3_dmean",
+      "spec_contrast6_p10",
+      "spec_flatness_p50",
+      "spec_flatness_std"
+    ]
+  },
+  "artifacts": [
+    "domain_comparison.csv"
+  ],
+  "finished_utc": "2026-07-27T09:45:44.632986+00:00"
+}

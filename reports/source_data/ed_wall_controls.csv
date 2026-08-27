@@ -1,0 +1,17 @@
+control,setting,kind,spearman
+C1_duration,reg_deam|30s,cross_domain,0.1317788212246394
+C1_duration,reg_deam|6s,cross_domain,0.1883735821974874
+C1_duration,reg_deam->reg_pmemo|30s,same_domain,0.6989806817902287
+C1_duration,reg_deam->reg_pmemo|6s,same_domain,0.6928326479528127
+C1_duration,reg_pmemo|30s,cross_domain,-0.0619746695204942
+C1_duration,reg_pmemo|6s,cross_domain,-0.0849883421240153
+C1_duration,reg_pmemo->reg_deam|30s,same_domain,0.6319196111835096
+C1_duration,reg_pmemo->reg_deam|6s,same_domain,0.5716847037909053
+C2_within_domain_LOCO,human,within_domain_new_content,0.6989858985898589
+C2_within_domain_LOCO,indicator,within_domain_new_content,0.6279627962796278
+C2_within_domain_LOCO,mechanical,within_domain_new_content,0.3341854185418542
+C2_within_domain_LOCO,nature,within_domain_new_content,0.6748634863486348
+C2_within_domain_LOCO,quiet,within_domain_new_content,0.1973717371737173
+C2_within_domain_LOCO,society,within_domain_new_content,0.611065106510651
+C3_second_ambient,reg_deam->ESC-50,cross_domain_auc,0.5315078125
+C3_second_ambient,reg_pmemo->ESC-50,cross_domain_auc,0.50428125

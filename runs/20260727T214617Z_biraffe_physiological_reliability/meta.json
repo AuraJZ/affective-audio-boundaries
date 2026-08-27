@@ -1,0 +1,49 @@
+{
+  "run_id": "20260727T214617Z_biraffe_physiological_reliability",
+  "name": "biraffe_physiological_reliability",
+  "started_utc": "2026-07-27T21:46:17.220729+00:00",
+  "seed": 42,
+  "params": {
+    "dataset": "BIRAFFE2",
+    "licence": "CC BY 4.0",
+    "n_subjects_available": 6,
+    "features": [
+      "eda_rise",
+      "eda_scr",
+      "hr_change"
+    ],
+    "n_splits": 200,
+    "windows": {
+      "baseline": "-2..0 s",
+      "ecg": "0..6 s",
+      "eda": "1..8 s"
+    },
+    "note": "先测信度再建模；PMEmo EDA 天花板为 0.155，本次为对照"
+  },
+  "git_commit": "bfa1224c3794c294ce257c20010a2f1602c7155c",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "n_trials": 234,
+    "n_trials_dropped_by_gaps": 6,
+    "feature_completeness": {
+      "eda_rise": 0.9743589743589743,
+      "eda_scr": 0.9743589743589743,
+      "hr_change": 0.3803418803418803
+    },
+    "reliability": {
+      "subjective_arousal": null,
+      "eda_rise": null,
+      "eda_scr": null,
+      "hr_change": null
+    },
+    "subjective_vs_physiological": {}
+  },
+  "artifacts": [
+    "trial_features.parquet"
+  ],
+  "finished_utc": "2026-07-27T21:46:37.077977+00:00"
+}

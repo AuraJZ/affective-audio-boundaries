@@ -1,0 +1,27 @@
+{
+  "run_id": "20260730T152605Z_74_pmemo_eda_acoustics",
+  "name": "74_pmemo_eda_acoustics",
+  "started_utc": "2026-07-30T15:26:05.610149+00:00",
+  "seed": 20260730,
+  "params": {},
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {},
+  "metrics": {
+    "reliability_scr_rate": 0.11218172246254479,
+    "reliability_phasic_mean": 0.24612697734394,
+    "reliability_scl_slope": 0.2191197517959146,
+    "cv_rho_scr_rate": 0.015964185541530094,
+    "null_rho_scr_rate": 0.048896660036355136,
+    "cv_rho_phasic_mean": 0.03188893006981389,
+    "null_rho_phasic_mean": 0.02823986966201985,
+    "cv_rho_scl_slope": 0.029362491446647404,
+    "null_rho_scl_slope": 0.016006117052104786,
+    "obs_per_person_median": 20.0
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-30T15:32:07.303070+00:00"
+}

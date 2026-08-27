@@ -1,0 +1,339 @@
+{
+  "run_id": "20260727T221014Z_biraffe_signal_quality",
+  "name": "biraffe_signal_quality",
+  "started_utc": "2026-07-27T22:10:14.933432+00:00",
+  "seed": 42,
+  "params": {
+    "n_subjects": 12,
+    "checks": [
+      "EDA phasic content (PSD)",
+      "clock alignment via EVENT"
+    ]
+  },
+  "git_commit": "4d0c522baadcf77c350573195348a1deb383f2b4",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "162b088213c76aede9e6e41556942d208448c0e2183b1eb9daa475d76e00a79a",
+  "inputs": {},
+  "metrics": {
+    "eda_psd": [
+      {
+        "subject": "SUB103",
+        "fs": 1000.072485,
+        "tonic_0_005": 0.855206,
+        "phasic_005_1": 0.071517,
+        "hf_1_10": 0.000114,
+        "eda_sd": 2.2e-05,
+        "eda_8s_range": 0.0
+      },
+      {
+        "subject": "SUB119",
+        "fs": 1000.072485,
+        "tonic_0_005": 0.326748,
+        "phasic_005_1": 0.530906,
+        "hf_1_10": 0.021286,
+        "eda_sd": 6e-06,
+        "eda_8s_range": 1e-06
+      },
+      {
+        "subject": "SUB120",
+        "fs": 1000.072485,
+        "tonic_0_005": 0.430482,
+        "phasic_005_1": 0.426921,
+        "hf_1_10": 0.002154,
+        "eda_sd": 9e-06,
+        "eda_8s_range": 1e-06
+      },
+      {
+        "subject": "SUB136",
+        "fs": 1000.072485,
+        "tonic_0_005": 0.829671,
+        "phasic_005_1": 0.084182,
+        "hf_1_10": 0.000189,
+        "eda_sd": 5.5e-05,
+        "eda_8s_range": 0.0
+      },
+      {
+        "subject": "SUB141",
+        "fs": 1000.072485,
+        "tonic_0_005": 0.4484,
+        "phasic_005_1": 0.391256,
+        "hf_1_10": 0.092257,
+        "eda_sd": 4e-06,
+        "eda_8s_range": 0.0
+      },
+      {
+        "subject": "SUB148",
+        "fs": 1000.072485,
+        "tonic_0_005": 2e-06,
+        "phasic_005_1": 4.2e-05,
+        "hf_1_10": 0.000311,
+        "eda_sd": 1e-06,
+        "eda_8s_range": 4e-06
+      },
+      {
+        "subject": "SUB153",
+        "fs": 1000.072485,
+        "tonic_0_005": 0.823882,
+        "phasic_005_1": 0.107268,
+        "hf_1_10": 0.00082,
+        "eda_sd": 2.8e-05,
+        "eda_8s_range": 0.0
+      },
+      {
+        "subject": "SUB157",
+        "fs": 1000.072485,
+        "tonic_0_005": 0.561009,
+        "phasic_005_1": 0.326014,
+        "hf_1_10": 0.001405,
+        "eda_sd": 3.5e-05,
+        "eda_8s_range": 1e-06
+      },
+      {
+        "subject": "SUB161",
+        "fs": 1000.072485,
+        "tonic_0_005": 0.472328,
+        "phasic_005_1": 0.427929,
+        "hf_1_10": 0.001259,
+        "eda_sd": 2.2e-05,
+        "eda_8s_range": 1e-06
+      },
+      {
+        "subject": "SUB170",
+        "fs": 1000.072485,
+        "tonic_0_005": 0.615171,
+        "phasic_005_1": 0.289407,
+        "hf_1_10": 0.000626,
+        "eda_sd": 5.1e-05,
+        "eda_8s_range": 1e-06
+      },
+      {
+        "subject": "SUB175",
+        "fs": 1000.072485,
+        "tonic_0_005": 0.582734,
+        "phasic_005_1": 0.282509,
+        "hf_1_10": 0.00093,
+        "eda_sd": 4.3e-05,
+        "eda_8s_range": 0.0
+      },
+      {
+        "subject": "SUB181",
+        "fs": 1000.072485,
+        "tonic_0_005": 0.863963,
+        "phasic_005_1": 0.08115,
+        "hf_1_10": 0.003591,
+        "eda_sd": 3e-05,
+        "eda_8s_range": 0.0
+      }
+    ],
+    "clock": [
+      {
+        "subject": "SUB103",
+        "proc_span": [
+          1579508181.616007,
+          1579511917.27697
+        ],
+        "bio_span": [
+          1579508181.4933558,
+          1579511858.492283
+        ],
+        "proc_inside_bio": true,
+        "eda_baseline": 0.00019045575450054228,
+        "eda_task": 0.00022306770758339931,
+        "eda_task_minus_baseline": 3.261195308285704e-05,
+        "ecg_sd_baseline": 7.2889903945468015,
+        "ecg_sd_task": 7.149407186380734
+      },
+      {
+        "subject": "SUB119",
+        "proc_span": [
+          1579702571.495957,
+          1579705666.9185147
+        ],
+        "bio_span": [
+          1579702571.2782884,
+          1579705605.277216
+        ],
+        "proc_inside_bio": false,
+        "eda_baseline": 9.993995439418329e-05,
+        "eda_task": 0.00011625819516775725,
+        "eda_task_minus_baseline": 1.631824077357396e-05,
+        "ecg_sd_baseline": 2.4920965955238508,
+        "ecg_sd_task": 2.3804690970142195
+      },
+      {
+        "subject": "SUB120",
+        "proc_span": [
+          1579710094.3455777,
+          1579713100.1491828
+        ],
+        "bio_span": [
+          1579710094.1965413,
+          1579713021.1954696
+        ],
+        "proc_inside_bio": false,
+        "eda_baseline": 0.00011359550993771902,
+        "eda_task": 0.00011844066063653954,
+        "eda_task_minus_baseline": 4.845150698820527e-06,
+        "ecg_sd_baseline": 4.255630747236063,
+        "ecg_sd_task": 4.238116007365579
+      },
+      {
+        "subject": "SUB136",
+        "proc_span": [
+          1580394249.2743225,
+          1580397279.8425405
+        ],
+        "bio_span": [
+          1580394249.2155044,
+          1580397207.2144318
+        ],
+        "proc_inside_bio": false,
+        "eda_baseline": 6.696099117752354e-05,
+        "eda_task": 0.00015633947084938,
+        "eda_task_minus_baseline": 8.937847967185644e-05,
+        "ecg_sd_baseline": 5.126353060356233,
+        "ecg_sd_task": 5.077931322385539
+      },
+      {
+        "subject": "SUB141",
+        "proc_span": [
+          1580286256.2740529,
+          1580289202.6067455
+        ],
+        "bio_span": [
+          1580286256.0715945,
+          1580289140.070522
+        ],
+        "proc_inside_bio": false,
+        "eda_baseline": 0.00038962354323149887,
+        "eda_task": 0.00039843633969907405,
+        "eda_task_minus_baseline": 8.812796467575184e-06,
+        "ecg_sd_baseline": 2.874132909918646,
+        "ecg_sd_task": 2.9065872202844627
+      },
+      {
+        "subject": "SUB148",
+        "proc_span": [
+          1580911104.6264565,
+          1580914068.1815095
+        ],
+        "bio_span": [
+          1580911104.5012836,
+          1580914042.500211
+        ],
+        "proc_inside_bio": true,
+        "eda_baseline": 0.0003981920775065411,
+        "eda_task": 0.0003981720638020446,
+        "eda_task_minus_baseline": -2.0013704496457414e-08,
+        "ecg_sd_baseline": 3.0926031072233586,
+        "ecg_sd_task": 3.0049254455929373
+      },
+      {
+        "subject": "SUB153",
+        "proc_span": [
+          1579680890.861266,
+          1579684234.5723789
+        ],
+        "bio_span": [
+          1579680890.6258962,
+          1579684170.6248238
+        ],
+        "proc_inside_bio": false,
+        "eda_baseline": 9.930137376769573e-05,
+        "eda_task": 0.00016614904199761964,
+        "eda_task_minus_baseline": 6.684766822992391e-05,
+        "ecg_sd_baseline": 1.8150953178168734,
+        "ecg_sd_task": 3.0142357714675945
+      },
+      {
+        "subject": "SUB157",
+        "proc_span": [
+          1580300251.2190845,
+          1580303294.7409198
+        ],
+        "bio_span": [
+          1580300251.1133678,
+          1580303231.1122954
+        ],
+        "proc_inside_bio": false,
+        "eda_baseline": 8.430190678294762e-05,
+        "eda_task": 0.00014825293452652287,
+        "eda_task_minus_baseline": 6.395102774357526e-05,
+        "ecg_sd_baseline": 1.9785180558577398,
+        "ecg_sd_task": 2.0157345973579215
+      },
+      {
+        "subject": "SUB161",
+        "proc_span": [
+          1580212996.2225668,
+          1580215896.812458
+        ],
+        "bio_span": [
+          1580212996.000163,
+          1580215874.999091
+        ],
+        "proc_inside_bio": true,
+        "eda_baseline": 0.0002600700752747415,
+        "eda_task": 0.0002523520916491318,
+        "eda_task_minus_baseline": -7.717983625609695e-06,
+        "ecg_sd_baseline": 5.505513367078518,
+        "ecg_sd_task": 5.550186849462877
+      },
+      {
+        "subject": "SUB170",
+        "proc_span": [
+          1580306510.238752,
+          1580309655.1771746
+        ],
+        "bio_span": [
+          1580306510.0652182,
+          1580309575.0641458
+        ],
+        "proc_inside_bio": false,
+        "eda_baseline": 0.0002049331937882651,
+        "eda_task": 0.00035078778650868747,
+        "eda_task_minus_baseline": 0.00014585459272042236,
+        "ecg_sd_baseline": 0.8691130520237873,
+        "ecg_sd_task": 0.8296784879624854
+      },
+      {
+        "subject": "SUB175",
+        "proc_span": [
+          1579775347.3557398,
+          1579778326.4710236
+        ],
+        "bio_span": [
+          1579775347.2580009,
+          1579778265.2569284
+        ],
+        "proc_inside_bio": false,
+        "eda_baseline": 0.00039823068663992744,
+        "eda_task": 0.0003982036570848362,
+        "eda_task_minus_baseline": -2.7029555091221714e-08,
+        "ecg_sd_baseline": 4.681992776609304,
+        "ecg_sd_task": 4.326021082056787
+      },
+      {
+        "subject": "SUB181",
+        "proc_span": [
+          1580833199.8808787,
+          1580836361.7429378
+        ],
+        "bio_span": [
+          1580833199.7621975,
+          1580836314.761125
+        ],
+        "proc_inside_bio": true,
+        "eda_baseline": 4.590302443868883e-05,
+        "eda_task": 0.00013959059534137435,
+        "eda_task_minus_baseline": 9.368757090268552e-05,
+        "ecg_sd_baseline": 16.570481575591685,
+        "ecg_sd_task": 15.006368395631378
+      }
+    ]
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T22:10:44.379961+00:00"
+}

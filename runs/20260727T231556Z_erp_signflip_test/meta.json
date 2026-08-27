@@ -1,0 +1,62 @@
+{
+  "run_id": "20260727T231556Z_erp_signflip_test",
+  "name": "erp_signflip_test",
+  "started_utc": "2026-07-27T23:15:56.083286+00:00",
+  "seed": 42,
+  "params": {
+    "n_subjects": 31,
+    "n_perm": 10000,
+    "channels": "F3/Fz/F4/C3/Cz/C4 平均",
+    "window_s": [
+      -0.2,
+      0.5960000000000001
+    ],
+    "method": "组水平符号翻转 + 最大统计量（Maris & Oostenveld 2007）",
+    "why": "C3 的时间零分布无法排除「刺激起始落在试次中最安静一段」带来的噪声环境差异；符号翻转不移动时间"
+  },
+  "git_commit": "779739d321f7878340ee5301280ef31775745263",
+  "git_dirty": true,
+  "python": "3.12.2",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "uv_lock_sha256": "fe4f2667687363b50f28c00c497e206b50063485c07880fa8a528084c76439a2",
+  "inputs": {
+    "waveforms": {
+      "n_files": 1,
+      "rollup_sha256": "af941f9501d6428af99245c5c335c3803b064b929150e2594d9ead8e3519de92",
+      "files": [
+        {
+          "path": "reports/source_data/ds002721_erp_waveforms.csv",
+          "sha256": "a0e2ca8c05706aabccfd416104c20b286515c4bd836142aafeb8103111b50a32"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "n_subjects": 31,
+    "post_stimulus": {
+      "max_abs_t": 8.779575355532645,
+      "latency_ms": 452.0,
+      "amplitude_uV": 1.4941461133402445,
+      "sem_uV": 0.170184325873879,
+      "p": 9.999000099990002e-05,
+      "null_95th": 3.3613694337046383
+    },
+    "baseline_negative_control": {
+      "max_abs_t": 2.139758346810694,
+      "latency_ms": -80.00000000000001,
+      "amplitude_uV": -0.14020098708020967,
+      "p": 0.5355464453554645,
+      "null_95th": 3.3318727055444115
+    },
+    "significant_window_ms": [
+      371.99999999999994,
+      588.0000000000001
+    ],
+    "verdict": {
+      "evoked_response": true,
+      "baseline_clean": true
+    }
+  },
+  "artifacts": [],
+  "finished_utc": "2026-07-27T23:16:03.458290+00:00"
+}
