@@ -1,19 +1,162 @@
-\input{preamble}
+\input{preamble_supp}
 
 \renewcommand{\thesection}{S\arabic{section}}
-\renewcommand{\thefigure}{Extended Data Figure~\arabic{figure}}
+\renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thetable}{S\arabic{table}}
-\captionsetup[figure]{labelformat=empty}
 
 \title{\bfseries Supplementary Information\\[2mm]
-\large Not all generalisation failures can be bought back:
-four boundaries in affective audio modelling}
+\large Transfer Boundaries in Affective Audio Modelling:
+Zero-Shot Loss, Measured Adaptation Cost, and the Limits of the
+Available Evidence}
 
 \begin{document}
 \maketitle
 
+% Applies the IEEEtran.bst control entry in references.bib; emits nothing.
+\bstctlcite{IEEEtranBSTCTL:soundml}
+
 \tableofcontents
 \clearpage
+
+% =====================================================================
+% Unnumbered deliberately. The main text refers to Supplementary Sections S1
+% and S2 by number; making this S1 would shift every one of those pointers and
+% the numbering in the admission-criteria table below. It is at the front
+% because it is what a reader of the preprint needs first, not because it is
+% the first piece of evidence.
+\section*{Revision record: what changed between the preprint and this
+submission}
+\addcontentsline{toc}{section}{Revision record}
+\label{sec:revision}
+
+An earlier version of this work was prepared as a preprint under the title
+\emph{Not all generalisation failures can be bought back: four boundaries in
+affective audio modelling}. Its organising claim was that generalisation
+failures divide into two kinds --- budget-limited, which target-side
+observations close, and information-limited, which they do not --- with
+mutually exclusive remedies. A pre-submission audit established that this
+claim is contradicted by the project's own measurements. The framework is
+withdrawn. This section records what changed and why, so that a reader
+comparing the two versions can see exactly which numbers moved and which
+conclusions were retracted. A fuller machine-checkable record, including the
+recomputation scripts and their output, is in
+\texttt{reports/TAC\_revision\_audit.md} in the code repository.
+
+\subsection*{Withdrawn claims}
+
+\begin{enumerate}
+\item \textbf{The two-kind dichotomy and the mutual exclusivity of its
+remedies.} The few-shot learning curve that priced the recoverable gap was
+computed on the six \emph{cross-domain} corpus pairs
+(\texttt{figures\_r/fig\_price.R} filtered \texttt{cross\_domain}), while the
+preprint's abstract and discussion attributed it to same-domain transfer and
+simultaneously described the cross-domain boundary as one on which no purchase
+could be found. Both halves were wrong, and the correction removes the one
+boundary at which the preprint claimed to observe both kinds of failure inside
+a single experiment. The figure legend had stated the correct condition
+throughout; the prose had not.
+
+\item \textbf{``The barrier is one of calibration, not of sign''} (cross-synthesis
+boundary). The reported sign agreement pools, for each model, its own 40
+training-domain excerpts with 40 from the other domain. Disaggregated, the
+environmental model's spectral-smoothing effect on environmental excerpts is
+in the opposite direction and not significant (median $-0.019$, $p = 0.073$).
+Independently of the data, a purely calibrational deficit cannot move a
+Spearman rank correlation at all, since rank correlation is invariant under
+any strictly monotone recalibration.
+
+\item \textbf{The 31\% ceiling fraction on the physiological boundary.} The
+denominator was $\sqrt{r}$ of the stimulus-level reliability of a PMEmo
+electrodermal measure, and a sham using presentation position alone reproduces
+114--249\% of that reliability (Section~S3). A denominator that a
+position sham reproduces cannot bound a stimulus-driven predictor. The
+associated claim that the three routes' confidence intervals overlap is also
+withdrawn: no confidence intervals were computed for the acoustic routes.
+
+\item \textbf{$n^{*} = 318$ as a price for per-person calibration on
+electrodermal response.} Ten of the fifteen cells have a corrected
+between-person spread of exactly zero and therefore an infinite $n^{*}$; 318
+is the median over the five cells where it is finite, a subset the preprint
+did not disclose.
+
+\item \textbf{``In the setting closest to an application the price has already
+been paid.''} Contradicted by the preprint's own preceding paragraph, and by
+the out-of-sample test reported in the main text, which returns a negative
+personalisation gain at every budget these corpora supply.
+
+\item \textbf{All claims of prior specification.} Phrases such as ``fixed in
+advance'', ``pre-declared'' and ``stated as falsifiable in advance'' are
+removed throughout. No traceable artifact predating the corresponding analyses
+exists: the manuscript directory was untracked in version control, the
+repository head predates most run records, and only 2 of 199 run records carry
+a declared hypothesis.
+
+\item \textbf{``Choosing the wrong corpus is as expensive as choosing the
+wrong channel.''} The three per-person calibration settings differ in corpus,
+descriptor set and outcome axis simultaneously, so no one of the three can be
+credited with the spread.
+
+\item \textbf{CLAP pretraining overlap as established fact.} No sample-level
+overlap check was performed. The overlap is described as possible at the
+corpus level.
+\end{enumerate}
+
+\subsection*{Corrected quantities}
+
+\begin{enumerate}
+\item \textbf{Emo-Soundscapes mixture leakage.} 613 of the 1,213 clips are
+mixtures of 30 source recordings occupying 161 distinct constituent sets, and
+the distributed metadata gives each clip its own group identifier, so grouped
+cross-validation does not separate them. Recomputed on the 600 original
+recordings alone: the within-corpus reference falls from 0.744 to 0.646, and
+median cross-domain transfer rises from 0.043 to 0.129. Every cross-domain
+number in the main text is reported on both variants and interpreted on the
+clean one.
+
+\item \textbf{The pretrained-representation comparison.} On the leak-free
+corpus, AST's advantage over hand-specified descriptors at the cross-domain
+boundary falls from a factor of 2.7 ($0.047 \rightarrow 0.125$) to a factor of
+1.26 ($0.129 \rightarrow 0.162$).
+
+\item \textbf{The CORAL sham control.} With one environmental corpus the
+``unrelated third corpus'' lies inside the target's own domain on three of the
+six ordered pairs. Split by validity, the valid sham recovers $-11\%$ and the
+invalid sham $+25\%$; the pooled 14\% the preprint reported is entirely the
+invalid half. CORAL's gain is therefore more target-specific than the preprint
+concluded, not less.
+
+\item \textbf{``The return per doubling collapses after 100 labels.''} On the
+leak-free corpus the increments are 10, 14, 10 and 14 points --- no collapse,
+and the largest increment is the last. The reported collapse was produced
+jointly by the mixture leakage and by the loss of the Soundtracks pairs at
+$k = 200$.
+
+\item \textbf{Units of replication.} ``36 ordered music-to-music pairs'' is 6
+ordered corpus pairs each evaluated with 6 algorithms.
+
+\item \textbf{``The same 1,240 trials''} for the EEG and self-report
+reliability comparison. The EEG measures use 1,240 trials over 307 stimuli;
+the self-report scales use 1,080--1,121 trials over 285--298 stimuli.
+\end{enumerate}
+
+\subsection*{Results added in this revision}
+
+\begin{enumerate}
+\item The direct out-of-sample test of per-person calibration, which the
+repository contained and the preprint did not report: fitting each listener
+their own slope loses to the population slope in 15 of 15 electrodermal cells
+and in every music-rating cell at 18, 30 and 50 observations per person.
+
+\item The presentation-order control on PMEmo electrodermal reliability
+(Section~S3), which the analysis script had run and flagged but
+which appeared in neither manuscript file.
+
+\item The disaggregation of the audio-editing experiment by model and by
+material domain.
+
+\item Per-corpus ethics provenance (Table~\ref{tab:ethics}) in place of a
+blanket statement.
+\end{enumerate}
 
 % =====================================================================
 % A "How this document is organised" section stood here. It was four paragraphs
@@ -47,7 +190,7 @@ reproduce, or be recoverable against a permutation null.
 Its trigger codes are used only as stimulus identifiers, for which their internal
 consistency suffices. \\
 \addlinespace
-S2 & Both pre-declared electrodermal positive controls must pass, applied at the level
+S2 & Both electrodermal positive controls must pass, applied at the level
 at which the conclusion would be drawn.
 & \textbf{Failed.} The corpus and its conclusion are withdrawn. The physiological
 negatives that remain in the main text are the ones whose instrument was shown to
@@ -60,8 +203,12 @@ ceiling. \\
 \addlinespace
 S4 & The reliability of each target must be estimated, with a stated estimator, before
 any percentage of it is quoted.
-& The denominator of every survival fraction at all four boundaries, including the
-84\% within corpus and the 31\% bound on the physiological target. \\
+& The 84\% within-corpus figure, and \emph{only} that one. Two different denominators
+were conflated in the preprint: an annotation-reliability ceiling ($\sqrt{r}$ of a
+split-half estimate) and a within-corpus model reference. The survival fractions at the
+corpus boundary use the second. \textbf{Partly failed:} on the physiological target the
+reliability estimate is reproduced by presentation position (Section~S3), so no
+percentage of it is quoted and the 31\% bound is withdrawn. \\
 \addlinespace
 S5 & A within-song correlation between two autocorrelated series must exceed a
 circular-shift null before it is called a coupling.
@@ -154,7 +301,7 @@ numbering scheme, not the codes, is what is missing.
 \paragraph{Decision rule.}
 We attempted to recover the mapping by matching the eight-dimensional emotion profile
 of each code against that of each published clip, optimising the assignment with the
-Hungarian algorithm. The rule fixed in advance was that the recovered assignment must
+Hungarian algorithm. The rule stated for the check was that the recovered assignment must
 beat a null formed by permuting stimulus labels within participant and regenerating
 the profiles; otherwise the acoustic-to-physiological link would not be examined in
 this corpus at all.
@@ -183,7 +330,7 @@ design.
 \section{Admission criterion: withdrawal of the electrodermal corpus}
 
 An earlier version of this work analysed an electrodermal corpus
-\citep{kutt2022} and reported that single-stimulus peripheral responses carry no
+\cite{kutt2022} and reported that single-stimulus peripheral responses carry no
 reproducible stimulus-level component. \textbf{That conclusion is withdrawn.} It
 was not withdrawn because the effect exists; it was withdrawn because we could not
 establish that the analysis pipeline could detect any effect at all.
@@ -213,7 +360,7 @@ Post-stimulus $>$ random window & significant & $p = 0.267$ & $p = 0.357$ \\
 
 Habituation was significant in the direction opposite to the established effect,
 and stimulus locking was absent. Both held after replacing our implementation with
-a published, validated toolbox \citep{makowski2021}.
+a published, validated toolbox \cite{makowski2021}.
 
 \subsection{Five candidate explanations, all excluded}
 
@@ -403,7 +550,7 @@ ComParE, 6{,}373 features, extracted by the corpus authors & original loudness &
 \end{tabular}
 \end{table}
 
-The spread is $0.027$, below the pre-declared $0.05$. Loudness used alone as a single
+The spread is $0.027$, below the $0.05$ threshold stated for this check (for which, as everywhere in this work, we can produce no artifact predating the analysis). Loudness used alone as a single
 predictor reaches $+0.059$, which is within the same band.
 
 \paragraph{What it licenses.}
@@ -417,6 +564,82 @@ pipelines agree''. An earlier version used that form in several places, most of 
 resting on attribution rankings shared between models, which Section~S6 shows is not
 evidence of anything. No other analysis in the main text or this document should be
 read as claiming convergence of independent paths.
+
+\subsection{Failed admission criterion: presentation position reproduces the
+electrodermal reliability}
+\label{sec:order}
+
+The preceding subsection asks whether the physiological null is an artefact of
+loudness normalisation and finds that it is not. A second and more damaging
+question was also asked by the analysis code and was not reported in the
+preprint: whether the stimulus-level \emph{reliability} of the PMEmo
+electrodermal measures --- the quantity that sets any ceiling on that
+boundary --- is a property of the stimuli at all, or of where in the session
+they were presented.
+
+The check has three parts and the criterion fails all three.
+
+\paragraph{Assignment of songs to positions is not random.}
+The intraclass correlation of position across songs is $0.041$
+($p = 0.005$). A corpus in which every song is heard at an arbitrary position
+by every participant would give zero.
+
+\paragraph{A position-only sham reproduces the reliability, and in one case
+exceeds it.}
+Replacing the stimulus identifier with the presentation position alone and
+recomputing stimulus-level reliability by the identical estimator gives
+$0.290$, $0.283$ and $0.267$ for skin-conductance response rate, phasic mean
+and skin-conductance level slope, against $0.116$, $0.237$ and $0.234$ with
+the true stimulus labels --- that is, $249\%$, $120\%$ and $114\%$ of the
+values the real labels produce (Table~\ref{tab:order}).
+
+\paragraph{Regressing position out removes most of it.}
+After partialling presentation position out of the measures, reliability falls
+from $0.116$ to $0.038$, from $0.237$ to $0.081$, and from $0.234$ to $0.206$.
+For the measure that carried the preprint's headline figure, two-thirds of the
+reliability is position.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Stimulus-level reliability of three PMEmo electrodermal measures
+under the true stimulus labels, under a position-only sham, and after
+partialling position out. A sham that reproduces or exceeds the quantity it is
+a control for is a failed admission criterion, not a small caveat.}
+\label{tab:order}
+\begin{tabular}{lcccc}
+\toprule
+Measure & \thd{True}{labels} & \thd{Position-only}{sham} & \thd{Sham as \%}{of true}
+        & \thd{Position}{partialled out} \\
+\midrule
+Skin-conductance response rate & 0.116 & 0.290 & 249\% & 0.038 \\
+Phasic mean                    & 0.237 & 0.283 & 120\% & 0.081 \\
+Skin-conductance level slope   & 0.234 & 0.267 & 114\% & 0.206 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{What it withdraws.}
+The preprint expressed the cross-response-channel result as a percentage of an
+attainable ceiling --- 31\% for the best route, 24.5\% and 21.3\% for the two
+acoustic ones --- where the ceiling was $\sqrt{r}$ of one of these
+reliabilities. That framing is withdrawn in full. A denominator a position
+sham reproduces cannot bound a stimulus-driven predictor, and the percentages
+additionally selected across denominators that differ by 40\% between
+measures, in a direction that made the \emph{lowest}-reliability measure yield
+the \emph{highest} percentage.
+
+\paragraph{What survives.}
+The raw comparison. No acoustic route to these electrodermal measures exceeds
+a random projection of the same descriptor space, and the listeners' own
+ratings do, weakly ($\rho = 0.117$, $p = 0.004$). That statement does not
+require a ceiling and does not depend on the reliability estimate.
+
+\paragraph{What it means for reuse of this corpus.}
+Any analysis treating PMEmo's song-level electrodermal measures as
+stimulus-driven --- including any that uses their reliability as a ceiling or
+their intraclass correlation as evidence of a stimulus effect --- needs a
+position control first. The confound is a property of the released corpus, not
+of the pipeline applied to it.
 
 % =====================================================================
 \section{Admission criterion: the annotation reliability ceiling}
@@ -631,7 +854,7 @@ which is exactly the hypothesis under test. This was run on 400 DEAM songs with
 0.5\,s continuous annotations, over 15 descriptors spanning spectral-level and
 temporal-variability families.
 
-\paragraph{Decision rule, fixed in advance.}
+\paragraph{Decision rule.}
 An earlier analysis had first-differenced both series to remove autocorrelation and
 found almost no coupling (strongest $|\rho| = 0.056$). Differencing is unfriendly to a
 series that has already been smoothed by the annotation interface, so two readings
@@ -746,12 +969,12 @@ CLAP     & 630k audio--text pairs & contrastive & 512 & 48\,kHz \\
 
 The checkpoints are \texttt{MIT/ast-finetuned-audioset-10-10-0.4593},
 \texttt{m-a-p/MERT-v1-95M}, \texttt{facebook/wav2vec2-base-960h} and
-% The checkpoint is LAION-CLAP, not the Microsoft CLAP of elizalde2023: that
+% The checkpoint is LAION-CLAP, not the Microsoft CLAP of wu2023clap: that
 % model was trained on 128k pairs, this one on LAION-Audio-630K (633,526 pairs).
 % The contamination reported below is a property of LAION-Audio-630K, so it is
 % wu2023clap that has to carry the claim.
-\texttt{laion/clap-htsat-unfused} \citep{wu2023clap}, the contrastive
-language--audio idea being due to \citet{elizalde2023}.
+\texttt{laion/clap-htsat-unfused} \cite{wu2023clap}, the contrastive
+language--audio idea being due to \cite{wu2023clap}.
 
 Each family occupies a different corner of the design. AST is supervised on a corpus
 that explicitly covers rain, wind, traffic and animal categories, and is therefore the
@@ -774,7 +997,7 @@ versions are retained.
 
 \paragraph{Contamination disclosure for CLAP.}
 LAION-Audio-630K, the pretraining set of the checkpoint used here, is assembled
-in part from Freesound \citep{wu2023clap}, and the 600 source recordings of the
+in part from Freesound \cite{wu2023clap}, and the 600 source recordings of the
 environmental corpus were taken from Freesound. The model may therefore have
 encountered those very recordings during pretraining. This is not a hypothetical
 concern, and its size can be bounded by comparison with a corpus outside the
@@ -904,14 +1127,21 @@ $[65, \infty)$. The infinite upper end is not a typographical artefact: the corr
 lower bound on $\tau$ in that setting is zero, and no finite budget buys a quantity that
 may be zero.
 
-\paragraph{A mechanistic account of the domain wall in terms of tonality.}
-The pre-registered prediction that tonal descriptors would degrade cross-domain transfer
-was recorded as passing on its direction alone. The magnitude accounts for about 4\% of
-the barrier, which does not support a mechanistic claim. \textbf{Replaced by} reporting
-the barrier as a phenomenon with no mechanistic account. The tonality result is reported
-instead as what it is: an information-limited gap that a change of representation does
-close, and the pre-declared falsification test of the distinction that organises the
-paper.
+\paragraph{A mechanistic account of the domain gap in terms of tonality.}
+The prediction that tonal descriptors would degrade cross-domain transfer was recorded
+as passing on its direction alone. The magnitude accounts for about 4\% of the gap,
+which does not support a mechanistic claim. \textbf{Replaced by} reporting the gap as a
+phenomenon with no mechanistic account. The tonality result is reported instead as what
+it is: a targeted representation change that recovers a specific deficit, on one axis of
+one corpus.
+
+This paragraph said something stronger in the preprint --- that the tonality result was
+``an information-limited gap that a change of representation does close, and the
+pre-declared falsification test of the distinction that organises the paper''. Both
+halves are withdrawn. The distinction no longer organises the paper, so there is nothing
+for the result to falsify; the test's necessary other half, that additional data does
+\emph{not} close the happiness gap, was never measured; and no artifact predates the
+analysis for the criterion. See the Revision record.
 
 \paragraph{Statements that multiple independent paths converge on a conclusion.}
 Most rested on descriptor rankings shared between models, which Section~S6 shows is not
@@ -996,48 +1226,350 @@ reported in the main text.
 % is recorded in scripts/58_build_references.py.
 % =====================================================================
 \clearpage
-\section{Extended Data Figures}
+\section{Extended descriptions of the main-text figures}
+\label{sec:mainfigdesc}
 
-The eight figures below support specific steps in the main text. Extended Data
-Figs.~1--2 concern the admission criteria and framing decisions that precede
-Boundary~1; Figs.~3--5 concern the models and the selection routes used to establish
-that transfer must be measured; Fig.~6 is the individual-level analysis at Boundary~3;
-Fig.~7 is the earlier single-representation comparison superseded by Fig.~1f
-(Section~S7); and Fig.~8 is the descriptor-level sign analysis behind the statement
-that only level-independent descriptors keep their direction across the domain
-boundary.
+The main paper's captions are held to IEEE length. The descriptions below carry
+the methodological detail that would otherwise be lost: what each panel plots,
+which estimator produced it, which corpus pairs it rests on, and --- where a
+panel's reading changed in this revision --- what the preprint said about it.
+Each description belongs to the main-text figure of the same number.
+
+\paragraph{Figure 1 --- the corpus boundary.} \legendfigone
+
+\paragraph{Figure 2 --- what adaptation recovers.} \legendfigtwo
+
+\paragraph{Figure 3 --- the tonality result.} \legendfigthree
+
+\paragraph{Figure 4 --- audio editing.} \legendfigfour
+
+\paragraph{Figure 5 --- response channel.} \legendfigfive
+
+\paragraph{Figure 6 --- the individual-level design requirement.}
+\legendfigsix
+
+\clearpage
+\section{Supplementary figures}
+
+The eight figures below support specific steps in the main text.
+Figs.~S1--S2 concern the admission criteria and framing decisions that precede
+Boundary~1; Figs.~S3--S5 concern the models and the selection routes used to
+establish that transfer must be measured; Fig.~S6 is the individual-level
+analysis at Boundary~3; Fig.~S7 is the earlier single-representation comparison
+superseded by Table~1 of the main text (Section~S7); and Fig.~S8 is the
+descriptor-level sign analysis behind the statement that only level-independent
+descriptors keep their direction across the domain boundary.
+
+Fig.~S9 is the four-route feature-selection comparison, which appeared as a
+main figure in the preprint and is moved here because it is a methodological
+precondition rather than a result: the route that tests within-corpus
+significance returns, at a rate below chance, precisely the descriptors that do
+not survive the domain boundary, which is why every boundary in this work is
+crossed and measured rather than predicted from within-corpus attributions.
+
+A further main figure of the preprint, a four-boundary summary, is withdrawn
+rather than renumbered. It encoded the budget/information dichotomy
+graphically and cannot be corrected, only removed; the reasons are set out
+below.
+
+\begin{quote}\small\legendfigeight\end{quote}
 
 \begin{figure}[p]\centering
 \includegraphics[width=\textwidth]{../reports/figures_r/ED1_loudness.pdf}
-\caption{\textbf{Extended Data Figure 1} $|$ \legendedone}\end{figure}
+\caption{\legendedone}\end{figure}
 
 \begin{figure}[p]\centering
 \includegraphics[width=\textwidth]{../reports/figures_r/ED2_data_use.pdf}
-\caption{\textbf{Extended Data Figure 2} $|$ \legendedtwo}\end{figure}
+\caption{\legendedtwo}\end{figure}
 
 \begin{figure}[p]\centering
 \includegraphics[width=\textwidth]{../reports/figures_r/ED3_glassbox.pdf}
-\caption{\textbf{Extended Data Figure 3} $|$ \legendedthree}\end{figure}
+\caption{\legendedthree}\end{figure}
 
 \begin{figure}[p]\centering
 \includegraphics[width=\textwidth]{../reports/figures_r/ED4_shape_functions.pdf}
-\caption{\textbf{Extended Data Figure 4} $|$ \legendedfour}\end{figure}
+\caption{\legendedfour}\end{figure}
 
 \begin{figure}[p]\centering
 \includegraphics[width=\textwidth]{../reports/figures_r/ED5_rashomon.pdf}
-\caption{\textbf{Extended Data Figure 5} $|$ \legendedfive}\end{figure}
+\caption{\legendedfive}\end{figure}
 
 \begin{figure}[p]\centering
 \includegraphics[width=\textwidth]{../reports/figures_r/ED6_individual.pdf}
-\caption{\textbf{Extended Data Figure 6} $|$ \legendedsix}\end{figure}
+\caption{\legendedsix}\end{figure}
 
 \begin{figure}[p]\centering
 \includegraphics[width=\textwidth]{../reports/figures_r/ED7_representations.pdf}
-\caption{\textbf{Extended Data Figure 7} $|$ \legendedseven}\end{figure}
+\caption{\legendedseven}\end{figure}
 
 \begin{figure}[p]\centering
 \includegraphics[width=\textwidth]{../reports/figures_r/ED8_invariance.pdf}
-\caption{\textbf{Extended Data Figure 8} $|$ \legendedeight}\end{figure}
+\caption{\legendedeight}\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{../reports/figures_r/Fig3_routes.pdf}
+\caption{\legendednine}\end{figure}
+
+\clearpage
+% =====================================================================
+\section{Methods detail held out of the main text}
+\label{sec:methodsdetail}
+
+IEEE caps a regular paper at 18 formatted pages and places no limit on
+supplementary material. The material below is the part of the Methods that a
+reader needs in order to reproduce the analyses but not in order to judge the
+result, and it is here for that reason alone.
+
+\subsection{The 39 tonal descriptors}
+
+Harmonic--percussive separation ratio; a key-invariant chroma profile obtained
+by estimating the tonic through correlation of the mean constant-Q chroma
+vector with Krumhansl--Kessler major and minor profiles \cite{krumhansl1982}
+and rotating the vector so that the tonic occupies index~0; major-key
+strength, minor-key strength, their difference (mode score) and key clarity;
+chroma flux and chroma entropy; six tonal-centroid dimensions with standard
+deviations; an interval-consonance measure formed by weighting each
+pitch-class pair by the consonance of its interval; sensory roughness computed
+over the strongest spectral peaks per frame after Plomp and Levelt
+\cite{plomp1965}; and fundamental-frequency median, interquartile range and
+voiced fraction.
+
+The interval-consonance weights are fixed a priori from the standard ordering
+of sensory consonance (unison $>$ perfect fifth $>$ perfect fourth $>$ major
+third and sixth $>$ minor third and sixth $>$ major second and minor seventh
+$>$ minor second and major seventh $>$ tritone) and are not fitted, so they
+contribute no degrees of freedom.
+
+\subsection{Response measures in ds003690}
+
+Three measures were fixed before analysis, one per channel.
+
+\emph{EEG.} Mean fronto-central amplitude over 80--130\,ms after cue onset,
+across nine electrodes, mastoid reference, 0.1--30\,Hz, with epochs exceeding
+$\pm 150\,\uV$ rejected. A secondary EEG measure --- the difference between
+170--230\,ms and 80--130\,ms --- was also specified. Inspection of the
+grand-average waveform showed the later window to fall on the contingent
+negative variation rather than on a P2, as is expected in a cued task, so the
+single-window measure was adopted as primary and the secondary is reported
+alongside it. Both are fixed-window means, for which the sign-flip null is
+exact; peak-to-peak measures are not, being positive under the null by
+construction.
+
+\emph{Cardiac.} Mean change in instantaneous heart rate over 1--5\,s relative
+to a 3\,s pre-cue baseline, with R peaks detected on a 5--35\,Hz band.
+
+\emph{Pupil.} Mean change in pupil diameter over 0.5--2.5\,s relative to a
+1\,s baseline, with blink samples interpolated and epochs exceeding 30\%
+interpolation rejected.
+
+Random anchors rather than a fixed temporal shift were used because the
+inter-cue interval leaves no quiet window of the required length; the
+difference also removes a monotone within-run decline in heart rate that the
+anchor arm revealed. The trial-count curve subsamples $n$ of a participant's
+pairs, repeats the identical test 40 times per value of $n$, and reports the
+mean detection rate; the accompanying false-positive rate applies the same
+procedure to sign-randomised differences, which preserves the noise and
+removes the effect. Extrapolation was validated out of sample by estimating
+each participant's effect size on a random half of their trials and predicting
+detection on the other half. Heart rate and pupil diameter were analysed
+separately by task, a stratification fixed on design grounds: the active-task
+response window contains the imperative tone and the button press, the passive
+block contains neither, and the two differ eightfold in trials per person.
+
+\subsection{Design simulation}
+
+Feature covariance was estimated from the artefact-corrected EEG measures by
+Ledoit--Wolf shrinkage \cite{ledoit2004}. For each combination of true
+association strength ($r \in \{0.10, 0.20, 0.30, 0.40\}$) and observations per
+person ($n \in \{30, 60, 120, 250, 500, 1000, 2000, 5000\}$), 500 datasets
+were generated from that covariance with a sparse linear association injected
+and scaled to the target strength, and each was analysed with the identical
+pipeline, criterion and permutation test used on the real data (100
+permutations per dataset). Reported power is the proportion of datasets in
+which the association was detected at $p < 0.05$. An earlier run at 60
+datasets per cell and $n \le 1{,}000$ could only bound the two weakest effects
+at $> 1{,}000$; extending the grid resolves them at 1{,}364 and 4{,}888, and
+the two strongest requirements shifted by less than the Monte-Carlo error of
+the coarser run (271 to 314, and 650 to 564).
+
+The simulation is optimistic by construction. Multivariate-normal generation
+understates the heavy tails of real measurements; the injected association is
+linear; and within-person stationarity is assumed, which is least tenable over
+the long recordings the result is used to discuss. Required sample sizes are
+lower bounds.
+
+\subsection{Per-listener decoding in ds002721}
+
+Five-fold cross-validation with standardisation and principal-component
+reduction to eight components fitted within each training fold, followed by
+ridge regression with a cross-validated penalty. The evaluation metric is the
+rank correlation between out-of-fold prediction and observation. This metric
+is biased downwards under cross-validation at small $n$ --- training-fold means
+are displaced from held-out values --- so it is never compared against zero but
+always against a null formed by permuting that listener's own labels through
+the identical pipeline (200 permutations). Leave-one-out cross-validation was
+tried first and abandoned: it produced observed and null values both near
+$-0.5$, rendering the comparison uninformative.
+
+\subsection{Artefact handling}
+
+For the main analyses no epoch rejection was applied, so that the stimulus and
+null arms receive identical treatment. In the sensitivity analysis,
+independent-component analysis (15 components) was fitted per run and
+components correlated with the frontopolar channels, used as ocular proxies,
+were removed (median one component per run). All other parameters were held
+fixed, so that any change is attributable to artefact removal alone.
+
+\subsection{A mis-specified control criterion, and what it would have cost}
+
+Control 4 of the four dataset-level EEG controls initially failed under a
+criterion comparing evoked global field power in a 0--300\,ms window against
+temporally shifted nulls. Two problems were identified. The window was placed
+for a classical N1 while the response in these data peaks at 452\,ms; and any
+temporally shifted null moves the analysis window into the response-collection
+period, which has a different noise environment, because stimulus onsets fall
+in the quietest part of the trial structure. The sign-flip null avoids both by
+not moving in time. We report this because the mis-specified criterion would,
+if followed, have led us to discard a valid dataset.
+
+\clearpage
+% =====================================================================
+\section{Corpus provenance, ethics and licence terms}
+
+\subsection{Ethics provenance}
+
+IEEE requires that where ethical approval was obtained for research involving
+human subjects, the source and reference appear in the article itself. This
+work collected no new data; every corpus was released for public reuse by its
+original investigators. The nine corpora do not report approval uniformly, and
+Table~\ref{tab:ethics} states for each what its own source publication or
+distribution record says. Where a source does not report an approval, we say
+so rather than implying one exists. We have not inferred, and do not report,
+any approving body or protocol number that a source does not itself state.
+
+\begin{table}[htbp]
+\centering\footnotesize
+\caption{Ethics provenance per corpus, taken only from what each source states.
+``Not stated in source'' means the source publication or dataset record
+available to us does not report an approval; it is not a claim that none was
+obtained.}
+\label{tab:ethics}
+\begin{tabular}{p{2.4cm}p{3.0cm}p{8.2cm}}
+\toprule
+Corpus & Use here & Ethics provenance as stated by the source \\
+\midrule
+ds002721 &
+EEG reliability; individual-level analysis &
+Distributed via OpenNeuro with participant consent for public release;
+approval as reported in the dataset publication \cite{daly2018data}. The
+dataset's \texttt{dataset\_description.json} records CC0 while its README
+records CC~BY~4.0; we follow the more restrictive terms and attribute. \\
+\addlinespace
+ds003690 &
+Measured design requirement &
+Distributed via OpenNeuro under CC0 with approval as reported in the
+originating publications \cite{ribeiro2019erp, ribeiro2019cardiac}. \\
+\addlinespace
+PMEmo &
+Within-corpus ceiling; electrodermal analysis; per-person calibration &
+Human participants provided ratings and electrodermal recordings; approval as
+reported in the corpus publication \cite{zhang2018pmemo}. \\
+\addlinespace
+BIRAFFE2 &
+Withdrawn methodological case (Section~S2) &
+Approval as reported in the corpus publication \cite{kutt2022}. \\
+\addlinespace
+ARAUS &
+Per-person calibration &
+Human listeners rated soundscapes in a laboratory; approval as reported in the
+corpus publication \cite{ooi2024araus}. \\
+\addlinespace
+DEAM &
+Transfer; per-person calibration &
+Annotation by crowdsourced raters; no approval statement located in the source
+\cite{aljanaki2017}. \\
+\addlinespace
+Soundtracks &
+Transfer; the tonality result &
+Ratings collected from human listeners; no approval statement located in the
+source \cite{eerola2011}. \\
+\addlinespace
+Emo-Soundscapes &
+Transfer &
+Ratings collected by pairwise comparison from human listeners; no approval
+statement located in the source \cite{fan2017emo}. \\
+\addlinespace
+ESC-50 &
+Category control &
+Environmental sound recordings; no human-subject data and no approval
+applicable \cite{piczak2015}. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Accession, access date and licence}
+
+Table~\ref{tab:dataavail} lists, per corpus, the accession identifier we
+retrieved it under, the date of retrieval, and the terms it is distributed
+on. The main text points here rather than carrying the list, because the
+licence terms differ per corpus in ways a single sentence cannot summarise
+-- in particular, whether \emph{derived} files may be redistributed is a
+different question from whether the audio may be, and the two answers
+diverge for four of the nine.
+
+\begin{table}[htbp]
+\centering\footnotesize
+\caption{Data availability. All analyses use publicly available data; no new
+data were generated.}
+\label{tab:dataavail}
+\begin{tabular}{p{2.2cm}p{11.4cm}}
+\toprule
+Corpus & Accession, access date and terms \\
+\midrule
+ds002721 & OpenNeuro \texttt{ds002721}, retrieved 2026-07-27,
+\url{https://openneuro.org/datasets/ds002721}. Licence discrepancy noted in
+Table~\ref{tab:ethics}; treated as CC~BY~4.0 \cite{daly2018data}.
+Its stimuli are excerpts from the Soundtracks set, so it and our fourth music
+corpus are not independent material. \\
+\addlinespace
+ds003690 & OpenNeuro \texttt{ds003690}, retrieved 2026-07-30,
+\url{https://openneuro.org/datasets/ds003690}. CC0 \cite{ds003690};
+distributors request attribution to \cite{ribeiro2019erp} for EEG and pupil
+data and \cite{ribeiro2019cardiac} for the electrocardiogram. \\
+\addlinespace
+Soundtracks Set~1 & Open Science Framework \texttt{p6vkg}, retrieved
+2026-07-27, \url{https://osf.io/p6vkg/}. The deposit is CC~BY~4.0
+\cite{eerola2011}; the excerpts are taken from commercially released film
+scores, so the deposit's licence does not convey rights in the underlying
+recordings and we treat the audio as usable for research only. \\
+\addlinespace
+DEAM & Distributed by the University of Geneva; audio licences vary per track
+\cite{aljanaki2017}. \\
+\addlinespace
+PMEmo & Annotations and precomputed features are redistributable; the audio
+consists of commercial excerpts and is not \cite{zhang2018pmemo}. \\
+\addlinespace
+Emo-Soundscapes & Assembled from Creative Commons material on Freesound;
+per-item licences are given in the dataset metadata \cite{fan2017emo}. \\
+\addlinespace
+ESC-50 & CC~BY-NC~3.0 \cite{piczak2015}. \\
+\addlinespace
+ARAUS & Distributed by Nanyang Technological University via DR-NTU, retrieved
+2026-08-03. CC~BY-NC~4.0 \cite{ooi2024araus}. Used for the per-person
+calibration analysis only; the non-commercial term means the material itself
+cannot be reused in an application, whereas the calibration requirement
+estimated from it can. \\
+\addlinespace
+BIRAFFE2 & CC~BY~4.0 \cite{kutt2022}; used only for the withdrawn
+methodological case in Section~S2. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Derived tables underlying every figure panel are provided as supplementary
+source data. Because these are small tabular files rather than a primary
+dataset, they accompany the manuscript rather than being deposited in a
+community repository.
 
 \bibliography{../references/references}
 

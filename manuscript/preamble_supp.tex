@@ -1,0 +1,90 @@
+% =====================================================================
+% Preamble --- Supplementary Information
+%
+% The supplement does not use IEEEtran. IEEE requires supplementary material
+% to be a separate file and places no page limit on it
+% (https://www.computer.org/csdl/journal/ta/write-for-us/15060, "There is no
+% page limit on supplemental files"), and a single-column layout is easier to
+% read for material that is mostly tables, decision rules and long figure
+% descriptions. The main paper's two-column measure would break the wider
+% tables here and gains nothing.
+%
+% Figures and tables are numbered S1, S2, ... per IEEE convention. The preprint
+% numbered them "Extended Data Figure N", which is a Nature-family device with
+% no IEEE counterpart, and additionally suppressed the caption label, so a
+% reader following a main-text pointer had nothing to match it against.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{caption}
+% Figure descriptions here run long by design --- they are the material the
+% main paper's caption budget could not carry. Set them single-spaced and one
+% size down so a description that outruns its page continues on the next one
+% rather than overprinting the page number.
+\captionsetup{font={footnotesize,singlespacing},labelfont=bf,
+              justification=justified,singlelinecheck=false,
+              skip=6pt}
+\usepackage{capt-of}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{IEEEtran}
+
+% \bstctlcite passes the @IEEEtranBSTCTL entry in references.bib through to
+% IEEEtran.bst. IEEEtran.cls defines it and the main paper gets it for free;
+% this document is article class, so it needs the definition IEEEtran's own
+% documentation gives. Without it the supplement would keep the em-dash
+% repeated-author form that the main paper turns off, and the two reference
+% lists would disagree on style.
+% \@bstctlcite takes an OPTIONAL argument naming the aux stream, so \bstctlcite
+% has to supply the default via \@ifnextchar. Defining it as
+% \def\bstctlcite{\@bsphack\@bstctlcite} instead gives
+% "Use of \@bstctlcite doesn't match its definition" followed by "Too many }'s".
+\makeatletter
+\def\bstctlcite{\@ifnextchar[{\@bstctlcite}{\@bstctlcite[@auxout]}}
+\def\@bstctlcite[#1]#2{\@bsphack
+  \@for\@citeb:=#2\do{%
+    \edef\@citeb{\expandafter\@firstofone\@citeb}%
+    \if@filesw\immediate\write\csname #1\endcsname{\string\citation{\@citeb}}\fi}%
+  \@esphack}
+\makeatother
+
+\newcommand{\thd}[2]{\begin{tabular}[b]{@{}c@{}}#1\\#2\end{tabular}}
+
+\usepackage{upgreek}
+\newcommand{\uV}{\ensuremath{\upmu\mathrm{V}}}
+
+\newcommand{\emoAll}{Emo-Soundscapes (all 1{,}213)}
+\newcommand{\emoOrig}{Emo-Soundscapes (600 originals)}
+
+% One figure per page, image first, description flowing beneath it. A float is
+% one unbreakable box, so an image plus a 500-word description silently clips
+% when the two together exceed the page; \captionof lets the description flow.
+\newcommand{\msfigure}[3]{%
+  \clearpage
+  {\centering\includegraphics[width=\textwidth]{#1}\par}%
+  \captionof{figure}{#3}\label{#2}%
+}
+
+% Figure descriptions, generated from reports/FIGURE_LEGENDS.md.
+% Loaded as macros: \caption is a moving argument and \input inside it is
+% fragile.
+\input{legends/all}
+
+\date{}

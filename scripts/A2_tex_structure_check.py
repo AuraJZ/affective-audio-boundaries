@@ -162,6 +162,43 @@ def check_release_files() -> list[str]:
     return out
 
 
+def check_control_chars(t: str) -> list[str]:
+    r"""孤立的控制字符 —— 被吞掉的反斜杠留下的痕迹。
+
+    ## 为什么单列一项
+
+    通过 bash heredoc 写 Python 再写 `.tex` 时，`\r` `\n` `\t` `\f` `\v` 会被
+    某一层当成转义序列吃掉，只留下那个控制字符本身。于是
+
+        Table~\ref{tab:dataavail}
+                    ↓
+        Table~<CR>ef{tab:dataavail}
+
+    **这种损坏是隐形的**，三重隐形：
+
+      · LaTeX 不报错也不警告 —— `ef{...}` 就是一段普通文字，照排进 PDF；
+      · Read 工具把 CR 当回车渲染，那一行看起来只是少了 `\r`；
+      · Python 的 `repr()` 把回车符**打印成** `\r` 两个字符，
+        于是"检查原始字节"反而给出一个看似正确的 `\ref`。
+
+    今天它躲过了编译、躲过了肉眼、躲过了 repr 核对，最后是 `pdftotext`
+    在成品 PDF 里印出 "Table eftab:dataavail" 才暴露。
+
+    .tex 源码里不该有任何孤立控制字符（CRLF 的 CR 除外），所以这条判据
+    干净利落：见到就报。
+    """
+    out = []
+    for i, ch in enumerate(t):
+        if ch == "\r" and (i + 1 >= len(t) or t[i + 1] != "\n"):
+            out.append(f"孤立回车符（吞掉的 \\r？）：…{t[max(0,i-24):i]!s}⟪CR⟫"
+                       f"{t[i+1:i+20]!s}…")
+        elif ch in "\t\f\v":
+            name = {"\t": "TAB", "\f": "FF", "\v": "VT"}[ch]
+            out.append(f"孤立 {name}（吞掉的转义？）：…{t[max(0,i-24):i]!s}"
+                       f"⟪{name}⟫{t[i+1:i+20]!s}…")
+    return out[:10]
+
+
 def check_cites(t: str) -> list[str]:
     keys = set()
     for bib in (REPO_ROOT / "references").glob("*.bib"):
@@ -186,6 +223,7 @@ def main() -> None:
                          ("label / ref", check_refs),
                          ("图文件存在", lambda x: check_graphics(x, doc)),
                          ("引用键", check_cites),
+                         ("孤立控制字符", check_control_chars),
                          ("占位符", check_placeholders)):
             issues = fn(t)
             hard = [i for i in issues if not i.startswith("（")]

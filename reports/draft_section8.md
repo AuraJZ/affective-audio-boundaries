@@ -1,5 +1,14 @@
 # §8 定稿草案 —— 跨响应通道：八成损失，且换信源补不回来
 
+> ⚠️ **已作废（2026-09-29）。本草稿的标题就是被撤回的那句话。**
+>
+> 「换信源补不回来」依赖两个已推翻的前提：那个 31% 的「可达上限」，
+> 其分母已被证明可由**呈现位置**复现（114–249%）；以及生理终点上
+> 从未测过目标侧学习曲线，因此「补不回来」本就不可说。
+>
+> 此节未以本形式进入稿件。当前写法见 `manuscript/main.tex` §IV-E，
+> 撤回理由见 [`TAC_revision_audit.md`](TAC_revision_audit.md) §2.5。
+
 > 供落入 `manuscript/main.tex`。此节**取代**现有的
 > 「No reproducible stimulus-specific component in trial-wise EEG」——
 > 后者按 PLAN §4 降为 §7 的半页准入说明。

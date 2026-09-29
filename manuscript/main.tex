@@ -1,246 +1,795 @@
+% =====================================================================
+% Transfer boundaries in affective audio modelling
+% Submission draft for IEEE Transactions on Affective Computing.
+%
+% This file replaces the bioRxiv/arXiv preprint version, archived at
+% archive/main_preprint_2026-08.tex. The revision is not a reformatting:
+% a pre-submission audit found that the preprint's organising claim --- that
+% generalisation failures divide into two kinds with mutually exclusive
+% remedies, one of which "cannot be bought back" --- is contradicted by this
+% project's own measurements. reports/TAC_revision_audit.md records what
+% changed, what was recomputed, and what was withdrawn. The short version:
+%
+%   * the few-shot learning curve the preprint attributed to same-domain
+%     transfer was measured on cross-domain pairs, so the boundary the
+%     preprint called unpurchasable is the one whose price it quoted;
+%   * half of the environmental corpus is mixtures of thirty recordings, and
+%     the cross-validation protocol did not group them, which inflated both
+%     that corpus's ceiling and the apparent size of the domain gap;
+%   * the "calibration, not sign" mechanism is contradicted by the
+%     disaggregated intervention data and is in any case incompatible with a
+%     rank-correlation metric;
+%   * the stimulus-level reliability that set the physiological denominator is
+%     reproduced by presentation position alone, so no fraction-of-ceiling can
+%     be quoted on that boundary.
+%
+% What remains is a measurement paper rather than a framework paper, and the
+% numbers in it are stronger for having lost the framework.
+% =====================================================================
 \input{preamble}
 
 \begin{document}
+
+\title{Transfer Boundaries in Affective Audio Modelling:
+Zero-Shot Loss, Measured Adaptation Cost, and the Limits of the
+Available Evidence}
+
+\author{Jingyi~Zhang\,\orcidlink{0009-0008-8738-3783} and Xiaotong~Yao%
+\thanks{J. Zhang is with Shanghai Huangan Technology Co., Ltd., Shanghai,
+China, and with Systems Neuroscience, Institute for Neuroscience, Department
+of Health Sciences and Technology (D-HEST), ETH Zurich, Zurich, Switzerland
+(e-mail: jingyi.zhang@hest.ethz.ch).}%
+\thanks{X. Yao is with Shanghai Huangan Technology Co., Ltd., Shanghai,
+China.}%
+\thanks{The authors are engaged in the development of a commercial
+sleep-audio product. See Section~\ref{sec:declarations}.}}
+
+\markboth{IEEE Transactions on Affective Computing}%
+{Zhang and Yao: Transfer Boundaries in Affective Audio Modelling}
+
 \maketitle
-\linenumbers
 
 \begin{abstract}
-\noindent
-Models that map acoustic properties onto affective response underpin applications
-from music recommendation to sound design for wellbeing, and are evaluated almost
-entirely within the corpus they were fitted on. When such a model fails outside it,
-the standard response is more data or a larger model --- a response that assumes
-every failure is a shortage of resources. We show that it is not, and that the
-alternative calls for the opposite remedy. Using four corpora of rated sound, four
-pretrained audio representations and three corpora of physiological recording, we
-pushed one mapping across four boundaries an application must cross --- to new
-material, to edited audio, to a sensor in place of a self-report, and to an
-individual listener --- reporting at each the ceiling the target permits, the
-fraction that survives the crossing, and the price in target-side observations of
-buying the gap back. Within a corpus, prediction reaches 84\% of the ceiling set by
-how much listeners agree with one another --- measured on the same excerpts as the
-model, since pairing the two across corpora inflates the figure --- so the headroom
-a better model could occupy is small, though not negligible.
-Crossing to a new corpus of the same kind costs a fifth of that performance and the
-loss is for sale: a hundred target labels return two-thirds of it. Crossing between
-music and environmental sound costs four-fifths to all of it, and four
-representations spanning supervised, self-supervised and contrastive pretraining
-recover none of it --- including one supervised on a corpus rich in environmental
-sound. Editing the audio shows why: the sign of an acoustic manipulation crosses
-the boundary that the predictions cannot, so what fails is calibration rather than
-the mapping. Crossing to physiological response is the one boundary on which no
-purchase was found: acoustic components, the ratings predicted from them, and the
-ratings themselves all stop below a third of the attainable ceiling, and no
-representation or predictor we tested moved it. We did not measure a target-side
-learning curve on that boundary, so what we can report is a failure to recover
-across every route tried, not a demonstration that the information is absent. Crossing to the individual is again for
-sale, at a price that ranges five-fold across settings and, in the setting closest
-to an application, is lowest and already within reach of existing corpora.
-``The model does not generalise'' is
-therefore two diagnoses, not one: a gap that observations close, and a gap that
-they do not. Their remedies are mutually exclusive, and treating the second as the
-first is the more expensive mistake.
+Affective audio models are usually evaluated inside the corpus they were
+fitted on, and that optimism is rarely reported alongside the cost of removing
+it. Using four rated-sound corpora, five representations and three
+physiological corpora, we measure one mapping across four boundaries: to a new
+corpus, to edited audio, to a sensor in place of self-report, and to an
+individual listener. At each we report a within-corpus reference, what survives
+unadapted, and what adaptation recovered. Within a corpus,
+predicted arousal reaches 84\% of what annotation reliability permits. An
+unadapted corpus swap costs about 15\% of that reference within the music
+domain and 75\% across it; in both cases 100
+target labels recover roughly half the gap, label-free second-moment alignment
+recovers a quarter of the cross-domain gap, and four pretrained representations
+recover little of it. Editing audio moves model output, not listeners, and
+inconsistently across model and material. On the physiological boundary no
+acoustic route exceeds a random-projection control, and no fraction-of-ceiling
+is quotable: presentation position alone reproduces the target's reliability.
+Per-person calibration loses to the population model at every budget existing
+corpora supply. We separate what improved, what did not under the routes
+tested, and what the evidence cannot decide.
 \end{abstract}
 
-\section*{Introduction}
+\begin{IEEEkeywords}
+Affective computing, cross-corpus generalisation, domain adaptation,
+few-shot adaptation, soundscape emotion, annotator agreement,
+personalisation, dataset bias.
+\end{IEEEkeywords}
 
-Interest in choosing sound to shape affective or physiological state has grown
-alongside the availability of annotated audio corpora and of consumer devices that
-record physiological signals. The underlying assumption is that a mapping exists
-from measurable acoustic properties to a listener's state, and that this mapping is
-stable enough to be learnt from one collection of sounds and applied to another.
+\IEEEpeerreviewmaketitle
 
-Two literatures bear on this assumption without settling it. Music-emotion research
-has established that listeners agree substantially about the emotions music
-expresses, and that this agreement is structured along dimensional and categorical
-axes \citep{russell1980,eerola2013}. Neuroimaging work has identified correlates of
-music-evoked emotion in limbic and paralimbic systems \citep{koelsch2014}, and
-electroencephalographic studies report differences in spectral and connectivity
-measures between reported emotional states \citep{daly2014}. Separately, acoustic
-stimulation during sleep has been shown to modify slow-wave activity
-\citep{papalambros2017}, while the evidence for music as a treatment for insomnia
-remains graded \citep{jespersen2022}. What these literatures share is a reporting
-convention: accuracy is characterised within the collection on which the model was
-fitted.
+% Applies the IEEEtran.bst control entry in references.bib. It has to come
+% before the first real \cite, and it emits nothing.
+\bstctlcite{IEEEtranBSTCTL:soundml}
 
-Within-corpus accuracy answers none of the questions an application asks. An
-application changes the material, changes the \emph{kind} of material, changes how
-the response is measured, and changes the listener. The relevant quantity is not
-how well the mapping performs where it was fitted but how much of it survives each
-of those changes --- and, when something is lost, what it would cost to get it back.
+% =====================================================================
+\section{Introduction}
 
-That last clause is where the field's implicit model of failure becomes consequential.
-When a model fails out of setting, the standard responses are to collect more data
-or to adopt a larger pretrained representation. Both presuppose that the failure is
-a shortage of resources. But a failure can instead be that the information the
-target requires is not present in the input at all, in which case neither response
-helps. \textbf{The two diagnoses call for mutually exclusive remedies, and the field
-does not separate them} --- largely because separating them requires measuring the
-price of closing a gap, which is rarely attempted.
+\IEEEPARstart{C}{hoosing} sound to shape affective state is an applied problem
+with a growing evidence base and a well-known reporting convention: accuracy
+is characterised within the collection on which the model was fitted. That
+convention answers none of the questions an application asks. An application
+changes the material, changes the \emph{kind} of material, changes how the
+response is measured, and changes the listener. What matters is how much of
+the mapping survives each of those changes and what it costs to recover what
+is lost.
 
-We therefore push a single mapping across four boundaries, ordered by how far each
-moves from the fitting conditions: across corpora, across the synthetic edits a
-deployed system actually applies to audio, across the level at which the response is
-measured, and across individuals. At every boundary we report the same three
-quantities --- the ceiling attainable on that target, the fraction of it that
-survives the crossing, and the price in target-side observations required to recover
-what was lost. Criteria are fixed before each test; every null result carries a
-minimum detectable effect; and every null distribution is reported together with its
-behaviour when the true effect is zero.
+Both halves of that sentence are usually missing. Cross-corpus evaluations in
+affective audio are typically reported zero-shot: a model is fitted on one
+corpus, applied unchanged to another, and the resulting drop is reported as
+the generalisation gap. A drop measured that way is an upper bound on the
+problem, not an estimate of it, because no adaptation was attempted. The
+complementary error is to report an adaptation method's gain without a control
+that establishes how much of the gain is specific to the target rather than
+generic to any distribution correction.
 
-The result is that \textbf{``the model does not generalise'' resolves into two
-diagnoses, not one.} Some losses are \emph{budget-limited}: the gap closes with
-target-side observations, at a price we measure and extrapolate. Others are
-\emph{information-limited}: on the evidence available the input does not appear to
-carry what the target requires, and
-neither more data nor a larger representation moves them. The four boundaries
-distribute across both kinds, and one of them --- transfer across corpora --- turns
-out to contain both, which allows the distinction to be drawn within a single
-experiment rather than across separate ones.
+This paper measures both. We push one mapping --- group-averaged perceived
+arousal from acoustic descriptors --- across four boundaries, ordered by how
+far each moves from the fitting conditions: across corpora, across the
+synthetic edits a deployed system applies to audio, across the level at which
+the response is measured, and across individuals. At each boundary we report
+three things: a within-corpus reference for that target, the fraction of it
+that survives an unadapted crossing, and what each adaptation route we tested
+recovered.
 
-The distinction is falsifiable, and we state the condition in advance: if any
-boundary could be closed both by additional observations and by a change of
-representation, the dichotomy would not hold. We test this at every boundary,
-including one case where an information-limited gap \emph{is} successfully filled ---
-a result we report at length precisely because, without it, the framework would be
-unfalsifiable and the paper would reduce to the claim that everything is a
-measurement problem.
+We separate three evidence states throughout, and label them explicitly rather
+than collapsing them into a verdict:
 
-\section*{Results}
+\begin{enumerate}
+\item \textbf{Improvement observed.} A named adaptation route recovered a
+      quantified fraction of the gap.
+\item \textbf{No improvement observed under the routes tested.} The routes we
+      ran did not recover the gap. This bounds those routes; it does not bound
+      every route, and it is not evidence that the information required is
+      absent from the input.
+\item \textbf{Insufficient evidence to determine cause or recoverability.} The
+      design cannot separate the competing explanations, and we say which.
+\end{enumerate}
 
-\subsection*{Acoustic models approach the annotation reliability ceiling}
+This paper is a revision of a preprint \cite{zhang2026preprint} that reported
+the same experiments under a stronger claim: that generalisation failures
+divide into two kinds whose remedies are mutually exclusive, one of which no
+quantity of data can repair. That claim does not survive its own evidence, for a reason worth
+stating plainly because it is a general hazard. The learning curve that
+priced the recoverable gap was computed on the cross-domain corpus pairs,
+while the text attributed it to same-domain transfer and simultaneously
+described the cross-domain boundary as unpurchasable. The figure legend was
+correct and the prose was not. We report the corrected attribution here,
+withdraw the framework it supported, and record the full audit in the
+supplementary material.
 
-Across four corpora --- DEAM \citep{aljanaki2017}, PMEmo \citep{zhang2018pmemo},
-Soundtracks \citep{eerola2011} and Emo-Soundscapes \citep{fan2017emo} --- models
-predicting group-averaged perceived arousal from 122 spectro-temporal descriptors
-reach Spearman $\rho = 0.72$--$0.82$ under grouped five-fold cross-validation
-(Fig.~\ref{fig:wall}a, first stage).
+Two findings of independent methodological value emerged from that audit, and
+both concern corpora in wide use. Half of Emo-Soundscapes is mixtures of
+thirty source recordings, and its distributed metadata gives every clip its
+own group identifier, so the standard grouped cross-validation that authors
+apply to it does not prevent near-duplicate clips from spanning folds
+(Section~\ref{sec:hazards}). And in PMEmo, stimulus-level reliability of
+electrodermal measures is reproduced --- in one case exceeded --- by
+presentation position alone, so those measures cannot be used as a
+stimulus-driven ceiling without a position control
+(Section~\ref{sec:channel}). Anyone reusing either corpus is affected.
 
-Converting that into a distance from the ceiling requires the model performance and
-the annotation reliability to come from the same excerpts, and this is easy to get
-wrong: pairing the strongest correlation in the set with the reliability of a
-different corpus inflates the result. We therefore estimate both on one corpus.
-On the 717 PMEmo excerpts, with the same descriptors, the same folds and a
-per-rater split-half reliability of $0.935$, the model reaches $\rho = 0.817$.
-Dividing by the square root of the reliability --- the standard attenuation
-correction --- puts it at \textbf{84.4\%} (95\% CI 81.5--87.0\%) of the correlation
-an errorless predictor of these annotations could attain.
+% =====================================================================
+\section{Related Work}
+\label{sec:related}
 
-That leaves roughly a sixth of the attainable correlation unaccounted for, and
-about 29\% of the reproducible variance. The residual is therefore \emph{not} all
-in the annotation. What the number does establish is narrower and sufficient for
-the argument: within a corpus the remaining headroom is small enough that the
-informative variation lies elsewhere, and a boundary that costs four-fifths of
-performance is not competing with a modelling gain of comparable size.
+\subsection{Cross-corpus affective audio prediction}
 
-Three qualifications belong with that number, because it is the denominator for
-every boundary that follows and it is optimistic in three separate ways. The
-reported value is the best of six algorithms evaluated on one set of out-of-fold
-predictions, and the selection is not itself cross-validated, so it carries the
-usual winner's bias. The bootstrap resamples excerpts but does not refit the
-models, so it expresses sampling variability in the evaluation and not in the
-fitting. And the reliability estimate is carried through as a fixed quantity
-rather than as one with its own interval. The interval we report is therefore
-conditional on the selected model and on that reliability estimate. It should be
-read as an upper bound that is, if anything, too generous --- which is the
-direction that matters here, since the argument only needs the ceiling to be low
-enough that the remaining headroom is small.
+That affective audio models degrade across corpora is established rather than
+novel. In speech, cross-corpus emotion recognition has been surveyed and
+benchmarked repeatedly, with normalisation strategies shown to account for a
+substantial share of the nominal gap \cite{schuller2010crosscorpus,
+zhang2019crosscorpus}. In music, cross-dataset evaluation reports similar
+degradation and traces part of it to differences in annotation protocol rather
+than in audio \cite{hu2017crossdataset}, and reviews note that most reported
+accuracies are within-corpus \cite{yang2012machine, panda2023review}. Dataset
+bias in audio, as in vision, makes corpus identity itself predictable
+\cite{torralba2011unbiased}.
 
-It also should not be read as a share of variance. The attenuation-corrected value
-is a ratio of correlations; squaring it puts the models at about 71\% of the
-reproducible variance, leaving roughly 29\% that no better annotation would
-explain away.
+Our contribution is not the existence of the gap but its \emph{pricing}. Where
+those studies report a zero-shot drop, we report the drop alongside what a
+named budget of target-side labels and what a label-free alignment recover,
+with a sham control that separates target-specific from generic gain. We also
+add a boundary those studies do not cross: between two sound domains that
+share no material, rather than between two corpora of the same kind.
 
-This bounds what better models could achieve at this level. It also motivates the
-remaining analyses: if within-corpus performance is near-ceiling, the informative
-questions concern generalisation rather than accuracy.
+\subsection{Unsupervised and few-shot domain adaptation}
 
-Two framing choices are worth recording because they affect the ceiling rather than
-the model. Treating arousal as a continuous target rather than as a
-high-versus-low contrast retains the middle of the range, which a median or
-quantile split discards along with a third to a half of the excerpts (Extended Data
-Fig.~2). And an additive glass-box model, whose per-descriptor shape functions can
-be read directly rather than attributed post hoc, costs almost nothing in accuracy
-relative to the tree ensembles (Extended Data Fig.~3); its shape functions place
-the arousal-relevant thresholds on the descriptor scales without requiring a
-separate attribution step (Extended Data Fig.~4).
+Second-moment feature alignment (CORAL) \cite{sun2016coral} and subspace
+alignment \cite{fernando2013subspace} are the two standard closed-form,
+label-free baselines, and both are routinely reported without a control for
+what the whitening step alone achieves. Few-shot target-side supervision is
+the other standard route, and surveys of domain adaptation note that its
+budget is rarely quoted in units an application can act on
+\cite{wang2018deepda}. Work on affective audio specifically has applied
+adversarial and discrepancy-based adaptation to cross-corpus speech emotion
+\cite{abdelwahab2018domain}.
 
-\subsection*{Boundary 1, cross-corpus: both kinds of failure inside one experiment}
+We add three things: the budget curve in labels rather than in epochs; a sham
+alignment that establishes how much of CORAL's gain is target-specific; and a
+decomposition of CORAL into per-dimension variance matching and correlation
+structure matching, which turns out to locate most of the gain in the second.
 
-The first boundary is the one an application crosses when it changes its material.
-It is also the only one on which both kinds of failure can be observed in a single
-experiment, with the same models, the same descriptors and the same act of swapping
-one corpus for another --- which is why we take it first, and why it carries most
-of the weight of the distinction that organises the rest of the paper.
+\subsection{Personalisation and individual differences}
 
-Transfer between corpora of the same domain is preserved: across 36 ordered
-music-to-music pairs, mean $\rho = 0.592$ (s.d.\ $0.130$). Across 36
-music-to-environmental and environmental-to-music pairs, mean $\rho = 0.054$
-(s.d.\ $0.161$) (Fig.~\ref{fig:wall}a,b). Expressed against the within-corpus
-ceiling, the same operation costs about a fifth of attainable performance within a
-domain and between four-fifths and all of it across the domain boundary. Three controls exclude the obvious
-confounds. Truncating music excerpts from 30\,s to a 6\,s window, matching the
-environmental corpus, leaves same-domain transfer at $0.63$ and cross-domain
-transfer at $0.05$ (Fig.~\ref{fig:wall}d). Holding out each of the six Schafer
-soundscape categories in turn leaves within-domain generalisation at $\rho = 0.52$
-(Fig.~\ref{fig:wall}e), so the collapse is specific to the domain boundary rather
-than to unseen content. Loudness normalisation to $-23$\,LUFS before feature
-extraction removes a corpus fingerprint that otherwise inflates apparent transfer
-(Extended Data Fig.~1).
+That listeners differ in how acoustic properties map onto their reported
+affect is well documented, and personalised music emotion recognition has been
+proposed repeatedly \cite{yang2007individuality, yang2009personalized, chen2014personalized}. The
+question an application faces is narrower and less often asked: at what
+observation count per person does a personal model beat the population model.
+Work on the statistics of individual differences warns that between-person
+variance components estimated from few observations per person are biased
+upward \cite{rouder2019psychometrics}.
 
-Adding Soundtracks as a fourth corpus tests whether within-music transfer merely
-reflects a shared annotation tradition: it was collected by a different group, in a
-different decade, using nine-point Likert scales over eight emotion terms rather
-than continuous sliders, over a balanced design of twelve target emotions
-\citep{eerola2011}. Transfer into it from the other music corpora is $0.56$, and
-from the environmental corpus $0.09$.
+Our contribution is to estimate that break-even point on three corpora with a
+common estimator and a per-cell null, and --- crucially --- to test it out of
+sample. The out-of-sample test is the part that changes the conclusion: the
+variance model places break-even at 67 to 318 observations per person, and a
+direct held-out comparison returns a negative personalisation gain at every
+budget the corpora actually supply.
 
-The fourth corpus also reveals that the barrier is not symmetric
-(Fig.~\ref{fig:wall}c). Transfer from the environmental corpus into each of the
-three music corpora is uniformly low ($\rho \le 0.09$). Transfer in the outward
-direction is graded: $-0.04$ from PMEmo, $+0.13$ from DEAM, $+0.24$ from
-Soundtracks. Film soundtracks contain substantial atmospheric material ---
-sustained tones, texture, sound design --- and are correspondingly closer to
-soundscape recordings. The density of the barrier in the outward direction
-therefore tracks the composition of the source corpus, while the inward direction
-is impermeable regardless of target.
+\subsection{Annotator agreement as a ceiling}
 
-\paragraph{The barrier is a property of the boundary, not of the descriptors.}
-The most direct objection to everything above is that 122 hand-specified
-descriptors are simply too weak, and that a representation learnt from a large
-audio corpus would cross what they cannot. We therefore extracted four pretrained
-representations spanning four pretraining paradigms --- supervised classification
-on AudioSet (AST), self-supervised on music (MERT), self-supervised on speech
-(Wav2Vec2) and audio--text contrastive learning (CLAP) --- over all four corpora,
-and repeated the transfer analysis unchanged (Fig.~\ref{fig:wall}f).
+Correcting an observed correlation for the unreliability of its target is
+standard psychometrics \cite{spearman1904, nunnally1994}, and affective
+computing has used inter-annotator agreement to bound achievable performance
+\cite{grimm2007primitives}. Two errors are common and we guard against both:
+dividing by the reliability rather than by its square root, which inflates the
+corrected value by a factor of $1/\sqrt{r}$; and pairing a correlation
+measured on one corpus with a reliability estimated on another.
 
-The sharpest form of the result is not how high the barrier is but where it stands.
-For a given representation, the same operation --- swap the corpus, refit nothing
---- costs 20--31\% of within-corpus performance when the new corpus is in the same
-domain and 84--95\% when it is not, a gap of 59 to 74 percentage points
-(Table~\ref{tab:families}). The representations transfer; they do not cross. That
-disposes of the alternative reading in which the embeddings simply fail to move
-between datasets at all. AST is the case that matters most, because AudioSet
-contains large numbers of environmental categories and it is therefore the family
-that most ought to cross: its barrier is 84.2\% against 93.9\% for the
-hand-specified descriptors.
+We add the observation that a reliability estimate is only a ceiling if it is
+stimulus-driven, and that this has to be tested. On the electrodermal measures
+of PMEmo it fails: position alone reproduces the reliability, so no ceiling
+can be quoted.
 
-The improvement is real but small and must be stated as such: AST raises
-cross-domain transfer from $\rho = 0.047$ to $0.125$, a factor of 2.7, which is
-still a sixth of what the same representation achieves within a corpus.
+% =====================================================================
+\section{Data and Methods}
 
-\begin{table}[htbp]
+\subsection{Corpora}
+
+Four rating corpora were used: DEAM (music, $n = 1{,}233$)
+\cite{aljanaki2017}, PMEmo (music, $n = 717$) \cite{zhang2018pmemo},
+Soundtracks Set~1 (music, $n = 360$) \cite{eerola2011} and Emo-Soundscapes
+(environmental, $n = 1{,}213$) \cite{fan2017emo}. ESC-50 \cite{piczak2015}
+served as a second environmental corpus for the category control. The
+prediction target throughout is group-averaged perceived arousal, rescaled to
+$[-1, 1]$; the circumplex framing follows \cite{russell1980, eerola2013}.
+Soundtracks additionally carries seven scales (valence, tension, anger, fear,
+happiness, sadness, tenderness) on nine-point Likert scales, linearly
+rescaled --- a monotone transformation that leaves all reported rank
+statistics unchanged.
+
+Soundtracks was included to test whether within-music transfer reflects shared
+acoustic structure or a shared annotation tradition: it originates from a
+different laboratory and decade, uses a categorical rather than continuous
+protocol, and was assembled as a balanced design of twelve target emotions
+$\times$ 30 excerpts.
+
+One asymmetry between the music and environmental corpora must be recorded
+here because it limits every cross-domain statement in this paper.
+Emo-Soundscapes was annotated by \emph{pairwise comparison} and its ratings
+derive from a ranking procedure, whereas the three music corpora were rated
+directly on continuous or Likert scales. The corpora therefore differ in
+annotation method as well as in sound domain, and with one environmental
+corpus available the two cannot be separated (Section~\ref{sec:threats}).
+
+\subsection{Audio preparation and descriptors}
+
+All audio was resampled to 22{,}050\,Hz, centre-cropped to at most 30\,s, and
+loudness-normalised to $-23$\,LUFS (ITU-R BS.1770) before any descriptor was
+computed. Normalisation is not cosmetic: without it, corpus-specific mastering
+levels act as an identifier that inflates apparent cross-corpus transfer
+(Supplementary Fig.~S1). For the duration control, music excerpts were
+additionally cropped to a 6\,s centred window to match the environmental
+corpus.
+
+\emph{Spectro-temporal (122).} Mel-frequency cepstral coefficients, spectral
+centroid, bandwidth, contrast, flatness and roll-off, zero-crossing rate,
+root-mean-square level, onset strength and onset rate, spectral slope, and
+band-energy ratios. Each frame-level series is summarised by mean, standard
+deviation, 10th, 50th and 90th percentiles, and the mean absolute first
+difference, the last of which indexes rate of change rather than level.
+Computed with librosa \cite{mcfee2015}.
+
+\emph{Tonal (39).} A key-invariant chroma profile obtained by estimating the
+tonic through correlation with Krumhansl--Kessler profiles
+\cite{krumhansl1982} and rotating so the tonic occupies index~0; major- and
+minor-key strength and their difference (mode score); chroma flux and entropy;
+tonal centroids; an interval-consonance measure; sensory roughness after Plomp
+and Levelt \cite{plomp1965}; and fundamental-frequency statistics. The full
+list is in Supplementary Section~S11. Rotation to the tonic is essential
+rather than convenient: an unrotated chroma vector encodes which key a piece
+is in, which is arbitrary with respect to affect, so an unrotated
+representation would let a model learn a corpus's key distribution. The
+consonance weights are fixed a priori and are not fitted.
+
+\emph{Pretrained representations.} Four families spanning four pretraining
+paradigms were extracted over all four corpora: AST, supervised
+classification on AudioSet \cite{gong2021ast, gemmeke2017audioset}; MERT,
+self-supervised on music \cite{li2024mert}; Wav2Vec2, trained on speech
+\cite{baevski2020wav2vec2}; and CLAP, audio--text contrastive learning
+\cite{wu2023clap}. CLAP's pretraining set includes Freesound, from which
+Emo-Soundscapes was built. We have not performed a sample-level overlap check
+and therefore describe the overlap as \emph{possible at the corpus level}
+rather than verified, and report CLAP separately throughout. The Wav2Vec2
+checkpoint used is a speech model; we do not claim it is purely
+self-supervised, only that its pretraining domain is speech.
+
+\subsection{Models and evaluation}
+
+Six regressors --- ElasticNet, support vector regression, $k$-nearest
+neighbours, random forest, gradient boosting and XGBoost \cite{chen2016xgboost}
+--- were evaluated by five-fold \texttt{GroupKFold} cross-validation.
+Cross-corpus transfer fits on the whole of one corpus and evaluates on the
+whole of another, with nothing refitted. Reported values are Spearman rank
+correlations. Where a single value is reported for a cell it is the median over
+the six algorithms unless stated otherwise; the preprint reported the best of
+six in several places, which carries a winner's bias, and we now report the
+best only where the quantity is explicitly an upper bound. Where a comparison
+between conditions is made, all six are retained as paired observations and
+the comparison is tested by Wilcoxon signed-rank.
+
+\emph{Annotation reliability.} Per-rater judgements were split at random into
+two halves, stimulus means computed within each, correlated, and corrected by
+the Spearman--Brown formula \cite{spearman1904}; the reported value is the mean
+over 200 random splits. Where a model's performance is expressed as a fraction
+of what the annotation permits, the divisor is $\sqrt{r}$, not $r$: the
+maximum correlation an errorless predictor can achieve against a target of
+reliability $r$ is $\sqrt{r}$ \cite{nunnally1994}. Dividing by $r$ would
+inflate the figure by $1/\sqrt{r}$.
+
+\subsection{Two corpus-level hazards found during this revision}
+\label{sec:hazards}
+
+\subsubsection{Emo-Soundscapes contains mixtures of a small source set}
+
+Of the 1{,}213 Emo-Soundscapes clips, 600 are single Freesound recordings and
+613 are mixtures. The mixtures are built from five selected clips in each of
+the six Schafer categories --- \textbf{thirty source recordings in total} ---
+combined two or three at a time at two relative levels each. The distributed
+filenames encode the constituents, from which we recover that the 613 mixtures
+occupy only \textbf{161 distinct constituent sets}, a mean of 3.81 clips per
+set and up to 8. Clips in one set differ only in mixing level.
+
+The label table gives every clip its own group identifier, so
+\texttt{GroupKFold} on this corpus is arithmetically identical to
+\texttt{KFold}: near-duplicate mixtures span folds, and a training clip can be
+a constituent of a test mixture. The protocol we and others describe as
+preventing recording-level leakage does not prevent it here.
+
+We therefore report every Emo-Soundscapes quantity twice: on all 1{,}213 clips
+(\emph{published}, for comparability with prior work including our own
+preprint) and on the 600 originals alone (\emph{clean}), where every clip is a
+distinct recording and construction leakage is impossible. The effect is
+substantial in both directions and is given in Table~\ref{tab:hazard}: the
+within-corpus reference falls from 0.744 to 0.646, and median cross-domain
+transfer \emph{rises} from 0.043 to 0.129, because a test set half composed of
+near-duplicates distorts the ranking the metric is computed on. Both changes
+shrink the apparent domain gap. The clean variant is the one we interpret.
+
+\begin{table}[!t]
 \centering
+\caption{Effect of excluding the 613 Emo-Soundscapes mixture clips. Medians
+over six algorithms; transfer medians over the six ordered corpus pairs of
+each kind $\times$ six algorithms. Loss is per pair against the target
+corpus's own within-corpus reference, then median over pairs.}
+\label{tab:hazard}
 \small
-\caption{Transfer under five representations, each evaluated with the same models,
-folds and scoring. \emph{Within corpus} is cross-validated performance on a
-corpus's own data; \emph{same domain} is transfer to a different corpus of the same
-kind; \emph{across domains} is transfer between music and environmental sound. The
-last two columns express the loss from each swap as a fraction of the within-corpus
-value. CLAP's pretraining data include the source of the environmental corpus; it
-is reported for completeness and excluded from the claim.}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcc}
+\toprule
+Quantity & \thd{All}{1{,}213} & \thd{600}{originals} \\
+\midrule
+Within-corpus $\rho$                 & 0.744 & 0.646 \\
+Cross-domain $\rho$, median          & 0.043 & 0.129 \\
+Cross-domain $\rho$, mean (s.d.)     & 0.058 (0.16) & 0.115 (0.15) \\
+Cross-domain loss                    & 93.3\% & 74.9\% \\
+Same-domain loss                     & 15.0\% & 15.0\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{PMEmo electrodermal reliability is reproduced by presentation
+position}
+
+Stimulus-level reliability of the three PMEmo electrodermal measures is 0.116
+(skin-conductance response rate), 0.237 (phasic mean) and 0.234
+(skin-conductance level slope). A sham that uses \emph{presentation position
+alone} as the stimulus identifier returns 0.290, 0.283 and 0.267 --- that is,
+249\%, 120\% and 114\% of the values obtained with the true stimulus labels.
+The assignment of songs to positions in this corpus is itself significantly
+non-random (intraclass correlation 0.041, $p = 0.005$), and regressing
+position out of the measures reduces their reliability to 0.038, 0.081 and
+0.206.
+
+The consequence is not that the electrodermal measures are meaningless but
+that their stimulus-level reliability is not established as stimulus-driven,
+so it cannot serve as a ceiling. The preprint expressed the
+cross-response-channel result as a percentage of exactly that ceiling. That
+percentage is withdrawn (Section~\ref{sec:channel}).
+
+\subsection{Adaptation routes}
+
+Four label-free routes and one supervised route were compared, expressed as
+the fraction of the gap between zero-shot transfer and a model trained on the
+target corpus itself. Label-free: per-corpus $z$-scoring; CORAL
+\cite{sun2016coral}, matching second moments in closed form; diagonal CORAL,
+matching per-dimension variance only; and subspace alignment
+\cite{fernando2013subspace}. Supervised: \emph{few-shot}, adding $k \in
+\{10, 25, 50, 100, 200\}$ randomly chosen target-corpus examples to the
+training set and evaluating on the remaining target examples, averaged over 20
+resamples. The estimator for all adaptation results is ridge regression with a
+cross-validated penalty, chosen on training data only.
+
+Two reporting points follow from the audit. First, the few-shot numerator is
+ridge while the denominator in the preprint was a six-algorithm median; we now
+give both denominators. Second, $k = 200$ is unavailable for Soundtracks
+($n = 360$, which the protocol's $k < n/2$ rule excludes), so the pair set at
+$k = 200$ differs from the pair set at smaller $k$. We therefore report the
+curve both over all available pairs and over the pairs present at every $k$.
+
+\emph{Sham alignment.} CORAL performs two operations at once: it whitens the
+source and it recolours towards the target. To separate them, the source was
+also aligned to an unrelated third corpus, which by construction carries no
+target-specific information. With a single environmental corpus this control
+is only valid on half the pairs: when the source is environmental, the third
+corpus is necessarily music and therefore in the \emph{target's} domain. We
+report the sham separately for the three valid and three invalid pairs. The
+preprint pooled them, which inverted the conclusion.
+
+\subsection{Physiological corpora and controls}
+
+\emph{EEG.} OpenNeuro ds002721 \cite{daly2018data}: 31 listeners, 19 scalp
+channels at 1\,kHz referenced to FCz, six runs each, four containing ten 12\,s
+music excerpts. Its stimuli are drawn from the same
+published stimulus set as our fourth music corpus: the dataset's README gives
+their source as \cite{eerola2011}, from which Soundtracks Set~1 also comes.
+The two are therefore not independent material, and we have not been able to
+establish from the distributed metadata which 40 of those excerpts were used. Event annotation follows BIDS and its EEG extension
+\cite{gorgolewski2016, pernet2019}. Processing used MNE-Python
+\cite{gramfort2013}: 50\,Hz notch, 1--45\,Hz bandpass, resampling to 250\,Hz.
+Spectral and asymmetry measures were computed after average re-referencing;
+coherence was computed on the recording reference, because average referencing
+introduces a common component that inflates coherence.
+
+Trial-wise measures (156): relative band power in five bands $\times$ five
+regions as change from a 2\,s pre-onset baseline to a 1--14\,s window (26);
+magnitude-squared coherence between all ten region pairs in five bands (50);
+the imaginary part of coherency for the same pairs and bands (50),
+insensitive to zero-lag volume conduction; and log-ratio asymmetry for six
+homologous electrode pairs in five bands (30). Coherence and asymmetry are
+included because the original analysis of these recordings located its effect
+there \cite{daly2014}; restricting the set to band power would test the
+conclusion on a representation that excludes the effect in question.
+
+Four dataset-level controls were run before any substantive analysis, with the
+rule that failure of any one halts interpretation: event bookkeeping; occipital
+$>$ frontal relative alpha at rest; event-to-sample alignment via
+independently annotated blink events; and a stimulus-locked evoked response
+against a subject-wise sign-flip null with max-statistic correction
+\cite{maris2007}. An individual-level control required each listener's EEG to
+predict trial index, which is necessarily predictable given impedance and
+vigilance drift. Multiplicity was controlled by Benjamini--Hochberg
+\cite{benjamini1995}.
+
+\emph{Electrodermal.} The PMEmo corpus carries song-level electrodermal
+recordings, which we use for the acoustics-to-physiology comparison. This
+pipeline was not described in the preprint and was not positive-controlled;
+both are corrected here. Processing used NeuroKit2 \cite{makowski2021}
+following standard recommendations \cite{boucsein2012}, with phasic--tonic
+decomposition. Because no positive control for this pipeline passed --- and
+because of the position confound above --- results from it are reported as
+raw correlations against an explicit random-projection reference, and not as a
+fraction of any ceiling.
+
+A second electrodermal corpus, BIRAFFE2 \cite{kutt2022}, was analysed and
+withdrawn: group-level habituation ran opposite to the established direction,
+post-stimulus windows did not exceed random windows, and applied per
+participant, none of 94 passed both controls (Supplementary Section~S2). It
+supports no conclusion in this paper, including by way of corroboration.
+
+\emph{Measured design requirement.} OpenNeuro ds003690
+\cite{ds003690, ribeiro2019erp, ribeiro2019cardiac}: 75 adults (36 aged
+19--30, 39 aged 50--70), 64-channel EEG, bipolar electrocardiogram and
+binocular pupillometry at 500\,Hz during cued reaction-time tasks. Auditory
+cues were 250\,ms pure tones at approximately 67\,dB(A); each participant
+contributed 240 cues across two active tasks and 30 in a passive block. One
+response measure was fixed per channel before analysis --- a fronto-central
+window mean for EEG, a heart-rate change and a pupil-diameter change, each
+against its own pre-cue baseline; exact windows and rejection criteria are in
+Supplementary Section~S11. Each real cue was paired with a randomly placed
+anchor in the same recording and all analyses operate on the difference, under
+which sign-flipping is exact. Detection was assessed per participant with
+5{,}000 sign flips at $\alpha = 0.05$ with Benjamini--Hochberg correction.
+
+\subsection{Per-person calibration}
+
+For each descriptor--outcome cell the between-person standard deviation
+$\tau$ of the acoustic slope was estimated by restricted maximum likelihood
+and compared with a null built by parametric bootstrap from that cell's own
+design, because $\tau$ estimated from few observations per person is biased
+upward: at 18 observations per person the estimator returns 0.11 when the true
+value is zero. Break-even $n^{*}$ is the number of observations per person at
+which the corrected spread exceeds the error in estimating it.
+
+$n^{*}$ is a property of a variance model, not a demonstration that
+personalisation pays. We therefore also report the direct test, which the
+preprint omitted: fitting each listener their own slope and comparing
+out-of-sample prediction against the population slope, at budgets
+$n \in \{18, 30, 50, 100\}$.
+
+Three settings were used, and they differ in more than the quantity under
+study. Urban soundscape ratings come from ARAUS
+\cite{ooi2024araus, ooi2025corrigendum} with
+ISO-532 psychoacoustic descriptors (loudness, sharpness, roughness,
+fluctuation strength) against the pleasantness and eventfulness axes; music
+ratings come from DEAM with five spectro-temporal and tonal descriptors
+against arousal and valence; and electrodermal responses come from PMEmo with
+the same five descriptors against three electrodermal measures. Corpus,
+descriptor set and outcome axis vary together across the three settings, so
+differences between them cannot be attributed to any one of the three
+(Section~\ref{sec:threats}).
+
+\subsection{On claims of prior specification}
+
+The preprint described several criteria as fixed in advance, pre-declared, or
+falsifiable in advance. We have been unable to produce a traceable artifact
+predating the corresponding analyses for any of them: the manuscript directory
+was untracked in version control, the repository head predates most of the
+runs, and only 2 of 199 run records carry a declared hypothesis. Those
+phrasings are removed throughout and no analysis in this paper is presented as
+preregistered. Where a criterion genuinely constrained a decision we say what
+the criterion was and leave the reader to weight it accordingly.
+
+% =====================================================================
+\section{Results}
+
+\subsection{Within-corpus reference and the annotation ceiling}
+
+Across the four corpora, models predicting group-averaged perceived arousal
+from 122 spectro-temporal descriptors reach Spearman $\rho = 0.65$--$0.81$
+under grouped five-fold cross-validation (medians over six algorithms: DEAM
+0.724, PMEmo 0.801, Soundtracks 0.810, \emoOrig{} 0.646).
+
+Converting that into a distance from what the annotation permits requires the
+model performance and the annotation reliability to come from the same
+excerpts. On the 717 PMEmo excerpts, with the same descriptors, the same folds
+and a per-rater split-half reliability of 0.935, the best of the six
+algorithms reaches $\rho = 0.817$. Dividing by $\sqrt{0.935}$ puts it at
+\textbf{84.4\%} (95\% CI 81.5--87.0\%) of the correlation an errorless
+predictor of these annotations could attain.
+
+Three qualifications belong with that figure, because it is optimistic in
+three separate ways. It is the best of six algorithms evaluated on one set of
+out-of-fold predictions, and the selection is not itself cross-validated. The
+bootstrap resamples excerpts but does not refit, so it expresses sampling
+variability in the evaluation and not in the fitting. And the reliability
+estimate is carried through as fixed rather than as a quantity with its own
+interval. The value should be read as an upper bound.
+
+It should also not be read as a share of variance: the attenuation-corrected
+value is a ratio of correlations, and squaring it puts the models at about
+71\% of the reproducible variance, leaving roughly 29\% that better annotation
+would not explain away. What the figure establishes is narrow and sufficient:
+within a corpus, the remaining headroom for a better model is small relative
+to the losses measured below.
+
+Two framing choices affect the reference rather than the model. Treating
+arousal as continuous rather than as a high-versus-low contrast retains the
+middle of the range, which a median split discards along with a third to a
+half of the excerpts (Supplementary Fig.~S2). And an additive glass-box model,
+whose per-descriptor shape functions can be read directly, costs almost
+nothing in accuracy relative to the tree ensembles (Supplementary Figs.~S3,
+S4).
+
+\subsection{Boundary 1: cross-corpus}
+\label{sec:corpus}
+
+\subsubsection{What an unadapted swap costs}
+
+Transfer between corpora of the same domain is largely preserved. Over the six
+ordered music-to-music pairs, each evaluated with the six algorithms (36
+values in total, from 6 pairs --- the preprint described these as 36 pairs,
+which overstated the number of independent units six-fold), transfer averages
+$\rho = 0.591$ (s.d.\ 0.131). Expressed per pair against the target corpus's
+own within-corpus reference, the median loss is \textbf{15.0\%} (range
+10.7--35.6\%).
+
+Between music and environmental sound, over the six ordered cross-domain pairs
+$\times$ six algorithms, transfer averages $\rho = 0.115$ (s.d.\ 0.153) on the
+clean environmental corpus, a median per-pair loss of \textbf{74.9\%} (range
+58.6--115.6\%). On the published corpus the same quantities are 0.058 and
+93.3\%; the difference is the mixture leakage of
+Section~\ref{sec:hazards}, and it accounts for roughly two-thirds of the gap
+between "four-fifths of performance lost" and "all of it"
+(Fig.~\ref{fig:wall}).
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{../reports/figures_r/Fig1_wall.pdf}
+\caption{Arousal models transfer between corpora of the same sound domain far
+better than across it, under every representation tested.
+\textbf{(a)} Generalisation stages for six algorithms over 122
+spectro-temporal descriptors, from within-corpus cross-validation through
+same-domain transfer to cross-domain transfer; grey points are the individual
+corpus pairs. \textbf{(b)} Transfer matrix averaged over algorithms; the
+diagonal is within-corpus cross-validation. \textbf{(c)} The barrier is
+asymmetric: inward transfer from the environmental corpus is uniformly low
+($\rho \le 0.09$) while outward transfer is graded with the source corpus.
+\textbf{(d)} Duration control (30\,s filled, 6\,s open). \textbf{(e)}
+Leave-one-category-out generalisation within the environmental corpus.
+\textbf{(f)} The same corpus swap costed under five representations, as the
+fraction of each representation's own within-corpus performance lost. Values
+in \textbf{(a)}--\textbf{(f)} are on the published environmental corpus, for
+comparability with prior work; Table~\ref{tab:hazard} gives the leak-free
+counterparts. Metric is Spearman $\rho$; all audio loudness-normalised to
+$-23$\,LUFS. Extended description and source data in the Supplementary
+Information.}
+\label{fig:wall}
+\end{figure*}
+
+Three controls exclude the obvious confounds. Truncating music excerpts from
+30\,s to a 6\,s window, matching the environmental corpus, leaves same-domain
+transfer at 0.63 and cross-domain transfer near zero. Holding out each of the
+six Schafer categories in turn leaves generalisation within the environmental
+corpus at $\rho = 0.52$, so the collapse is not simply a response to unseen
+content. Loudness normalisation before feature extraction removes a corpus
+fingerprint that otherwise inflates apparent transfer (Supplementary
+Fig.~S1).
+
+The barrier is not symmetric. Transfer from the environmental corpus into each
+of the three music corpora is uniformly low ($\rho \le 0.09$), while transfer
+outward is graded: $-0.04$ from PMEmo, $+0.13$ from DEAM, $+0.24$ from
+Soundtracks. Film soundtracks contain substantial atmospheric material, which
+is a plausible account of that ordering but not one we measured; we report the
+asymmetry and not an explanation for it.
+
+\subsubsection{What adaptation recovers}
+
+Calling a loss recoverable is only meaningful if the budget is quoted.
+Fig.~\ref{fig:price} gives the recovery curves, and
+Table~\ref{tab:adaptation} the numbers.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{../reports/figures_r/Fig2_price.pdf}
+\caption{What adaptation recovers on the corpus boundary, as the fraction of
+the gap between zero-shot transfer and a model trained on the target corpus
+itself. Environmental corpus without its mixture clips throughout.
+\textbf{(a)} Budget curves for both kinds of corpus swap; line and points,
+median over the six ordered pairs of each kind; band, interquartile range.
+\emph{The preprint drew only the cross-domain curve and reported it as the
+same-domain price.} \textbf{(b)} Label-free alignment with its sham control
+split by validity: with one environmental corpus the ``unrelated third
+corpus'' lies inside the target's own domain on three of the six pairs, and
+the entire pooled sham effect comes from those three. \textbf{(c)} CORAL
+decomposed; matching correlation structure, which is target-specific by
+construction, contributes 80\% of the gain. Ridge estimator; metric is
+Spearman $\rho$.}
+\label{fig:price}
+\end{figure*}
+
+Target-side labels recover a substantial fraction of both gaps.
+On the cross-domain pairs, 100 labels recover 57\% of the gap and 200 recover
+71\%; on the same-domain pairs, 100 recover 50\% and 200 recover 77\%. The
+two curves differ in shape rather than in whether a price exists: the
+cross-domain curve rises faster at small budgets, because its zero-shot
+starting point is much lower, while the same-domain curve overtakes it at 200.
+Restricting both to the pairs present at every budget changes the cross-domain
+values by at most 2 points and the same-domain values by up to 5, and does not
+change the ordering.
+
+\textbf{This is the correction that matters most in this revision.} The
+preprint reported the cross-domain curve --- 20/34/50/64/69\% at
+$k = 10/25/50/100/200$ --- and attributed it in the abstract and discussion to
+transfer "to a new corpus of the same kind", while describing the cross-domain
+boundary as one on which no purchase could be found. Both halves were wrong.
+The curve is the cross-domain curve, so the boundary the preprint called
+unpurchasable is precisely the one whose price it quoted; and the same-domain
+price, which the preprint's numbers were said to describe, is different.
+
+A label-free route also works. Correlation alignment recovers \textbf{25\%} of
+the cross-domain gap with no target labels at all. The preprint discounted
+this to roughly a third of its face value on the strength of a sham control
+that appeared to recover 14\%. That pooled figure is an average over three
+pairs where the sham is a valid negative control and three where it is not:
+when the source corpus is environmental, the "unrelated third corpus" is
+necessarily music and therefore in the target's domain. Separated, the valid
+sham recovers $-11\%$ and the invalid sham $+25\%$. The entire apparent sham
+effect comes from the invalid half, and CORAL's gain is therefore
+\emph{more} target-specific than the preprint claimed, not less.
+Decomposing CORAL confirms this: matching per-dimension variance alone
+recovers 5\%, and the further 20 points --- 80\% of the total --- come from
+matching correlation structure, which is target-specific by construction.
+Subspace alignment is worse than doing nothing ($-5\%$).
+
+\begin{table}[!t]
+\centering
+\caption{Adaptation on the corpus boundary, as the fraction of the gap between
+zero-shot transfer and a model trained on the target corpus itself. Ridge
+estimator, clean environmental corpus, median over the six ordered pairs of
+each kind. Two denominators are given for the few-shot rows because the
+numerator is ridge while the six-algorithm median is the reference used
+elsewhere in this paper.}
+\label{tab:adaptation}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{2}{c}{Same domain} & \multicolumn{2}{c}{Across domains} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Route & \thd{6-algo}{ref.} & \thd{ridge}{ref.} & \thd{6-algo}{ref.} & \thd{ridge}{ref.} \\
+\midrule
+10 target labels    & 8.6\%  & 7.5\%  & 18.8\% & 17.9\% \\
+25 target labels    & 16.0\% & 13.7\% & 30.9\% & 28.7\% \\
+50 target labels    & 33.9\% & 28.1\% & 43.5\% & 41.3\% \\
+100 target labels   & 49.9\% & 43.6\% & 56.9\% & 54.3\% \\
+200 target labels   & 76.5\% & 60.6\% & 71.0\% & 65.3\% \\
+\midrule
+CORAL (no labels)         & --- & --- & 25.0\% & --- \\
+\quad diagonal only       & --- & --- & 4.9\%  & --- \\
+\quad sham, valid pairs   & --- & --- & $-11.1$\% & --- \\
+\quad sham, invalid pairs & --- & --- & 25.1\% & --- \\
+Subspace alignment        & --- & --- & $-5$\% & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+One claim the preprint made about these curves does not survive either. It
+reported that the return per doubling of the budget collapses after 100
+labels, from a constant 14--16 points to 5. On the clean environmental corpus
+the increments are 10, 14, 10 and 14 points --- no collapse, and the largest
+increment is the last. The reported collapse was produced jointly by the
+mixture leakage and by the change of pair set at $k = 200$. We therefore make
+no claim about where the curve saturates: it had not saturated at the largest
+budget we tested.
+
+\subsubsection{Representation choice}
+
+The most direct objection to the preceding is that 122 hand-specified
+descriptors are too weak and that a representation learnt from a large audio
+corpus would cross what they cannot. We extracted four pretrained
+representations spanning four pretraining paradigms and repeated the transfer
+analysis unchanged (Table~\ref{tab:families}).
+
+The representations transfer between corpora and they do not cross between
+domains. For a given representation, the same operation --- swap the corpus,
+refit nothing --- costs 18--23\% of within-corpus performance when the new
+corpus is in the same domain and 79--108\% when it is not. That disposes of
+the alternative reading in which the embeddings simply fail to move between
+datasets at all.
+
+AST is the case that matters most, because AudioSet contains large numbers of
+environmental categories and it is therefore the family that most ought to
+cross. Here the mixture-leakage correction changes the conclusion
+quantitatively. On the published environmental corpus, AST raises cross-domain
+transfer from the hand-specified descriptors' $\rho = 0.047$ to $0.125$, a
+factor of 2.7 --- the figure the preprint reported. On the leak-free corpus
+the same comparison is $0.129$ against $0.162$: a difference of $+0.034$ and a
+factor of \textbf{1.26}. Most of the apparent advantage of a large pretrained
+representation over 122 hand-specified descriptors at this boundary was an
+artifact of evaluating on a test set half composed of near-duplicate mixtures.
+What remains is a small improvement in the expected direction.
+
+Wav2Vec2, pretrained on speech, transfers across domains at $\rho = -0.034$ on
+the leak-free corpus, which is to say not at all. MERT, pretrained on music,
+reaches 0.085.
+
+CLAP is the exception at a loss of 56\%, and it is the family whose
+pretraining set includes the repository from which the environmental corpus
+was built. It is not a generally stronger representation: within a corpus it
+reaches 0.774 against AST's 0.770, and on music-to-music transfer --- the
+comparison that excludes the environmental corpus entirely --- 0.620 against
+AST's 0.619 and 0.614 for the hand-specified descriptors. Its advantage
+appears only in comparisons that necessarily involve the corpus its
+pretraining data may overlap. We have not run a sample-level overlap check, so
+we cannot distinguish genuine crossing from familiarity with the target, and
+with one environmental corpus available no comparison in this paper can.
+CLAP is reported and flagged and is used neither as support nor as refutation.
+
+The statement this table supports is therefore: \emph{under the four
+pretraining paradigms tested, changing the representation does not recover the
+cross-domain gap, and the best of them improves on hand-specified descriptors
+by 0.034 in rank correlation.} It is not a statement that no representation
+could.
+
+\begin{table}[!t]
+\centering
+\caption{Transfer under five representations, each evaluated with the same
+models, folds and scoring. Medians over the relevant corpus pairs $\times$ six
+algorithms. \emph{Within corpus} is cross-validated performance on a corpus's
+own data; \emph{same domain} is transfer to a different corpus of the same
+kind; \emph{across domains} is transfer between music and environmental sound.
+The upper block uses the environmental corpus as distributed; the lower block
+excludes its 613 mixture clips (Section~\ref{sec:hazards}). Only the lower
+block is interpreted. CLAP's pretraining data include the source of the
+environmental corpus; it is reported for completeness and excluded from the
+claim.}
 \label{tab:families}
-\setlength{\tabcolsep}{5pt}
+\small
+\setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{lccccc}
 \toprule
 & \multicolumn{3}{c}{Spearman $\rho$} & \multicolumn{2}{c}{Loss from swap} \\
@@ -248,398 +797,463 @@ is reported for completeness and excluded from the claim.}
 Representation & \thd{Within}{corpus} & \thd{Same}{domain} & \thd{Across}{domains}
                & \thd{Same}{domain} & \thd{Across}{domains} \\
 \midrule
-Hand-specified (161) & 0.769 & 0.614 & 0.047 & 20.2\% & 93.9\% \\
-AST (AudioSet, supervised)   & 0.794 & 0.619 & 0.125 & 22.0\% & 84.2\% \\
-MERT (music, self-supervised) & 0.737 & 0.522 & 0.038 & 29.1\% & 94.9\% \\
-Wav2Vec2 (speech, self-supervised) & 0.511 & 0.354 & 0.051 & 30.7\% & 90.0\% \\
+\multicolumn{6}{l}{\emph{Environmental corpus as distributed (1{,}213 clips)}}\\
+Hand-specified (122)  & 0.769 & 0.614 & 0.047 & 20.2\% & 93.9\% \\
+AST (AudioSet)        & 0.794 & 0.619 & 0.125 & 22.0\% & 84.2\% \\
+MERT (music)          & 0.737 & 0.522 & 0.038 & 29.1\% & 94.9\% \\
+Wav2Vec2 (speech)     & 0.511 & 0.354 & 0.051 & 30.7\% & 90.0\% \\
+\emph{CLAP (overlap)} & \emph{0.787} & \emph{0.620} & \emph{0.336} & \emph{21.2\%} & \emph{57.3\%} \\
 \midrule
-\emph{CLAP (contaminated)} & \emph{0.787} & \emph{0.620} & \emph{0.336} & \emph{21.2\%} & \emph{57.3\%} \\
+\multicolumn{6}{l}{\emph{Environmental corpus without mixtures (600 clips)}}\\
+Hand-specified (122)  & 0.751 & 0.614 & \textbf{0.129} & 18.3\% & 82.9\% \\
+AST (AudioSet)        & 0.770 & 0.619 & \textbf{0.162} & 19.5\% & 78.9\% \\
+MERT (music)          & 0.679 & 0.522 & 0.085 & 23.0\% & 87.4\% \\
+Wav2Vec2 (speech)     & 0.460 & 0.354 & $-0.034$ & 23.0\% & 107.5\% \\
+\emph{CLAP (overlap)} & \emph{0.774} & \emph{0.620} & \emph{0.342} & \emph{19.9\%} & \emph{55.8\%} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\paragraph{One family behaves differently, and it is the contaminated one.}
-CLAP is the exception, at a barrier of 57.3\%. Its pretraining set contains
-Freesound, from which the environmental corpus was built; this overlap was the
-stated reason for extracting the other three families in the first place, before
-any of these numbers existed. CLAP is not a generally stronger representation:
-within a corpus it reaches $0.787$ against AST's $0.794$, and on
-music-to-music transfer --- the comparison that excludes the environmental corpus
-entirely --- it reaches $0.620$ against AST's $0.619$ and $0.614$ for the
-hand-specified descriptors. Its advantage appears only in the comparisons that
-necessarily involve the corpus its pretraining data overlaps, and it is of the size
-that overlap independently predicts: within that corpus, CLAP's advantage over
-hand-specified descriptors is $+0.070$, against $+0.037$ on a corpus outside its
-pretraining data.
+\subsection{Representation choice is target-specific: perceived happiness}
+\label{sec:tonality}
 
-We cannot resolve this with the corpora available. There is one environmental
-corpus, so every cross-domain comparison involves it, and genuine crossing cannot
-be separated from familiarity with the target. The barrier claim therefore rests on
-the three uncontaminated families; CLAP is reported and flagged, and is used
-neither as support nor as refutation. Deciding between the two readings requires an
-environmental corpus outside the pretraining data of the representation under test,
-which does not presently exist in a form we could obtain.
+One result shows what a representation change does buy, and it is the clearest
+demonstration in this paper that representation choice is target-specific
+rather than uniformly good or bad.
 
-\subsection*{The price of the first boundary, and what it does not buy}
+On Soundtracks, which carries eight rating scales, acoustic descriptors
+resolve tension ($\rho = 0.804$), tenderness (0.754), valence (0.735), fear
+(0.717) and anger (0.715). Perceived happiness is the single outlier at 0.474
+(Fig.~\ref{fig:tonality}a).
 
-Calling a failure budget-limited is only meaningful if the budget can be quoted. We
-therefore measured what target-side labels buy, expressed throughout as the
-fraction of the gap between zero-shot transfer and what a model trained on the
-target corpus itself achieves (Fig.~\ref{fig:price}).
+Musical happiness depends on mode and harmony, which the spectro-temporal set
+does not represent. Adding the 39 tonal descriptors raises happiness by
+$+0.132$ against a mean of $+0.045$ for the other seven axes, and the ordering
+of gains follows mode-dependence: happiness, valence ($+0.083$) and sadness
+($+0.077$) lead, while energy ($+0.012$) and anger ($+0.025$), which depend on
+level, roughness and rhythm, gain least. The deficit was representational
+rather than dimensional: 39 tonal descriptors \emph{alone} reach $\rho =
+0.580$ for happiness, above the 122 spectro-temporal descriptors at 0.474
+(Fig.~\ref{fig:tonality}b). A mechanism check dissociates the two families:
+among all 161 descriptors, major-key strength and mode score rank 1st and 2nd
+for happiness but 3rd and 20th for tension, whereas interval consonance and
+sensory roughness rank 4th and 7th for tension but 117th and 76th for
+happiness (Fig.~\ref{fig:tonality}c).
 
-Two routes were compared. The first uses no target labels at all and aligns the
-feature distributions instead. Correlation alignment is the best of the four
-variants tried, recovering 22\% of the gap. That number should not be read as a
-22\% saving. Aligning the source not to the target but to an unrelated third corpus
---- a manipulation that cannot carry target-specific information by construction
---- recovers 14\%, or about two-thirds of what the real alignment appears to buy.
-Only a third of the apparent gain is specific to the target; the rest is whatever a
-second-moment correction does for any distribution. Subspace alignment is worse
-than doing nothing at all ($-5\%$).
+The preprint presented this as a falsification test of its two-kind
+framework: an information-limited gap that a representation closes. We
+withdraw that framing for two reasons. The framework is withdrawn, so there is
+nothing to falsify; and the test's necessary first half --- that additional
+data does \emph{not} close the happiness gap --- was never measured. No
+sample-size curve exists for any Soundtracks axis. What the result supports is
+the narrower and still useful statement that a targeted representation change
+can recover a specific deficit that more of the same descriptors would not
+obviously recover, and that which representation helps depends on which axis
+is being predicted.
 
-The second route buys labels. Ten target-side labels recover 20\% of the gap, 25
-recover 34\%, 50 recover 50\% and 100 recover 64\%. Each doubling of the budget
-over this range returns a roughly constant 14 to 16 points --- the signature of a
-gap that is genuinely for sale. Doubling again to 200 labels returns only five more
-points, to 69\%, so the return falls sharply somewhere between 100 and 200. Whether
-the remaining third is purchasable at a budget we did not test, or is a second
-component of a different kind, this experiment does not say; the honest statement
-is that the first hundred labels are cheap, the next hundred are not, and the
-ceiling was not reached.
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{../reports/figures_r/Fig4_tonality.pdf}
+\caption{A representation change recovers a specific deficit.
+\textbf{(a)} Cross-validated Spearman $\rho$ for the eight affect axes of
+Soundtracks ($n = 360$) with 122 spectro-temporal descriptors alone (open) and
+with 39 tonal descriptors added (filled); axes ordered by gain. Blue marks the
+three axes for which musical mode is theoretically decisive, a grouping fixed
+before the comparison. \textbf{(b)} Tonal descriptors alone against
+spectro-temporal alone: for happiness, 39 tonal descriptors ($\rho = 0.580$)
+outperform 122 spectro-temporal ones (0.474), so the deficit was
+representational rather than dimensional. \textbf{(c)} Mechanism check: rank of
+five tonal descriptors among all 161 for happiness and for tension. Mode
+carries perceived happiness; consonance and roughness carry perceived tension.
+The preprint presented this as a falsification test of a two-kind framework;
+that framing is withdrawn, since the framework is withdrawn and the test's
+other half --- that more data does not close the happiness gap --- was never
+measured.}
+\label{fig:tonality}
+\end{figure*}
 
-This is what a budget-limited failure looks like when the budget is actually
-quoted: a price that exists, that is modest at the scale an application can afford,
-and that does not extend all the way to the ceiling. It is the contrast case for
-the two boundaries reported later, where no purchase could be found at all --- a
-statement about the routes we tried, not about every price that could be paid.
+Tonality is not the mechanism of the domain gap. Adding tonal descriptors
+\emph{lowers} music-to-environmental transfer by 0.021 (18 paired comparisons,
+$p = 0.038$ uncorrected), in the predicted direction but at a magnitude
+accounting for roughly 4\% of the gap. Tonal descriptors contribute almost
+nothing to arousal specifically ($+0.006$ within the music domain), and
+arousal is the target on which the gap was measured.
 
-\subsection*{Why transfer must be measured and cannot be inferred}
+\subsection{Boundary 2: cross-synthesis}
+\label{sec:synthesis}
 
-Before asking which descriptors matter, we asked whether that question has a
-method-independent answer. Four selection routes were applied to the same data:
-attribution-based importance with per-descriptor permutation control; cross-domain
-effect-size sign agreement; the native shape-function importance of an additive
-glass-box model; and stability across a Rashomon set of near-optimal models, in the
-sense of \citet{breiman2001} --- ten models sampled from sixty that fall within
-$0.02$ of the best cross-validated performance.
+A deployed system never plays the corpus; it plays audio that has been
+filtered, compressed, layered or generated. To ask whether the descriptors a
+model relies on are ones that \emph{move} a prediction when altered, we edited
+the audio: 80 source excerpts (40 music, 40 environmental) $\times$ three
+interventions $\times$ four doses, with the model held fixed and only the
+input changed (Fig.~\ref{fig:intervention}).
 
-The routes do not converge; they dissociate (Fig.~\ref{fig:routes}). The route that
-tests within-corpus significance returns temporal-variability descriptors in 2 of
-12 cases (17\%, below the 50\% chance level), whereas the three routes that probe
-generalisation or model multiplicity return them in 60--67\% of cases. The
-descriptors returned by the first route are precisely the spectral-level
-descriptors that do not transfer.
+The perturbed models are binary random-forest classifiers of low- versus
+high-arousal, one fitted on each domain; the modelled quantity is the
+predicted probability of the low-arousal class, so a positive dose slope means
+the edit made the excerpt read as \emph{calmer}. These are not the regression
+models of Section~\ref{sec:corpus}, a distinction the preprint did not make.
 
-The second route is informative in its own right about which descriptors survive
-the domain boundary at all. Of the descriptors significant in both domains, only
-eight keep their sign, and all eight are negative in both: quieter, less variable
-and less eventful sound is rated lower in arousal whether it is music or an
-environmental recording (Extended Data Fig.~8). Descriptors that reverse are
-without exception measures of absolute spectral level --- the property on which the
-two domains differ most.
+Two of the three interventions passed their manipulation check --- the edit
+moved the descriptor it was designed to move, monotonically across dose. Dose
+response was tested per excerpt: a slope across the four doses, and a Wilcoxon
+signed-rank test of those slopes against zero.
 
-This is worth stating plainly because ``important descriptors'' is often reported
-as though it were a property of the data. It is a property of the data and the
-question jointly: a method that asks which descriptors predict within a corpus and
-a method that asks which predict across corpora return different answers on the
-same data, and neither is wrong. Stability across the Rashomon set (Extended Data
-Fig.~5) is the most conservative of the four and returns six descriptors recovered
-by every near-optimal model.
+\subsubsection{The direction of the effect is not consistent across model and
+material}
 
-This result is a precondition for the rest of the paper rather than a finding
-alongside them. The route that is standard in the field returns, at a rate below
-chance, precisely the descriptors that do not survive the boundary just measured.
-No attribution method therefore licenses a statement about what will transfer. That
-is why every boundary in this paper is crossed and measured rather than predicted
-from the descriptors a model relies on within its own corpus.
+The preprint reported that spectral smoothing raised the low-arousal
+probability in both domains (median slope $+0.015$, sign consistency 70\% for
+the music model; $+0.074$, 71\% for the environmental model) and concluded
+that "the sign of an acoustic manipulation crosses the boundary that the
+predictions cannot, so what fails is calibration rather than the mapping".
 
-\subsection*{The falsification test: an information-limited gap that a
-representation does close}
+Those statistics pool, for each model, the 40 excerpts of its own domain with
+the 40 of the other. Disaggregated, the pattern does not support the
+conclusion (Table~\ref{tab:intervention}). The music model shows the effect on
+both kinds of material. The environmental model shows it strongly on
+\emph{music} excerpts (median $+0.080$, 100\% sign consistency) and
+\emph{not} on environmental excerpts --- the material it was fitted on and the
+material the claim is about --- where the median slope is $-0.019$ in the
+wrong direction at 57.5\% sign consistency and $p = 0.073$.
 
-The distinction organising this paper is worth nothing if it cannot fail. It would
-fail if a gap could be closed both by buying target-side observations and by
-changing the representation, because then the two diagnoses would not be
-alternatives. The condition was fixed before the analysis: we needed a gap of the
-second kind --- one that more data does not close --- and had to show that a
-representation closes it. This section reports the case we found, at the length the
-falsification test deserves. Without it, every failure in this paper could be
-relabelled information-limited after the fact, and the framework would be
-unfalsifiable.
+We therefore withdraw the claim. Three of the four model $\times$ material
+cells move in the intended direction and one does not, and the one that does
+not is the cell the mechanism claim needs most.
 
-On the Soundtracks corpus, which carries eight rating scales rather than two,
-acoustic descriptors resolve tension ($\rho = 0.804$), tenderness ($0.754$),
-valence ($0.735$), fear ($0.717$) and anger ($0.715$). Perceived happiness is the
-single outlier at $0.474$ (Fig.~\ref{fig:tonality}a, open circles).
+\begin{table}[!t]
+\centering
+\caption{Spectral smoothing, disaggregated by model and by the domain of the
+material. Per-excerpt dose slopes on the predicted low-arousal probability;
+positive means the edit made the excerpt read as calmer. The pooled rows are
+the statistics the preprint reported.}
+\label{tab:intervention}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llccc}
+\toprule
+Model & Material & $n$ & \thd{Median}{slope} & \thd{Wilcoxon}{$p$} \\
+\midrule
+\multirow{3}{*}{Music}
+ & pooled (as reported) & 80 & $+0.015$ & $3\times10^{-4}$ \\
+ & music excerpts       & 40 & $+0.099$ & $2\times10^{-4}$ \\
+ & environmental        & 40 & $+0.012$ & $7\times10^{-4}$ \\
+\midrule
+\multirow{3}{*}{Environmental}
+ & pooled (as reported) & 80 & $+0.074$ & $<10^{-4}$ \\
+ & music excerpts       & 40 & $+0.080$ & $<10^{-4}$ \\
+ & \textbf{environmental} & 40 & $\mathbf{-0.019}$ & \textbf{0.073} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-Musical happiness depends on mode and harmony, which the spectro-temporal
-descriptor set does not represent. We therefore added 39 tonal descriptors: a
-key-invariant chroma profile obtained by estimating the tonic with
-Krumhansl--Kessler profiles \citep{krumhansl1982} and rotating, a mode score,
-chroma flux and entropy, tonal centroids, an interval-consonance measure weighted
-by a fixed a-priori consonance ordering, and sensory roughness computed from
-spectral peaks after Plomp and Levelt \citep{plomp1965}.
+A second defect affects how the sign-consistency statistic should be read. It
+is defined as the fraction of excerpts whose slope matches the sign of the
+observed median, so 50\% is its arithmetic floor rather than a chance level;
+under the null its median is 0.54. Values near 50\% therefore indicate no
+per-excerpt effect, and values of 57--60\% are close to that floor. Only the
+cells at 70\% or above are meaningfully above it.
 
-The criterion was fixed before the test. Adding 39 descriptors will improve
-performance somewhere; the question was whether the gain would concentrate on
-happiness. It does: $+0.132$ for happiness against a mean of $+0.045$ for the other
-seven axes, and the ordering of gains follows mode-dependence --- happiness,
-valence and sadness lead; energy and anger, which depend on level, roughness and
-rhythm, gain least (Fig.~\ref{fig:tonality}a). The deficit was representational
-rather than dimensional: 39 tonal descriptors alone reach $\rho = 0.580$ for
-happiness, above the 122 spectro-temporal descriptors at $0.474$
-(Fig.~\ref{fig:tonality}b).
+Independently of the data, the mechanism claim was incompatible with the
+metric. Every transfer number in this paper is a Spearman rank correlation,
+which is exactly invariant under any strictly monotonic recalibration of a
+model's output. A purely calibrational deficit therefore \emph{cannot} move
+$\rho$ at all, let alone from 0.591 to 0.115. Whatever fails at the domain
+boundary changes the ranking, so it is not calibration in that sense.
 
-The mechanism check dissociates (Fig.~\ref{fig:tonality}c). Among all 161
-descriptors, major-key strength and mode score rank 1st and 2nd for happiness but
-3rd and 20th for tension, whereas interval consonance and sensory roughness rank
-4th and 7th for tension but 117th and 76th for happiness. Mode carries perceived
-happiness; consonance and roughness carry perceived tension. The ordering was
-selected by the model, not imposed.
+\subsubsection{What the synthesis boundary does support}
 
-Because environmental recordings largely lack stable tonal structure, we asked
-whether tonality is what fails to transfer across the domain boundary --- which
-would give the barrier a mechanistic account rather than a descriptive one. It is
-not. Adding tonal descriptors lowers music-to-environmental transfer by $0.021$
-(18 paired comparisons, $p = 0.038$ uncorrected), in the predicted direction but at
-a magnitude that accounts for roughly 4\% of the barrier itself (a fall from
-$0.592$ to $0.054$). The reason is visible in the preceding paragraph: tonal
-descriptors contribute almost nothing to \emph{arousal} specifically ($+0.006$
-within the music domain, and $+0.012$ for the energy axis in
-Fig.~\ref{fig:tonality}a), and arousal is the target on which the barrier was
-measured. Tonality is thus one more descriptor family that does not transfer, not
-the explanation for why none of them do. We therefore continue to report the
-barrier as a phenomenon and make no mechanistic claim.
+Injecting transients moved the probability in the intended direction and
+reached nominal significance in the pooled analysis but moved only 50\% and
+59\% of excerpts consistently, at the statistic's floor; we report it as a
+mean shift with no reliable per-excerpt effect. Envelope compression did not
+achieve its intended descriptor change and is a failed manipulation rather
+than a null result.
 
-\subsection*{Boundary 2, cross-synthesis: direction survives the edit, calibration
-does not}
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{../reports/figures_r/Fig5_intervention.pdf}
+\caption{An acoustic edit moves model output, reliably per excerpt for only
+one of three interventions and only at the level of a descriptor dimension.
+\textbf{(a)} Dose--response for three interventions on 80 excerpts at four
+doses; curves are mean predicted probability of the low-arousal class, so a
+rising curve means the edit made the excerpt read as calmer.
+\textbf{(b)} Manipulation check, run before any dose--response was read.
+Envelope compression fails it and is carried through as a failed manipulation
+rather than as a null effect. \textbf{(c)} Specificity: the five descriptors
+moved most by each intervention at maximum dose. No intervention moves its own
+target descriptor most, which restricts claims to a descriptor
+\emph{dimension}. \textbf{(d)} Significance against per-excerpt reliability.
+Sign consistency is computed against the observed median's sign, so 50\% is
+its arithmetic floor and not a chance level (null median 0.54). Panels
+\textbf{(a)} and \textbf{(d)} pool each model's own-domain and other-domain
+excerpts; Table~\ref{tab:intervention} disaggregates them, and that pooling
+carried the preprint's withdrawn ``calibration, not sign'' claim. Every
+quantity here is model output; no listener heard an edited excerpt.}
+\label{fig:intervention}
+\end{figure*}
 
-A deployed system never plays the corpus. It plays audio that has been filtered,
-compressed, layered or generated, so a synthesis boundary is crossed before any
-listener hears anything --- and unlike the other three, this one is crossed by the
-system's own design decisions rather than by circumstance. It is also the only
-boundary on which we can intervene rather than observe, which is what makes it
-informative about the boundary before it.
+A specificity diagnostic bounds what may be claimed
+(Fig.~\ref{fig:intervention}c): no intervention moved a single descriptor in
+isolation, each shifted a correlated family, and no intervention moved its
+own target descriptor most. Transient injection moves
+\texttt{spec\_contrast6\_dmean} by 9.0 standard deviations while moving
+\texttt{onset\_rate} by 2.0, ranking its target twelfth. Claims are therefore
+available at the level of a descriptor \emph{dimension} and not of any
+individual descriptor.
 
-The preceding results are correlational. To ask whether the descriptors the models
-rely on are also ones that \emph{move} a prediction when altered, we edited the
-audio itself: 80 source excerpts $\times$ three interventions $\times$ four doses,
-with the model held fixed and only the input changed
-(Fig.~\ref{fig:intervention}).
+Finally and most importantly, every statement in this section is about model
+output. No listener heard any edited excerpt. Nothing here establishes that a
+listener's affective response would move in the same direction, or in any
+direction.
 
-Two of the three interventions passed their manipulation check --- that is, the
-edit moved the descriptor it was designed to move, monotonically across dose
-(Fig.~\ref{fig:intervention}b). Dose--response was then tested at the level of the
-individual excerpt: a slope per excerpt across its four doses, and a Wilcoxon
-signed-rank test of those 80 slopes against zero, with a sign-flip permutation
-null. The modelled quantity throughout is the predicted probability of the
-low-arousal class, so a positive slope means the edit made the excerpt read as
-\emph{calmer}. Smoothing spectral flux, which lowers the rate of timbral change,
-lowered predicted arousal in both domains (median slope $+0.015$ on that
-probability, $p_{\text{perm}} = 1\times10^{-4}$ in the music domain; $+0.074$,
-$1\times10^{-4}$ in the environmental domain), and did so consistently in sign
-across 70\% and 71\% of excerpts. The directions agree across the domain boundary
-that Fig.~\ref{fig:wall} shows predictions cannot cross, which is informative in
-itself: \textbf{the barrier is one of calibration, not of sign.} A model fitted to
-music does not know how loud is loud in an environmental recording, but it still
-knows that smoother is calmer.
+\subsection{Boundary 3: cross-response-channel}
+\label{sec:channel}
 
-Injecting transients moved the probability the other way, as designed, and reached
-significance ($p_{\text{perm}} = 1\times10^{-3}$ and $8\times10^{-4}$), but moved
-only 50\% and 59\% of excerpts in a consistent direction --- at or barely above
-chance. We therefore report it as a mean shift without a reliable per-excerpt
-effect, and do not build on it. Envelope compression did not reach its intended
-descriptor change and is reported as a failed manipulation rather than as a null
-effect.
+This boundary is crossed by changing what counts as the response while the
+sound and the listeners stay fixed. It is the boundary an application crosses
+when it stops asking people how they feel and reads a sensor instead. It also
+involves two different corpora and two different physiological modalities,
+which the preprint fused under a single umbrella; we keep them separate.
 
-An earlier version of this analysis averaged the 80 excerpts within dose and
-correlated the four resulting points, reporting rank correlations of $+0.632$ and
-$+1.000$. That statistic cannot support the claim: with $n = 4$ the smallest
-attainable two-sided $p$ for a Spearman correlation is $0.083$, so it could not
-have reached significance whatever the data showed. The excerpt-level test above
-replaces it.
+\subsubsection{What was excluded before the question was asked}
 
-The specificity diagnostic bounds what may be claimed
-(Fig.~\ref{fig:intervention}c). No intervention moved a single descriptor in
-isolation; each shifted a correlated family. The result therefore supports
-causal statements at the level of a descriptor \emph{dimension} --- rate of
-timbral change, onset density --- and not at the level of any individual
-descriptor. It is also a statement about model behaviour: the listener response
-to these edits was not measured here.
+Two analyses were removed on criteria unrelated to what they might have shown.
+In ds002721 the documented mapping from stimulus trigger code to audio file
+does not reproduce, and an attempt to recover it by matching emotion profiles
+did not beat its permutation null ($p = 0.19$); acoustics-to-physiology is
+therefore \emph{not testable} in that corpus and we do not test it
+(Supplementary Section~S1). In BIRAFFE2 no participant of 94 passed both
+electrodermal positive controls, so that pipeline is withdrawn (Supplementary
+Section~S2) and supports nothing here.
 
-Of the three quantities we report at every boundary, this one supplies two. The
-ceiling is the within-corpus performance of the model being perturbed, and the
-survival is the sign agreement just described. The price is not defined here: there
-is nothing to buy, because the deficit is not a missing quantity of data but a
-missing calibration, and the calibration is supplied by the target-side labels
-already priced at the previous boundary. What this boundary contributes instead is
-a constraint on what those labels have to do. They do not have to teach the model
-which acoustic direction is calming; it already knows. They have to tell it where
-the scale sits.
+\subsubsection{EEG: ratings carry more stimulus-specific structure than EEG
+measures do}
 
-\subsection*{Boundary 3, cross-response-channel: what listeners say and what their
-bodies do}
+Against the four passing controls, stimulus-level reliability was estimated
+for eight self-report scales and 156 EEG measures on the same 31 listeners and
+with the same estimator (Fig.~\ref{fig:channel}). Coherence is the strongest
+EEG family (maximum intraclass correlation 0.092, 95\% CI [0.037, 0.142]) and
+band power the weakest (0.040), against 0.221 [0.155, 0.281] for the
+best-agreeing self-report scale.
 
-The two boundaries reported so far are crossed by changing the sound. This one is
-crossed by changing what counts as the response, while the sound and the listeners
-stay fixed. It is the boundary an application crosses when it stops asking people
-how they feel and starts reading a sensor instead, and it is the point at which the
-budget-limited pattern of the first boundary stops holding.
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{../reports/figures_r/Fig6_channel.pdf}
+\caption{Reference distributions, positive controls, and the comparison they
+license. \textbf{(a,\,b)} A cross-model attribution consensus against its
+label-permutation reference: the observed overlap falls at the null mean
+($p = 0.38$) while the intact labels reach an AUC of 0.936, so the statistic
+cannot separate signal from noise and no claim is built on it.
+\textbf{(c)} Positive controls for two physiological pipelines. BIRAFFE2 fails
+both, and is withdrawn; ds002721 passes all. \textbf{(d)} Grand-average
+fronto-central response to sound onset ($n = 31$); grey band, 95th percentile
+of a subject-wise sign-flip null with max-statistic correction; peak
+$|t| = 8.78$ at 452\,ms, $p = 0.0001$. \textbf{(e)} Stimulus-level intraclass
+correlation for eight self-report scales and 156 EEG measures on the same
+listeners. The EEG value is the maximum of 156 candidates and the self-report
+value the maximum of 8, so their selection biases are unequal in the direction
+that favours the EEG side; and the two sets rest on 1{,}240 and
+1{,}080--1{,}121 trials respectively, not on identical trials as the preprint
+stated. Reported as a bound, not an absence.}
+\label{fig:channel}
+\end{figure*}
 
-\paragraph{Admission: what was excluded before the question was asked.}
-Two corpora were removed before any result was computed, on criteria that had
-nothing to do with what they might have shown. In the EEG corpus, the documented
-mapping from stimulus trigger code to audio file does not reproduce, and an attempt
-to recover it by matching emotion profiles did not beat its permutation null
-($p = 0.19$); acoustics-to-physiology is therefore not testable there, and we do not
-test it (Supplementary Section~1). In an electrodermal corpus of 94 participants,
-no participant passed both pre-declared positive controls, so the pipeline was
-withdrawn rather than reported (Supplementary Section~2). Neither exclusion is a
-negative result. Both are the reason the negative results that follow can be read
-at all: what remains is the subset in which a failure to find something means
-something.
+Four qualifications are required, and the preprint stated only the first two.
+The EEG value is the maximum of 156 measures and is biased upward for that
+reason; referred to a null built the same way --- permuting stimulus labels,
+recomputing all 156 correlations and taking the largest, 400 times --- it
+carries $p = 0.02$, while Benjamini--Hochberg across the same 156 does not
+pass it (smallest $q = 0.16$). It is close to the 0.10 this design resolves
+with 80\% power, so the interval is consistent with values from near zero
+upward. Third, the self-report value is also a maximum of a selection, but
+over 8 candidates rather than 156, so the two point estimates carry
+\emph{unequal} selection bias in the direction that favours the EEG side; the
+comparison is conservative with respect to our conclusion but the asymmetry
+should be stated. Fourth, the two sets are not computed on identical trials:
+the EEG measures use 1{,}240 trials over 307 stimuli and the self-report
+scales 1{,}080--1{,}121 trials over 285--298 stimuli. The preprint's claim of
+"the same 1,240 trials" for both is incorrect.
 
-We analysed an EEG corpus of 31 listeners hearing 12\,s musical excerpts, recorded
-with standardised event markers
-\citep{daly2018data,gorgolewski2016,pernet2019}, processed with MNE-Python
-\citep{gramfort2013}.
+What the data support is a comparison and not an absence: whatever
+stimulus-specific structure these EEG measures carry is less than half of what
+the listeners' own ratings carry on largely overlapping trials. This is a
+statement about the component shared across listeners. It is not a claim that
+the brain does not respond to sound --- the onset response in these same
+recordings is large and highly reliable ($|t| = 8.78$ at 452\,ms,
+$p = 0.0001$). What is weak is the \emph{differentiating} component.
 
-Four dataset-level positive controls were run before any substantive analysis
-(Fig.~\ref{fig:channel}c). Relative occipital alpha exceeded frontal alpha in
-31 of 31 listeners ($p = 1.9 \times 10^{-9}$), verifying channel identity and
-spectral estimation. Averages time-locked to annotated blinks reached 164\,\uV{}
-frontally, 3.98-fold the occipital amplitude and far above random windows
-($p = 9.3 \times 10^{-10}$); because blinks are large and their times are annotated
-independently, this verifies that event onsets index the correct samples. A
-sound-onset response is present at 372--588\,ms, with peak $|t| = 8.78$ at 452\,ms
-against a subject-wise sign-flip null with max-statistic correction
-\citep{maris2007} ($p = 0.0001$); the pre-stimulus interval is not significant
-($p = 0.54$), excluding a slow drift (Fig.~\ref{fig:channel}d). No classical N1
-is present, while the stimuli have sharp onsets (median 25\,ms to half-amplitude),
-so the absent fast component is attributed to playback-latency jitter; this limits
-millisecond-scale analysis but not trial-wise spectral measures.
+A positive result exists in the literature on these same recordings and we
+state its relation to ours precisely, because a reader could otherwise take
+the two as contradictory. Daly et al.\ \cite{daly2015} report that
+music-induced emotion can be predicted from brain activity \emph{combined
+with} acoustic features, at a best correlation of $r = 0.234$
+($p < 0.001$), with either feature type alone performing significantly worse.
+We do not contradict that. It is a group-level, within-dataset prediction
+result combining two modalities; ours is a stimulus-level reliability estimate
+on EEG measures alone, asked in order to bound what a mapping from acoustics
+could reach. The two are compatible: a combined model can predict an outcome
+that an individual channel carries only weakly. We also note that the
+acoustics half of their analysis requires the trigger-to-audio mapping we were
+unable to reproduce (Supplementary Section~S1), which is why we do not attempt
+the corresponding analysis here rather than reporting it as a failure.
 
-Against these controls, stimulus-level reliability was estimated for eight
-self-report scales and 156 EEG measures on the same listeners, the same 1,240
-trials and with the same estimator (Fig.~\ref{fig:channel}e). The EEG set spans
-regional band power (26), magnitude-squared coherence between region pairs (50),
-imaginary coherency (50) and electrode-pair asymmetry (30); coherence and asymmetry
-are included because the original analysis of these data located its effect there
-\citep{daly2014}. Coherence is indeed the strongest EEG family (maximum intraclass
-correlation $0.092$, 95\% CI $[0.037, 0.142]$) and band power the weakest
-($0.040$), against $0.221$ $[0.155, 0.281]$ for the best-agreeing self-report scale
-on the same trials; the two intervals do not overlap.
+\subsubsection{Electrodermal: no acoustic route exceeds its control, and no
+ceiling can be quoted}
 
-That maximum is drawn from 156 measures, so it needs a null built the same way. We
-permuted the stimulus labels, recomputed all 156 intraclass correlations and took
-the largest, 400 times. Referred to that distribution the observed value carries
-$p = 0.02$; referred to Benjamini--Hochberg across the same 156 it does not survive
-(smallest $q = 0.16$) \citep{benjamini1995}. The two corrections disagree because
-the value sits between them, not because either is wrong --- at rank one the
-Benjamini--Hochberg threshold is the Bonferroni threshold, and the observation
-falls just either side of it.
+In PMEmo, three routes to the song-level electrodermal measures were compared.
+Acoustic descriptors predict them at $\rho = 0.014$--0.070 with $p$ between
+0.03 and 0.34; ratings predicted from acoustics reach $\rho = 0.091$--0.119;
+and the listeners' own ratings reach $\rho = 0.117$ ($p = 0.004$, valence
+against skin-conductance response rate). A random projection of the descriptor
+space reaches the level of the two acoustic routes at its 95th percentile. The
+defensible statement is therefore: \textbf{no acoustic route to these
+electrodermal measures exceeds an uninformative control, and the listeners'
+own ratings do, weakly.}
 
-We therefore report a bound rather than an absence. The estimate is the maximum of
-a selection and is biased upward for that reason, and $0.092$ is close to the
-$0.10$ this design can resolve with 80\% power, so the interval is consistent with
-values from near zero up to about a tenth of the response variance. What the data
-do support, and what matters for the boundary, is the comparison: whatever
-stimulus-specific structure the EEG carries is less than half of what the ratings
-carry on the same trials, and the two intervals are disjoint.
+The preprint expressed all three as percentages of an attainable ceiling ---
+31\%, 24.5\% and 21.3\% --- and argued that three routes stopping within a
+third of the ceiling made it unlikely that the limit lay in the predictor.
+Three things are wrong with that argument and we withdraw it in full.
 
-No price could be established for this boundary, and the reason is worth stating
-precisely, because it is weaker than a demonstration of absence. Across the
-acoustic principal components, the ratings predicted from acoustics, and the
-ratings themselves, no information source exceeds 31\% of the attainable ceiling on
-the physiological target: the best of them is the subjective valence rating against
-skin-conductance response rate, at $\rho = 0.117$ against a ceiling of $0.382$, or
-$30.6\%$. Ratings predicted from acoustics reach $24.5\%$ and the leading acoustic
-principal component $21.3\%$. Their confidence intervals overlap, so we do not
-separate them, and the comparison that matters is against the control rather than
-against each other: a random projection of the descriptor space reaches $20.6\%$ at
-its 95th percentile, which places the two acoustic routes at the edge of what an
-uninformative direction achieves and leaves only the human rating clearly above it.
-When the best available predictor, the predictor derived from it, and the human
-judgement it was derived from all stop within a third of the ceiling, the limit is
-unlikely to lie in the predictor.
+First, the ceiling is not established. It was $\sqrt{r}$ of the measure's
+stimulus-level reliability, and Section~\ref{sec:hazards} shows that
+presentation position alone reproduces 114--249\% of that reliability. A
+denominator that a position sham reproduces cannot bound a stimulus-driven
+predictor.
 
-That is an argument from three routes failing alike, not from a saturation curve.
-The other budget-limited boundaries were priced by buying target-side observations
-and watching the recovery flatten; no equivalent curve exists here, because the
-song-level electrodermal corpus does not support one. We therefore report that
-every representation and every predictor we tested failed to recover the gap, and
-we do not claim that no quantity of target-side data could. Distinguishing the two
-requires a target-side learning curve on a physiological outcome, which is the
-single most informative experiment this work does not contain.
+Second, the percentages selected across denominators. The three figures use
+two different electrodermal measures whose ceilings differ by 40\%, and the
+largest percentage belongs to the measure with the \emph{lowest} reliability
+and therefore the lowest ceiling --- not to the largest correlation. The
+highest raw correlation (0.135, valence against phasic mean) yields the
+\emph{smaller} percentage.
 
-Because the intended application is per-person rather than population-level, the
-same question was asked within listeners, with the null distribution drawn from
-each listener's own label permutations so that relationships differing in form
-across people would not cancel. An individual-level positive control ---
-predicting trial index, which must be predictable because impedance and vigilance
-drift within a session --- passed for 29 of 31 listeners ($\rho = 0.573$ against a
-null of $-0.222$). Of 248 listener $\times$ scale tests, 9 reached $p < 0.05$
-against a chance expectation of $12.4$ (binomial $p = 0.88$), and none survived
-correction (Extended Data Fig.~6).
+Third, the preprint asserted that the three routes' confidence intervals
+overlap. No confidence intervals were computed for the acoustic routes. The
+one interval that does exist, for the rating route, contains the
+random-projection control.
+
+Finally, the three routes are not independent evidence: route 2 is derived
+from route 1 and route 3 is the source of route 2. Three nested routes failing
+alike is weaker than three independent ones, which the preprint did not say.
+
+What remains is a clean negative about the routes tested, on a target whose
+own stimulus-level reliability this corpus cannot establish. We do not claim
+that no quantity of target-side data would recover this gap, and we did not
+measure a target-side learning curve on a physiological outcome. That
+experiment is the single most informative one this work does not contain.
+
+\subsubsection{The individual-level analysis is a design problem, not a null}
+
+Because the intended application is per-person, the same question was asked
+within listeners on the EEG corpus, with the null drawn from each listener's
+own label permutations. Of 248 listener $\times$ scale tests, 9 reached
+$p < 0.05$ against a chance expectation of 12.4 (binomial $p = 0.88$), and
+none survived correction (Supplementary Fig.~S6).
 
 Independent-component removal of ocular artefacts acts here as a sensitivity
-manipulation check rather than as cleaning. It increased detection of the known
-effect (individual-level control: 26 $\rightarrow$ 29 listeners passing,
-$\rho = 0.401 \rightarrow 0.573$) while further reducing the effect of interest
-(13 $\rightarrow$ 9 nominal detections). A pipeline made measurably more sensitive
-did not reveal the association, which excludes insufficient signal-to-noise as an
-explanation.
+manipulation check rather than as cleaning: it increased detection of the
+known effect (individual-level control: 26 $\rightarrow$ 29 listeners passing,
+$\rho = 0.401 \rightarrow 0.573$) while further reducing the effect of
+interest (13 $\rightarrow$ 9 nominal detections). A pipeline made measurably
+more sensitive did not reveal the association, which excludes insufficient
+signal-to-noise.
 
-It does not, however, exclude insufficient observations, and the two must be kept
-apart. The simulation reported below shows that with the roughly 30 rated trials
-each listener contributed, a within-person association of $r = 0.40$ would have
-been detected on 13\% of occasions, and one of $r = 0.20$ on 5\% --- that is, at
-chance. \textbf{The individual-level analysis is therefore uninformative about
-within-person associations below approximately $r = 0.5$, and we do not interpret
-it as evidence of absence.} The between-listener result above does not share this
-limitation, because it pools 31 listeners at the level of the stimulus; it is the
-individual-level question, not the group-level one, that the design cannot address.
+It does not exclude insufficient observations. With the roughly 30 rated
+trials each listener contributed, the design simulation below gives 10\% power
+for a within-person association of $r = 0.40$ and 6\% for $r = 0.20$. The
+individual-level analysis is therefore \textbf{uninformative} about
+within-person associations below approximately $r = 0.5$, and we draw no
+conclusion from it. The between-listener result does not share this
+limitation, because it pools 31 listeners at the level of the stimulus.
 
-We also verified that the same conclusion is not an artefact of a single
-electrodermal corpus that we had previously analysed \citep{kutt2022}: applying
-individual-level positive controls to 94 of its participants, habituation of skin
-conductance was in the expected direction for only 35\% of individuals, and no
-participant passed both controls, so no usable subset exists (Supplementary
-Information S2; recording standards after \citealp{boucsein2012}).
+\subsection{Boundary 4: cross-individual}
+\label{sec:individual}
 
-\subsection*{Boundary 4, cross-individual: for sale, at a price that depends on the
-domain}
+\subsubsection{How many observations per person a design needs}
 
-The last boundary is the one an application crosses when it stops serving people in
-general and starts serving one person. Unlike the boundary before it, this one has
-a price. Unlike the first, the price is not a single number.
+Synthetic within-person associations of known strength were injected into data
+generated from the empirical feature covariance of the EEG corpus
+(Ledoit--Wolf shrinkage \cite{ledoit2004}) and recovered with the identical
+pipeline, criterion and permutation test (Fig.~\ref{fig:design}b). The
+requirement is steep: 314 observations per person for $r = 0.40$, 564 for
+$r = 0.30$, 1{,}364 for $r = 0.20$ and 4{,}888 for $r = 0.10$, against the
+$\sim$30 this corpus supplies (Table~\ref{tab:power}).
 
-To place the preceding limitation on a quantitative footing, synthetic within-person
-associations of known strength were injected into data generated from the empirical
-feature covariance of the EEG corpus (Ledoit--Wolf shrinkage \citep{ledoit2004})
-and recovered with the identical pipeline, criterion and permutation test
-(Fig.~\ref{fig:design}b). The requirement is steep: 314 observations per person for
-$r = 0.40$ and 564 for $r = 0.30$, against the $\sim$30 this corpus supplies
-(Table~\ref{tab:power}).
+Because that rests on an assumed covariance structure, we measured the same
+curve directly in ds003690, which supplies $\sim$240 auditory events per
+person with simultaneous EEG, electrocardiogram and pupillometry and carries
+an effect that is certainly present. Establishing it at the group level first
+is what makes the individual-level result interpretable: at $p = 0.0002$ for
+all three channels, an individual in whom it is not detected is one in whom
+the measurement failed, not one in whom the effect is absent. The cardiac
+component reproduces the anticipatory deceleration of $-0.83$\,bpm those
+authors originally reported in this cohort \cite{ribeiro2019cardiac}.
 
-\begin{table}[htbp]
+At the full 240 observations the evoked response is recovered in 72 of 75
+listeners from EEG, 62 of 73 from pupil diameter and 47 of 75 from heart rate.
+At 30 observations --- what a laboratory session supplies --- the same effect
+is recovered in 53\%, 39\% and 23\% of individuals, while the false-positive
+rate stays nominal across the whole range (0.03--0.07)
+(Fig.~\ref{fig:design}a). An effect plainly visible in the group average
+($-5.6\,\uV$ at the N1) is a coin toss within a single person at the
+observation count these paradigms provide.
+
+\begin{figure*}[!t]
 \centering
-\small
-\caption{Observations per person required for 80\% power, and the power actually
-available at the $\sim$30 rated trials this corpus provides. Simulated rows use
-injected associations of known strength; measured rows use the auditory evoked
-response in an independent corpus of 75 listeners. The simulation was run at
-500 replicates per cell with $n$ extended to 5{,}000, which resolves the two
-weakest effects that a coarser grid could only bound at $> 1{,}000$.}
+\includegraphics[width=\textwidth]{../reports/figures_r/Fig7_design.pdf}
+\caption{The individual-level question is a design problem rather than a null
+result. \textbf{(a)} Detection measured in real physiology: in 75 listeners
+with $\sim$240 auditory events each, the proportion in whom the evoked
+response is detected when only $n$ of that listener's observations are used (40
+resamples per point), with each channel's analytic power curve overlaid. The
+dotted line is the false-positive rate from sign-randomised differences and
+stays nominal (0.03--0.07) throughout, so the rise is detection.
+\textbf{(b)} Simulated power against observations per person for four true
+association strengths. \textbf{(c)} Observations per person for 80\%
+detection, measured and simulated, against three supply levels.
+\textbf{(d)} Between-person slope spread and its per-cell
+parametric-bootstrap null in three settings; the null is plotted rather than
+subtracted because the estimator returns 0.11 at 18 observations per person
+when the true value is zero. Panel \textbf{(d)} is a different quantity from
+\textbf{(a)}--\textbf{(c)}, and its three settings differ in corpus,
+descriptor set and outcome axis together, so they are not compared against one
+another. Extended description in the Supplementary Information.}
+\label{fig:design}
+\end{figure*}
+
+Three features bear on how the simulated requirement should be read. It
+validates the extrapolation: predicting detection at $n$ from an effect size
+estimated on a disjoint half of the same person's trials matches the observed
+rate to within 0.03 on average. The requirement is channel-specific in the
+direction that matters for applied work --- heart rate, the signal a consumer
+device records, needs roughly four times as many observations as scalp EEG
+(233 against 57). And it is not worse in older listeners; the evoked response
+is larger in the older group, so fewer observations are needed (48 against 69
+for EEG). Both kinds of estimate are lower bounds: the simulation assumes
+multivariate normality, linearity and within-person stationarity, each of
+which favours detection, and the measurement uses a deliberately plain
+pipeline.
+
+\begin{table}[!t]
+\centering
+\caption{Observations per person required for 80\% power, and the power
+available at the $\sim$30 rated trials the EEG corpus provides. Simulated rows
+use injected associations of known strength; measured rows use the auditory
+evoked response in an independent corpus of 75 listeners.}
 \label{tab:power}
+\small
 \begin{tabular}{llcc}
 \toprule
-& Effect & Observations for 80\% & Detection at $n = 30$ \\
+& Effect & \thd{Obs.\ for}{80\% power} & \thd{Power at}{$n = 30$} \\
 \midrule
 \multirow{4}{*}{Simulated}
- & $r = 0.40$  & 314         & 0.10 \\
- & $r = 0.30$  & 564         & 0.07 \\
- & $r = 0.20$  & $1{,}364$   & 0.06 \\
- & $r = 0.10$  & $4{,}888$   & 0.04 \\
+ & $r = 0.40$  & 314        & 0.10 \\
+ & $r = 0.30$  & 564        & 0.07 \\
+ & $r = 0.20$  & $1{,}364$  & 0.06 \\
+ & $r = 0.10$  & $4{,}888$  & 0.04 \\
 \midrule
 \multirow{3}{*}{Measured}
  & Scalp EEG (N1)  & 57  & 0.53 \\
@@ -649,739 +1263,344 @@ weakest effects that a coarser grid could only bound at $> 1{,}000$.}
 \end{tabular}
 \end{table}
 
-Because that estimate rests on an assumed covariance structure, we measured the
-same curve directly. An independent corpus of 75 listeners
-\citep{ds003690,ribeiro2019erp,ribeiro2019cardiac} provides $\sim$240 auditory
-events per person with
-simultaneous scalp EEG, electrocardiogram and pupillometry, and carries an effect
-that is certainly present: the evoked response to a tone. Establishing it at the
-group level first is what makes the individual-level result interpretable --- at
-$p = 0.0002$ for all three channels, an individual in whom it is not detected is
-an individual in whom the measurement failed, not one in whom the effect is
-absent. The cardiac component of that control, an anticipatory deceleration of
-$-0.83$\,bpm following the cue, reproduces the effect those authors originally
-reported in this cohort \citep{ribeiro2019cardiac}.
+One further result from that corpus bears on the choice of channel. In its
+passive block, where the same tones are presented with no task and no
+response, the cortical response is undiminished ($-5.7\,\uV$, $p = 0.0002$)
+but neither the cardiac nor the pupillary response is detectable
+($p = 0.30$ and $p = 0.99$). This is not a power failure: had the effect been
+the size it is in the active blocks, the group test would have detected it
+with probability 1.00. The scope of the observation is narrow --- 250\,ms
+tones, awake listeners, 30 passive trials each --- and it does not transfer to
+music heard over minutes. It does mean that for a passively listening user
+monitored through heart rate alone, the question of how many observations are
+needed may be preceded by the question of whether there is a response to
+count.
 
-Detection was then measured per person as a function of how many of that person's
-observations were used, with an identical sign-flip test at every point
-(Fig.~\ref{fig:design}a). At the full 240 observations the evoked response is
-recovered in 72 of 75 listeners from EEG, 62 of 73 from pupil diameter and 47 of
-75 from heart rate (Benjamini--Hochberg corrected). At 30 observations --- what a
-laboratory session supplies --- the same effect is recovered in 53\%, 39\% and
-23\% of individuals respectively, while the false-positive rate stays at nominal
-across the whole range (0.03--0.07). An effect plainly visible in the group
-average ($-5.6\,\uV$ at the N1) is thus a coin toss within a single person at the
-observation count these paradigms provide.
+\subsubsection{Between-person slope heterogeneity, and what it does not
+establish}
 
-Three features of this measurement bear on how the simulated requirement should be
-read. First, it validates the extrapolation itself: predicting detection at $n$
-from an effect size estimated on a disjoint half of the same person's trials
-matches the observed rate to within $0.03$ on average, so the procedure behind
-Table~\ref{tab:power} is not an artefact of its distributional assumptions.
-Second, the requirement is channel-specific, and in the direction that matters for
-applied work --- heart rate, the signal a consumer device actually records, needs
-roughly four times as many observations as scalp EEG (233 against 57). Third, the
-requirement is not worse in older listeners; the evoked response is larger in the
-older group, so fewer observations are needed (48 against 69 for EEG).
+The question an application faces is when fitting a listener their own slope
+beats giving them the population slope. Table~\ref{tab:individual} reports two
+answers, and they disagree.
 
-Comparable public corpora provide 40--60 observations per person and are in the
-same regime. The estimates are lower bounds. The simulation assumes multivariate
-normality, a linear association and within-person stationarity; each assumption
-favours detection, and the last is the least tenable over long recordings, where
-electrode drift and state change are larger. The measured curve is a lower bound
-for a different reason: it uses a deliberately plain measurement --- a
-fixed-window mean over one electrode cluster, with no independent component
-analysis or spatial filtering --- so a dedicated pipeline would do better. It is,
-however, representative of what a non-specialist pipeline achieves, which is the
-situation an applied system is in.
+The variance model places break-even at 67 observations per person in urban
+soundscape ratings, 166 in music ratings, and --- over the minority of
+electrodermal cells in which it is finite at all --- 318. Between-person
+spread exceeds its own per-cell null in 8 of 8 soundscape cells, 10 of 10
+music-rating cells, and only 4 of 15 electrodermal cells.
 
-One further result from that corpus is relevant to the choice of channel. In its
-passive block, where the same tones are presented with no task and no response,
-the cortical response is undiminished ($-5.7\,\uV$, $p = 0.0002$) but neither the
-cardiac nor the pupillary response is detectable ($p = 0.30$ and $p = 0.99$). This
-is not a power failure: had the effect been the size it is in the active blocks,
-the group test would have detected it with probability $1.00$. Task relevance,
-rather than the sound itself, appears to drive the peripheral channels here. The
-scope of that observation is narrow --- 250\,ms tones in awake listeners, 30
-passive trials each --- and it does not transfer to music heard over minutes. It
-does mean that for a passively listening user monitored through heart rate alone,
-the question of how many observations are needed may be preceded by the question
-of whether there is a response to count.
+Three properties of the electrodermal row must be stated because the preprint
+reported its $n^{*}$ as though it were comparable to the other two. Ten of the
+fifteen cells have a corrected spread of exactly zero, so $n^{*}$ for them is
+infinite: no budget buys a quantity that may be zero. The reported 318 is the
+median over the five cells where $n^{*}$ is finite, a subset the preprint did
+not disclose, and one of those five does not exceed its own null. The median
+over all fifteen cells is infinite, and the median over the four cells that do
+exceed their null is 264. We give all three and interpret none of them as a
+price.
 
-\paragraph{The price is domain-dependent, and lowest in the domain nearest an
-application.} The counts above are for detecting a within-person association at
-all. The question an application actually faces is narrower: at what point does
-fitting a listener their own slope beat giving them the population slope? That
-break-even is reached when the between-person spread of the slope exceeds the error
-in estimating it, and both quantities are measurable. We estimated them on three
-corpora with a common estimator and, for each cell, a null distribution built by
-parametric bootstrap from that cell's own design --- because a between-person
-standard deviation estimated from few observations per person is biased upward, and
-at 18 observations per person the estimator returns 0.11 when the true value is
-zero (Table~\ref{tab:individual}).
-
-The price is not one number. In urban soundscape ratings --- the setting closest to
-an application that plays sound to change how a place feels --- the median cell
-requires 67 observations per person, and two of eight cells have already crossed
-break-even at the 42 observations the corpus supplies, both on the eventfulness
-axis. In music ratings the median is 166. In song-level electrodermal responses to
-music it is 318, and 11 of 15 cells cannot be distinguished from their own null at
-all. Referred to a common 18 observations per person, the three settings clear
-their nulls in 100\%, 50\% and 13\% of cells.
-
-Four limits keep the two cells that cross break-even a candidate signal rather
-than a validated result, and we would not act on them as they stand. The null for
-each cell rests on 60 bootstrap replicates, so the Monte-Carlo error on the
-threshold is of the same order as the margin by which the marginal cells clear it.
-The correction subtracts the null in the variance metric, which is an empirical
-device validated against simulation rather than a distributional result. No
-multiplicity control is applied across the 33 cells, so with two crossings the
-family-wise statement is weaker than the per-cell one. And the slopes are
-estimated in two stages --- per person, then pooled --- where a cross-classified
-hierarchical model would propagate the first stage's uncertainty into the second
-instead of treating it as known.
-
-The corpus is the fifth limit and the largest. ARAUS \citep{ooi2024araus} is
-ratings of urban
-soundscapes by awake listeners in a laboratory; it is nearer an application that
-plays sound than any music corpus we have, and it is still not a sleep setting, a
-long recording, or a listener whose state is drifting. By this paper's own
-argument that is another boundary crossing, and an untested one. The defensible
-reading is that per-person calibration first becomes worth testing in the
-product-adjacent domain, at a scale existing corpora already reach --- not that it
-has been shown to pay.
-
-\begin{table}[htbp]
+\begin{table*}[!t]
 \centering
-\small
-\caption{When per-person calibration begins to pay. For each descriptor--outcome
-cell, the between-person standard deviation of the slope was estimated by
-restricted maximum likelihood and corrected against a null built by parametric
-bootstrap from that cell's own design; $n^{*}$ is the number of observations per
-person at which that spread exceeds the error in estimating it. Cells whose
-estimate does not exceed their own null are counted separately, because a
-between-person spread estimated from few observations per person is biased upward.}
+\caption{Between-person slope heterogeneity and break-even, with the direct
+out-of-sample test alongside. $\tau$ is the between-person standard deviation
+of the acoustic slope after subtraction of a per-cell parametric-bootstrap
+null. $n^{*}$ is the model-implied break-even. The final column is the
+measured out-of-sample gain from fitting each listener their own slope instead
+of the population slope, at the observation count the corpus supplies.
+Positive would mean personalisation helps.}
 \label{tab:individual}
+\small
+\setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{lccccc}
 \toprule
-Setting & Obs./person & Cells & Above own null & Median $\tau$ & Median $n^{*}$ \\
+Setting & \thd{Obs.\ per}{person} & \thd{Cells above}{own null}
+        & \thd{Median}{$\tau$} & \thd{Median}{$n^{*}$}
+        & \thd{Out-of-sample}{gain} \\
 \midrule
-Urban soundscapes, ratings & 42 & 8 & 8 & 0.133 & \textbf{67} \\
-Music, ratings & 44 & 10 & 10 & 0.074 & 166 \\
-Music, electrodermal & 18 & 15 & 4 & 0.000 & 318 \\
+Soundscape ratings  & 42 & 8/8   & 0.133 & 67  & not measured \\
+Music ratings       & 44 & 10/10 & 0.074 & 166 & $-0.054$ to $-0.020$ \\
+Music electrodermal & 18 & 4/15  & 0.000 & $\infty$\,\textsuperscript{a} & $-0.109$ to $-0.072$ \\
 \bottomrule
+\multicolumn{6}{l}{\footnotesize\textsuperscript{a} 318 over the 5 cells with
+finite $n^{*}$; 264 over the 4 above their own null.}
 \end{tabular}
-\end{table}
-
-Two steps of comparable size separate these: moving from soundscapes to music costs
-about as much as moving from ratings to electrodermal response. Choosing the wrong
-corpus is as expensive as choosing the wrong channel, which is not how the
-literature on either is usually written. It also means our own earlier estimates,
-made on music corpora, were pessimistic about the product-adjacent case by roughly
-a factor of two.
-
-\section*{Discussion}
-
-\subsection*{What the results establish}
-
-``The model does not generalise'' is not one diagnosis. It is two, and they call
-for opposite remedies (Fig.~\ref{fig:boundaries}).
-
-Taken in order, the four boundaries divide as follows. The first, cross-corpus,
-contains both kinds inside a single experiment: swapping a corpus within a domain
-costs a fifth of attainable performance and the loss is for sale --- a hundred
-target-side labels return two-thirds of it --- while swapping across the domain
-boundary costs four-fifths to all of it and four pretrained representations,
-including one supervised on a corpus full of environmental sound, do not recover
-it. The second, cross-synthesis, is not a loss of information but of calibration:
-the sign of an acoustic edit's effect crosses the boundary that the predictions
-themselves cannot. The third, cross-response-channel, is the one where no purchase
-was found: no predictor we constructed exceeds 31\% of the attainable ceiling on
-the physiological target, and the acoustic principal components, the ratings
-predicted from them, and the ratings themselves all stop within a third of it. We
-label it information-limited on that pattern, while noting that the label rests on
-routes tried rather than on a saturating budget curve. The fourth,
-cross-individual, is budget-limited with a price that varies by a factor of five
-across settings, and in the setting closest to an application it has already been
-paid.
-
-The distinction is not a taxonomy imposed after the fact. It was stated as
-falsifiable in advance: a boundary that could be closed both by more observations
-and by a better representation would break it. We looked for that case and report
-it at length --- perceived happiness, an information-limited gap that 39 tonal
-descriptors do close --- because a framework in which every unrecoverable failure
-can be relabelled after the fact is not a framework.
-
-At the level of group-averaged ratings, acoustic descriptors are close to the limit
-imposed by annotator agreement, and the informative variation lies in
-generalisation. Two boundaries are sharp. The first is between sound domains, and
-it is asymmetric: environmental sound does not transfer into music at all, while
-music transfers outward in proportion to how much atmospheric material it contains.
-The second is between measurement levels: the same listeners, on the same trials,
-show substantial stimulus-specific agreement in what they report and, at most, a
-component less than half that size in what their EEG does --- one that sits at the
-edge of what correction for selection across measures will pass.
-
-The second boundary requires care in statement, in three respects. It is not a claim
-that the brain does not respond to sound: the onset response in these same
-recordings is large and highly reliable. What is weak is the
-\emph{differentiating} component --- a stimulus-specific pattern shared across
-listeners. The common response is strong; the differential response is not.
-
-Nor is it a claim that the differential component is zero. The strongest of the
-156 EEG measures reaches an intraclass correlation of 0.09 (95\% CI 0.04--0.14)
-against 0.22 (0.16--0.28) for the best-agreeing rating scale on the same stimuli.
-Referred to a null built by permuting stimulus labels and taking the maximum across
-all 156 measures --- the correction the selection requires --- that value carries
-$p = 0.02$: at the boundary, neither a clean positive nor a demonstrated zero. It is
-also the maximum of a selection, so the point estimate is biased upward, and it
-falls near the 0.10 this design can resolve with 80\% power. The defensible
-statement is a bound, not an absence: whatever stimulus-specific structure the EEG
-carries is less than half of what the ratings carry, and the two intervals do not
-overlap.
-
-Nor do the two levels carry equal evidential weight. The between-listener result
-pools 31 listeners at the level of the stimulus and is adequately powered. The
-within-listener result is not: with roughly 30 rated trials per person, an
-association of $r = 0.40$ would have been detected on 13\% of occasions. That
-analysis therefore establishes only that no large within-person association is
-obvious, and we draw no conclusion from it about associations of the size one would
-actually expect. Distinguishing these two statuses matters, because they call for
-different responses --- the first is a finding, the second is a design problem.
-
-\subsection*{Why the negative is interpretable}
-
-Physiological negatives are difficult to interpret because failure of the
-measurement and absence of the effect produce the same number. Three features of
-the present analysis separate them. Event-to-sample alignment was verified directly
-through blink-locked averages, which is a bookkeeping check rather than a
-physiological assumption. Positive controls were run at the level at which the
-conclusion is drawn --- individually, not only in aggregate. And artefact removal
-was used as a manipulation check: a step that measurably increased sensitivity to a
-known effect did not increase the effect of interest. The third converts ``we could
-not detect it'' into ``we made the instrument more sensitive and still could not
-detect it'', at the cost of one additional analysis.
-
-Two further failure modes are worth separating from these, because they are often
-conflated. Measurement failure and low signal-to-noise are addressed by the
-controls above. \textbf{Insufficient observations are not}, and no amount of
-artefact removal substitutes for them. It was only on computing the power available
-at 30 trials per person that the individual-level analysis in this study turned out
-to be uninformative for any plausible effect size --- a limitation invisible in the
-analysis itself, which returned a clean null with passing controls. A negative
-result accompanied by positive controls can still be a negative result about
-nothing at all.
-
-We would therefore suggest that a design-sensitivity calculation belongs alongside
-positive controls whenever a physiological null is reported, and that it be
-computed on the empirical covariance of the actual measurements rather than from a
-nominal effect size, since the two can differ by an order of magnitude in the
-required $n$.
-
-\subsection*{Which gaps are worth paying for}
-
-Reading the four boundaries as one price list is the practical use of the
-distinction. Two of them are for sale. Crossing to a new corpus within a domain
-costs on the order of a hundred target-side labels for two-thirds of the gap, and
-the first hundred are far cheaper per label than the second. Fitting a listener
-their own slope costs 67 observations in the setting closest to an application, 166
-in music ratings, and 318 in electrodermal response --- a range wide enough that
-the choice of corpus is a budgeting decision, not a convenience.
-
-Two are not for sale, and the reasons differ. Crossing between sound domains is not
-recovered by any of four pretrained representations, including the one that ought
-to cross; what target labels buy there is the calibration the synthesis experiment
-isolates, not the mapping, which already transfers in sign. Crossing to a
-physiological response is the one boundary where the ceiling itself is low: the
-acoustic principal components, the ratings predicted from them, and the ratings
-themselves all stop within a third of it, so the limit is unlikely to lie on the
-predictor and is not obviously moved by improving it.
-
-A single rule follows. Before spending on more data or a larger model, establish
-which kind of failure is at hand --- and the cheapest way to establish it is to
-check whether a different information source, rather than more of the same one,
-moves the number. Where it does not, the budget is better spent on a different
-measurement than on a larger one.
-
-The scope is specific: approximately 30 observations per person, 12\,s excerpts,
-single exposure, scalp EEG, cross-sectional design. Each element is a property of
-the design rather than of the phenomenon, and the simulation quantifies the first
-of them directly --- 314 observations per person for $r = 0.40$, 564 for
-$r = 0.30$, 1,364 for $r = 0.20$ and 4,888 for $r = 0.10$.
-
-These numbers are not unreachable in absolute terms. They are unreachable within a
-session \emph{that also varies its stimuli}. A recording that samples a listener
-once per minute over an eight-hour night yields on the order of 480 observations,
-so the $r = 0.30$ requirement corresponds to a little over one night and the
-$r = 0.40$ requirement to less than one, while $r = 0.20$ would take about three
-nights and $r = 0.10$ about ten. The gap between what the question
-needs and what the paradigm supplies is thus about a factor of twenty, and it is a
-gap in \emph{duration and repetition} rather than in participants: recruiting more
-people does not help, because the quantity in short supply is observations within
-a person.
-
-The qualification matters, because observation count and stimulus richness trade
-against each other inside a fixed session. The corpus used above for the measured
-curve reaches 240 events per person in about 45 minutes --- but it does so with
-four pure tones, which is to say with no acoustic variation to model. Rating
-corpora make the opposite trade: hundreds of distinct excerpts, a few tens of them
-per listener. What the question requires is both at once, and it is the
-combination, not either quantity alone, that no session-length design supplies.
-
-The relevant point is that this design is not incidental to the corpora we used but
-structural to the paradigm that produced them. A single laboratory session is
-bounded by participant fatigue and electrode drying; a stimulus set broad enough to
-cover an affective space forces a trade-off between observations per stimulus and
-stimuli per participant --- in the present corpus, 307 distinct stimuli with a
-median of two listeners each and a median pairwise overlap of six excerpts; and a
-cross-sectional design cannot separate state from trait because it never observes
-the same person twice.
-
-The data required to answer the question are therefore within-person,
-longitudinal, varied in stimulus, and of an order of magnitude in observations per
-person that no single session provides. We were unable to locate such a
-combination in public form: a systematic search of OpenNeuro (1,833 datasets) and
-PhysioNet (426) returned no corpus pairing repeated controlled auditory
-stimulation with a state readout at the required density, and the standard
-affective-physiology corpora distributed outside those repositories --- DEAP,
-AMIGOS, MAHNOB-HCI, DREAMER, ASCERTAIN, CASE --- supply between 8 and 40 stimuli
-per participant, one to two orders of magnitude below the measured requirement for
-a peripheral channel. The claim is bounded by that search rather than absolute.
-It is also a statement about what would settle the question, not a prediction
-about how it would be settled: an association of the required size may or may not
-be present once the observations are available.
-
-\subsection*{Limitations}
-
-Perceived arousal in a rating corpus is not sleep onset, sleep continuity or any
-clinical endpoint; the affective annotations used here bear on the former only.
-Of the three counterfactual audio manipulations (Fig.~\ref{fig:intervention}), one
---- spectral smoothing --- shifts model outputs in the predicted direction with a
-per-excerpt effect that is both significant and consistent in sign; the other two
-are a failed manipulation and a mean shift without per-excerpt consistency. Even
-for the first, the claim is at the level of a descriptor dimension, has not been
-verified in listeners, and the specificity of the manipulation does not support
-claims about individual descriptors. Cardiac and pupillary signals
-enter this work only through the design-requirement measurement, where the
-stimulus is a pure tone; no analysis here relates a naturalistic soundscape to a
-peripheral physiological measure, and respiratory and actigraphic signals are not
-covered at all. Two properties of the tone corpus limit how far its numbers
-travel: the listeners were awake and performing a task, and the events were
-250\,ms tones rather than minutes of music. Finally, the acoustic-to-physiological
-link
-could not be examined in the EEG corpus at all: the mapping from stimulus trigger
-codes to audio files given in the dataset documentation does not reproduce, and an
-attempt to recover it from emotion-profile matching did not exceed its permutation
-null ($p = 0.19$). The listeners' own ratings and their EEG remain analysable
-because the trigger codes are internally consistent, but the audio itself could not
-be linked. Two further discrepancies in that dataset's event annotation are
-reported in Supplementary Information S1.
-
-\section*{Methods}
-
-\subsection*{Corpora}
-
-Four rating corpora were used: DEAM (music, $n = 1{,}233$) \citep{aljanaki2017},
-PMEmo (music, $n = 717$) \citep{zhang2018pmemo}, Soundtracks Set 1 (music,
-$n = 360$) \citep{eerola2011} and Emo-Soundscapes (environmental, $n = 1{,}213$)
-\citep{fan2017emo}. ESC-50 \citep{piczak2015} served as a second environmental
-corpus for the category control. The prediction target throughout is
-group-averaged perceived arousal, rescaled to $-1$--$1$; the circumplex framing
-follows \citet{russell1980} and \citet{eerola2013}. Soundtracks additionally
-carries seven further scales (valence, tension, anger, fear, happiness, sadness,
-tenderness) on nine-point Likert scales, linearly rescaled to the same range --- a
-monotone transformation that leaves all reported rank statistics unchanged.
-
-Soundtracks was included specifically to test whether within-music transfer
-reflects shared acoustic structure or a shared annotation tradition: it originates
-from a different laboratory and decade, uses a categorical rather than continuous
-rating protocol, and was assembled as a balanced design of twelve target emotions
-$\times$ 30 excerpts.
-
-\subsection*{Audio preparation}
-
-All audio was resampled to 22{,}050\,Hz, centre-cropped to at most 30\,s, and
-loudness-normalised to $-23$\,LUFS (ITU-R BS.1770) before any descriptor was
-computed. Normalisation is not cosmetic: without it, corpus-specific mastering
-levels act as an identifier that inflates apparent cross-corpus transfer (Extended
-Data Fig.~1). For the duration control, music excerpts were additionally cropped to
-a 6\,s centred window to match the environmental corpus.
-
-\subsection*{Descriptors}
-
-\paragraph{Spectro-temporal (122).}
-Mel-frequency cepstral coefficients, spectral centroid, bandwidth, contrast,
-flatness and roll-off, zero-crossing rate, root-mean-square level, onset strength
-and onset rate, spectral slope, and band-energy ratios. Each frame-level series is
-summarised by mean, standard deviation, 10th, 50th and 90th percentiles, and the
-mean absolute first difference, the last of which indexes rate of change rather
-than level. Computed with librosa \citep{mcfee2015}.
-
-\paragraph{Tonal (39).}
-Harmonic--percussive separation ratio; a key-invariant chroma profile obtained by
-estimating the tonic through correlation of the mean constant-Q chroma vector with
-Krumhansl--Kessler major and minor profiles \citep{krumhansl1982} and rotating the
-vector so that the tonic occupies index 0; major-key strength, minor-key strength,
-their difference (mode score) and key clarity; chroma flux and chroma entropy; six
-tonal-centroid dimensions with standard deviations; an interval-consonance measure
-formed by weighting each pitch-class pair by the consonance of its interval;
-sensory roughness computed over the strongest spectral peaks per frame after Plomp
-and Levelt \citep{plomp1965}; and fundamental-frequency median, interquartile range
-and voiced fraction.
-
-Rotation to the tonic is essential rather than convenient. An unrotated chroma
-vector encodes which key a piece is in, which is arbitrary with respect to affect
---- transposing a piece does not change its emotional character --- so an unrotated
-representation would let a model learn the key distribution of a corpus. The
-interval-consonance weights are fixed a priori from the standard ordering of
-sensory consonance (unison $>$ perfect fifth $>$ perfect fourth $>$ major third and
-sixth $>$ minor third and sixth $>$ major second and minor seventh $>$ minor second
-and major seventh $>$ tritone) and are not fitted, so they contribute no degrees of
-freedom.
-
-\paragraph{Pretrained embeddings (512).}
-Audio embeddings from a contrastive language--audio model \citep{wu2023clap},
-used only for the representation comparison (Extended Data Fig.~7). One corpus
-derives from the public sound repository that appears in the model's pretraining
-data, so the comparison is reported separately for it and for two corpora with no
-such overlap.
-
-\subsection*{Models and evaluation}
-
-Six regressors --- ElasticNet, support vector regression, $k$-nearest neighbours,
-random forest, gradient boosting and XGBoost \citep{chen2016xgboost} --- were
-evaluated by five-fold GroupKFold cross-validation with groups defined by source
-recording, so that no excerpt from a recording appears in both training and test
-folds. Reported values are Spearman rank correlations between predicted and
-observed values; cross-corpus transfer fits on the whole of one corpus and
-evaluates on the whole of another. Where a single value is reported for a cell, it
-is the best of the six algorithms; where a comparison between conditions is made,
-all six are retained as paired observations and the comparison is tested by
-Wilcoxon signed-rank.
-
-\paragraph{Annotation reliability ceiling.}
-Per-rater judgements were split at random into two halves, stimulus means computed
-within each, correlated, and corrected by the Spearman--Brown formula; the reported
-value is the mean over 200 random splits. Model performance is expressed as a
-fraction of this ceiling.
-
-\subsection*{EEG acquisition and preprocessing}
-
-Data are OpenNeuro ds002721 \citep{daly2018data}: 31 listeners, 19 scalp channels
-at 1\,kHz referenced to FCz, six runs per listener of which four contained ten
-12\,s music excerpts each. Event annotation follows BIDS and its EEG extension
-\citep{gorgolewski2016,pernet2019}, which defines event onsets relative to the
-first recorded sample --- the property that makes the alignment check below
-possible. Processing used MNE-Python \citep{gramfort2013}: 50\,Hz notch, 1--45\,Hz
-bandpass, resampling to 250\,Hz. Spectral and asymmetry measures were computed
-after re-referencing to the average of the 19 channels; coherence was computed on
-the recording reference, because average referencing introduces a common component
-across channels that inflates coherence.
-
-\paragraph{Trial-wise measures (156).}
-Relative band power (delta, theta, alpha, beta, gamma) in five regions, expressed
-as the change from a 2\,s pre-onset baseline to a 1--14\,s response window (26
-measures including frontal alpha asymmetry); magnitude-squared coherence between
-all ten region pairs in five bands (50); the imaginary part of coherency for the
-same pairs and bands (50), which is insensitive to the zero-lag correlations
-produced by volume conduction; and log-ratio asymmetry for six homologous electrode
-pairs in five bands (30). Coherence and asymmetry families are included because the
-original analysis of these recordings located its effect there \citep{daly2014};
-restricting the measure set to band power would test the conclusion on a
-representation that excludes the effect in question.
-
-\paragraph{Artefact handling.}
-For the main analyses no epoch rejection was applied, so that the stimulus and null
-arms receive identical treatment. In the sensitivity analysis,
-independent-component analysis (15 components) was fitted per run and components
-correlated with the frontopolar channels, used as ocular proxies, were removed
-(median one component per run). All other parameters were held fixed, so that any
-change is attributable to artefact removal alone.
-
-\subsection*{Controls preceding physiological analysis}
-
-Four checks were specified and run before any substantive analysis, with the
-decision rule that failure of any one would halt interpretation.
-
-\begin{enumerate}
-\item \textbf{Event bookkeeping.} Each music run must contain exactly ten
-music-onset markers, pair bijectively with ten stimulus codes, and carry exactly
-eighty response events.
-\item \textbf{Channel identity and spectral estimation.} Relative alpha power must
-be greater at occipital than at frontal sites during rest.
-\item \textbf{Event-to-sample alignment.} Averages time-locked to independently
-annotated blink events must show a large frontal deflection relative to occipital
-sites and to random windows. This is a bookkeeping check: it depends only on blinks
-being large and their times being recorded, not on any physiological hypothesis.
-\item \textbf{Stimulus-locked response.} An evoked response to sound onset must
-exceed a subject-wise sign-flip null with max-statistic correction across the epoch
-\citep{maris2007}.
-\end{enumerate}
-
-Control 4 initially failed under a criterion that compared evoked global field
-power in a 0--300\,ms window against temporally shifted nulls. Two problems were
-identified. The window was placed for a classical N1 while the response in these
-data peaks at 452\,ms; and any temporally shifted null moves the analysis window
-into the response-collection period, which has a different noise environment,
-because stimulus onsets fall in the quietest part of the trial structure. The
-sign-flip null avoids both by not moving in time. We report this because the
-mis-specified criterion would, if followed, have led us to discard a valid dataset.
-
-\paragraph{Individual-level controls.}
-Because the substantive question is per-person, the same logic was applied within
-listeners: each listener's EEG must predict trial index, which is necessarily
-predictable given impedance and vigilance drift within a session. Listeners failing
-this check would have their negative results treated as uninterpretable.
-
-\subsection*{Reliability and decoding}
-
-\paragraph{Stimulus-level reliability}
-was estimated in two ways that agree. A one-way random-effects intraclass
-correlation was computed over all 1,240 trials after within-listener z-scoring,
-which is the appropriate estimator for the unbalanced design (307 distinct stimuli,
-median two listeners each). Split-half reliability across listeners with
-Spearman--Brown correction was computed on the subset of stimuli heard by at least
-eight listeners ($n = 44$). Significance used within-listener permutation of
-stimulus labels.
-
-\paragraph{Per-listener decoding}
-used five-fold cross-validation with standardisation and principal-component
-reduction to eight components fitted within each training fold, followed by ridge
-regression with cross-validated penalty. The evaluation metric is the rank
-correlation between out-of-fold prediction and observation. This metric is biased
-downwards under cross-validation at small $n$ --- training-fold means are displaced
-from held-out values --- so it is never compared against zero but always against a
-null formed by permuting that listener's own labels through the identical pipeline
-(200 permutations). Leave-one-out cross-validation was tried first and abandoned:
-it produced observed and null values both near $-0.5$, rendering the comparison
-uninformative.
-
-Multiplicity across measures was controlled by the Benjamini--Hochberg procedure
-\citep{benjamini1995}.
-
-\subsection*{Design simulation}
-
-Feature covariance was estimated from the artefact-corrected EEG measures by
-Ledoit--Wolf shrinkage \citep{ledoit2004}. For each combination of true association
-strength ($r \in \{0.10, 0.20, 0.30, 0.40\}$) and observations per person
-($n \in \{30, 60, 120, 250, 500, 1000, 2000, 5000\}$), 500 datasets were generated
-from that covariance with a sparse linear association injected and scaled to the
-target strength, and each was analysed with the identical pipeline, criterion and
-permutation test used on the real data (100 permutations per dataset). Reported
-power is the proportion of datasets in which the association was detected at
-$p < 0.05$. An earlier run at 60 datasets per cell and $n \le 1{,}000$ could only
-bound the two weakest effects at $> 1{,}000$; extending the grid resolves them at
-1,364 and 4,888. The two strongest requirements shifted by less than the
-Monte-Carlo error of the coarser run (271 to 314 and 650 to 564).
-
-The simulation is optimistic by construction. Multivariate-normal generation
-understates the heavy tails of real measurements; the injected association is
-linear; and within-person stationarity is assumed, which is least tenable over the
-long recordings the result is used to discuss. Required sample sizes are therefore
-lower bounds.
-
-\subsection*{Measured design requirement}
-
-The simulated requirement was checked against a direct measurement in an
-independent corpus of 75 adults (36 aged 19--30, 39 aged 50--70) recorded with
-64-channel EEG, bipolar electrocardiogram and binocular pupillometry at 500\,Hz
-during cued reaction-time tasks \citep{ds003690,ribeiro2019erp,ribeiro2019cardiac}.
-Auditory cues were 250\,ms pure tones at approximately 67\,dB(A). Each participant
-contributed 240 cues across two active tasks and 30 in a passive block. Event
-timing was verified against the sample indices supplied in the BIDS event files.
-
-Three response measures were fixed in advance, one per channel: the mean
-fronto-central amplitude over 80--130\,ms after cue onset (nine electrodes,
-mastoid reference, 0.1--30\,Hz, epochs exceeding $\pm 150\,\uV$ rejected); the mean
-change in instantaneous heart rate over 1--5\,s relative to a 3\,s pre-cue baseline
-(R peaks detected on a 5--35\,Hz band); and the mean change in pupil diameter over
-0.5--2.5\,s relative to a 1\,s baseline, with blink samples interpolated and epochs
-exceeding 30\% interpolation rejected. A pre-declared secondary EEG measure, the
-difference between 170--230\,ms and 80--130\,ms, is reported alongside the primary
-one; inspection of the pre-declared grand-average waveform showed the later window
-to fall on the contingent negative variation rather than on a P2, as is expected in
-a cued task, so the single-window measure was adopted as primary. Both are
-fixed-window means, for which the sign-flip null below is exact; peak-to-peak
-measures are not, being positive under the null by construction.
-
-Each real cue was paired with a randomly placed anchor in the same recording, and
-all analyses operate on the difference. Random anchors rather than a fixed temporal
-shift were used because the inter-cue interval leaves no quiet window of the
-required length; the difference also removes a monotone within-run decline in heart
-rate that the anchor arm revealed. Under the null of no event-locked response the
-two arms are exchangeable, so sign-flipping the paired differences is exact.
-Detection was assessed per participant with 5,000 sign flips at $\alpha = 0.05$ and
-Benjamini--Hochberg correction across participants. The trial-count curve
-subsamples $n$ of a participant's pairs, repeats the identical test 40 times per
-value of $n$, and reports the mean detection rate; the accompanying false-positive
-rate applies the same procedure to sign-randomised differences, which preserves the
-noise but removes the effect. Extrapolation was validated out of sample by
-estimating each participant's effect size on a random half of their trials and
-predicting detection on the other half.
-
-Heart rate and pupil diameter were analysed separately by task, a stratification
-fixed on design grounds: the active-task response window contains the imperative
-tone and the button press, the passive block contains neither, and the two differ
-eightfold in trials per person.
-
-\subsection*{Supplementary electrodermal corpus}
-
-An electrodermal corpus \citep{kutt2022} was analysed and its results withdrawn.
-Processing used NeuroKit2 \citep{makowski2021} following standard recommendations
-\citep{boucsein2012}. Group-level positive controls failed --- habituation of skin
-conductance across trials was significant in the direction opposite to the
-established effect, and post-stimulus windows did not exceed random windows. The
-possibility that a usable subset existed, with group means displaced by equipment
-failures in the remainder, was tested by applying both controls per participant: of
-94 analysable participants none passed both, and habituation was in the expected
-direction for only 35\%, so no subset exists. Details are in Supplementary
-Information S2.
-
-\subsection*{Reproducibility}
-
-Each analysis writes a run record --- 172 of them --- carrying the script, the
-random seed, the parameters and the resulting metrics, and source data for every
-figure panel are provided as machine-readable tables. What that record does and
-does not establish should be stated plainly, because the two are often conflated.
-
-It fixes the seed, the parameters and the numbers, so a reader can see exactly
-what was computed and compare it with the tables. It does not currently pin the
-code: all 172 records were written from a working tree with uncommitted changes,
-and the repository head is older than most of the analyses, so the recorded commit
-identifies a starting point rather than the state that produced the number. Input
-hashes are present for 38 of the 172 and absent for the rest; output hashes are
-not recorded at all. There is no automated test suite. The figures are the
-exception --- each figure script asserts the values the text quotes from it, so a
-figure that drifts from the prose breaks the build --- but that discipline covers
-the figures only.
-
-The practical consequence is that the analyses are reproducible from the scripts
-and the public corpora, at the parameters recorded, and are not yet reproducible
-bit-for-bit from a pinned commit. Bringing the record up to the stronger claim
-requires committing the tree, re-running under a clean checkout and recording
-input and output hashes throughout; that work is not done, and we would rather say
-so than let the weaker guarantee be read as the stronger one.
-
-Reference metadata were verified individually by DOI lookup with reverse title
-checking; entries that could not be confirmed were excluded rather than cited.
+\end{table*}
+
+\subsubsection{The direct test returns a negative gain at every budget
+available}
+
+The repository behind this paper already contained the out-of-sample test the
+break-even framing needs, and the preprint did not report it. We report it
+here because it is the more decisive evidence and it points the other way.
+
+Fitting each listener their own slope and evaluating out of sample against the
+population slope returns a \textbf{negative} gain in 15 of 15 electrodermal
+cells ($-0.109$ to $-0.072$ at 18 observations per person) and in every one of
+10 music-rating cells at 18, 30 and 50 observations per person. The gain rises
+monotonically towards zero with budget: $-0.125$ to $-0.052$ at $n = 18$,
+$-0.054$ to $-0.020$ at $n = 30$, $-0.028$ to $-0.002$ at $n = 50$, and at
+$n = 100$ four of ten cells turn positive with the best at $p = 0.054$.
+
+That trajectory is consistent with the variance model's break-even of 166 for
+this setting, and to that extent it validates the extrapolation's direction.
+It also settles the applied question in the opposite direction from the
+preprint's reading: \textbf{at every observation count these corpora supply,
+per-person calibration measurably loses to the population model.}
+
+No out-of-sample test of this kind exists for the soundscape corpus, which is
+the setting with the lowest $n^{*}$ and the only one where the model implies
+break-even has been reached. The two cells said to have crossed break-even are
+both on the eventfulness axis, and the manipulation check for that axis does
+not pass in that corpus --- the sound-to-masker ratio manipulation moves
+pleasantness ($p = 4 \times 10^{-6}$) but not eventfulness ($p = 0.38$). The
+single positive individualisation result in this paper therefore sits on the
+axis with no passing positive control and with no out-of-sample confirmation.
+The defensible reading is that per-person calibration in the
+product-adjacent domain is \emph{worth testing} at a scale existing corpora
+reach, and that it has not been shown to pay anywhere.
+
+For the same reason we do not compare the three settings against one another.
+Corpus, descriptor set and outcome axis vary together: the soundscape cells
+use ISO-532 psychoacoustic descriptors against ISO soundscape axes, the music
+cells use spectro-temporal and tonal descriptors against valence and arousal,
+and the electrodermal cells use those same descriptors against electrodermal
+measures. The preprint concluded from the spread that "choosing the wrong
+corpus is as expensive as choosing the wrong channel"; with three covarying
+factors and three settings, that conclusion is not available.
 
 % =====================================================================
-\section*{Data availability}
+\section{Discussion}
 
-All analyses use publicly available data. Accession identifiers, access dates and
-licence terms are listed below; each corpus is additionally cited in the text as
-requested by its distributors.
+\subsection{What the evidence supports}
 
-\begin{itemize}
-\item \textbf{ds002721} --- OpenNeuro accession \texttt{ds002721}, retrieved
-2026-07-27, \url{https://openneuro.org/datasets/ds002721}. Note that the dataset's
-\texttt{dataset\_description.json} records CC0 while its README records
-CC~BY~4.0; we have followed the more restrictive terms and attribute the source
-\citep{daly2018data}.
-\item \textbf{Soundtracks Set 1} --- Open Science Framework accession
-\texttt{p6vkg}, retrieved 2026-07-27, \url{https://osf.io/p6vkg/}. The deposit is
-released under CC~BY~4.0 \citep{eerola2011}; the excerpts are nonetheless taken
-from commercially released film scores, so the deposit's own licence does not
-convey rights in the underlying recordings, and we treat the audio as usable for
-research only.
-\item \textbf{DEAM} --- distributed by the University of Geneva; audio licences
-vary per track \citep{aljanaki2017}.
-\item \textbf{PMEmo} --- annotations and precomputed features are redistributable;
-the audio consists of commercial excerpts and is not \citep{zhang2018pmemo}.
-\item \textbf{Emo-Soundscapes} --- assembled from Creative Commons material on
-Freesound; per-item licences are given in the dataset metadata
-\citep{fan2017emo}.
-\item \textbf{ESC-50} --- CC~BY-NC~3.0 \citep{piczak2015}.
-% ARAUS carries the cross-individual result and is CC BY-NC 4.0, whose BY term
-% makes this entry an obligation rather than a courtesy. It was missing from
-% this list while the paper reported n* = 67 from it.
-\item \textbf{ARAUS} --- distributed by Nanyang Technological University via
-DR-NTU, retrieved 2026-08-03. CC~BY-NC~4.0 \citep{ooi2024araus}. Used for the
-cross-individual analysis only; the non-commercial term means the material
-itself cannot be reused in an application, whereas the calibration requirement
-estimated from it can.
-\item \textbf{BIRAFFE2} --- CC~BY~4.0 \citep{kutt2022}; used only for the
-methodological case reported in Supplementary Information S2.
-\item \textbf{ds003690} --- OpenNeuro accession \texttt{ds003690}, retrieved
-2026-07-30, \url{https://openneuro.org/datasets/ds003690}. CC0
-\citep{ds003690}. The distributors request that the EEG and pupil data be
-attributed to \citet{ribeiro2019erp} and the electrocardiogram to
-\citet{ribeiro2019cardiac}; both are cited accordingly.
-\end{itemize}
+Reported as a ledger rather than a verdict, the four boundaries divide by
+evidence state rather than by kind of failure.
 
-No new data were generated. Derived tables underlying every figure panel are
-provided as Source Data. Because these are small tabular files rather than a
-primary dataset, they accompany the manuscript rather than being deposited in a
-community repository.
+\emph{Improvement observed.} On the corpus boundary, both the same-domain and
+the cross-domain gap are substantially recoverable. One hundred target-side
+labels recover about half of either gap and 200 recover two-thirds to
+three-quarters; label-free correlation alignment recovers a quarter of the
+cross-domain gap, and a valid sham establishes that this gain is
+target-specific. A targeted representation change recovers a specific
+deficit --- tonal descriptors for perceived happiness --- that the
+spectro-temporal set does not reach.
 
-\section*{Code availability}
+\emph{No improvement observed under the routes tested.} Four pretrained
+representations did not recover the cross-domain gap; on a leak-free test set
+the best of them improves on 122 hand-specified descriptors by 0.034 in rank
+correlation, against a gap of 0.49. No acoustic route to
+song-level electrodermal measures exceeded a random-projection control. No
+within-person EEG--rating association was detected, and no per-person
+calibration gain was observed out of sample at any available budget. In each
+case the statement bounds the routes we ran, and in none of them do we claim
+that the information required is absent from the input.
 
-Analysis code, run records and figure-generation scripts are available at
-\url{https://github.com/AuraJZ/affective-audio-boundaries}. Each reported value
-has a run record identifying the script, the random seed and the parameters used;
-the scope and the current limits of that record --- uncommitted working trees,
-incomplete input hashes, absent output hashes --- are set out under
-Reproducibility in the Methods, and this statement should be read against it
-rather than as a stronger guarantee.
+\emph{Insufficient evidence.} Whether the music/environmental gap is a
+property of the sound domain or of Emo-Soundscapes specifically cannot be
+decided with one environmental corpus, particularly as that corpus also
+differs in annotation method. Whether CLAP's advantage reflects pretraining
+overlap or greater strength on environmental sound cannot be separated.
+Whether the electrodermal negative reflects the channel, the predictor or the
+target's measurement cannot be decided in a corpus where presentation position
+reproduces the target's reliability. And whether per-person calibration pays
+at 67 observations per person is untested in the one setting where the model
+says it should.
 
-\section*{Ethics}
+The single most useful practical consequence is about reporting convention. A
+zero-shot cross-corpus number is an upper bound on the generalisation problem,
+not an estimate of it. On the cross-domain boundary, where the unadapted loss
+is 75\% of the target's own within-corpus reference, a hundred target-side
+labels recover 57\% of the gap that loss opens and a label-free second-moment
+alignment recovers 25\% of it with no labels at all. We quote those recovery
+fractions rather than composing them with the loss into a residual, because the
+loss is a median over six algorithms while the recovery fractions are measured
+on ridge --- multiplying the two would be exactly the mismatched-denominator
+error this paper spends a section correcting. A field that reports the first
+number and not the second systematically overstates how badly its models
+generalise --- and, by the same token, a field that reports an alignment gain
+without a valid sham overstates how well adaptation works.
 
-This work is a secondary analysis of de-identified data released for public reuse
-by the original investigators, who obtained informed consent and ethical approval
-as described in their respective dataset publications. No new data were collected
-from human participants, and no attempt was made to re-identify any individual.
+\subsection{Two hazards for anyone reusing these corpora}
 
-\section*{Competing interests}
+Both are properties of widely used public corpora rather than of our analysis,
+and both are actionable.
 
-The authors are engaged in the development of a commercial sleep-audio product.
+In Emo-Soundscapes, grouped cross-validation on the supplied group identifiers
+gives no protection against near-duplicate mixture clips spanning folds. The
+correct grouping is recoverable from the filenames, which encode the
+constituents; because every mixture shares a constituent with some other
+mixture, a connected-components grouping collapses all 613 into one group, so
+the practical options are to evaluate on the 600 originals or to hold the
+mixtures out as a block. On our data the difference is 0.10 in the
+within-corpus reference and a factor of three in cross-domain transfer.
 
-\section*{Author contributions}
+In PMEmo, any analysis that treats the song-level electrodermal measures as
+stimulus-driven --- including any that uses their reliability as a ceiling ---
+needs a presentation-position control first.
 
-\textbf{Jingyi Zhang:} conceptualisation; methodology; software; validation;
-formal analysis; investigation; data curation; visualisation; writing --- original
-draft; writing --- review and editing.
-\textbf{Xiaotong Yao:} conceptualisation; resources; validation; writing ---
-review and editing; project administration.
+\subsection{Threats to validity}
+\label{sec:threats}
+
+\emph{One environmental corpus.} Every cross-domain cell in this paper
+involves Emo-Soundscapes, so "crossing a domain boundary" and "transferring to
+this corpus" are the same operation. The corpus differs from the three music
+corpora in sound domain, in annotation method (pairwise comparison versus
+direct rating), in clip length and in provenance. We report the result as
+measured and do not attribute it to the domain alone. Resolving this needs a
+second environmental affective corpus, which we were unable to obtain in a
+form permitting this analysis.
+
+\emph{Units of replication.} The 36 same-domain and 36 cross-domain transfer
+values are 6 ordered corpus pairs each evaluated with 6 algorithms. The
+algorithms are not independent replications; the corpus pairs are the units,
+and there are six of each kind. Dispersion statistics over 36 values should be
+read accordingly.
+
+\emph{Shared material between corpora.} The stimuli of the EEG corpus
+ds002721 are excerpts from the Soundtracks set used as our fourth music
+corpus. Results involving both are not independent.
+
+\emph{Selection and multiplicity.} The 84.4\% within-corpus figure is the best
+of six algorithms; the EEG intraclass correlation is the maximum of 156
+measures and the self-report value the maximum of 8, an asymmetry that
+favours the EEG side. No multiplicity control is applied across the 33
+per-person calibration cells. The per-cell nulls for those cells rest on 60
+bootstrap replicates, so Monte-Carlo error on the threshold is of the same
+order as the margin by which the marginal cells clear it, and the slopes are
+estimated in two stages where a cross-classified hierarchical model would
+propagate the first stage's uncertainty into the second.
+
+\emph{Construct scope.} This paper moves between model outputs,
+group-averaged perceived-emotion ratings, individual self-report, EEG
+measures, electrodermal measures, heart rate and pupil diameter. These are not
+interchangeable and a result on one does not stand in for another. In
+particular, perceived arousal in a rating corpus is not sleep onset, sleep
+continuity or any clinical endpoint; no analysis here relates a naturalistic
+soundscape to a peripheral physiological measure; and nothing in this work
+bears on the efficacy of audio for sleep. Cardiac and pupillary signals enter
+only through the design-requirement measurement, where the stimulus is a
+250\,ms tone presented to awake listeners performing a task.
+
+\emph{No prior specification.} As stated in the Methods, we can produce no
+traceable artifact predating the analyses for any criterion, and nothing here
+is preregistered.
+
+\subsection{What would settle the open questions}
+
+Three experiments, in order of how much they would change.
+
+A target-side learning curve on a physiological outcome. Everything we can say
+about that boundary concerns the routes we tried; only a budget curve
+distinguishes a gap that observations close from one they do not, and none
+exists.
+
+A second environmental affective corpus, annotated by the same method as the
+music corpora, outside the pretraining data of the representations under test.
+That single addition separates domain from dataset, annotation method from
+sound, and pretraining overlap from representational strength.
+
+Within-person longitudinal data with varied stimuli. The requirement measured
+here is 57 to 233 observations per person depending on channel, and the corpora
+available supply 18 to 44. The shortfall is in duration and repetition, not in
+participants: recruiting more people does not provide observations within a
+person. Observation count and stimulus richness also trade against each other
+inside a fixed session --- the corpus that supplies 240 events per person does
+so with four pure tones --- and it is the combination that no session-length
+design provides. A search of OpenNeuro (1{,}833 datasets) and PhysioNet (426)
+returned no corpus pairing repeated controlled auditory stimulation with a
+state readout at the required density, and the standard affective-physiology
+corpora distributed elsewhere supply 8 to 40 stimuli per participant. That
+claim is bounded by the search rather than absolute.
+
+% =====================================================================
+\section{Conclusion}
+
+Across four boundaries, the generalisation losses an affective audio model
+suffers are large when measured zero-shot and substantially smaller when a
+modest adaptation budget is quoted alongside them. On the cross-domain corpus
+boundary the unadapted loss is three-quarters of the target's own within-corpus
+reference, and of the gap that opens, a hundred target labels recover 57\% and
+a label-free second-moment alignment recovers a quarter with no labels at all
+--- a gain a sham control supports as target-specific on the three pairs where
+that control is valid. On the response-channel and
+individual-listener boundaries we found no route that recovered the gap, and
+we report that as a bound on the routes tested rather than as a property of
+the input, because the experiments that would distinguish the two --- a
+target-side budget curve on a physiological outcome, and an out-of-sample
+personalisation test in the product-adjacent corpus --- were not available to
+us. Two of the corpora we used carry structural hazards that inflate
+within-corpus performance and distort any ceiling computed from them, and both
+are recoverable from the distributed metadata. We would rather report a
+measured price list with three acknowledged gaps in it than a framework that
+the same measurements contradict.
+
+% =====================================================================
+\section{Declarations}
+\label{sec:declarations}
+
+\emph{Ethics.} This work is a secondary analysis of de-identified data
+released for public reuse. No new data were collected from human participants
+and no attempt was made to re-identify any individual. Approval provenance
+differs across the nine corpora and is stated per corpus in Supplementary
+Table~S13: where the source publication reports an approving body and protocol
+identifier we cite it; where it does not, we state that no approval statement
+is available in the source rather than implying one exists.
+
+\emph{Competing interests.} The authors are engaged in the development of a
+commercial sleep-audio product. Nothing in this paper bears on the efficacy of
+audio for sleep. Four of the corpora used here could not enter such a product
+in any case, for two different reasons: ESC-50 and ARAUS carry non-commercial
+terms, and the audio of PMEmo and of Soundtracks carries no redistribution
+right --- the latter because the Soundtracks deposit's own CC~BY~4.0 licence
+does not convey rights in the commercially released recordings it excerpts. One
+of the pretrained representations, MERT, is likewise non-commercial.
+
+% Section numbers are \ref rather than literals so they cannot drift if the
+% document is reordered. They resolve to III-D, IV-B and IV-D, which is how the
+% authors wrote them.
+\emph{Use of generative AI.} Claude (Anthropic) was used under author direction
+to generate and revise analysis code, assist with pre-submission consistency
+checks, execute the reanalyses reported in
+Sections~\ref{sec:hazards}, \ref{sec:corpus}, and \ref{sec:synthesis}, and
+draft and revise text throughout the manuscript and supplementary material.
+Numerical analyses and figures were produced by executing the analysis and
+plotting scripts described in the repository. The authors reviewed the
+AI-assisted text and code, checked the reported results against the analysis
+outputs, and verified the references. Generative AI was not used to fabricate
+participant records or empirical observations; simulations and audio
+transformations are described in the Methods. The authors take full
+responsibility for the methods, results, interpretations, and final manuscript.
+
+\emph{Data availability.} All analyses use publicly available data. Accession
+identifiers, access dates and licence terms are listed in Supplementary
+Table~S14. No new data were generated. Derived tables underlying every figure
+panel are provided as supplementary source data.
+
+\emph{Code availability.} Analysis code, run records and figure-generation
+scripts are at \url{https://github.com/AuraJZ/affective-audio-boundaries}.
+Each reported value has a run record identifying the script, the random seed
+and the parameters. The limits of that record are material and are stated
+rather than glossed: all run records were written from a working tree with
+uncommitted changes and the repository head is older than most of the
+analyses, so the recorded commit identifies a starting point and not the state
+that produced the number; input hashes are present for 38 of 199 records and
+output hashes for none; there is no automated test suite. The analyses are
+reproducible from the scripts and the public corpora at the parameters
+recorded, and are not reproducible bit-for-bit from a pinned commit. We do not
+claim the stronger guarantee.
+
+\emph{Author contributions.} \textbf{J.Z.}: conceptualisation; methodology;
+software; validation; formal analysis; investigation; data curation;
+visualisation; writing --- original draft; writing --- review and editing.
+\textbf{X.Y.}: conceptualisation; resources; validation; writing --- review
+and editing; project administration.
 
 \section*{Acknowledgements}
 
-We thank the investigators who released the datasets analysed here. This work would
-not have been possible without their decision to make the recordings, annotations
-and event files public.
+We thank the investigators who released the datasets analysed here. This work
+would not have been possible without their decision to make the recordings,
+annotations and event files public.
 
 \bibliography{../references/references}
-
-% =====================================================================
-% FIGURES
-%
-% No \section*{Figures} heading and no \clearpage, deliberately. Every figure
-% below is a [p] float, and a [p] float never shares a page with running text,
-% so a heading here is guaranteed a page of its own with nothing else on it.
-% Nor can the first figure be moved up to join it: at \textwidth Fig. 1 is
-% 171 mm tall and its legend runs about 126 mm, against a 247 mm text block.
-% The floats therefore begin straight after the references, each self-labelled.
-%
-% Figure order follows the argument: the ceiling, then each boundary in the
-% order an application meets it, then the synthesis. Two figures are new to this
-% version -- the price of the first boundary (Fig. 2) and the four-boundary
-% summary (Fig. 8) -- and the rest are renumbered accordingly. The legend macro
-% names track POSITION, not content, so they must be re-checked whenever the
-% order changes; see reports/FIGURE_LEGENDS.md, which is the source of truth.
-
-\msfigure{../reports/figures_r/Fig1_wall.pdf}{fig:wall}{\legendfigone}
-
-\msfigure{../reports/figures_r/Fig2_price.pdf}{fig:price}{\legendfigtwo}
-
-\msfigure{../reports/figures_r/Fig3_routes.pdf}{fig:routes}{\legendfigthree}
-
-\msfigure{../reports/figures_r/Fig4_tonality.pdf}{fig:tonality}{\legendfigfour}
-
-\msfigure{../reports/figures_r/Fig5_intervention.pdf}{fig:intervention}{\legendfigfive}
-
-\msfigure{../reports/figures_r/Fig6_channel.pdf}{fig:channel}{\legendfigsix}
-
-\msfigure{../reports/figures_r/Fig7_design.pdf}{fig:design}{\legendfigseven}
-
-\msfigure{../reports/figures_r/Fig8_boundaries.pdf}{fig:boundaries}{\legendfigeight}
 
 \end{document}

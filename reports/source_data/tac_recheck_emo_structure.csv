@@ -1,0 +1,9 @@
+quantity,value
+clips,1213.0
+originals,600.0
+mixtures,613.0
+distinct_source_recordings,30.0
+distinct_constituent_sets,161.0
+mean_clips_per_set,3.807
+max_clips_per_set,8.0
+distinct_group_values,1213.0

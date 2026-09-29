@@ -68,6 +68,13 @@ INCLUDE = [
     ("reports/figures_r", True, "图（PDF / TIFF / SVG / PNG）"),
     ("reports/source_data", True, "每个面板的 Source Data"),
     ("reports/FIGURE_LEGENDS.md", False, "图注"),
+    # 🔴 补充材料**印出来的那句话**指着这个文件：
+    #   "A fuller machine-checkable record ... is in
+    #    reports/TAC_revision_audit.md in the code repository."
+    # 补充材料是要发表的，所以这是一个**已发表文档里的断链**，不是内部笔记。
+    # 漏掉一次的原因是它以 `\texttt{reports/TAC\_revision\_audit.md}` 出现，
+    # 按 `TAC_revision_audit` 去 grep 补充材料源码是搜不到的 —— 下划线被转义了。
+    ("reports/TAC_revision_audit.md", False, "撤回与更正的完整记录（补充材料指向它）"),
     ("src", True, "分析库"),
     ("scripts", True, "分析脚本"),
     ("figures_r", True, "R 绘图脚本"),

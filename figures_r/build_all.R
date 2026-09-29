@@ -24,17 +24,22 @@ if (!file.exists("_theme.R")) {
 }
 
 SCRIPTS <- c(
-  "fig1_domain_wall.R",   # boundary 1: the wall, now with four representations
-  "fig2_convergence.R",   # foundation: attribution routes dissociate
-  "fig_price.R",          # boundary 1: what labels buy, and the sham control
-  "fig3_tonality.R",      # the falsification test
-  "fig4_intervention.R",  # boundary 2: sign crosses, calibration does not
-  "fig5_calibration.R",   # boundary 3: controls and stimulus-level reliability
-  "fig6_design.R",        # boundary 4: requirement, supply, per-domain break-even
-  "fig_boundaries.R",     # the thesis figure
-  "extended_data.R",      # ED1-ED7
-  "ed8_invariance.R"      # ED8
+  "fig1_domain_wall.R",   # Fig 1: zero-shot transfer, four representations
+  "fig2_convergence.R",   # Fig S9: attribution routes dissociate
+  "fig_price.R",          # Fig 2: what labels and alignment recover
+  "fig3_tonality.R",      # Fig 3: a targeted representation change
+  "fig4_intervention.R",  # Fig 4: model output under audio edits
+  "fig5_calibration.R",   # Fig 5: controls and stimulus-level reliability
+  "fig6_design.R",        # Fig 6: requirement, supply, per-setting break-even
+  "extended_data.R",      # Figs S1-S7
+  "ed8_invariance.R"      # Fig S8
 )
+
+# fig_boundaries.R is deliberately NOT built. It drew the four-boundary summary
+# that encoded the budget/information dichotomy, and the dichotomy is withdrawn
+# (see reports/TAC_revision_audit.md). The script is kept so the withdrawal can
+# be audited against what it actually drew, but the figure is not in the paper
+# and rebuilding it would put a stale PDF back in reports/figures_r/.
 
 args <- commandArgs(trailingOnly = TRUE)
 todo <- if (length(args)) {

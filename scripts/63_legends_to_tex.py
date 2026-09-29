@@ -87,7 +87,8 @@ def convert(md: str) -> str:
     return re.sub(r"[ \t]{2,}", " ", s).strip()
 
 
-WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight"]
+WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+         "nine", "ten"]
 
 
 def main() -> None:
@@ -95,16 +96,23 @@ def main() -> None:
     text = SRC.read_text(encoding="utf-8")
     defs: list[str] = []
 
-    # 以 "## Fig. N | 标题" / "## Extended Data Fig. N | 标题" 切块
+    # 以 "## Fig. N | 标题" / "## Fig. SN | 标题" 切块。
+    #
+    # 补充材料的图从 "Extended Data Fig. N" 改名为 "Fig. SN"（IEEE 没有
+    # Extended Data 这个建制，投 TAC 时统一为 S 编号）。这里必须跟着改：
+    # 旧正则 `(Extended Data )?Fig\. (\d+)` 对 "Fig. S9" 不匹配，而不匹配的块
+    # 是 `continue` 掉的 —— 图注会**静默消失**，.tex 里少一个宏，编译时
+    # 才以 "Undefined control sequence" 的形式暴露出来。
     blocks = re.split(r"^## ", text, flags=re.M)[1:]
     n_main = n_ed = 0
+    seen = set()
     for b in blocks:
         head, _, body = b.partition("\n")
         body = body.split("\n---")[0].strip()
-        m = re.match(r"(Extended Data )?Fig\. (\d+)\s*\|\s*(.+)", head.strip())
+        m = re.match(r"Fig\. (S?)(\d+)\s*\|\s*(.+)", head.strip())
         if not m:
             continue
-        is_ed, num, title = bool(m.group(1)), int(m.group(2)), m.group(3)
+        is_ed, num, title = m.group(1) == "S", int(m.group(2)), m.group(3)
         # 图注定义成宏，在导言区加载；caption 只引用宏。
         #
         # `\caption` 的参数是 moving argument，`\input` 在其中是 fragile 命令，
@@ -112,6 +120,8 @@ def main() -> None:
         # 把内容先定义为宏就绕开了这一层 —— 宏展开后只剩文本与 \textbf。
         # 宏名不能含数字，故用英文数词。
         macro = f"legend{'ed' if is_ed else 'fig'}{WORDS[num]}"
+        assert macro not in seen, f"图注宏重名：{macro}（两个块编号相同？）"
+        seen.add(macro)
         defs.append(f"\\newcommand{{\\{macro}}}{{%\n"
                     f"\\textbf{{{convert(title)}.}} {convert(body)}}}")
         n_main += not is_ed

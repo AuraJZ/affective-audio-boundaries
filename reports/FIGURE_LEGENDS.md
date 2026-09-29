@@ -10,7 +10,7 @@ run record under `runs/<run_id>/meta.json`.
 
 ---
 
-## Fig. 1 | Acoustic arousal models transfer between corpora of the same sound domain but not across it, under every representation tested
+## Fig. 1 | Arousal models transfer between corpora of the same sound domain far better than across it, under every representation tested
 
 **a** Generalisation stages for six regression algorithms (RF, XGBoost, GBDT, SVR,
 KNN, ElasticNet) over 122 spectro-temporal descriptors. Each line follows one
@@ -19,7 +19,14 @@ algorithm from within-corpus cross-validation, through same-domain transfer
 are the individual corpus pairs behind each mean. Within-corpus values are
 GroupKFold-5 estimates grouped by source recording; transfer values fit on the
 whole of one corpus and are evaluated on the whole of another, with nothing
-refitted.
+refitted. Note that ``grouped by source recording'' is a property of the group
+identifiers each corpus supplies, and on the environmental corpus those
+identifiers are one per clip: 613 of its 1,213 clips are mixtures of 30 source
+recordings, so GroupKFold there is arithmetically identical to KFold and
+near-duplicate mixtures span folds. Panels **a**--**f** use the corpus as
+distributed, for comparability with prior work; Table 1 of the main text gives
+the leak-free counterparts, on which the within-corpus reference falls from
+0.744 to 0.646 and median cross-domain transfer rises from 0.043 to 0.129.
 **b** Cross-corpus transfer matrix, averaged over the six algorithms; the
 diagonal shows within-corpus cross-validation. Green indicates positive rank
 correlation, red negative.
@@ -29,10 +36,9 @@ line marks the same-domain mean (0.59). The inward direction is uniformly sealed
 (ρ ≤ 0.09 for all three corpora), whereas the outward direction is not and
 increases from PMEmo (−0.04) through DEAM (+0.13) to Soundtracks (+0.24). Film
 soundtracks contain substantial atmospheric material — sustained tones, texture,
-sound design — and are correspondingly closer to soundscape recordings. The
-barrier is therefore **not symmetric**: its density in the outward direction
-tracks the composition of the source corpus, while the inward direction is
-impermeable regardless of target.
+sound design — which is a plausible account of that ordering but not one
+measured here. The barrier is **not symmetric**, and we report the asymmetry
+without an explanation for it.
 **d** Duration control. Music clips truncated from 30 s to a 6 s centred window,
 matching the environmental corpus; filled circles are 30 s, open circles 6 s.
 Same-domain transfer survives truncation (0.67 → 0.63) while cross-domain
@@ -83,50 +89,65 @@ same-domain values transfer averages 0.592 (s.d. 0.130) and over the 36
 cross-domain values 0.054 (s.d. 0.161). Target is continuous perceived arousal
 rescaled to −1…1. All audio is loudness-normalised to −23 LUFS before feature
 extraction, which is an admission criterion for this figure rather than a
-cosmetic step (Extended Data Fig. 1). Metric is Spearman ρ throughout. Source
+cosmetic step (Fig. S1). Metric is Spearman ρ throughout. Source
 data are provided as a Source Data file.
 
-## Fig. 2 | Target-side labels buy back most of the corpus-swap gap, and the purchase stops well short of the ceiling
+## Fig. 2 | Target-side labels recover about half of either corpus-swap gap, and label-free alignment recovers a quarter of the cross-domain one
 
-**a** Fraction of the gap recovered by k labelled target-corpus examples. The gap
-is measured between zero-shot transfer (k = 0, defined as 0%) and a model
-trained on the target corpus itself (100%), so the denominator is the target's
-own within-corpus ceiling and not same-domain transfer — the question an
-engineer faces is how close labelling k examples gets to labelling all of them.
-Line and points, median over the six ordered corpus pairs; band, interquartile
-range across those pairs. Ten labels recover 20% of the gap, 25 recover 34%, 50
-recover 50%, 100 recover 64% and 200 recover 69%.
-**b** The same result in marginal terms: additional gap recovered per doubling of
-the budget. Each doubling up to 100 labels returns a roughly constant 14 to 16
-percentage points — the signature of a gap that is genuinely for sale — while
-the doubling from 100 to 200 returns 5. The last bar is the point of the panel:
-the curve flattens at 69% of the gap, so about a third of it is unbought at the
-largest budget tested, and this experiment does not say whether the remainder is
-purchasable at a budget we did not test or is a component of a different kind.
-**c** Alignment without labels, with its sham control. Correlation alignment
-(CORAL) recovers 22% of the gap. Aligning the source not to the target but to an
-unrelated third corpus — a manipulation that cannot carry target-specific
-information by construction — recovers 14%, so roughly two-thirds of the
-apparent gain is not target-specific and is whatever a second-moment correction
-does for any distribution. Diagonal CORAL recovers 5% and per-corpus z-scoring
-6%. Subspace alignment is worse than doing nothing (−5%); the axis is not
-clipped at zero, because clipping would turn “actively harmful” into “small”.
+**a** Fraction of the gap recovered by k labelled target-corpus examples, for both
+kinds of corpus swap. The gap runs from zero-shot transfer (k = 0, defined as 0%)
+to a model trained on the target corpus itself (100%), so the denominator is the
+target's own within-corpus reference and not same-domain transfer — the question
+an engineer faces is how close labelling k examples gets to labelling all of them.
+Line and points, median over the six ordered corpus pairs of each kind; band,
+interquartile range across those pairs. Across domains: 19%, 31%, 44%, 57% and 71%
+at k = 10, 25, 50, 100 and 200. Same domain: 9%, 16%, 34%, 50% and 77%. The two
+curves differ in shape rather than in whether a price exists; the cross-domain
+curve rises faster at small budgets because its zero-shot starting point is much
+lower, and the same-domain curve overtakes it at 200.
+
+**b** Alignment without labels, with its sham control **split by validity**.
+Correlation alignment (CORAL) recovers 25% of the cross-domain gap with no target
+labels. The sham aligns the source not to the target but to an unrelated third
+corpus, which by construction carries no target-specific information — except that
+with one environmental corpus available, the third corpus lies inside the
+*target's* own domain on three of the six ordered pairs, so the sham is a valid
+negative control on only half of them. Separated, the valid sham recovers −11% and
+the invalid sham +25%: the entire apparent sham effect is the invalid half.
+Subspace alignment is worse than doing nothing (−5%); the axis is not clipped at
+zero, because clipping would turn “actively harmful” into “small”.
+
+**c** CORAL decomposed. Matching per-dimension variance alone recovers 5%; adding
+correlation structure adds 20 points more, 80% of the total. That second step is
+target-specific by construction, which is the claim the pooled sham was supposed
+to test and could not.
 
 Every fraction is computed within an ordered corpus pair and only then pooled.
-Pooling first — averaging the correlations and taking one ratio against one
-median ceiling — returns 36% and 27% in place of the 22% and 14% in **c**,
-because it mixes pairs whose baselines differ by more than the effect being
-measured. The six pairs are the three music corpora against the environmental
-corpus in both directions, so the quantity priced here is the crossing of the
-music/environmental boundary. The estimator is ridge regression on the
-hand-specified descriptors; tree ensembles are reported in the Supplementary
-Information, and are kept separate because they differ in sensitivity to the
-alignment step. The 200-label point rests on five of the six pairs: Soundtracks
-(n = 360) cannot give up 200 labelled examples and still be evaluated. Metric is
-Spearman ρ; all audio is loudness-normalised to −23 LUFS. Source data are
-provided as a Source Data file.
+Pooling first — averaging the correlations and taking one ratio against one median
+ceiling — mixes pairs whose baselines differ by more than the effect being
+measured. The environmental corpus here excludes its 613 mixture clips, which are
+combinations of 30 source recordings that the supplied group identifiers do not
+group; on the corpus as distributed they leak across folds and inflate both the
+target's within-corpus reference and the apparent size of the gap. The estimator
+is ridge regression on the hand-specified descriptors. The 200-label point rests
+on five of the six cross-domain pairs and four of the six same-domain pairs:
+Soundtracks (n = 360) cannot give up 200 labelled examples and still be evaluated.
+Restricting every budget to the pairs present at all of them changes the
+cross-domain values by at most 2 points and the same-domain values by up to 5, and
+does not change the ordering.
 
-## Fig. 3 | Feature-selection routes recover different descriptor classes depending on what they test
+**What this figure corrects.** The preprint drew a single curve, filtered to the
+cross-domain pairs, and reported it in the abstract and discussion as the
+*same-domain* price while describing the cross-domain boundary as one on which no
+purchase could be found. This legend stated the correct condition; the prose did
+not. The preprint also reported that the return per doubling collapses after 100
+labels, from a constant 14–16 points to 5. On the leak-free corpus the increments
+are 10, 14, 10 and 14 — no collapse, and the largest increment is the last. That
+claim is withdrawn, and with it any statement about where the curve saturates: it
+had not saturated at the largest budget tested. Metric is Spearman ρ; all audio is
+loudness-normalised to −23 LUFS. Source data are provided as a Source Data file.
+
+## Fig. S9 | Feature-selection routes recover different descriptor classes depending on what they test
 
 **a** UpSet-style recovery pattern. The matrix marks which of four selection
 routes recovered each descriptor; connected points indicate a descriptor
@@ -147,26 +168,27 @@ The four routes differ in statistical principle — post-hoc attribution, effect
 size, additive shape functions, and model multiplicity — not in
 hyper-parameters, so **b** is a dissociation and not a shortfall of tuning. The
 route that is standard in the field returns, at a rate below chance, precisely
-the spectral-level descriptors that Fig. 1 and Extended Data Fig. 8 show do not
+the spectral-level descriptors that Fig. 1 and Fig. S8 show do not
 survive the domain boundary. What the panel licenses is therefore a negative:
 no attribution method here supports a statement about what will transfer, which
 is why every boundary in this work is crossed and measured rather than predicted
 from the descriptors a model relies on inside its own corpus. The companion
 requirement — that an apparent overlap between attribution sets be read against
-the overlap that shuffled labels produce — is in Fig. 6a,b. Source data are
+the overlap that shuffled labels produce — is in Fig. 5a,b. Source data are
 provided as a Source Data file.
 
-## Fig. 4 | A pre-declared falsification test: an information-limited gap that a change of representation does close
+## Fig. 3 | A representation change recovers a specific deficit that more of the same descriptors does not reach
 
 **a** Cross-validated Spearman ρ for eight affect axes of the Soundtracks corpus
 (n = 360), using 122 spectro-temporal descriptors alone (open circles) and with
 39 tonal descriptors added (filled). Axes are ordered by gain; numbers give the
 gain. Blue marks the three axes for which musical mode is theoretically decisive
 (happiness, valence, sadness) — a grouping fixed a priori, not read off the
-result. The criterion was fixed before the test, because adding 39 descriptors
-will improve something somewhere: the gain had to concentrate on happiness, at
-more than twice the mean gain of the other seven axes and above 0.05 in absolute
-terms. It does, at +0.132 against a mean of +0.045, a ratio of 2.9. The ordering
+result. The criterion stated for this test was that the gain concentrate on
+happiness, at more than twice the mean gain of the other seven axes and above
+0.05 in absolute terms. It does, at +0.132 against a mean of +0.045, a ratio of
+2.9. We can produce no artifact predating the analysis for that criterion and do
+not present it as preregistered. The ordering
 of gains follows mode-dependence: happiness, valence (+0.083) and sadness
 (+0.077) lead, while energy (+0.012) and anger (+0.025), which depend on level,
 roughness and rhythm, gain least.
@@ -181,12 +203,14 @@ roughness rank 4th and 7th for tension but 117th and 76th for happiness. Mode
 carries perceived happiness; consonance and roughness carry perceived tension.
 The ordering was selected by the model from 161 descriptors, not imposed.
 
-This figure is reported at the length it is because it is a pre-declared test of
-the distinction that organises this work, not a minor improvement. The condition
-was stated in advance: the distinction between a gap that target-side
-observations close and a gap that they do not would fail if any gap yielded to
-both remedies. Here is a gap of the second kind that a representation closes.
-Bootstrap over out-of-fold predictions, resampled by stimulus, puts the
+The preprint presented this as a falsification test of a two-kind framework — an
+information-limited gap that a representation closes. That framing is withdrawn.
+The framework is withdrawn, so there is nothing to falsify; and the test's
+necessary first half, that additional data does *not* close the happiness gap,
+was never measured, since no sample-size curve exists for any Soundtracks axis.
+What the result supports is narrower and still useful: a targeted representation
+change can recover a specific deficit, and which representation helps depends on
+which axis is being predicted. Bootstrap over out-of-fold predictions, resampled by stimulus, puts the
 happiness gain at +0.132 (95% CI [+0.059, +0.209]), its excess over the mean of
 the other seven axes at +0.087 ([+0.018, +0.159]) and the tonal-over-spectro-
 temporal margin on happiness at +0.106 ([+0.007, +0.208]); the last two lower
@@ -196,13 +220,13 @@ would give. Six of six algorithms show a larger gain on happiness than the mean
 of the other axes. Tonality is not the mechanism of the domain barrier: adding
 tonal descriptors lowers music-to-environmental transfer by 0.021 (18 paired
 comparisons, p = 0.038 uncorrected), in the predicted direction but about 4% of
-a barrier that runs from 0.592 to 0.054. Interval-consonance weights are fixed a
+a gap that runs from 0.591 to 0.115 on the leak-free environmental corpus. Interval-consonance weights are fixed a
 priori from the standard ordering of sensory consonance and are not fitted, so
 they add no degrees of freedom. All audio is loudness-normalised to −23 LUFS;
 cross-validation is GroupKFold-5 and each cell reports the best of six
 algorithms. Source data are provided as a Source Data file.
 
-## Fig. 5 | An acoustic edit moves both domain models the same way, but the effect is reliable per excerpt for only one of three interventions and only at the level of a descriptor dimension
+## Fig. 4 | An acoustic edit moves model output, reliably per excerpt for only one of three interventions and not consistently across model and material
 
 **a** Dose–response curves for three interventions applied to 80 source excerpts
 (40 per domain) at four dose levels, with dose 0 the unmodified control. Curves
@@ -228,11 +252,15 @@ intervention at maximum dose, in units of the training-set standard deviation.
 **d** Significance against reliability, per intervention and per domain model.
 Abscissa, the fraction of the 80 excerpts whose own slope across the four doses
 has the intended sign; ordinate, −log10 of a sign-flip permutation p on those 80
-slopes. The dashed line at 50% is chance, and it is the line that matters: a
-point near it describes an average over excerpts that disagree, not an effect
-the intervention has on audio in general, however small its p value. Filled
-markers meet the pre-declared reliability criterion — sign consistency ≥ 65% and
-p_perm < 0.01 — and open markers do not. Spectral smoothing meets it in both
+slopes. **The 50% line is the statistic's arithmetic floor, not a chance level:**
+sign consistency is computed against the sign of the observed median, so it
+cannot fall below 50% by construction, and under the null its median is 0.54.
+A point near 50% therefore describes an average over excerpts that disagree, not
+an effect the intervention has on audio in general, however small its p value,
+and values of 57–60% are close to the floor rather than above chance. Filled
+markers meet the reliability criterion used here — sign consistency ≥ 65% and
+p_perm < 0.01 — and open markers do not; we can produce no artifact predating
+the analysis for that threshold and do not present it as preregistered. Spectral smoothing meets it in both
 domains (median slope +0.015 music, +0.074 environmental; sign consistency 70%
 and 71%; p_perm = 1 × 10⁻⁴ in both). Transient injection reaches significance
 (p_perm = 1 × 10⁻³ music, 8 × 10⁻⁴ environmental) at 50% and 59% sign
@@ -241,10 +269,23 @@ shift with no reliable per-excerpt effect and is not built upon. Envelope
 compression is uninterpretable here, having failed **b** (p_perm = 0.50 and
 0.98).
 
-The directions in **a** and **d** cross the domain boundary that Fig. 1 shows
-the predictions cannot: a model fitted to music does not know how loud is loud
-in an environmental recording, but it still ranks smoother as calmer, so what
-fails at that boundary is calibration rather than sign. Panel **c** bounds what
+**These statistics pool, for each model, its own 40 training-domain excerpts with
+40 from the other domain, and the preprint read the pooled result as showing that
+the direction of an edit crosses the domain boundary even though the predictions
+do not — "what fails is calibration rather than sign". Disaggregated, that does
+not hold.** The music model shows the effect on both kinds of material (+0.099 on
+music excerpts, +0.012 on environmental, both p < 10⁻³). The environmental model
+shows it strongly on *music* excerpts (+0.080, 100% sign consistency) and not on
+environmental excerpts — the material it was fitted on, and the material the claim
+is about — where the median slope is −0.019 in the wrong direction at 57.5% sign
+consistency and p = 0.073. Three of four model × material cells move as intended
+and the fourth is the one the claim needs most, so the claim is withdrawn.
+Independently of the data it was incompatible with the metric: every transfer
+number in this work is a Spearman rank correlation, which is exactly invariant
+under any strictly monotone recalibration, so a purely calibrational deficit
+cannot move ρ at all. The perturbed models are binary random-forest classifiers
+of low- versus high-arousal, one per domain, and are not the regression models of
+Fig. 1. Panel **c** bounds what
 may be claimed: no intervention moves its target descriptor most. Transient
 injection moves `spec_contrast6_dmean` by 9.0 SD while moving `onset_rate` by
 2.0 SD, ranking the target twelfth. Because the co-moving descriptors are
@@ -259,7 +300,7 @@ excerpt-level test in **d** replaces it. All interventions are re-normalised to
 −23 LUFS afterwards so that loudness cannot drive the effect. Source data are
 provided as a Source Data file.
 
-## Fig. 6 | Reference distributions, positive controls, and the comparison they license
+## Fig. 5 | Reference distributions, positive controls, and the comparison they license
 
 **a** Null distribution of the number of descriptors shared by the top-20 SHAP
 sets of three models under 20 label permutations. The observed value (4) falls
@@ -289,12 +330,14 @@ the epoch; green shading, the interval exceeding it (372–588 ms). Peak
 |t| = 8.78 at 452 ms, p = 0.0001 (10,000 permutations). The pre-stimulus
 interval is not significant (p = 0.54), excluding a slow drift. No classical N1
 is present; the stimuli have sharp onsets (median 25 ms to half-amplitude,
-Extended Data), so the absent fast component is attributed to playback-latency
+Supplementary Information), so the absent fast component is attributed to playback-latency
 jitter, which limits millisecond-scale analysis but not trial-wise spectral
 measures.
 **e** Stimulus-level intraclass correlation for eight self-report scales and 156
-EEG measures, computed on the same 31 listeners, the same 1,240 trials and with
-the same estimator after within-listener z-scoring. Points are individual
+EEG measures, computed on the same 31 listeners and with the same estimator after
+within-listener z-scoring. The two sets are **not** computed on identical trials,
+as the preprint stated: the EEG measures use 1,240 trials over 307 stimuli and the
+self-report scales 1,080–1,121 trials over 285–298 stimuli. Points are individual
 measures, vertical bars the median. The EEG set spans four families: regional
 band power (26), magnitude-squared coherence between region pairs (50),
 imaginary coherency (50, robust to volume conduction) and electrode-pair
@@ -316,7 +359,11 @@ The EEG value is the maximum of 156 measures and is biased upward for that
 reason, so it carries a null built the same way: permuting stimulus labels,
 recomputing all 156 intraclass correlations and taking the largest, 400 times,
 places the observed value at p = 0.02, while Benjamini–Hochberg across the same
-156 does not pass it (smallest q = 0.16). The two corrections disagree because
+156 does not pass it (smallest q = 0.16). The self-report value is also the
+maximum of a selection, but over 8 candidates rather than 156, so the two point
+estimates carry unequal selection bias in the direction that favours the EEG
+side; the comparison is conservative with respect to the conclusion drawn from
+it, but the asymmetry should be stated. The two corrections disagree because
 the value sits between them — at rank one the Benjamini–Hochberg threshold is
 the Bonferroni threshold — and 0.092 is close to the 0.10 this design resolves
 with 80% power, so the interval is consistent with values from near zero up to
@@ -332,7 +379,7 @@ stimulus-level value of 0.892 was a leak — the stimulus identifier itself had
 entered the measure set — and is withdrawn. Both are documented in the
 Supplementary Information. Source data are provided as a Source Data file.
 
-## Fig. 7 | The individual-level question is a design problem rather than a null result, and its price depends on the setting
+## Fig. 6 | The individual-level question is a design problem rather than a null result, and its price depends on the setting
 
 **a** Detection measured in real physiology. In an independent corpus of 75
 listeners with about 240 auditory events each, the evoked response to a tone was
@@ -379,8 +426,15 @@ estimator returns 0.11 when the true value is zero, and a reader who cannot see
 that cannot judge the physiological row. Break-even, n*, is the number of
 observations per person at which the corrected spread exceeds the error in
 estimating it. Urban soundscape ratings (42 observations per person, 8 cells):
-estimate 0.134 against a null of 0.013, n* = 67, and 2 of 8 cells have already
-crossed break-even, both on the eventfulness axis. Music ratings (44 per person,
+estimate 0.134 against a null of 0.013, n* = 67, and 2 of 8 cells sit above
+break-even at the observation count the corpus supplies, both on the eventfulness
+axis. Two qualifications attach to those two cells and neither appeared in the
+preprint. The corpus's own manipulation check passes for the pleasantness axis
+(p = 4 × 10⁻⁶) and **not** for eventfulness (p = 0.38), so the axis carrying both
+crossings has no passing positive control; and no out-of-sample personalisation
+test exists for this corpus, so “above break-even” here is a property of a
+variance model rather than a demonstration that a per-person slope beats the
+population slope. Music ratings (44 per person,
 10 cells): 0.074 against 0.000, n* = 166, none across. Music electrodermal
 responses (18 per person, 15 cells): 0.106 against a null of 0.114 — the
 estimate does not exceed its own noise — with n* = 318 taken over the 5 cells in
@@ -398,7 +452,16 @@ out of sample: predicting detection at n from an effect size estimated on a
 disjoint half of the same person's trials matches the observed rate to within
 0.03 on average. Panel **d** is a different quantity from **a**–**c** —
 break-even for per-person calibration, not detection of a within-person
-association — and it is the one that varies, five-fold across settings. Two
+association. The three settings in **d** differ in corpus, descriptor set and
+outcome axis simultaneously (ISO-532 psychoacoustic descriptors against ISO
+soundscape axes; spectro-temporal and tonal descriptors against valence and
+arousal; the same descriptors against electrodermal measures), so the spread
+between them cannot be attributed to any one of the three and they are not
+compared against one another. Where the direct out-of-sample test was run it
+points the other way from the model: fitting each listener their own slope loses
+to the population slope in 15 of 15 electrodermal cells (−0.109 to −0.072 at 18
+observations per person) and in every music-rating cell at 18, 30 and 50
+observations per person, turning positive in 4 of 10 cells only at n = 100. Two
 earlier claims from that analysis are withdrawn and do not appear here: a
 between-person spread of 0.106 for the physiological setting, which sat below
 its own null; and the reading of a confidence interval excluding zero as
@@ -410,66 +473,36 @@ repetition rather than in sample size: the quantity in short supply is
 observations within a person, which recruiting more participants does not
 provide. Source data are provided as a Source Data file.
 
-## Fig. 8 | The four boundaries divide into two kinds of failure with mutually exclusive remedies
+## Fig. 8 | Withdrawn
 
-**a** What survives each crossing, as a fraction of the ceiling attainable on
-that target, ordered near-to-far — the order in which an application meets them.
-Colour carries the diagnosis rather than the boundary: budget-limited, where
-target-side observations close the gap, and information-limited, where they do
-not. Cross-corpus contributes two bars because it is the only boundary on which
-both kinds appear inside one experiment, with the same models, descriptors and
-act of swapping one corpus for another: within a domain 0.614 of 0.769 survives
-(80%), across domains 0.047 of 0.769 (6%). Cross-synthesis is drawn at 1 and 0
-by construction and is not a measured fraction; the outcome there is
-categorical, in that the sign of an acoustic edit crosses the domain boundary
-while the calibration does not. Cross-channel is the best of 156 EEG measures
-against the best-agreeing self-report scale on the same 1,240 trials
-(0.092 of 0.221, 42%). Cross-individual is the observations a corpus supplies
-against those required for per-person calibration to pay, shown at the two ends
-of its five-fold range (soundscape ratings 42 of 67, 63%; music electrodermal
-responses 42 of 318, 13%).
-**b** What it costs to buy the gap back, on one axis of target-side
-observations. Filled bars are prices that exist: 100 labelled target examples
-for two-thirds of the gap a corpus swap opens (Fig. 2, where that price is
-measured on pairs that cross the music/environmental boundary), and 67, 166 and
-318 observations per person for break-even on per-person calibration in urban
-soundscape ratings, music ratings and music electrodermal responses (Fig. 7d).
-Three rows carry no bar but an open marker at the right edge with the reason. The
-marker reads "no price found" and means exactly that: under the remedies tested,
-no purchase recovered the gap. It is not a claim that none exists at any budget,
-and the distinction matters because only the priced rows rest on a target-side
-budget curve. No representation crossed the domain boundary — four pretrained
-representations spanning supervised, self-supervised and contrastive pretraining,
-none of them recovering it (Fig. 1f). The calibration deficit at the synthesis
-boundary is not a shortage of data, so no quantity of it is the remedy. At the
-response-channel boundary no information source exceeds 31% of the attainable
-ceiling on the physiological target, each route scored against the ceiling of the
-electrodermal measure its correlation was computed on; three routes stopping
-within a third of it makes it unlikely that the limit lies in the predictor, but
-the two acoustic routes sit only just above a random projection of the same
-descriptor space (21–25% against 21%), and no target-side learning curve was
-measured on that boundary, so saturation was not demonstrated. A price
-that was not found is drawn as an open marker rather than as a very long bar,
-because a long bar would assert that the purchase exists and is merely expensive.
-**c** The pre-declared falsification test. The division in **a** is worth nothing
-if it cannot fail, and the condition was fixed in advance: a gap closable both by
-additional observations and by a change of representation would break it. Gain
-in cross-validated Spearman ρ from adding 39 tonal descriptors, per affect axis
-of the Soundtracks corpus (n = 360). The criterion — that the gain concentrate
-on happiness, at more than twice the mean gain of the other seven axes and above
-0.05 — is met at +0.132 against +0.045 (Fig. 4).
+The preprint's summary figure placed the four boundaries on two axes --- the
+fraction of an attainable ceiling that survives each crossing, and the price of
+buying the gap back --- with colour carrying a diagnosis: budget-limited where
+target-side observations close the gap, information-limited where they do not.
 
-This figure re-plots quantities established elsewhere and introduces no new
-analysis; every value traces to the figure cited beside it and to the same
-Source Data. The three quantities are defined per boundary and are not
-interchangeable between them: the denominator in **a** is the within-corpus
-performance of the same representation for boundary 1, the within-corpus
-performance of the model being perturbed for boundary 2, the ratings'
-stimulus-level reliability on the same trials for boundary 3, and the
-observations required for break-even for boundary 4. Source data are provided as
-a Source Data file.
+It is withdrawn rather than corrected, for three independent reasons.
 
-## Extended Data Fig. 1 | Loudness acts as a corpus fingerprint rather than as signal
+The diagnosis it encoded is withdrawn: the boundary the figure coloured
+information-limited is the one whose budget curve the paper reports, and that
+curve recovers 57% of the gap at 100 target labels.
+
+Panel **a** placed four incommensurable ratios on one axis labelled as a
+fraction of an attainable ceiling. The corpus row is transfer against a
+within-corpus model reference; the response-channel row is one intraclass
+correlation against another, which is a ratio of reliabilities and not of
+achieved performance; the individual row is observations supplied against
+observations required; and the synthesis row was drawn at 1 and 0 by
+construction and was never a measured fraction at all.
+
+Panel **a**'s electrodermal row additionally used the wrong corpus's
+observation count as its numerator.
+
+Nothing in the paper now needs a figure of this kind. The quantities it
+summarised are reported per boundary, in the units each was measured in, and
+the ledger of what improved, what did not improve under the routes tested, and
+what the evidence cannot decide is given as text in the Discussion.
+
+## Fig. S1 | Loudness acts as a corpus fingerprint rather than as signal
 
 **a** Cross-corpus AUC (DEAM → PMEmo) for five classifiers before and after
 loudness normalisation to −23 LUFS. Normalisation raises transfer for every
@@ -494,7 +527,7 @@ only result in this work for which agreement between separately derived
 pipelines is claimed; no other comparison here meets that condition. Source data
 are provided as a Source Data file.
 
-## Extended Data Fig. 2 | Regression framing recovers the discarded middle of the arousal range
+## Fig. S2 | Regression framing recovers the discarded middle of the arousal range
 
 **a** Clips available, used under the regression framing, and used under the original
 binary framing, per corpus. **b** Totals across corpora.
@@ -506,7 +539,7 @@ Source data are provided as a Source Data file.
 
 ---
 
-## Extended Data Fig. 3 | Glass-box models cost almost no accuracy
+## Fig. S3 | Glass-box models cost almost no accuracy
 
 **a** Spearman ρ under GroupKFold-5 for black-box and glass-box models in both
 domains. **b** Change in ρ from imposing monotone constraints on the seven
@@ -520,7 +553,7 @@ trails the best black box by 0.019. Source data are provided as a Source Data fi
 
 ---
 
-## Extended Data Fig. 4 | Explainable Boosting Machine shape functions give thresholds without post-hoc attribution
+## Fig. S4 | Explainable Boosting Machine shape functions give thresholds without post-hoc attribution
 
 Additive contribution to predicted arousal as a function of descriptor value for the
 six most important terms in the ambient-domain EBM (n = 1,213, interactions
@@ -532,7 +565,7 @@ Source Data file.
 
 ---
 
-## Extended Data Fig. 5 | Descriptor importance is stable across the Rashomon set
+## Fig. S5 | Descriptor importance is stable across the Rashomon set
 
 Share of near-optimal models ranking each descriptor in their top 15. The Rashomon set
 comprises the 10 of 60 sampled models within 0.02 Spearman ρ of the best
@@ -546,7 +579,7 @@ have left this multiplicity untested. Source data are provided as a Source Data 
 
 ---
 
-## Extended Data Fig. 6 | No EEG measure tracks self-reported emotion across listeners at the effect size this design can resolve
+## Fig. S6 | No EEG measure tracks self-reported emotion across listeners at the effect size this design can resolve
 
 Each point is one of 208 combinations of an EEG measure (26) and a rating scale
 (8). The abscissa gives the mean across the 31 listeners of the within-listener
@@ -562,22 +595,22 @@ No combination crosses it (largest |mean ρ| = 0.115; median 0.028; the group
 mean's sign is shared by a median of 55% of listeners), and the distribution is
 symmetric about zero as expected under the null. This is a bound and not an
 absence. Listeners contributed a median of 30 rated trials each, and the design
-simulation (Fig. 7b) shows that at 30 observations per person a within-person
+simulation (Fig. 6b) shows that at 30 observations per person a within-person
 association of r = 0.40 would be detected on 10% of occasions and one of
 r = 0.20 on 6% — that is, at chance. The panel therefore establishes only that
 no large within-person association is obvious, and supports no conclusion about
-associations below approximately r = 0.5. The group-level result in Fig. 6e does
+associations below approximately r = 0.5. The group-level result in Fig. 5e does
 not share this limitation, because it pools 31 listeners at the level of the
 stimulus.
 
-This figure is computed on the pipeline validated in Fig. 6c,d, which is what
+This figure is computed on the pipeline validated in Fig. 5c,d, which is what
 makes the negative interpretable at all; independent-component removal of ocular
 artefacts, used here as a sensitivity manipulation check, increased detection of
 the known effect while further reducing the effect of interest. An earlier
 version used an electrodermal analysis that was retracted when its pipeline
 failed the same controls. Source data are provided as a Source Data file.
 
-## Extended Data Fig. 7 | A pretrained representation gains most on the one corpus that overlaps its pretraining data
+## Fig. S7 | A pretrained representation gains most on the one corpus that overlaps its pretraining data
 
 Best cross-validated Spearman ρ for 122 hand-crafted spectro-temporal
 descriptors and for 512-dimensional pretrained audio embeddings, on three
@@ -603,7 +636,7 @@ pretrained representation crosses the domain boundary is a separate question,
 answered for four pretraining paradigms in Fig. 1f and Table 1, where none of
 them does. Source data are provided as a Source Data file.
 
-## Extended Data Fig. 8 | Only temporal-variability descriptors keep their direction across sound domains
+## Fig. S8 | Only temporal-variability descriptors keep their direction across sound domains
 
 **a** Standardised effect size (Cohen's d) of each FDR-significant descriptor in
 the music domain versus the environmental domain, with marginal densities by
@@ -622,10 +655,10 @@ Feature classes are assigned by statistic type — descriptors ending in `_std` 
 `_dmean`, plus `onset_rate`, are temporal-variability measures; all others are
 spectral-level measures. Significance was established per domain by per-feature
 permutation testing (200 permutations) with Benjamini–Hochberg control at
-q = 0.10. This analysis is the second of the four selection routes in Fig. 3, and
+q = 0.10. This analysis is the second of the four selection routes in Fig. S9, and
 is the only one that tests the boundary directly. Source data are provided as a
 Source Data file.
 
 This analysis appeared as a main figure in an earlier version; it was moved to
-Extended Data when the price of the first boundary (Fig. 2) took the main-figure
+the Supplementary Information when the price of the first boundary (Fig. 2) took the main-figure
 slot.

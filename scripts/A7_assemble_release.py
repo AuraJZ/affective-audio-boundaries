@@ -149,8 +149,20 @@ def main() -> None:
     if len(sys.argv) < 2:
         raise SystemExit("用法:A7_assemble_release.py <目标目录>")
     dest = Path(sys.argv[1]).resolve()
-    if dest.exists() and any(dest.iterdir()):
-        raise SystemExit(f"🔴 目标目录非空,先清空或换一个:{dest}")
+    # `.git` 不算「非空」。
+    #
+    # 第一次发布是往空目录里铺，但**之后每次更新都是铺进一个已经建好 git、
+    # 配好 origin 的目录**。把 `.git` 算进非空判断，等于要求每次发布都丢掉
+    # 远端历史重建一个仓库 —— 那正是这个仓库现在有两条无关历史的原因。
+    # 清空工作区、保留 `.git`、在原历史上追加一个 commit，才是正常做法。
+    leftovers = [p for p in dest.iterdir() if p.name != ".git"] \
+        if dest.exists() else []
+    if leftovers:
+        raise SystemExit(
+            f"🔴 目标目录非空（除 .git 外还有 {len(leftovers)} 项），"
+            f"先清空工作区再来：{dest}\n"
+            f"   例如：find . -mindepth 1 -maxdepth 1 ! -name '.git' "
+            f"-exec rm -rf {{}} +")
     dest.mkdir(parents=True, exist_ok=True)
 
     print(f"组装到 {dest}\n")
@@ -164,9 +176,19 @@ def main() -> None:
         total += n
         print(f"  {rel:<20} {n:5d} 个文件   {why}")
 
-    files = [p for p in dest.rglob("*") if p.is_file()]
+    # 闸门只看**要发布的内容**，不看 `.git`。
+    #
+    # git 的 object 是 zlib 压缩流，压缩后的字节里随机出现 `K:\` `y:\` 这类
+    # 序列是必然的 —— 本机路径那条正则会命中二十几个 object，全是误报，而且
+    # 每次提交都会换一批。一个必然误报的闸门会被人学会忽略，那它就白设了。
+    #
+    # 真正该管 `.git` 的不是这里：历史里有没有不该公开的东西，是**建这个仓库
+    # 的时候**决定的（所以才有这个脚本：拷贝一份干净的，而不是推工作仓库）。
+    files = [p for p in dest.rglob("*")
+             if p.is_file() and ".git" not in p.parts]
     size_mb = sum(p.stat().st_size for p in files) / 1e6
-    print(f"\n合计 {len(files)} 个文件,{size_mb:.1f} MB")
+    print(f"\n合计 {len(files)} 个文件,{size_mb:.1f} MB"
+          + ("（不含 .git）" if (dest / ".git").exists() else ""))
 
     problems: list[str] = []
 
@@ -225,9 +247,18 @@ def main() -> None:
                 continue
             break
 
+    # 占位符只在**会被人读到的成品文档**里算数。
+    #
+    # 扫 .tex/.md 全体会稳定命中三处永远不该改的东西：两个检查器自己的模式表
+    # （A2 与本脚本，它们必须原样写出占位符才能去找它），以及投稿说明里
+    # 「README 曾经写着 arXiv:XXXX.XXXXX」这句叙述。这三处每次都会报，
+    # 而一个必然报警的检查等于没有检查。
+    PLACEHOLDER_SURFACES = {"README.md"}
     left = [ph for ph in PLACEHOLDERS
             if any(ph in p.read_text(encoding="utf-8", errors="replace")
-                   for p in files if p.suffix in {".tex", ".md"} and p.stat().st_size < 500_000)]
+                   for p in files
+                   if p.name in PLACEHOLDER_SURFACES
+                   and p.stat().st_size < 500_000)]
 
     if problems:
         print(f"\n🔴 {len(problems)} 项必须处理:")

@@ -42,10 +42,19 @@ def ts(p):
     return time.strftime("%m-%d %H:%M", time.localtime(mt(p))) if p.exists() else "MISSING"
 
 
-# R script -> the figure(s) it writes, discovered from the save_ms() call
+# R script -> the figure(s) it writes, discovered from the save_ms() call.
+#
+# 🔴 `fig_boundaries.R` 在这里被跳过，而不是被删掉。
+#
+# 它画的是已撤回的四边界汇总图（预印本 Fig. 8）。脚本保留下来，是为了让
+# 「撤回了什么」可以对着它核；但它的 PDF 已经删了，也不再由 build_all.R 生成。
+# 若不跳过，本脚本会永远报一条「Fig8_boundaries.pdf 比 fig_boundaries.R 旧」——
+# 一条无论如何都不会变绿的红线。**永远为红的检查项，等于训练人忽略这个检查。**
+SKIP = {"_theme.R", "build_all.R", "fig_boundaries.R"}
+
 pairs = []
 for rf in sorted(SRC.glob("*.R")):
-    if rf.name in ("_theme.R", "build_all.R"):
+    if rf.name in SKIP:
         continue
     txt = rf.read_text(encoding="utf-8")
     import re
