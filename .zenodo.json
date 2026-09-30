@@ -1,0 +1,41 @@
+{
+  "title": "Transfer boundaries in affective audio modelling: analysis code, run records and manuscript",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "mit",
+  "creators": [
+    {
+      "name": "Zhang, Jingyi",
+      "affiliation": "Shanghai Huangan Technology Co., Ltd., Shanghai, China; Systems Neuroscience, Institute for Neuroscience, D-HEST, ETH Zurich, Switzerland",
+      "orcid": "0009-0008-8738-3783"
+    },
+    {
+      "name": "Yao, Xiaotong",
+      "affiliation": "Shanghai Huangan Technology Co., Ltd., Shanghai, China"
+    }
+  ],
+  "description": "<p>Analysis code, run records, figure sources and manuscript for a multi-corpus study of how far a mapping from acoustic descriptors to human affective response survives four changes of setting &mdash; new material, edited audio, a sensor in place of a self-report, and an individual listener &mdash; and of what each adaptation route tested recovers when it does not.</p><p><strong>This archive supersedes an earlier preprint</strong> (arXiv:2608.27674), whose organising claim &mdash; that generalisation failures divide into two kinds with mutually exclusive remedies &mdash; is contradicted by this project's own measurements and is withdrawn. <code>reports/TAC_revision_audit.md</code> records what was withdrawn, corrected and recomputed, and what remains a stated limitation.</p><p>Two findings concern corpora in wide use and are useful independently of the main result. In Emo-Soundscapes, 613 of 1,213 clips are mixtures of thirty source recordings, and the distributed metadata gives every clip its own group identifier, so grouped cross-validation on the supplied groups provides no protection against near-duplicates spanning folds. In PMEmo, a sham using presentation position alone reproduces 114&ndash;249% of the stimulus-level reliability of its song-level electrodermal measures.</p><p><strong>Licensing.</strong> Code is MIT (see <code>LICENSE</code>); manuscript text and figures are CC BY 4.0. The nine analysed corpora are third-party and are <em>not</em> redistributed here &mdash; several carry non-commercial terms and one has no audio redistribution right at all. Per-corpus terms, including whether <em>derived</em> files may be redistributed, are in <code>DATA_LICENSES.md</code>; read it before reusing anything built from them.</p><p><strong>Reproducibility, stated plainly.</strong> The run records fix the script, the seed, the parameters and the resulting metrics. They do not pin the code: records were written from working trees with uncommitted changes, input hashes cover a minority of runs and output hashes are absent. The analyses reproduce from the scripts at the recorded parameters; they do not yet reproduce bit-for-bit from a pinned commit.</p>",
+  "keywords": [
+    "affective computing",
+    "cross-corpus generalisation",
+    "domain adaptation",
+    "few-shot adaptation",
+    "soundscape emotion recognition",
+    "music emotion recognition",
+    "annotator agreement",
+    "personalisation",
+    "dataset bias",
+    "electroencephalography",
+    "electrodermal activity",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "arXiv:2608.27674",
+      "relation": "isNewVersionOf",
+      "resource_type": "publication-preprint",
+      "scheme": "arxiv"
+    }
+  ],
+  "language": "eng"
+}

@@ -31,6 +31,7 @@ from __future__ import annotations
 import io
 import re
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -44,6 +45,11 @@ INCLUDE = [
     ("LICENSE",            "代码的 MIT 许可,含 SCOPE 段"),
     ("DATA_LICENSES.md",   "九个语料与四组模型权重的许可台账"),
     (".gitignore",         "挡住 data/、.venv、logs、tmp"),
+    # 🔴 点号开头的文件极容易在这张清单里被漏掉，而漏掉的后果是**静默删除**：
+    # 发布流程是「清空工作区 → 跑本脚本 → git add -A」，所以任何本脚本不认识
+    # 的文件都会被当成「已删除」提交上去。`.zenodo.json` 就这样从公开仓库消失过
+    # 一次，直到匿名 curl 取它拿到 404 才发现 —— push 的输出是绿的。
+    (".zenodo.json",       "Zenodo 归档的元数据：作者、ORCID、许可证、与预印本的关联"),
     ("pyproject.toml",     "包与依赖定义"),
     ("uv.lock",            "锁定的精确版本"),
     ("manuscript",         "手稿 LaTeX 源、图注、编译好的 PDF"),
@@ -276,15 +282,39 @@ def main() -> None:
         for ph in left:
             print(f"    {ph}")
 
+    # 🔴 目标已经是仓库时，把「这次发布会删掉哪些已发布的文件」单独报出来。
+    #
+    # 发布流程是「清空工作区 → 跑本脚本 → git add -A」，所以**任何本脚本 INCLUDE
+    # 清单里没有的文件都会被当作删除提交上去**，而 push 的输出是绿的，git status
+    # 里那一行也混在几十行 modified 中间。`.zenodo.json` 就这样从公开仓库消失过
+    # 一次，是匿名 curl 取它拿到 404 才发现的。
+    #
+    # 发布时的删除几乎总是「清单漏了」，不是「有意移除」，所以值得单独一段、
+    # 而不是让人去 git status 里自己找。
+    if (dest / ".git").is_dir():
+        r = subprocess.run(["git", "status", "--porcelain"], cwd=dest,
+                           capture_output=True, text=True, encoding="utf-8",
+                           errors="replace")
+        gone = [ln[3:] for ln in r.stdout.splitlines()
+                if ln[:2] in (" D", "D ", "AD")]
+        if gone:
+            print(f"\n⚠️ 这次发布会从已发布的仓库里**删掉** {len(gone)} 个文件。"
+                  f"\n   发布时的删除通常意味着 INCLUDE 清单漏了，而不是真的要移除；"
+                  f"\n   逐条确认后再 commit：")
+            for g in gone[:25]:
+                print(f"    - {g}")
+            if len(gone) > 25:
+                print(f"    …另有 {len(gone) - 25} 个")
+
     print(f"""
 下一步(在 {dest} 里):
 
-    git init -b main
-    git config user.email "<你的 GitHub noreply 邮箱>"
-    git config user.name  "<你的名字>"
     git add -A
     git status          # ← 在 commit 之前，把这份清单从头看一遍
-    git commit -m "Initial public release: analysis code, manuscript and figures"
+    git commit -m "..."
+    git push origin main
+
+（首次发布才需要先 git init -b main、git config user.email/name。）
 """)
 
 
