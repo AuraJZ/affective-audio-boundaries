@@ -9,7 +9,7 @@ tested recovers when it does not.
 > **Manuscript source** · [`manuscript/`](manuscript/) — prepared for IEEE
 > Transactions on Affective Computing
 > **Preprint** · [arXiv:2608.27674](https://arxiv.org/abs/2608.27674) *(superseded — see the revision note below)*
-> **Archive** · Zenodo DOI *(to be inserted at release)*
+> **Archive** · [10.5281/zenodo.23044439](https://doi.org/10.5281/zenodo.23044439) — concept DOI, always resolves to the latest version
 
 ---
 
@@ -186,6 +186,16 @@ them, feature tables included.
 
 ## Citing
 
-Cite the manuscript, not the superseded preprint. If you depend on a specific
-state of the code, cite the Zenodo DOI for that release rather than the
-repository URL.
+Cite the manuscript, not the superseded preprint (arXiv:2608.27674), whose
+central claim this work withdraws.
+
+For the code and data, cite the Zenodo archive rather than the repository URL —
+a URL says nothing about *which* state of the code you used.
+
+| | DOI | when |
+|---|---|---|
+| **Concept** | [10.5281/zenodo.23044439](https://doi.org/10.5281/zenodo.23044439) | default — always resolves to the latest version |
+| Version | [10.5281/zenodo.23044440](https://doi.org/10.5281/zenodo.23044440) | only when you depend on v1.0.0 specifically |
+
+The badge Zenodo shows on the repository settings page is the *version* DOI, so
+it is easy to pick up the wrong one.
